@@ -5,9 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><tiles:getAsString name="title"/></title>
+<title>Insert title here</title>
 </head>
 <body>
+	<!-- header -->
+	<tiles:insertAttribute name="header"/>
+	
+	<!-- nav -->
+	<tiles:insertAttribute name="nav"/>
+	
+	<!-- aside -->
+	<tiles:insertAttribute name="aside"/>
 	
 	<!-- main -->
 	<tiles:insertAttribute name="main"/>
