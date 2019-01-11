@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<header>
-		<h1>header</h1>		
-	</header>
+<aside>
+	<h2>admin aside</h2>
+</aside>
