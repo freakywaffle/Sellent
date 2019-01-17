@@ -1,0 +1,69 @@
+#header {
+	position: fixed;
+	top: 0;
+	background-color: white;
+	height: 160px;
+	width: 100%;
+	z-index: 10;
+}
+
+#header .top-header {
+	width: 1200px;
+	height: 55%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#header .logo-bar {
+	display: flex;
+}
+
+#header .logo {
+	width: 200px;
+	height: 50px;
+	background-color: crimson;
+}
+
+#header .member-menu {
+	margin-left: auto;
+	width: 200px;
+	height: 50px;
+	background-color: black;
+}
+
+#header .search-bar {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 50px;
+	box-sizing: border-box;
+	overflow: hidden;
+	vertical-align: middle;
+	line-height: 50px;
+}
+
+#header .search-bar input {
+	margin-left: 35%;
+	width: 400px;
+	height: 30px;
+}
+
+@media ( max-width :480px) {
+	#header .top-header {
+		background-color: green;
+		width: 100%;
+	}
+	
+	#header .search-bar {
+		position: relative;
+	}
+	#header .search-bar input {
+		width: 100%;
+		margin-left: 0px;
+	}
+	
+	
+	
+	
+}

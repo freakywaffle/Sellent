@@ -1,0 +1,17 @@
+.category {
+	min-width: 300px;
+	background-color: blue;
+}
+
+.category-list {
+	background-color: whitesmoke;
+}
+
+@media ( max-width :480px) {
+	.category {
+		position: fixed;
+		min-width: 300px;
+		left: -100%;
+		background-color: blue;
+	}
+}
