@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="category.*" 
-		template="/WEB-INF/views/inc/layout.jsp">
+		template="/WEB-INF/views/category/inc/layout.jsp">
 		<put-attribute name="title" value="Sellent" />
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
 		<put-attribute name="bottomHeader" value="/WEB-INF/views/category/inc/bottomHeader.jsp" />

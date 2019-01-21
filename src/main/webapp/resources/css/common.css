@@ -18,3 +18,10 @@ ul, li {
 	position: fixed;
 }
 
+input,textarea:focus {
+	outline: none !important;
+}
+
+a{
+	text-decoration: none;
+}
