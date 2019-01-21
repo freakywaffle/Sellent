@@ -1,14 +1,14 @@
-.category {
+.aside {
 	min-width: 300px;
 	background-color: blue;
 }
 
-.category-list {
+.aside-category-list {
 	background-color: whitesmoke;
 }
 
 @media ( max-width :480px) {
-	.category {
+	.aside {
 		position: fixed;
 		min-width: 300px;
 		left: -100%;

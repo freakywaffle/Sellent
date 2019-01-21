@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300,500,700&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
 
 #header {
 	position: fixed;
@@ -6,7 +6,9 @@
 	background-color: white;
 	height: 160px;
 	width: 100%;
+	padding-top: 22px;
 	z-index: 10;
+	border-bottom: 2px solid rgb(255, 214, 51);
 }
 
 #header .top-header {
@@ -19,6 +21,8 @@
 
 #header .logo-bar {
 	display: flex;
+	
+	height: 50%;
 }
 
 #header .logo {
@@ -38,14 +42,31 @@
 	margin-left: auto;
 	width: 200px;
 	height: 50px;
-	background-color: black;
+	
+}
+
+#header .member-menu ul{
+	display: flex;
+	vertical-align: middle;
+	line-height: 50px;
+	
+}
+
+#header .member-menu .menu{
+	width: 70px;
+	text-align: center;
+	font: #ffffff;
+}
+
+#header .member-menu a{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	color: #000000;
 }
 
 #header .search-bar {
-	position: absolute;
-	top: 0px;
 	width: 100%;
-	height: 50px;
+	height: 50%;
 	box-sizing: border-box;
 	overflow: hidden;
 	vertical-align: middle;
@@ -53,15 +74,18 @@
 }
 
 #header .search-bar input {
+	position: absolute;
+	top:6px;
 	margin-left: 20%;
 	width: 400px;
 	padding-left: 15px;
 	color: gray;
 	font-weight: bold;
-	height: 40px;
+	height: 35px;
 	border-radius: 10px;
 	border: none;
 	background-color: rgb(255, 214, 51);
+	
 	/* background-color: pink; */
 }
 
