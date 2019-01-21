@@ -3,7 +3,7 @@
 <link href="/resources/css/inc/topHeader.css" rel="stylesheet"/>
 <section class="top-header">
 	<div class="logo-bar">
-		<div class="logo"></div>
+		<div class="logo">SELLENT</div>
 		<div class="member-menu"></div>
 	</div>
 	<div class="search-bar">

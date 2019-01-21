@@ -1,4 +1,5 @@
 #header .bottom-header {
+	
 	width: 1200px;
 	background-color: white;
 	height: 45%;
@@ -7,6 +8,11 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.bottom-header ul{
+	display: flex;
+}
+
 
 @media ( max-width :480px) {
 	#header .bottom-header {
