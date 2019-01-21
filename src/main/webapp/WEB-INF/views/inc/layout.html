@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title><tiles:getAsString name="title"/></title>
+   <style>
+      body{
+         margin: 0px;
+         padding: 0px;
+         position: relative;
+         
+      }
+
+      ul,li{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+      }
+
+      #header{
+        height: 160px;
+        position: fixed;
+        background-color: orange;
+        width: 100%;
+        z-index: 10;
+         
+      }
+      #header .top-header{
+        width: 1200px;
+         height: 55%;
+         background-color: gray;
+         margin-left: auto;
+         margin-right:auto;
+      }
+      #header .bottom-header{
+        width: 1200px;
+         background-color: white;
+         height:45%;
+         margin-left: auto;
+         margin-right: auto;
+      }
+      #wrap{
+         display: flex;
+      }
+
+      #wrap .center{
+          height: 2000px;
+          margin-top: 160px;
+         width: 1200px;
+         min-height: 500px;
+         background-color: skyblue;
+         display: flex;
+         position: relative;
+         margin-left: auto;
+         margin-right: auto;
+
+      }
+      #wrap .category{
+         min-width: 300px;
+         background-color: blue;
+      }
+
+      .category-list{
+          background-color: whitesmoke;
+      }
+	  #wrap .content{
+          border-top: 2px orange solid;
+		  width: 900px;
+          background-color: white;
+          position: relative;
+	  }
+      #wrap .content .div{
+          position: absolute;
+          right: 10px;
+          top: 10px;
+      }
+      #wrap .content label{
+          position: absolute;
+          left: 10px;
+          top: 10px;
+      }
+     
+      #wrap .content>div{
+          height: 60px;
+          border-bottom: 1px gray solid;
+      }
+
+      #wrap .floating-bar{
+         background-color: pink;
+         
+         width: 70px;
+         height: 250px;
+         margin-left: 20px;
+         top: 600px;
+      }
+
+      .fixed{
+        position: fixed;
+      }
+      .absolute{
+        position: absolute;  
+      }
+
+      #footer{
+          height: 160px;
+          width: 100%;
+          border-top: 1px black solid; 
+          
+      }
+      .right{
+          background-color: black;
+      }
+      @media(max-width:480px){
+            #header .top-header{background-color: green;}
+       }
+
+   </style>
+
+   <script>
+
+        $(document).ready(function(){
+            var t = null;
+            var st = null;
+            $(window).scroll(function() {
+                var scrollOffset = $(".floating-bar").offset();
+                var footerOffset = $("#footer").offset();
+
+                if(scrollOffset.top+250 >= footerOffset.top-20){
+                    if(t == null){
+                        t = footerOffset.top-20-250;
+                        st = $(document).scrollTop();
+                    }
+                    $(".floating-bar").css({position:"absolute", top:t-160+"px"});
+                }
+
+                if(st != null){
+                    if($(document).scrollTop()<st)
+                        $(".floating-bar").css({position:"fixed", top: "600px"});
+
+                }
+                
+            }); 
+        });
+   </script>    
+</head>
+<body>
+    <header id="header">
+        <section class="top-header"></section>
+        <section class="bottom-header"></section>
+    </header>
+    <div id="wrap">
+        <div class="center">
+            <section class="category">
+                <ul class="category-list">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                        <li>4</li>
+                </ul>
+            </section> 
+            <section class="content">
+                <div>
+                    <label>프로젝스 -> 평가</label>
+                    <div class="div">
+                        <input type="button" value="글쓰기"/>
+                        <select>
+                            <option>분류검색</option>   
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <div class="right">
+                <div class="floating-bar fixed">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer"></footer>
+</body>
+</html>

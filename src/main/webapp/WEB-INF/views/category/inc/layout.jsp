@@ -13,13 +13,13 @@
 	
 	<!-- nav -->
 	<tiles:insertAttribute name="nav"/>
-	
-	<!-- aside -->
-	<tiles:insertAttribute name="aside"/>
-	
-	<!-- main -->
-	<tiles:insertAttribute name="main"/>
-	
+	<div>
+		<!-- aside -->
+		<tiles:insertAttribute name="aside"/>
+		
+		<!-- main -->
+		<tiles:insertAttribute name="main"/>
+	</div>
 	<!-- floating -->
 	<tiles:insertAttribute name="floating"/>
 	
