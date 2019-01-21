@@ -17,4 +17,6 @@ ul, li {
 .fixed {
 	position: fixed;
 }
-
+input,textarea:focus {
+ outline: none !important;
+}

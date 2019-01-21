@@ -3,3 +3,11 @@
 	width: 100%;
 	border-top: 1px black solid;
 }
+
+@media ( max-width :480px) {
+	#footer {
+		/* background-color: aquamarine; */
+		width: 100%;
+		 
+	}
+}
