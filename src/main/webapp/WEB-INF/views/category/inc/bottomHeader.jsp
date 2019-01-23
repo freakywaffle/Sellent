@@ -3,7 +3,7 @@
 <link href="/resources/css/category/inc/bottomHeader.css" rel="stylesheet"/>
 <section class="bottom-header">
 	<ul>
-		<li>&lt;</li>
+		<li class="arrow visual-hidden">&lt;</li>
 		<li>카테고리1</li>
 		<li>카테고리2</li>
 		<li>카테고리3</li>
@@ -12,6 +12,6 @@
 		<li>카테고리6</li>
 		<li>카테고리7</li>
 		<li>카테고리8</li>
-		<li>&gt;</li>
+		<li class="arrow visual-hidden">&gt;</li>
 	</ul>
 </section>

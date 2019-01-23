@@ -37,7 +37,18 @@
 .content .top-content {
 	height: 60px;
 	border-bottom: 1px gray solid;
+	box-sizing: border-box;
 }
+
+.main-content{
+	margin-top: 20px;
+}
+
+.main-content .post{
+	border: 1px solid black;
+	height: 50px;
+}
+
 
 @media ( max-width :480px) {
 	.mobile-block {
