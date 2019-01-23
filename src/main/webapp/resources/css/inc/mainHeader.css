@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
+#header {
+
+      position: relative;
+      background-color: #ffd632;
+      height: 250px;
+   }
+
+   #header-wrap {
+      position: relative;
+      height: inherit;
+      margin-left: auto;
+      margin-right: auto;
+      width: 800px;
+      background-color: #ffd632;
+      color: #002060;
+   }
+
+   .hamburger {
+      position: absolute;
+      right: 0px;
+      margin-right: 10px;
+      padding-top: 5px;
+   }
+
+   .login {
+      display: none;
+      position: absolute;
+      margin-right: 10px;
+      right: 0;
+   }
+
+   .login ul {
+      display: flex;
+   }
+
+   .login li {
+      padding-right: 15px;
+   }
+
+   .logo{
+      font-family: 'Do Hyeon', sans-serif;
+      font-size: 80px;
+      text-align: center;
+      padding-top: 50px;
+
+   }
+   
+   .search input{
+      padding-left: 15px;
+      color: gray;
+      font-weight: bold;
+      height: 40px;
+      border-radius: 10px;
+      width: 600px;
+      border: none;
+      margin-top:30px;
+      margin-left: 110px;
+      /* background-color: pink; */
+      
+   }
+
+   #main {
+      position: relative;
+      height: auto;
+      padding-top: 15px;
+      margin-left: auto;
+      margin-right: auto;
+     /*  background-color: indianred; */
+
+   }
+   
+      @media(max-width:480px){
+      #header-wrap{
+         /* background-color: aquamarine; */
+         width: 100%;
+      }
+      }
+   input,textarea:focus {
+ outline: none !important;
+}
