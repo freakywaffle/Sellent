@@ -1,0 +1,97 @@
+ @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
+ 
+ #main {
+      position: relative;
+      height: auto;
+      padding-top: 15px;
+      margin-left: auto;
+      margin-right: auto;
+     /*  background-color: indianred; */
+
+   }
+   .findId, #idFind, .findPwd, #pwdFind{
+    /*   background-color: #002060; */
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   .findId div:first-child, .findPwd div:first-child{
+      background-color: #ffd632;
+      border: none;
+      border-radius: 8px;
+      height: 40px;
+      margin-left: 50px;
+      margin-top: 20px;
+      width: 700px;
+      line-height: 35px;
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+      padding-left: 10px;
+   }
+   .findId input, .findPwd input{
+      height: 40px;
+      margin-left: 50px;
+      margin-top: 20px;
+      width: 700px;
+      border-radius: 8px;
+      border: 1.3px solid #404040;
+      padding-left: 15px;
+
+   }
+
+   #idFind input, #pwdFind input{
+      background-color:#ffd632;
+     width: 100px;
+     margin-left: 660px;
+     margin-top: 10px;
+     border-radius: 8px;
+     border: none;
+     height: 30px;
+     color: white;
+     font-size: 18px;
+     font-weight: bold;
+     
+   }
+   #pwdFind{
+      margin-bottom: 20px;
+   }
+   #footer{
+      background-color: #404040;
+      height: 200px;
+   }
+   @media(max-width:480px){
+      #header-wrap, .idPw, #login,.buttones{
+
+         width: 100%;
+      }
+
+    .search input{
+         width: 90%;
+         margin-left: 20px;
+      }
+      .findId, .findPwd, #idFind, #pwdFind{
+         width: 100%;
+         
+      }
+      #idFind input,  #pwdFind input{
+         
+         margin-left: 77%;
+      }
+
+      .findId div:first-child, .findPwd div:first-child, .findId div input, .findPwd div input{
+         /* background-color: #002060; */
+         width: 90%;
+         margin-left: 25px;
+      }
+      #login input{
+          margin-left: 30px;
+      }
+      .radioButton{
+          width: 100%;
+          padding-left: 20px;
+          
+      }
+      
+      
+        }
