@@ -1,10 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
 .aside {
+	padding-top: 20px;
 	min-width: 300px;
-	background-color: blue;
 }
 
-.aside-category-list {
-	background-color: whitesmoke;
+.aside .ct-wrapper{
+	width: 80%;
+	padding-left: 30px;
+	height: auto;
+	padding-bottom: 20px;
+}
+.aside .ct-wrapper div{
+	padding-left: 12px;
+	margin-top: 20px;
+	border-bottom: 2px solid rgb(255, 214, 51);
+}
+
+.aside .ct-wrapper ul{
+	margin-top: 15px;
+	margin-right: 22px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	border-top: 1px solid #BDBDBD;
+	
+}
+
+.aside .ct-wrapper li{
+	height: 25px;
+	
+}
+
+.aside li img,span{
+	vertical-align: middle;
+	line-height: 16px;
+		
+}	
+
+.aside .ct-wrapper li:first-child{
+	margin-top: 10px;
+	
+}
+
+
+.aside h2{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 30px;
+	padding-right: 50px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid rgb(255, 214, 51);
+	height: 80px;
+	box-sizing: border-box;
+	vertical-align: middle;
+	line-height: 60px;
+	
+}
+
+.aside h3{
+	font-size: 20px;
+	
 }
 
 @media ( max-width :480px) {
@@ -12,6 +66,5 @@
 		position: fixed;
 		min-width: 300px;
 		left: -100%;
-		background-color: blue;
 	}
 }

@@ -6,11 +6,14 @@
 		<input type="button" value=">" />
 	</div>
 	<div class="top-content">
-		<label>프로젝스 -> 평가</label>
+		<div class="">프로젝트 > 평가</div>
 		<div class="top-right-content">
 			<input type="button" value="글쓰기" /> <select>
 				<option>분류검색</option>
 			</select>
 		</div>
+	</div>
+	<div class="main-content">
+		<div class="post"></div>
 	</div>
 </section>

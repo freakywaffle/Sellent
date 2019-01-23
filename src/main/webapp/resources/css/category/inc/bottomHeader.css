@@ -2,7 +2,7 @@
 	
 	width: 1200px;
 	background-color: white;
-	height: 45%;
+	height: 55px;
 	
 	
 	margin-left: auto;
@@ -11,6 +11,15 @@
 
 .bottom-header ul{
 	display: flex;
+}
+
+.bottom-header li{
+	width: 137.5px;
+	text-align: center;
+}
+
+.bottom-header .arrow{
+	width: 50px;
 }
 
 
