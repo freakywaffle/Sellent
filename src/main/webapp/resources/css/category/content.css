@@ -42,11 +42,16 @@
 
 .main-content{
 	margin-top: 20px;
+	text-align: center;
 }
 
 .main-content .post{
+	display: inline-block;
 	border: 1px solid black;
-	height: 50px;
+	height: 200px;
+	box-sizing: border-box;
+	overflow: hidden;
+	width: 800px;
 }
 
 

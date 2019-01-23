@@ -14,6 +14,13 @@
 		</div>
 	</div>
 	<div class="main-content">
-		<div class="post"></div>
+		<div class="post">
+			<div><img src="/resources/images/post_img.jpg" /></div>
+			<div>
+				<span>khh1111</span>
+				<span>홈페이지 퍼블리싱 해 드립니다</span>
+				<span>15,000원~</span>
+			</div>
+		</div>
 	</div>
 </section>
