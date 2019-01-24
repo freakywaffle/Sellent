@@ -1,4 +1,5 @@
 #center {
+<<<<<<< HEAD
 	/* background-color:pink; */
 	min-height: 1100px;
 	margin-top: 160px;
@@ -9,6 +10,17 @@
 	margin-left: auto;
 	margin-right: auto;
 	/* background-color:aqua; */
+=======
+	height: 2000px;
+	margin-top: 160px;
+	width: 1200px;
+	min-height: 500px;
+	
+	display: flex;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+>>>>>>> refs/remotes/origin/master
 }
 
 @media ( max-width :480px) {
