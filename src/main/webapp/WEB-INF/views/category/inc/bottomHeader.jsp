@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="/resources/css/category/inc/bottomHeader.css" rel="stylesheet"/>
+<link href="/resources/css/category/member/bottomHeader.css" rel="stylesheet"/>
 <section class="bottom-header">
 	<ul>
 		<li class="arrow visual-hidden">&lt;</li>

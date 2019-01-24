@@ -5,23 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/resources/css/common.css" rel="stylesheet"/>
+<link href="/resources/css/center.css" rel="stylesheet"/>
 <title>Insert title here</title>
 </head>
 <body>
+	<header id="header">
 	<!-- header -->
-	<tiles:insertAttribute name="header"/>
-	
-	<!-- nav -->
-	<tiles:insertAttribute name="nav"/>
-	
+	<tiles:insertAttribute name="topHeader"/>
+	<tiles:insertAttribute name="bottomHeader"/>
+	</header>
+ 	
+	<div id="center">
 	<!-- aside -->
 	<tiles:insertAttribute name="aside"/>
-	
-	<!-- main -->
 	<tiles:insertAttribute name="main"/>
-	
+	<tiles:insertAttribute name="floatingBar"/> 
+	</div>
+
 	<!-- floating -->
-	<tiles:insertAttribute name="floating"/>
+	
 	
 	<!-- footer -->
 	<tiles:insertAttribute name="footer"/>

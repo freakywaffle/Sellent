@@ -23,4 +23,16 @@ public class MemberController {
 		
 		return "member.findInfo";
 	}
+	
+	@GetMapping("project")
+	public String project() {
+		
+		return "member.management.project";
+	}
+	
+	@GetMapping("history")
+	public String history() {
+		
+		return "member.management.history";
+	}
 }

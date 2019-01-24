@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+.aside {
+	margin-top: 20px;
+	min-width: 300px;
+	/* background-color:pink; */
+}
+
+.aside .ct-wrapper{
+	width: 80%;
+	padding-left: 30px;
+	height: auto;
+	padding-bottom: 20px;
+}
+.aside .ct-wrapper div{
+	padding-left: 12px;
+	margin-top: 15px;
+	border-bottom: 2px solid rgb(255, 214, 51);
+}
+
+.aside .ct-wrapper ul{
+	
+	
+	border-top: 1px solid #BDBDBD;
+	padding-bottom:20px;
+	
+}
+
+.aside .ct-wrapper li{
+	width:80%;	
+	margin-left:5%;
+	margin-bottom:10px;
+}
+.aside .ct-wrapper li {
+	display:flex;
+	
+}
+.ct-wrapper li div{
+	border-bottom: none !important;
+	font-weight:bold;
+}
+.ct-wrapper li div:first-child{
+
+	color:rgb(255, 214, 51);
+	padding-right:15px;
+	font-size:18px;
+}
+.ct-wrapper li div:last-child:hover{
+	background-color:rgb(255, 214, 51);
+	width:80px;
+	border-radius:8px;
+	color:white;
+}
+
+.aside li img,span{
+	vertical-align: middle;
+	line-height: 16px;
+	font-weight:bold;
+		
+}	
+
+.aside .ct-wrapper li:first-child{
+	margin-top: 10px;
+	
+}
+
+
+.aside h2 {
+	font-family: 'Noto Sans KR', sans-serif;
+	
+	font-size: 30px;	
+	border-bottom: 2px solid rgb(255, 214, 51);
+	height: 80px;
+	box-sizing: border-box;
+	vertical-align: middle;
+	line-height: 80px;
+	color: #002060;
+	padding-left: 8px;
+	}
+
+.aside h3{
+	font-size: 20px;
+	color:#6c6666;
+	padding-left:10px;
+	padding-bottom:5px;
+	
+}
+
+@media ( max-width :480px) {
+	.aside {
+		position: fixed;
+		min-width: 300px;
+		left: -100%;
+	}
+}
