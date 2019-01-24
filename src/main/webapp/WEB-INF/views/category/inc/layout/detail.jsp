@@ -12,7 +12,7 @@
 <script src="/resources/js/category/layout.js" type="text/javascript"></script>
 
 <link href="/resources/css/common.css" rel="stylesheet"/>
-<link href="/resources/css/category/center.css" rel="stylesheet"/>
+<link href="/resources/css/center.css" rel="stylesheet"/>
 <title><tiles:getAsString name="title" /></title>
 
 </head>
@@ -26,8 +26,6 @@
 	</header>
 
 	<div id="center">
-		<!-- category-->
-		<tiles:insertAttribute name="aside"/>
 		<!-- main-->
 		<tiles:insertAttribute name="main"/>
 		<!-- floating bar-->

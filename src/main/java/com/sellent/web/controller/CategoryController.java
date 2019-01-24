@@ -13,4 +13,10 @@ public class CategoryController {
 		
 		return "category.list";
 	}
+	
+	@GetMapping("detail")
+	public String detail() {
+		
+		return "category.detail";
+	}
 }
