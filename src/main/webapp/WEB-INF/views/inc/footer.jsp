@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<footer>
-		<h1>footer</h1>		
-	</footer>
+<link href="/resources/css/inc/footer.css" rel="stylesheet"/>
+<footer id="footer"></footer>

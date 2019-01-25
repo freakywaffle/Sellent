@@ -1,0 +1,32 @@
+#header .bottom-header {
+	
+	width: 1200px;
+	background-color: white;
+	height: 55px;
+	
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bottom-header ul{
+	display: flex;
+}
+
+.bottom-header li{
+	width: 137.5px;
+	text-align: center;
+}
+
+.bottom-header .arrow{
+	width: 50px;
+}
+
+
+@media ( max-width :480px) {
+	#header .bottom-header {
+		background-color: white;
+		width: 100%;
+	}
+
+}

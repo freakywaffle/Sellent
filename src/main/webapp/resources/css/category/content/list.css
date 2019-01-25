@@ -1,0 +1,108 @@
+.menu-button {
+	position: fixed;
+	top: 300px;
+	left: 0%;
+	height: auto;
+	display: none;
+}
+
+.menu-button input {
+	background-color: orange;
+	border: none;
+	height: 30px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+}
+
+.content {
+	
+	width: 900px;
+	background-color: white;
+	position: relative;
+}
+
+.content .top-right-content {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.content label {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
+.content .top-content {
+	height: 60px;
+	border-bottom: 1px gray solid;
+	box-sizing: border-box;
+}
+
+.top-content select{
+   width:70px;
+   height:25px;
+   border:1px solid gray;
+   font-family: 'Do Hyeon', sans-serif;
+   font-size:13px;
+   padding-left:5px;
+   padding-top:2px;
+   border-radius:8px;
+}
+
+.main-content{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.main-content .post{
+	display: inline-flex;
+	
+	height: 200px;
+	
+	box-sizing: border-box;
+	overflow: hidden;
+	width: 800px;
+}
+
+.post-img{
+	height: 200px;
+	width: 260px;
+}
+
+.post-img img{
+	height: inherit;
+	width: inherit;
+}
+
+.simple-content{
+	border: 1px solid black;
+	width: 520px;
+	margin-left: 10px;
+	text-align: left;
+}
+.simple-content .head{
+	display: flex;
+	height: 40px;
+}
+
+
+.simple-content .head img{
+	margin-left: auto;
+}
+
+.simple-content .body{
+	height: 120px;
+}
+
+.simple-content .foot{
+	height: 40px;
+	display: flex;
+}
+
+@media ( max-width :480px) {
+	.mobile-block {
+		display: block;
+	}
+}
