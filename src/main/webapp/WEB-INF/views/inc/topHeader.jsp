@@ -12,6 +12,12 @@
 		</div>
 	</div>
 	<div class="search-bar">
-		<input type="text" />
+		<div>
+			<input type="text" />
+			<button type="submit">
+				<img src="/resources/images/search.png" />
+			</button>
+			
+		</div>
 	</div>
 </section>

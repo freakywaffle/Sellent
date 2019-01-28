@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
 .menu-button {
 	position: fixed;
 	top: 300px;
 	left: 0%;
 	height: auto;
 	display: none;
+	z-index: 10;
 }
 
 .menu-button input {
@@ -13,6 +16,7 @@
 	width: 25px;
 	color: white;
 	font-weight: bold;
+	
 }
 
 .content {
@@ -20,12 +24,24 @@
 	width: 900px;
 	background-color: white;
 	position: relative;
+	margin-top: 20px;
+}
+
+.content .breadcrumb{
+	height: 25px;
+	margin-left: 20px;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 15px;
+	color: #a5a1a1;
 }
 
 .content .top-right-content {
-	position: absolute;
-	right: 10px;
-	top: 10px;
+	margin-left: auto;
+}
+
+.top-right-content input{
+	vertical-align: middle;
+	line-height: 25px;
 }
 
 .content label {
@@ -35,6 +51,8 @@
 }
 
 .content .top-content {
+	display: flex;
+	padding-top: 30px;
 	height: 60px;
 	border-bottom: 1px gray solid;
 	box-sizing: border-box;
@@ -49,60 +67,199 @@
    padding-left:5px;
    padding-top:2px;
    border-radius:8px;
+   vertical-align: middle;
+	line-height: 25px;
 }
 
-.main-content{
-	margin-top: 20px;
-	text-align: center;
+
+select:focus {
+ outline: none !important;
 }
 
-.main-content .post{
-	display: inline-flex;
-	
-	height: 200px;
-	
+#main-content{
+	width:900px;
+	/* border:1px solid black; */
+	/* height:500px; */
+	margin-top:20px;
+}
+.contents{
+	display:flex;
+	margin-bottom:20px;
+}
+
+.title-img{
+
+	margin-left:60px;
+	width:260px;
+	height:200px;
 	box-sizing: border-box;
-	overflow: hidden;
-	width: 800px;
+	overflow: hidden
+/* 	margin-left:10px; */
+}
+.title-img img{
+	width: 100%;
+	height: 100%;
 }
 
-.post-img{
-	height: 200px;
-	width: 260px;
+.detail{
+	margin-left:10px;
+	width:510px;
+	height:198px;
+	border:1px solid black;
+	padding-left:10px;
+	box-sizing: border-box;
+	
 }
 
-.post-img img{
-	height: inherit;
-	width: inherit;
+.like{
+	
+	padding-left:450px;
+	padding-top:15px;
+	padding-bottom:10px;
+	
+}
+.like img{
+	heihgt:20px; width:20px;
 }
 
-.simple-content{
-	border: 1px solid black;
-	width: 520px;
-	margin-left: 10px;
-	text-align: left;
+.title{
+	font-size:18px; 
+	font-weight:bold; 
+	margin-left:15px; 
+	width:450px;
 }
-.simple-content .head{
-	display: flex;
+
+.detail-data{
+	position:relative;
+	width:450px;
+	margin-left:15px;
+	display:flex;
+	margin-top:35px;
+	color:gray;
+	 
+}
+
+.edit,
+.make,
+.won,
+.won-star,
+.star-point{
+	display:flex; 
+}
+
+.edit{
+	margin-right:15px;
+}
+.edit-img, 
+.make-img, 
+.won-img{
+	margin-right:7px;
+}
+.name{
+	position:absolute; 
+	right:-8px;
+}
+.edit div:last-child, 
+.make div:last-child{
+	margin-left:10px;
+}
+.won{
+	padding-left:10px;  
+	margin-top:5px; 
+	position:relative; 
+	margin-right:270px;
+}
+.won-star{ 
+	margin-top:10px;
+}
+
+
+.bottom-content input{
+	width: 780px;
 	height: 40px;
+	margin-left: 60px;
+	margin-bottom: 40px;
+	background-color: white;
+	border: 0.5px solid gray;
 }
 
 
-.simple-content .head img{
-	margin-left: auto;
-}
 
-.simple-content .body{
-	height: 120px;
-}
-
-.simple-content .foot{
-	height: 40px;
-	display: flex;
-}
-
-@media ( max-width :480px) {
-	.mobile-block {
+@media(max-width :480px) {
+	
+	.mobile-block{
 		display: block;
+		
+	}
+	
+	.content{
+		width: 100%;
+		margin-top: 0px;
+	}
+	
+	#main-content{
+		width: 100%;
+	}
+	
+	.contents{
+		display: block;
+		width: inherit;
+		box-sizing: border-box;
+		padding-bottom: 20px;
+		
+		border-bottom: 1px solid black;
+	}
+	
+	
+	.title-img{
+		width: 90%;
+		height: auto;
+		margin-left: 5%;
+		box-sizing: border-box;
+	}
+	
+	.detail{
+		width: 90%;
+		height: 250px;
+		margin-left: 5%;
+		padding-left: 0px;
+		background-color: white;
+		z-index: 5;
+		position: relative;
+	}
+	
+	.detail-data{
+		position: static;
+	}
+	
+	.like{
+		padding-left: 0px;
+		position: absolute;
+		right: 5%;
+	}
+	.title{
+		margin-top:50px;
+		width: 90%;
+		margin-left: 5%;
+	}
+	
+	.name{
+		top: 15px;
+		left: 5%;
+	}
+	
+	.won{
+		margin-right: 0px;
+	}
+	
+	
+	.star-point{
+		margin-left: auto;
+		margin-right: 5%;
+	}
+	
+	.bottom-content input{
+		width: 90%;
+		margin-left: 5%;
 	}
 }

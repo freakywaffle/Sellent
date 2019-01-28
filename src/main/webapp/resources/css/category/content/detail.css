@@ -1,5 +1,13 @@
+.main-content{
+	margin-top: 30px;
+}
+
+.main-content .breadcrumb{
+	font-size: 15px;
+}
+
 .main-content .top-content{
-	margin-top: 40px;
+	margin-top: 20px;
 	display:flex;
 	width: 1200px;
 }
@@ -44,9 +52,27 @@
 }
 
 
+.top-content .star-point{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.top-content .star-point img{
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 50px;
+}
+.top-content .star-point span{
+	vertical-align: middle;
+	line-height: 50px;
+}
+
+
 .top-content .simple-content{
-	margin-left:30px;
-	width: 520px;
+	margin-left:80px;
+	width: 470px;
+	
 }
 
 .sc-title{
@@ -55,7 +81,7 @@
 }
 
 .sc-content{
-	padding: 20px;
+	padding: 40px;
 	box-sizing:border-box;
 	height: 480px;
 	border: 1px solid black;
@@ -64,9 +90,246 @@
 .sc-content div{
 	margin-top: 20px;
 }
+.sc-content .text{
+	height: 150px;
+}
 
 .sc-content ul{
 	margin-top: 20px;
 	margin-left: 20px;
+}
+
+.sc-content li{
+	height: 30px;
+	vertical-align: middle;
+	line-height: 30px;
+}
+.sc-content img{
+	vertical-align: middle;
+	line-height: 30px;	
+}
+
+.sc-content button{
+	height: 40px;
+	border-radius: 10px;
+}
+
+.sc-content div:last-child{
+	display: flex;
+	margin-top: 40px;
+}
+
+
+.sc-content .buy-bt{
+	width: 250px;
+	border: none;
+	background-color: rgb(255, 214, 51);
+	font-size: 30px;
+	
+}
+.sc-content .like-bt{
+	width: 110px;
+	margin-left: auto;
+	border-color: black;
+	border-width: 1px;
+	background-color: white;
+	font-size: 15px;
+	vertical-align: middle;
+	line-height: 40px;
+}
+.sc-content .like-bt img{
+	height:20px;
+	vertical-align:middle;
+	line-height: 40px;
+}
+.sc-content .like-bt span{
+	margin-left: 10px;
+}
+
+
+
+.bottom-content{
+	display: flex;
+	flex-direction: row-reverse;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	min-height: 300px;
+}
+.bottom-content .detail>div:last-child{
+	border: 1px solid black;
+	border-top: none;
+	padding: 20px;
+}
+
+.bottom-content .detail{
+	width: 650px;
+}
+.bottom-content .detail h2{
+	margin-bottom: 20px;
+}
+
+
+.bottom-content .profile-info{
+	width: 470px;
+	height: 430px;
+	margin-left: 80px;
+	position: relative;
+	top: -80px;
+	text-align: center;
+	border: 1px solid black;
+	box-sizing: border-box;
+}
+
+.profile-photo img{
+	width: 150px;
+	height: 150px;
+	border: 3px solid green;
+	border-radius: 100%;
+	margin-top:20px;
+}
+
+.profile-name{
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.profile-table{
+	margin-top: 20px;
+	
+}
+
+.profile-table ul{
+	display: inline-flex;
+	text-align: center;
+
+}
+.profile-table li{
+	width: 100px;
+	border: 1px solid black;
+	margin-left: 10px;
+	margin-right: 10px;
+	
+}
+
+.profile-table li p:last-child{
+	color: gray;
+}
+
+.chat-bt{
+	margin-top: 20px;
+}
+
+.chat-bt input{
+	width: 346px;
+	height: 40px;
+	border: none;
+	background-color: rgb(255, 214, 51);
+}
+
+.detail-index{
+	height: 80px;
+	position: sticky;
+	top:160px;
+	z-index: 10;
+}
+
+.detail-index ul{
+	display: flex;
+	text-align: center;
+	background-color: white;
+}
+
+.detail-index li{
+	width: 50%;
+	height: 80px;
+	vertical-align: middle;
+	line-height: 80px;
+	font-size: 30px;	
+}
+
+.lookup{
+	border: 1px solid black;
+	border-bottom: none;
+}
+
+.no-lookup{
+	border: none;
+	border-bottom: 1px solid black;
+}
+
+.detail-content{
+	height: auto;
+}
+
+
+.review-list{
+	margin-top: 40px;
+	height: auto;
+}
+.review-reg-form{
+	margin-top: 40px;
+	height: 300px;
+}
+
+.review{
+	border: 0.5px solid gray;
+	display: flex;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+.review img{
+	height: 80px;
+}
+
+.rv-content{
+	margin-left: 20px;
+}
+.rv-content p{
+	margin-top: 0px;
+}
+
+
+.review-list input{
+	width: 608px;
+	height: 30px;
+	border: 0.5px solid gray;
+	border-color: black;
+	background-color: white;
+}
+
+.review-reg-form>div{
+	display: flex;
+	height: 150px;
+	width: 608px;
+}
+.review-reg-form>div>div{
+	margin-left: 20px;
+	width: 90px;
+}
+
+.review-reg-form select{
+	height: 30px;
+	width: 90px;
+	vertical-align: middle;
+	line-height: 30px;
+}
+
+.review-reg-form textarea{
+	resize: none;
+	width: 488px;
+	height: 150px;
+	box-sizing: border-box;
+}
+
+
+.review-reg-form input{
+	height: 60px;
+	width: inherit;
+	margin-top: 60px;
+	border: 0.5px solid gray;
+	background-color: rgb(255, 214, 51);
 }
 

@@ -3,6 +3,21 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+
+	<definition name="admin.*.*"
+	template="/WEB-INF/views/admin/inc/layout.jsp">
+	<put-attribute name="header"
+		value="/WEB-INF/views/admin/inc/header.jsp" />
+	<put-attribute name="aside"
+		value="/WEB-INF/views/admin/inc/aside.jsp" />
+	<put-attribute name="topContent"
+		value="/WEB-INF/views/admin/inc/topContent.jsp" />
+	<put-attribute name="main"
+		value="/WEB-INF/views/admin/{1}/{2}.jsp" />
+	<put-attribute name="footer"
+		value="/WEB-INF/views/admin/inc/footer.jsp" />
+	</definition>
+
 	<definition name="category.*" 
 		template="/WEB-INF/views/category/inc/layout/{1}.jsp">
 		<put-attribute name="title" value="Sellent" />

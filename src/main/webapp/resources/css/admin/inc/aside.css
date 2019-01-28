@@ -1,0 +1,39 @@
+.aside {
+	min-width: 250px;
+	background: rgb(255, 246, 128);
+	box-sizing:border-box;
+}
+
+/*------aside-title------------------------------*/
+.aside-title{
+	height:100px;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size:20px;
+	line-height: 100px;
+	text-align:center;
+}
+
+
+
+
+
+/*----aside-category-list-------------------------*/
+.aside-category-list {
+	
+}
+
+.aside-category-list li{
+	height: 50px;
+	line-height: 50px;
+	box-sizing:border-box;
+}
+
+.aside-category-list a{
+	padding-left:20px;
+	font-weight:bold;
+}
+
+.aside-category-list a:hover{
+	background: rgb(235, 226, 108);
+}
+
