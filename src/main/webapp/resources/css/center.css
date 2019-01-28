@@ -14,5 +14,6 @@
 @media ( max-width :480px) {
 	#center {
 		width: 100%;
+		margin-top: 140px;
 	}
 }
