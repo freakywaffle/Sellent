@@ -22,7 +22,7 @@
 	<tiles:insertAttribute name="main"/>
 	<tiles:insertAttribute name="floatingBar"/> 
 	</div>
-
+	
 	<!-- floating -->
 	
 	

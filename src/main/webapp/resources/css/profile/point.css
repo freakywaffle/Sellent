@@ -28,10 +28,11 @@
 select:focus {
  outline: none !important;
 }
-#history {
+
+#point {
 	width:800px;
 	height:800px;
-	margin-top:80px;
+	
 }
 .table{
 
@@ -51,17 +52,24 @@ select:focus {
 }
 thead th:first-child, tbody td:first-child{
 	
-	width:80px;
+	width:180px;
 }
-.title{
-	width:390px;
-	}
-.table-id{width:130px;}
+
 .table th{
 	height:50px;
 	text-align: center;
 	border-bottom: 1px solid #d3d3d3;
 	border-top:2px solid #8f939d;	
+}
+.total-point{
+	height:30px;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size:25px;
+	margin-right:10px;
+	margin-top:60px;
+	margin-bottom:10px;
+	color:#002060;
+	
 }
 #page{
 	/* background-color:pink; */
@@ -80,16 +88,3 @@ thead th:first-child, tbody td:first-child{
 	margin-right:0px;
 }
 
-
-@media ( max-width :480px) {
-	.content{width:100%;}
-
-	#top-content, #history, .table {
-		width:100%;
-		font-size:10px;
-	}
-	.title, .table-id{
-		width:75%;
-	}
-	.select{margin-left:68%;}
-}

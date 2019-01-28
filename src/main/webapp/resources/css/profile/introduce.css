@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+.main{
+	width:800px;
+}
+.introduce{
+	font-size: 18px;
+	border-top:2px solid #686565;
+	margin-top:70px;	
+	padding-top:30px;
+}
+.introduce div{
+	display: flex;
+	margin-top:15px;
+	margin-left:20px;
+}
+.complete{
+	margin-top: 50px;
+	border-bottom:2px solid #686565;
+	padding-bottom: 50px;
+}
+.complete input{
+	height:50px;
+	width:500px;
+	border:none;
+	margin-left:220px;
+	background-color: #ffd632;
+	color:white;
+	font-weight: bold;
+	border-radius: 8px;
+}
+
+.title-title{
+	width:150px;
+	font-size:23px;
+	font-weight:bold;
+	color:#686565;
+	margin-right: 20px;	
+
+}
+
+.tech-add{
+	margin-left:275px;
+}
+.introduce input, .introduce textarea{
+	border-radius: 8px;
+	border:1px solid #7f7f7f;
+	width: 450px;
+	height:40px;
+}
+.tech-add div:first-child input{
+	margin-left:190px;
+	padding-left:5px;
+}
+.tech-add div:last-child{
+	margin-left:0px;
+}
+.tech-add div:last-child input{
+	height:30px;
+	width:30px;
+	color:white;
+	font-weight: bold;
+	font-size: 18px;
+	background-color:#7f7f7f;
+	border:none;
+	margin-top:05px;
+	margin-left:5px;
+	
+	
+}
+
+.tech textarea{
+	height:200px;
+}
+

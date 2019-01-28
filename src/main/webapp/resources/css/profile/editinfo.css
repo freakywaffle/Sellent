@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+.profile{
+	width:800px;
+	height:280px;
+	margin-top:70px;
+	border-top:2px solid #686565;
+	border-bottom: 1px solid #d3d3d3;
+	padding-top:15px;
+
+}
+.profile img{
+	width:200px;
+	height: 200px;
+	border-radius:100px;
+	margin-left:300px;
+}
+.profilebtn{
+	display: flex;
+	height: 30px;
+	margin-top:10px;
+	margin-left:325px
+}
+.profilebtn input{
+	width:80px;
+	border-radius:8px;
+	border:none;
+	background-color:#7F7F7F;
+	margin-left:3px;
+	color:white;
+	font-size:18px;
+	font-weight: bold;
+}
+.edit-info{
+	margin-left: 100px;
+}
+.edit-info div{
+	display:flex; 
+	margin-top:15px;
+	font-size:20px;
+}
+
+.edit-info input{
+	border-radius: 8px;
+	border:1px solid #7f7f7f;
+	width: 300px;
+	height:28px;
+	margin-left: 20px;
+}
+.title{
+	width:180px;
+	text-align:right;
+	font-weight:bold;
+	color:#686565;	
+}
+.email div:last-child input {
+	width:80px;
+	border:none;
+	margin-left:5px !important;
+	background-color: #ffd632;
+	color:white;
+	font-weight: bold;
+}
+.complete{
+	margin-top: 50px;	
+	border-bottom:2px solid #686565;
+	padding-bottom: 50px;
+}
+.complete input{
+	height:50px;
+	width:500px;
+	border:none;
+	margin-left:180px;
+	background-color: #ffd632;
+	color:white;
+	font-weight: bold;
+	border-radius: 8px;
+}

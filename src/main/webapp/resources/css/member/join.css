@@ -1,0 +1,150 @@
+ @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
+ 
+  #main {
+     position: relative;
+     height: auto;
+     padding-top: 15px;
+     margin-left: auto;
+     margin-right: auto;
+    /*  background-color: indianred; */
+
+  }
+  #content-wrap{
+   	border:1px solid #8f939d;
+   	margin-bottom:20px;
+   	
+  }
+  #content-wrap, #joinbtn{
+ 	width:800px;
+ 	 margin-left: auto;
+    margin-right: auto;
+  }
+  .first-content, .second-content{
+  	width:755px;
+  	margin-left:45px;
+ 
+  }
+  .first-content{
+  	border-bottom: dotted #d3d3d3;
+  	
+  }
+  .content-title{
+  	margin-top:20px;
+  	color:#ffd632;
+  	font-size:30px;
+  	 font-family: 'Do Hyeon', sans-serif;
+
+  	
+  }
+
+  .detail-content div{
+  	display: flex;
+  	margin-top:20px;
+  	}
+  	
+  	.detail-title,.detail-ctitle{
+		width:180px !important;
+  		direction:rtl;  		
+  		height:35px;
+  		font-size:18px;
+  		font-weight:bold;
+  		margin-top:0px !important;
+  		margin-left:0px !important;
+  		margin-right:20px !important;
+	
+  	}
+  	.detail-text{
+		width:335px;
+  		margin-top:0px !important;
+  		margin-left:0px !important;
+  		margin-right: 0px !important;
+  	}
+  	.detail-text input{
+  		width:335px;
+  		border-radius: 8px;
+  		border:1px solid #8f939d;
+  		margin-right: 0px !important;
+  		margin-left:0px !important;
+  	}
+  	.detail-text2{
+	width:435px;
+	margin-top:0px !important;
+	margin-left:0px !important;
+	margin-right: 0px !important;
+  	}
+  	.detail-text2 input{
+  		width:435px;
+  		border-radius: 8px;
+  		border:1px solid #8f939d;
+  		margin-right: 0px !important;
+  		margin-left:0px !important;
+  	}
+  	
+  	.checkbtn input{
+  		color:white;
+  		text-align:center;
+  		font-size:13px;
+  		width:60px;
+  		height:30px;
+  		border:none;
+  		border-radius: 8px;	
+  		background-color: #8f939d;
+  		margin-left:10px !important;
+  		margin-right:0px !important;
+  	}
+  	.checkbtn{
+  	width:50px !important;
+  	margin-left: 0px !important;
+  	margin-right:0px !important;
+  	margin-top:3px !important;
+  	}
+  	.detail-ctext{
+		width:450px;
+  		margin-top:0px !important;
+  		margin-left:0px !important;
+  		margin-right: 0px !important;
+  	}
+  	.detail-ctext input{
+  		width:450px;
+  		border-radius: 8px;
+  		border:1px solid #8f939d;
+  		margin-right: 0px !important;
+  		margin-left:0px !important;
+  	}
+  	.detail-ctext textarea{
+  		width:450px;
+  		height:200px;
+  		border-radius: 8px;
+  		border:1px solid #8f939d;
+  		margin-right: 0px !important;
+  		margin-left:0px !important;
+  	}
+  	
+  	.tech{
+  		margin-bottom: 20px;
+ 
+  	}
+  	
+  	#joinbtn{
+  		height: 50px;
+  		margin-bottom:10px;
+  		
+  	}
+  	#joinbtn input{
+  		width:500px;
+  		height: 50px;
+  		background-color: #ffd632;
+  		border-radius: 8px;
+  		margin-left:150px;
+  		color:white;
+  		text-align: center;
+  		font-size: 20px;
+  		font-weight: bold;
+  		border:none;
+  	}
+  	
+  	
+  	
+  	
+  	
+  	

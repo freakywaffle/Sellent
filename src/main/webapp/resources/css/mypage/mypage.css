@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+#main-header{
+	width:1200px;
+	height:300px;
+	background-color: #ffd632;
+}
+.mypage-profile-box{
+	width:800px;
+	height:inherit;
+	margin-left:auto;
+	margin-right: auto;
+	background-color: #ffd632;
+}
+.mypage-profile-box img{
+	width:150px;
+	height:150px;
+	border-radius: 200px;
+	margin-left:325px;	
+	margin-top:15px;
+	margin-bottom:15px;
+}
+.profile-msgicon{
+	width:800px;
+	height: 50px;
+	display: flex;
+}
+.name{
+	font-size:40px;
+	font-weight: bold;
+	color:white;
+	width:130px;
+	margin-left:350px;
+}
+.msgicon img:first-child{
+	background-color:#ffd632;
+	height: 40px;
+	width:100px;
+	margin-left:-13px !important;
+	margin-top:-20px !important;
+}
+.title{
+	width:800px;
+	height:50px;
+	line-height:50px;
+	font-size:20px;
+	text-align:center;
+	padding-top:10px;
+	padding-left:10px;
+}
+.introduce, .tech{
+	margin-top:20px;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	min-height: 250px;
+	border:2px solid #8f939d;
+}
+.introduce a, .tech a{
+	color:black;
+	font-size:25px;
+	font-weight:bold;
+	line-height: 50px;
+}
+.introduce a:first-child, .tech a:first-child{
+	color:#ffd632;
+	font-size:20px !important;
+	font-weight: bold;
+	margin-left:20px;
+	margin-top:20px;
+	margin-right:10px;
+	margin-bottom:20px;
+
+}
+
+.true-content{
+	padding-top:15px;
+	min-height: 190px;
+	width:700px;
+	margin-left:auto;
+	margin-right: auto;
+	/* background-color:pink; */
+	font-size:20px;
+}
+
+.best{
+	width: 1200px;
+	height:445px;
+
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.best-title{
+	line-height: 50px;
+	font-size:35px;
+	color:#002060;
+	font-weight: bold;
+	margin-left:20px;
+	margin-top:20px;
+	font-family: 'Sunflower', sans-serif;	
+}
+.best-content{
+	width: 1200px;
+	margin-top:5px;
+	height:645px;
+}
+.best-content ul{
+
+	height:350px;
+	display: flex;
+	margin-left:20px;
+	margin-right:20px;
+}
+.best-content li{
+	width:445px;
+	height: 350px;
+	border:1px solid #8f939d;
+	margin-right: 15px;
+}
+.best-content li img{
+	width:445px;
+	height: 350px;
+}
+.best-content li:last-child{
+	margin-right:0px !important;
+}
+
+/* ----------------------------------------------------------- */
+@media ( max-width :480px) {
+	#center{
+	width: 100%;
+	}
+	
+	.content, .title, .introduce, .tech, .true-content{
+		width:100%;
+	}
+	#main-header,.mypage-profile-box, .best{
+		width:100%;
+		margin-left:0px;
+	}
+	.mypage-profile-box img, .name{
+		margin-left:170px;
+	}
+	.best-content li{
+		width:95%;
+		height:300px;
+		position: absolute;
+		
+	}
+}

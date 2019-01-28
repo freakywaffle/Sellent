@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<link href="/resources/css/message/detail.css" rel="stylesheet" />   
+<section class="content">
+<div id="message-list">
+	<div class="message-close">X</div>
+</div>
+</section>

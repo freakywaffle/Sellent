@@ -35,4 +35,47 @@ public class MemberController {
 		
 		return "member.management.history";
 	}
+	
+	@GetMapping("messageList")
+	public String messageList() {
+		
+		return "member.message.list";
+	}
+	
+	@GetMapping("messageDetail")
+	public String messageDetail() {
+		
+		return "member.message.detail";
+	}
+	
+	@GetMapping("editInfo")
+	public String editInfo() {
+		
+		return "member.profile.editinfo";
+	}
+	
+	
+	@GetMapping("introduce")
+	public String introduce() {
+		
+		return "member.profile.introduce";
+	}
+	
+	@GetMapping("point")
+	public String point() {
+		
+		return "member.profile.point";
+	}
+	
+	@GetMapping("review")
+	public String review() {
+		
+		return "member.review.list";
+	}
+	
+	@GetMapping("mypage")
+	public String mypage() {
+		
+		return "member.mypage.index";
+	}
 }
