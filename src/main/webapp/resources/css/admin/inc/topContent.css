@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.content .top-content {
+	height: 40px;
+	border-bottom: 1px solid #ccc;
+	padding:10px;
+	box-sizing: border-box;
+}
+
+/* 
+.content .top-right-content {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+} 
+
+.content label {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+} */

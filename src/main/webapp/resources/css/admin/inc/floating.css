@@ -1,0 +1,11 @@
+.floating-bar {
+	background-color: pink;
+	width: 70px;
+	height: 250px;
+	margin-left: 20px;
+	top: 600px;
+}
+
+.right {
+	background-color: black;
+}

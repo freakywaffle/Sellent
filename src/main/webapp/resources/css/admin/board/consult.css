@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import url("../inc/basic.css");
+
+
+#modal{
+	display: none;
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+}
+
+.modal-content{
+	background:#fefefe;
+	width:40%;
+	margin:3% auto;
+	border: 1px solid #ccc;
+}
+
+.modal-content h1{
+	margin:30px;
+	text-align: center;
+}
+
+.border-top{
+	border-top:1px solid #ccc!important;
+}
+
+.border-bottom{
+	border-bottom:1px solid #ccc!important;
+}
+
+.customer-info label{
+	width:150px;
+	background-color:#e6e6e6;
+	border-right: 1px solid #ccc;
+	padding:10px;
+}
+
+
+.anser-box{
+	padding:10px;
+	margin-top:20px;
+}
+
+.anser-box div{
+	border:1px solid #ccc;
+	height: 150px;
+}
+
+.question div{
+	background-color:#e6e6e6;
+}
+
+
+.admin-answer textarea{
+	border:1px solid #ccc;
+	height: 150px;
+	width:100%;
+	resize:none;
+}
+
+.check-box{
+	margin-bottom: 10px;
+}
+
+.check-box button{
+	width:70px;
+	height: 40px;
+}
