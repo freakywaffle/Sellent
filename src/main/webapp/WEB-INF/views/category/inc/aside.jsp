@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="/resources/css/category/inc/aside.css" rel="stylesheet"/>
-<section class="aside">
+<section class="aside close">
 	<h1 class="hidden">사이드 메뉴</h1>	
 	<div class="ct-wrapper">	
 		<h2>카테고리 제목</h2>
@@ -37,5 +37,8 @@
 				<li>세부8</li>
 			</ul>
 		</div>
+	</div>
+	<div class="close-button">
+		<input type="button" value="&lt;">
 	</div>
 </section>

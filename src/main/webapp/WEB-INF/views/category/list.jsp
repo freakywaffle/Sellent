@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="/resources/css/category/content/list.css" rel="stylesheet"/>
+<script src="/resources/js/category/content/list.js"></script>
 <section class="content">
 	<div class="menu-button mobile-block">
 		<input type="button" value=">" />

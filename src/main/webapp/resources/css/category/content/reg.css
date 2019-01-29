@@ -1,0 +1,119 @@
+
+
+#main{
+	width: 1200px;
+	min-height: 600px;
+}
+
+.navi{
+	display: flex;
+	border-bottom: 1px solid black;
+	height: 60px;
+	padding-top: 20px;
+}
+
+.navi li{
+	width: 25%;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	position: relative;
+	
+}
+
+.navi li .during{
+	border: 1px solid rgb(255, 214, 51);
+	padding: 10px;
+}
+
+.navi li a.during:after {
+	content: " ";
+	position: absolute;
+	left: 46%;
+	opacity: 1;
+	margin: 0;
+	bottom: -10px;
+	border: 10px solid transparent;
+	border-bottom-color: rgb(255, 214, 51);;
+}
+
+.reg-form{
+	text-align: center;
+}
+.reg-form>div{
+	display: inline-block;
+	margin-top: 40px;
+	width: 900px;
+	height: 600px;
+	border: 1px solid black;
+}
+
+.toggle-form{
+	height: 60px;
+	border-bottom: 1px solid black;
+	box-sizing: border-box;
+	padding-top: 11.5px;
+}
+
+.toggle-chk {
+	display: none;
+	
+}
+
+.toggle-btn{
+	background-color: pink;
+	width: 95px;
+	height: 35px;
+	margin-left: 40px;
+	position: relative;
+	border-radius: 20px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	transition: 0.5s;
+}
+
+.toggle-btn .toggle-move{
+	position: absolute;
+	left: -37px;
+	transition: 0.5s;
+	display: flex;
+	width: 135px;
+}
+
+.toggle-btn .center{
+	background-color: black;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+		
+}
+
+.toggle-btn .before{
+	position: relative;
+	vertical-align: middle;
+	line-height: 35px;
+	margin-right: 5px;
+}
+
+.toggle-btn .after{
+	position: relative;
+	vertical-align: middle;
+	line-height: 35px;
+	margin-left: 5px;
+}
+
+
+
+.action{
+	transition: 0.5s;
+	left: 23px!important;
+	
+}
+
+.change-color{
+	background-color: green!important;
+	transition: 0.5s;
+}
+

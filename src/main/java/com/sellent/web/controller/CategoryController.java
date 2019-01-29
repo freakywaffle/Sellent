@@ -19,4 +19,9 @@ public class CategoryController {
 		
 		return "category.detail";
 	}
+	
+	@GetMapping("reg")
+	public String reg() {
+		return "category.reg";
+	}
 }

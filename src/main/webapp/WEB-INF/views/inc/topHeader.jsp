@@ -13,7 +13,7 @@
 	</div>
 	<div class="search-bar">
 		<div>
-			<input type="text" />
+			<input type="text" placeholder="검색"/>
 			<button type="submit">
 				<img src="/resources/images/search.png" />
 			</button>

@@ -136,12 +136,21 @@
 		height: 55px;
 	}
 	
-	#header .search-bar input {
+	#header .search-bar>div {
 		width: 90%;
 		margin-left: 5%;
 		padding-left: 0px;
 		left: 0px;
 	}
+	
+	#header .search-bar>div input{
+		width: 80%;
+		margin-left: 5%;
+		padding-left: 0px;
+		left: 0px;
+	}
+	
+	
 	
 	
 	
