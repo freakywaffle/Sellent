@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+.content{
+	width:900px;
+
+	padding-top:100px;
+}
+#main-content{
+	width:800px;
+	margin-left:50px;
+}
+.message-list{
+	width:600px;
+	border:1px solid #8f939d;
+	height:200px;
+	margin-left:100px;
+	margin-bottom:20px;
+}
+.message-main{
+	height:170px;
+	display:flex;
+}
+.message-profile{
+	width:200px;
+	height:170px;
+}
+.message-profile img{
+	width:130px;
+	height:130px;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-left: 40px;
+	
+}
+.message-content{
+	height:170px;
+	width:400px;
+}
+.name-clock{
+	margin-top:10px;
+	height:30px;
+	width:400px;
+	display: flex;
+	padding-top:20px;
+}
+.name{
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 10px;
+	
+}
+.clock{
+	font-size:18px;
+	font-weight: bold;
+	margin-left: 260px;
+	
+}
+
+.last-message{
+	height:100px;
+	
+}
+.no-check{
+	height:40px;
+}
+.alarm{
+	width:30px;
+	height:30px;
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	text-align:center;
+	border-radius:20px;
+	line-height:30px;
+	margin-left:340px;
+}
+.last-say{
+	margin-left:10px;
+	font-size: 20px;
+	width:380px;
+}
+#page{
+	/* background-color:pink; */
+	margin-top:55px;
+	text-align: center;
+	
+}
+#page ul{
+	display:inline-flex;
+}
+#page li{
+	margin-right:10px;
+	font-size:20px;
+}
+#page li:last-child{
+	margin-right:0px;
+}
+.message-footer{
+	height:30px;
+	background-color:#7f7f7f;	
+}
