@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="/resources/css/inc/mainHeader.css" rel="stylesheet"/>
-
+<script src="/resources/js/main/mainHead.js"></script>
 
 <header id="header">
 	<div id="header-wrap">
 		<div class="hamburger">
-			<img src="/resources/images/hambuger.png" alt="">
+			<img src="/resources/images/hambuger.png" alt="" id="hamburgericon"/>
+			<img src="/resources/images/put.png" alt="" id="puticon"/>
+		
 		</div>
 		<div class="login">
 			<ul>

@@ -3,56 +3,63 @@
 <link href="/resources/css/member/join.css" rel="stylesheet"/>
 
 <main id="main">
-	<div id="content-wrap">
-		<div class="first-content">
-			<div class="content-title">기본정보</div>
-			<div class="detail-content">
+	<div id="wrap">
+		<div class="basic">
+			<div class="head-title">기본정보</div>
+			<div class="profile">
+				<div><img alt="" src="/resources/images/profile.png"></div>
+				<div class="plus">+</div>
+			</div>
+			<div class="twobind name">
+				<div class="sub-title">이름</div>
+				<input type="text"/>
+			</div>
+			
+			<div class="threebind">
+				<div class="sub-title">아이디</div>
 				<div>
-					<div class="detail-title">이름</div>
-					<div class="detail-text"><input type="text"/></div>
-				</div>
-				<div>
-					<div class="detail-title">아이디</div>
-					<div class="detail-text"><input type="text"/></div>
-					<div class="checkbtn"><input type="text" value="중복확인"/></div>
-				</div>
-				<div>
-					<div class="detail-title">비밀번호</div>
-					<div class="detail-text2"><input type="text"/></div>
-				</div>
-				<div>
-					<div class="detail-title">비밀번호 재확인</div>
-					<div class="detail-text2"><input type="text"/></div>
-				</div>
-				<div>
-					<div class="detail-title">이메일</div>
-					<div class="detail-text"><input type="text"/></div>
-					<div class="checkbtn"><input type="text" value="중복확인"/></div>
+					<input type="text"/>
+					<input type="button" value="중복확인"/>
 				</div>
 			</div>
+			
+			<div class="twobind">
+				<div class="sub-title">비밀번호</div>
+				<input type="text"/>
+			</div>
+			<div class="twobind">
+				<div class="sub-title">비밀번호 재확인</div>
+				<input type="text"/>
+			</div>
+			
+			<div class="threebind email">
+				<div class="sub-title">이메일</div>
+				<div>
+					<input type="text"/>
+					<input type="button" value="인증확인"/>
+				</div>
+			</div>
+			
 		</div>
-		
-		
-		<div class="second-content">
-			<div class="content-title">자기소개</div>
-			<div class="detail-content">
-				<div>
-					<div class="detail-ctitle">제목</div>
-					<div class="detail-ctext"><input type="text"/></div>
-				</div>
-				
-				<div>
-					<div class="detail-ctitle">내용</div>
-					<div class="detail-ctext"><textarea></textarea></div>
-				</div>
-				
-				<div class="tech">
-					<div class="detail-ctitle">보유기술</div>
-					<div class="detail-ctext"><input type="text"/></div>
-				</div>
+		<div class="introduce">
+			<div class="head-title">자기소개</div>
+			<div class="twobind">
+				<div class="sub-title">제목</div>
+				<input type="text"/>
+			</div>
+			
+			<div class="ttwobind">
+				<div class="sub-title">내용</div>
+				<textarea></textarea>
+			</div>
+			
+				<div class="twobind tech">
+				<div class="sub-title">보유기술</div>
+				<input type="text"/>
 			</div>
 		</div>
 	</div>
-	
-	<div id="joinbtn"><input type="button" value="가입하기"/></div>
+	<div id="joinbtn">
+		<input type="submit" value="가입완료"/>
+	</div>
 </main>

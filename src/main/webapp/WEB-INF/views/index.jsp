@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <link href="/resources/css/main/mainMain.css" rel="stylesheet"/>
 <link href="/resources/css/common.css" rel="stylesheet"/>
-
+<script src="/resources/js/main/mainMain.js"></script>
 <main id="main">
       <div class="banner">
-
+		<img alt="" src="/resources/images/img1.png" class="myslides"/>
+		<img alt="" src="/resources/images/img2.png" class="myslides"/>
+		<img alt="" src="/resources/images/img3.png" class="myslides"/>
       </div>
       <div class="main-icones">
         <div class="top-icon">
@@ -57,12 +59,12 @@
          <div class="hotsellent-title">Hot Sellent</div>
          <div class="hotsellent-image">
             <ul class="hotsellent-image-top">
-               <li>1</li>
-               <li>2</li>
+               <li><img src="" alt=""/></li>
+               <li><img src="" alt=""/></li>
             </ul>
             <ul class="hotsellent-image-bottom">
-                  <li>3</li>
-                  <li>4</li>
+                  <li><img src="" alt=""/></li>
+                  <li><img src="" alt=""/></li>
             </ul>
          </div>
       </div>

@@ -35,7 +35,13 @@ public class MemberController {
 		
 		return "member.management.history";
 	}
-	
+	@GetMapping("statics")
+	public String statics() {
+		
+		return "member.management.static";
+	}
+
+
 	@GetMapping("messageList")
 	public String messageList() {
 		
