@@ -23,9 +23,12 @@
 			<div><input type="text" placeholder=""/></div>
 		</div>
 		<div class="email">
-			<div class="title" dir="rtl">이메일</div>
-			<div><input type="text" placeholder=""/></div>
-			<div><input type="submit" value="인증"/></div>
+			<div class="title" dir="rtl">이메일</div>	
+			<div>		
+			<input type="text" placeholder=""/>
+			<input type="submit" value="인증"/>
+			</div>
+			
 		</div>
 		
 	</div>

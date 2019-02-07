@@ -53,7 +53,7 @@
 	font-weight:bold;
 	color:#686565;	
 }
-.email div:last-child input {
+.email div:last-child input:last-child {
 	width:80px;
 	border:none;
 	margin-left:5px !important;
@@ -75,4 +75,19 @@
 	color:white;
 	font-weight: bold;
 	border-radius: 8px;
+}
+
+@media ( max-width :480px) {
+	.title{direction: ltr; width: auto; margin-left:5%;}
+	.nickname, .new-pwd, .new-pwdchk, .email{display: unset !important;}
+	.content{width: 100%;}
+	.profile{width: 100%;}
+	.profile img{margin-left:20%;} .profilebtn{margin-left:24%;}
+	.edit-info{width:100%; margin-left:0px;}
+	.complete{width: 100%}
+	.complete input{width:90%; margin-left:5%; margin-right: 5%; }
+	.email div:last-child input:first-child{ width: 250px; }
+	.email div:last-child input:last-child{ height: 32px; }
+	
+	
 }

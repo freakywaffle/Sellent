@@ -72,4 +72,20 @@
 .tech textarea{
 	height:200px;
 }
+.title-content textarea{
+	height:200px;
+}
+@media ( max-width :480px) {
+	.content, .main, .introduce{width: 100%; margin-top: 30px;}
+	.title-title{margin-left: 0px !important;}
+	.introduce div{display: unset; width: 100%;}
+	.introduce input{width:90%;}
+	.title, .content, .tech, .tech-add{width:100%;}
+	.tech-add div:first-child{margin-left:0px !important;}
+	.tech-add div:first-child input {margin-left:0px !important;padding-left: 0px !important; width: 80%;}
+	.tech textarea, .title-content textarea{width: 90%;}
+	.complete{width: 100%;}
+	.complete input{margin-left: 0px; width: 90%; margin-left: 5%; margin-right: 5%;}
+
+}
 

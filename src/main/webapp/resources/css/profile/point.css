@@ -88,3 +88,19 @@ thead th:first-child, tbody td:first-child{
 	margin-right:0px;
 }
 
+@media ( max-width :480px) {
+	.content{width:100%;}
+	.point{width: 100%;}
+	#top-content,#point, .table {
+		width:100%;
+		font-size:10px;
+	}
+	.title, .table-id{
+		width:75%;
+	}
+	thead th:first-child, tbody td:first-child{width: auto;}
+	
+	.select{width:100%;}
+	.select select{ margin-left: 0px !important; }
+}
+
