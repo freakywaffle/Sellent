@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="/resources/css/category/content/list.css" rel="stylesheet"/>
+<script src="/resources/js/category/content/list.js"></script>
 <section class="content">
 	<div class="menu-button mobile-block">
 		<input type="button" value=">" />
@@ -18,7 +19,9 @@
 		<div class="contents">
 			<div class="title-img"><img alt="타이틀 이미지" src="/resources/images/260_200/post_img3_260_200 .jpg"/></div>
 			<div class="detail">
-				<div class="like"><img alt="좋아요" src="/resources/images/bin-heart.png"></div>
+				<div class="like">
+					<img alt="좋아요" src="/resources/images/bin-heart.png">
+				</div>
 				<div class="title">
 					홈페이지를 맞춤형으로 디자인부터 개발까지 한번에 제작해 드립니다.
 				</div>

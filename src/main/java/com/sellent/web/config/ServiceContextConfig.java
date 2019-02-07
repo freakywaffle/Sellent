@@ -20,10 +20,10 @@ public class ServiceContextConfig {
 	public BasicDataSource dataSource() {
 		
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		dataSource.setUrl("jdbc:oracle:thin:@211.238.142.251:1521:orcl");
-//		dataSource.setUsername("c##sist"); 고쳐야됨
-//		dataSource.setPassword("dclass"); 고쳐야됨
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://192.168.0.10:3306/sellentdb");
+		dataSource.setUsername("hyungho");
+		dataSource.setPassword("1111");
 		
 		
 		
@@ -38,7 +38,7 @@ public class ServiceContextConfig {
 		sqlSessionFactory.setDataSource(dataSource());
 		sqlSessionFactory.setMapperLocations(
 				applicationContext.getResources(
-						"classpath:com/newlecture/web/dao/mybatis/mapper/*.xml"));
+						"classpath:com/sellent/web/dao/mybatis/mapper/*.xml"));
 		
 		return sqlSessionFactory;
 	}
