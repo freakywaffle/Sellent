@@ -229,7 +229,7 @@
 .detail-index{
 	height: 80px;
 	position: sticky;
-	top:160px;
+	top:0px;
 	z-index: 10;
 }
 
@@ -333,3 +333,98 @@
 	background-color: rgb(255, 214, 51);
 }
 
+
+
+@media ( max-width :480px) {
+	
+	.content{
+		width: 100%;
+	}
+	
+	.top-content,.bottom-content{
+		display: block!important;
+		width: 100%!important;
+	}	
+	
+	.post-img, .post-img div:last-child{
+		width: 100%!important;
+	}
+	
+	.post-img div:last-child{
+		height: 180px!important;
+	}
+	
+	
+	.img-list{
+		margin-top: 15px!important;
+	}
+	
+	.img-list li{
+		width: 50%!important;
+	}
+	.img-list img{
+		width: 95%!important;
+		margin-left: 2.5%!important;
+	}
+	
+	.simple-content{
+		margin-left: 0px!important;
+		width: 100%!important;
+	}
+	
+	.sc-content{
+		padding: 20px!important;
+	}
+	
+	.profile-info{
+		margin-left: 0px!important;
+		width: 100%!important;
+		top: 0px!important;
+	}
+	
+	.profile-table ul{
+		width: 100%;
+	}
+	
+	.detail{
+		margin-top: 20px;
+		width: 100%!important;
+	}
+	
+	.detail-index li{
+		font-size: 20px;
+	}
+	
+	
+	.review-list input{
+		width: 100%!important;
+	}
+	
+	.review-reg-form>div{
+		display:block!important;
+		width: 100%!important;
+	}
+	
+	.review-reg-form textarea{
+		width: 96%!important;
+		margin-left: 2%!important;
+	}
+	
+	.review-reg-form>div>div{
+		display: flex;
+		width: 100%!important;
+		margin-left: 0px!important;
+	}
+	
+	.review-reg-form select{
+		margin-left: 2%!important;
+		
+	}
+	.review-reg-form input{
+		margin-top: 0px!important;
+		margin-left: auto!important;
+		margin-right: 2%;
+		width: 100px;
+		
+	}
+}

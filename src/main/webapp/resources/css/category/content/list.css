@@ -153,7 +153,7 @@ select:focus {
 
 .detail-data{
 	position:relative;
-	width:450px;
+	width:auto;
 	margin-left:15px;
 	display:flex;
 	margin-top:35px;
@@ -179,7 +179,7 @@ select:focus {
 }
 .name{
 	position:absolute; 
-	right:-8px;
+	right: 25px;
 }
 .edit div:last-child, 
 .make div:last-child{

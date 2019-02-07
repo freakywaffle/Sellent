@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	
+	//aside 튀어나오기
+	
 	var menuBt = $('.menu-button');
 	var closeBt = $('.close-button');
 	
@@ -28,5 +30,16 @@ $(document).ready(function(){
 			
 		});
 	});
-
+	
+	
+	
+	
+	//찜버튼 변화
+	var likeBt = $('.like').find('img');
+	likeBt.on('click',function(){
+		if($(this).attr('src')=='/resources/images/bin-heart.png')
+			$(this).attr('src','/resources/images/full-heart.png');
+		else
+			$(this).attr('src','/resources/images/bin-heart.png');
+	});
 });

@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body onselectstart="return false">
 	<header id="header">
 		<!-- top header-->
 		<tiles:insertAttribute name="topHeader"/>

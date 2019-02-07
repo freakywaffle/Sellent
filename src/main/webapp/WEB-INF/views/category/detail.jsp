@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="/resources/css/category/content/detail.css" rel="stylesheet"/>
+<script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
 	<div class="main-content">
 		
@@ -15,8 +16,8 @@
 						<ul class="img-list">
 							<li><img src="/resources/images/150_150/post_img_150_150.png" /></li>
 							<li><img src="/resources/images/150_150/post_img2_150_150.png" /></li>
-							<li><img src="/resources/images/150_150/post_img4_150_150.png" /></li>
-							<li><img src="/resources/images/150_150/post_img5_150_150.png" /></li>
+							<li class="mobile-hidden"><img src="/resources/images/150_150/post_img4_150_150.png" /></li>
+							<li class="mobile-hidden"><img src="/resources/images/150_150/post_img5_150_150.png" /></li>
 						</ul>
 					</div>
 				</div>
@@ -78,8 +79,8 @@
 						<li class="no-lookup">평가작성</li>
 					</ul>
 				</div>
-				<div>
-					<div class="detail-content">
+				<div class="contents">
+					<div class="detail-content" >
 						<h2>상세설명</h2>
 						<div>
 							칸채우기<br/>
