@@ -6,150 +6,250 @@
 
 <main id="main">
 
-<section class="category-list bd-2 bd-color-gray  border-box">
+	<section class="content-box">
 
-	<div class="category-search-form bd-1 bd-color-gray ">
-
-		<label class="search-name lb-gray">게시판 검색</label>
-
-		<div class="search-content">
-			<select>
-				<option>그룹검색</option>
-				<option>IT개발</option>
-				<option>디자인</option>
-				<option>번역</option>
-				<option>음악/더빙</option>
-			</select> <input type="text" /> <input class="color-blue" type="button"
-				value="검색" />
-		</div>
-	</div>
-
-	<div class="category-sub">
-		<div>총 게시판수 : 24</div>
-		<input class="edit-btn" type="button" value="게시판편집" />
-	</div>
-
-	<table class="category-list-table">
-		<thead class="thead">
-			<tr>
-				<td>번호</td>
-				<td>그룹명</td>
-				<td>게시판명</td>
-				<td>게시물수</td>
-				<td class="td-last">기능</td>
-			</tr>
-		</thead>
-		<tbody class="tbody">
-			<tr>
-				<td>4</td>
-				<td>IT개발</td>
-				<td>웹 개발</td>
-				<td>54</td>
-				<td><input class="edit-button" type="button" value="수정" /> <input
-					class="delete-button" type="button" value="삭제" /></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>IT개발</td>
-				<td>프로그래밍 언어</td>
-				<td>33</td>
-				<td><input class="edit-button" type="button" value="수정" /> <input
-					class="delete-button" type="button" value="삭제" /></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>IT개발</td>
-				<td>데이터베이스</td>
-				<td>22</td>
-				<td><input class="edit-button" type="button" value="수정" /> <input
-					class="delete-button" type="button" value="삭제" /></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<div class="paging">
-
-		<div>
-			<ul class="paging-number">
-				<li><a href=""> << </a></li>
-				<li><a href=""> < </a></li>
-				<li><a href=""> 1 </a></li>
-				<li><a href=""> 2 </a></li>
-				<li><a href=""> 3 </a></li>
-				<li><a href=""> > </a></li>
-				<li><a href=""> >> </a></li>
-			</ul>
-		</div>
-	</div>
-
-</section>
-
-<!--------category-edit----------------------------->
-
-<div id="modal">
-	<section class="category-box">
-
-		<span class="close cancel-button">X</span>
-
-		<div class="family-box">
-
-			<section class="parent-box">
-				<label>그룹명</label>
-
-				<div class="parent-content">
-					<div class="parent-category">
-						<ul>
-							<li>IT개발<img src=""></li>
-							<li>디자인</li>
-							<li>번역</li>
-						</ul>
-					</div>
-
-					<div class="parent-direction">
-						<input class="sm-button" type="button" value="up" /> <input
-							class="sm-button mt" type="button" value="down" />
-					</div>
-				</div>
-
-				<div class="parent-check">
-					<input class="sm-button add-button" type="button" value="추가" /> <input
-						class="sm-button ml delete-button" type="button" value="삭제" />
-				</div>
-
-			</section>
-
-			<section class="child-box">
-				<label>게시판명</label>
-
-				<div class="child-content">
-					<div class="child-category">
-						<ul>
-							<li>프로그래밍</li>
-							<li>웹 개발</li>
-							<li>어플리케이션</li>
-						</ul>
-					</div>
-
-					<div class="child-direction">
-						<input class="sm-button" type="button" value="up" /> <input
-							class="sm-button mt" type="button" value="down" />
-					</div>
-				</div>
-
-				<div class="child-check">
-					<input class="sm-button add-button" type="button" value="추가" /> <input
-						class="sm-button ml delete-button" type="button" value="삭제" />
-				</div>
-
-			</section>
+		<div class="condition-form">
+			<label class="condition-title">등록일</label>
+		
+			<div class="condition-content">
+				<input type="date"/>
+				<span style="margin-right: 5px" class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+				~
+				<input class="mg-left-5" type="date"/>
+				<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+			</div>
 		</div>
 
-		<!-- 확인/삭제 버튼 -->
-		<div class="box-check">
-			<input class="md-button check-button" type="button" value="확인" /> <input
-				class="md-button ml cancel-button" type="button" value="취소" />
+		<div class="condition-form" style="border-top:none">
+			<label class="condition-title">키워드검색</label>
+	
+			<div class="condition-content">
+				<select>
+					<option>아이디</option>
+					<option>이름</option>
+				</select>
+				<input class="mg-left-5" type="text">
+			</div>
 		</div>
 
+		<div class="search-form">
+			<button type="button" class="btn btn-primary">검색하기</button>
+		</div>
+
+
+		<div class="table-top">
+			<div>총 회원수 : 51</div>
+			<button type="button" class="btn btn-success reg-button">회원등록</button>
+		</div>
+
+		<table class="table-main">
+			<thead class="thead">
+				<tr>
+					<td>
+						<input type="checkbox"/>
+					</td>
+					<td>번호</td>
+					<td>이름</td>
+					<td>아이디</td>
+					<td>이메일</td>
+					<td>회원등급(수정)</td>
+					<td>가입일</td>
+					<td>정보보기</td>
+				</tr>
+			</thead>
+			<tbody class="tbody">
+				<tr>
+					<td>
+						<input type="checkbox"/>
+					</td>
+					<td>4</td>
+					<td>뉴렉</td>
+					<td>newlec</td>
+					<td>asldasdl@naver.com</td>
+					<td>일반회원</td>
+					<td>2018.10.09</td>
+					<td>
+						<button type="button" class="btn btn-danger">정보
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+						
+						<button type="button" class="btn btn-info mail-button">메일
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox"/>
+					</td>
+					<td>2</td>
+					<td>김두식</td>
+					<td>kingdusik</td>
+					<td>asdasd@daum.net</td>
+					<td>일반회원</td>
+					<td>2019.01.19</td>
+					<td>
+						<button type="button" class="btn btn-danger">정보
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-info mail-button">메일
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="table-bottom">
+			<button type="button">회원삭제</button>
+		</div>
+
+		<div class="paging">
+			
+			<div>
+				<ul class="paging-number">
+					<li><a href=""> << </a></li>
+					<li><a href=""> < </a></li>
+					<li><a href=""> 1 </a></li>
+					<li><a href=""> 2 </a></li>
+					<li><a href=""> 3 </a></li>
+					<li><a href=""> > </a></li>
+					<li><a href=""> >> </a></li>
+				</ul>
+			</div>
+		</div>
 	</section>
-</div>
+
+	<div id="modal">
+		<div class="modal-content">
+			<form action="action_page.php">
+				<div style="width:100%; text-align:end">
+					<span class="glyphicon glyphicon-remove cancel-button" aria-hidden="true"></span>
+				</div>
+
+				<h1>기본정보</h1>
+
+				<div>
+					<div class="col-25">
+						<label for="fname">이름</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="fname" name="firstname" placeholder="이름 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="lname">아이디</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="아이디 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="country">비밀번호</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="비밀번호를 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="country">비밀번호 재확인</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="비밀번호 확인">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">	
+						<label for="country">이메일</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="이메일 입력">
+					</div>
+				</div>
+
+				<h1 style="margin-top:30px">자기소개</h1>
+				<div>
+					<div class="col-25">	
+						<label for="country">제목</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="제목 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="subject">내용</label>
+					</div>
+					<div>
+						<textarea id="subject" name="subject" placeholder="내용을 입력하세요.."></textarea>
+					</div>
+				</div>
+				<div>
+					<div class="col-25">	
+						<label for="country">보유기술</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="보유기술 입력">
+					</div>
+				</div>
+				<div class="reg-box height-30">
+					<input class="reg-button" type="button" value="등록">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="modal2">
+		<div class="mail">
+			<form action="action_page.php">
+				<div style="width:100%; text-align:end">
+					<span class="glyphicon glyphicon-remove cancel-button" aria-hidden="true"></span>
+				</div>
+
+				<h1>메일보내기</h1>
+
+				<div>
+					<div class="col-25">
+						<label for="fname">이름</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="fname" name="firstname" placeholder="이름 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="lname">아이디</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="아이디 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="lname">이메일</label>
+					</div>
+					<div>
+						<input class="height-30" type="text" id="lname" name="lastname" placeholder="이메일 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label for="subject">내용</label>
+					</div>
+					<div>
+						<textarea id="subject" name="subject" placeholder="내용을 입력하세요.."></textarea>
+					</div>
+				</div>
+				<div class="reg-box height-30">
+					<input class="reg-button" type="button" value="보내기">
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
 </main>

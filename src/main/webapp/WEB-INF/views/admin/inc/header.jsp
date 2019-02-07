@@ -20,9 +20,9 @@
 			<ul class="bottom-header-menu">
 				<li class="first-list"><a href=""></a></li>
 				<li><a href="/admin/board/category">게시판관리</a></li>
-				<li><a href="">회원관리</a></li>
-				<li><a href="">통계</a></li>
+				<li><a href="/admin/member/member">회원관리</a></li>
 				<li><a href="">환경설정</a></li>
+				<li><a href="">통계</a></li>
 			</ul>
 		</section>
 	</header>

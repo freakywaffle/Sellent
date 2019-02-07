@@ -6,13 +6,13 @@
 
 <main id="main">
 
-    <section class="category-list bd-2 bd-color-gray  border-box">
+    <section class="content-box">
     
-        <div class="category-search-form bd-1 bd-color-gray ">
+        <div class="condition-form">
             
-            <label class="search-name lb-gray">게시판 검색</label>
+            <label class="condition-title">조건설정</label>
             
-            <div class="search-content">
+            <div class="condition-content">
                 <select>
                     <option>그룹검색</option>
                     <option>IT개발</option>
@@ -39,10 +39,10 @@
             </div>
         </div>
 
-        <div class="category-search-form bd-1 bd-color-gray" style="border-top:none">
-            <label class="search-name lb-gray">등록일</label>
+        <div class="condition-form" style="border-top:none">
+            <label class="condition-title">등록일</label>
         
-            <div class="search-content">
+            <div class="condition-content">
                 <input type="date"/>
                 <span style="margin-right: 5px" class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                 ~
@@ -51,10 +51,10 @@
             </div>
         </div>
 
-        <div class="category-search-form bd-1 bd-color-gray" style="border-top:none">
-            <label class="search-name lb-gray">키워드검색</label>
+        <div class="condition-form" style="border-top:none">
+            <label class="condition-title">키워드검색</label>
     
-            <div class="search-content">
+            <div class="condition-content">
                 <select>
                     <option>제목</option>
                     <option>내용</option>
@@ -65,16 +65,16 @@
             </div>
         </div>
 
-        <div class="search-button">
+        <div class="search-form">
             <button type="button" class="btn btn-primary">검색하기</button>
         </div>
 
 
-        <div class="category-sub">
+        <div class="table-top">
             <div>총 게시판수 : 441</div>
         </div>
 
-        <table class="category-list-table">
+        <table class="table-main">
             <thead class="thead">
                 <tr>
                     <td>
@@ -121,12 +121,11 @@
         </table>
 
 
-        <div class="select-delete">
+        <div class="table-bottom">
             <button type="button">선택삭제</button>
         </div>
 
         <div class="paging">
-            
             <div>
                 <ul class="paging-number">
                     <li><a href=""> << </a></li>

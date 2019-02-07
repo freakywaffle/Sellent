@@ -1,25 +1,8 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
 
-.sm-button{
-	width:40px;
-}
-
-/*-----button-size------------------------------*/
-.button-size{
-	width:80px;
-}
-
-/*category-list*/
-.td-last{
-	width: 200px;
-}
-
-
-
-/*----category-edit-----------------------------*/
+/*----modal-게시판편집-----------------------------*/
 #modal{
-	display: none;
 	position: fixed;
 	top:0;
 	left: 0;
@@ -27,172 +10,176 @@
 	height: 100%;
 	background: rgba(0,0,0,0.4);
 	z-index: 5;
+	display: none;
 }
 
-#modal input{
-	cursor: pointer;
-}
-
-.category-box{
-	background:#fefefe;
-	width:60%;
+.modal-content{
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
 	margin:5% auto;
-	border: 1px solid #ccc;
-	padding:20px;
+	width:700px;
+	border:1px solid #ccc;
 }
 
-.close{
-	font-weight: bold;
-	color:rgb(204, 204, 204);
-	float: right;
-	font-size: 20px;
-}
+	.cancel-box{
+		text-align: end;
+	}
+		.cancel-box span{
+			cursor: pointer;
+		}
 
-.close:hover{
-	cursor: pointer;
-}
-
-.sm-button{
-	width:50px;
-	height:40px;
-}
-
-.md-button{
-	width:100px;
-	height: 60px;
-}
-
-.ml{
-	margin-left: 10px;
-}
-
-.mt{
-	margin-top: 10px;
-}
-
-
-.family-box{
-	display: flex;
-}
-
-.family-box label{
-	font-weight: bold;
-}
-
-.parent-box, .child-box{
-	margin:auto;
-}
-
-.parent-content, .child-content{
-	display: flex;
-}
-
-.parent-category, .child-category{
-	width:300px;
-	height:500px;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
-
-.parent-category li, .child-category li{
-	padding-left: 10px;
-	height:35px;
-	line-height:35px;
-	border-bottom:1px solid #ccc;
-}
-
-.parent-category li:hover,
-.child-category li:hover{
-	cursor: -webkit-grab;
-}
-
-.parent-direction, .child-direction{
-	margin-left:10px;
-	margin-top:auto;
-	margin-bottom:auto;
-	vertical-align: middle;
-}
-
-.parent-direction input, .child-direction input{
-	display: block;
-}
-
-.parent-check, .child-check{
-	margin-top:10px;
-	width:300px;
-	text-align: center;
-}
-
-.box-check{
-	margin-top:20px;
-	text-align: center;
-}
-
-
-/*--------category-add-----------------------------*/
-
-.parent-category-add,
-.child-category-add{
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-	padding:20px;
-	width:20%;
-	background:#fefefe;
-	margin:20% auto;
-}
-
-#modal2{
-	display: none;
-	position: fixed;
-	top:0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.4);
-	z-index: 6;
-}
-
-#modal3{
-	display: none;
-	position: fixed;
-	top:0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.4);
-	z-index: 6;
-}
-
-
-#modal4{
-	display: none;
-	position: fixed;
-	top:0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.4);
-	z-index: 10;
-}
-
-.delete-button{
+	.category-edit{
+		border:1px solid #ccc!important;
+		height: 400px;
+		overflow: scroll;
+		width:100%;
+	}
 	
+		.group-name{
+			padding-right: 5px;
+		}
+		.group-name:hover{
+			background-color:#ccc;
+		}
+
+		/* .category-list{
+			display: none;
+		} */
+
+		.category-name{
+			font-size: 15px;
+			padding-right: 5px;
+			padding-left:30px;
+		}
+		.category-name:hover{
+			background-color:#ccc;
+		}
+	
+
+	.remove-button{
+		float: right;
+		font-size: 10px;
+		display: none;
+		line-height: 30px;
+	}
+
+	.remove-button:hover{
+		cursor: pointer;
+	}
+
+	.input-box-container{
+		width:100%;
+		margin-left: 10px;
+	}
+
+
+	.flex-box{
+		display: flex;
+		margin-top: 10px;
+	}
+
+	fieldset{
+		border:1px solid #ccc;
+		padding:10px;
+	}
+
+	.input-box{
+	}
+	
+		.input-box label{
+			width:100px;
+			border:1px solid #ccc;
+			text-align: center;
+		}
+
+		.input-box input{
+			padding:5px;
+		}
+
+	.reg-box{
+		text-align: end;
+		margin-top:5px;
+	}
+
+		.reg-box button{
+			height:40px;
+			width:100px;
+		}
+
+/*--------------modal2-삭제확인-------------------*/
+#modal2{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+	display: none;
 }
 
-.delete-check{
-	border: 1px solid #ccc;
-	padding:10px;
-	width:25%;
-	background:#fefefe;
-	margin:20% auto;
+.modal2-content{
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	margin:15% auto;
+	width:400px;
+	border:1px solid #ccc;
 }
 
-.delete-check>div{
-	margin-top:10px;
+	.modal2-content h1{
+		font-size: 20px;
+		text-align: center;
+	}
+
+	.modal2-checkbox{
+		text-align: center;
+		margin-top:20px;
+	}
+		.modal2-checkbox button{
+			width: 60px;
+			height: 30px;
+		}
+
+
+/*-------------modal3-카테고리수정---------------*/
+#modal3{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+	display: none;
 }
 
-.delete-check button{
-	width:60px;
+.modal3-content{
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	margin:5% auto;
+	width:600px;
+	border:1px solid #ccc;
 }
 
+	.edit-before input[type='text']{
+		background-color: #eee;
+	}
 
+	.edit-before label,
+	.edit-after label{
+		width: 100px;
+		border: 1px solid #ccc;
+		text-align: center;
+	}
+	
+	.modal3-checkbox{
+		margin-top:5px;
+		text-align: end;
+	}
+		.modal3-checkbox button{
+			height: 40px;
+			width:80px;
+		}

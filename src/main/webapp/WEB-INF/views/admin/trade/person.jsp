@@ -1,30 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/admin/board/sale.css" />
-<script src="/resources/js/admin/board/sale.js"></script>
+href="/resources/css/admin/trade/person.css" />
+<script src="/resources/js/admin/trade/person.js"></script>
 
 <main id="main">
 
     <section class="content-box">
 
         <div class="condition-form">
-            
-            <label class="condition-title">처리상태</label>
+    
+            <label class="condition-title">조건</label>
             
             <div class="condition-content">
                 <select>
                     <option>전체</option>
-                    <option>대기</option>
-                    <option>승인</option>
-                    <option>거절</option>
+                    <option>구매</option>
+                    <option>판매</option>
+                </select>
+                <select class="mg-left-5">
+                    <option>전체</option>
+                    <option>거래중</option>
+                    <option>거래완료</option>
                 </select>
             </div>
         </div>
 
         <div class="condition-form" style="border-top:none">
-            <label class="condition-title">등록일</label>
-        
+            <label class="condition-title">거래일자</label>
+            
             <div class="condition-content">
                 <input type="date"/>
                 <span style="margin-right: 5px" class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
@@ -39,10 +43,8 @@
     
             <div class="condition-content">
                 <select>
-                    <option>제목</option>
-                    <option>내용</option>
-                    <option>작성자</option>
-                    <option>제목+내용</option>
+                    <option>아이디</option>
+                    <option>글번호</option>
                 </select>
                 <input class="mg-left-5" type="text">
             </div>
@@ -54,7 +56,7 @@
 
 
         <div class="table-top">
-            <div>총 게시판수 : 441</div>
+            <div>총 회원수 : 51</div>
         </div>
 
         <table class="table-main">
@@ -64,13 +66,13 @@
                         <input type="checkbox"/>
                     </td>
                     <td>번호</td>
-                    <td>그룹명</td>
-                    <td>카테고리명</td>
-                    <td>제목</td>
-                    <td>작성자</td>
-                    <td>금액</td>
-                    <td>등록일자</td>
-                    <td>처리상태</td>
+                    <td>아이디</td>
+                    <td>종류</td>
+                    <td>거래일자</td>
+                    <td>거래금액</td>
+                    <td>입금액</td>
+                    <td>수령액</td>
+                    <td>거래상태</td>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -78,33 +80,40 @@
                     <td>
                         <input type="checkbox"/>
                     </td>
-                    <td>40</td>
-                    <td>IT개발</td>
-                    <td>데이터베이스</td>
-                    <td>ERD 만들어드립니다.</td>
-                    <td>dkdkd000</td>
-                    <td>99,000</td>
-                    <td>2019.01.13</td>
-                    <td>대기</td>
+                    <td>4</td>
+                    <td>sadkkas02</td>
+                    <td>구매</td>
+                    <td>2019.01.10</td>
+                    <td>150,000</td>
+                    <td>150,000</td>
+                    <td>-</td>
+                    <td>거래중</td>
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox"/>
                     </td>
-                    <td>40</td>
-                    <td>디자인</td>
-                    <td>일러스트</td>
-                    <td>아이콘 제작해드려요</td>
-                    <td>newnewlec</td>
-                    <td>58,000</td>
-                    <td>2019.01.09</td>
-                    <td>승인</td>
+                    <td>3</td>
+                    <td>sasdd993</td>
+                    <td>판매</td>
+                    <td>2019.01.07</td>
+                    <td>220,000</td>
+                    <td>-</td>
+                    <td>220,000</td>
+                    <td>거래완료</td>
                 </tr>
             </tbody>
         </table>
 
+        <div class="result-box">
+            <span>합계  </span>
+            <span>거래건수 : 4</span>
+            <span>입금액 : 150,000</span>
+            <span>수령액 : 50,000</span>
+            <span>손익 : 100,000</span>
+        </div>
 
-        <div class="table-bottom">
+		<div class="table-bottom">
             <button type="button">선택삭제</button>
         </div>
 
@@ -122,9 +131,6 @@
                 </ul>
             </div>
         </div>
-
     </section>
-
-
 
 </main>
