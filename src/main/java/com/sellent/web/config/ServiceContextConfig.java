@@ -21,9 +21,9 @@ public class ServiceContextConfig {
 		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://192.168.0.10:3306/sellentdb");
+		dataSource.setUrl("jdbc:mysql://192.168.0.25:3306/sellentdb");
 		dataSource.setUsername("hyungho");
-		dataSource.setPassword("1111");
+		dataSource.setPassword("11111111");
 		
 		
 		
