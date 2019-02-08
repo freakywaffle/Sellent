@@ -23,12 +23,12 @@
 </head>
 
 <body>
-	<div class="main-container h-100 bbb">
+	<div class="main-container h-100">
 		<div class="main-head">
 			<h1>찜한 서비스</h1>
 		</div>
 		<div class="m-felx flex h-cal">
-			<div class="aside flex 	h-100 bbb">
+			<div class="aside flex 	h-100">
 				<div class="main-list">
 					<ul>
 						<li><a href="#" class="a-color"><i class="fa fa-caret-right"></i>전체 카테고리 (0)</a></li>
@@ -50,105 +50,105 @@
 					</ul>
 				</div>
 			</div>
-			<div class="main h-100 bbb">
-				<div class="content-box flex bbb">
+			<div class="main h-100">
+				<div class="content-box flex">
 					<div class="content bbb">
 						<a href="#">
 							<div class="img-box bbb">
-								<div class="img bbb"></div>
+								<div class="img"></div>
 								<div class="profile"></div>
 							</div>
 						</a>
-						<div class="text bbb">
+						<div class="text">
 							<a href="#">
-								<div class="writer-id bbb">seyeon1491</div>
-								<div class="title bbb">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price bbb">5,000,000원 ~</div>
+								<div class="writer-id">seyeon1491</div>
+								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
+								<div class="price">5,000,000원 ~</div>
 							</a>
-							<div class="flex bbb">
-								<div class="product bbb">
+							<div class="flex">
+								<div class="product">
 										<div class="fornt">
 											<div class="img-wrap">
-												<i class="fa fa-heart"></i>
+												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
 											</div>
 										</div>
 									</div>
-								<div class="star bbb">★★★★★ (0)</div>
+								<div class="star">★★★★★ (0)</div>
 							</div>
 						</div>
 					</div>
 					<div class="content bbb">
 						<a href="#">
 							<div class="img-box bbb">
-								<div class="img bbb"></div>
+								<div class="img"></div>
 								<div class="profile"></div>
 							</div>
 						</a>
-						<div class="text bbb">
+						<div class="text">
 							<a href="#">
-								<div class="writer-id bbb">seyeon1491</div>
-								<div class="title bbb">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price bbb">5,000,000원 ~</div>
+								<div class="writer-id">seyeon1491</div>
+								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
+								<div class="price">5,000,000원 ~</div>
 							</a>
-							<div class="flex bbb">
-								<div class="product bbb">
+							<div class="flex">
+								<div class="product">
 										<div class="fornt">
 											<div class="img-wrap">
-												<i class="fa fa-heart"></i>
+												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
 											</div>
 										</div>
 									</div>
-								<div class="star bbb">★★★★★ (0)</div>
+								<div class="star">★★★★★ (0)</div>
 							</div>
 						</div>
 					</div>
 					<div class="content bbb">
 						<a href="#">
 							<div class="img-box bbb">
-								<div class="img bbb"></div>
+								<div class="img"></div>
 								<div class="profile"></div>
 							</div>
 						</a>
-						<div class="text bbb">
+						<div class="text">
 							<a href="#">
-								<div class="writer-id bbb">seyeon1491</div>
-								<div class="title bbb">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price bbb">5,000,000원 ~</div>
+								<div class="writer-id">seyeon1491</div>
+								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
+								<div class="price">5,000,000원 ~</div>
 							</a>
-							<div class="flex bbb">
-								<div class="product bbb">
+							<div class="flex">
+								<div class="product">
 										<div class="fornt">
 											<div class="img-wrap">
-												<i class="fa fa-heart"></i>
+												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
 											</div>
 										</div>
 									</div>
-								<div class="star bbb">★★★★★ (0)</div>
+								<div class="star">★★★★★ (0)</div>
 							</div>
 						</div>
 					</div>
 					<div class="content bbb">
 						<a href="#">
 							<div class="img-box bbb">
-								<div class="img bbb"></div>
-								<div class="profile"></div>
+								<div class="img"></div>
+								<div class="profile" style="background: url('../../resources/images/design.png') no-repeat center;"></div>
 							</div>
 						</a>
-						<div class="text bbb">
+						<div class="text">
 							<a href="#">
-								<div class="writer-id bbb">seyeon1491</div>
-								<div class="title bbb">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price bbb">5,000,000원 ~</div>
+								<div class="writer-id">seyeon1491</div>
+								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
+								<div class="price">5,000,000원 ~</div>
 							</a>
-							<div class="flex bbb">
-								<div class="product bbb">
+							<div class="flex">
+								<div class="product">
 										<div class="fornt">
 											<div class="img-wrap">
-												<i class="fa fa-heart"></i>
+												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
 											</div>
 										</div>
 									</div>
-								<div class="star bbb">★★★★★ (0)</div>
+								<div class="star">★★★★★ (0)</div>
 							</div>
 						</div>
 					</div>
