@@ -8,9 +8,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan(basePackages= {"com.sellent.web.dao","com.sellent.web.service"})
 public class ServiceContextConfig {
 	
 	@Autowired
@@ -21,9 +23,9 @@ public class ServiceContextConfig {
 		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://192.168.0.10:3306/sellentdb");
+		dataSource.setUrl("jdbc:mysql://192.168.0.25:3306/sellentdb");
 		dataSource.setUsername("hyungho");
-		dataSource.setPassword("1111");
+		dataSource.setPassword("11111111");
 		
 		
 		
