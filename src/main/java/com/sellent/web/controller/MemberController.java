@@ -1,5 +1,7 @@
 package com.sellent.web.controller;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -105,16 +107,11 @@ public class MemberController {
 	
 	 @PostMapping("idchk")
 	 @ResponseBody
-	 public int idchk(@RequestParam(value="id") String id) {
+	 public String idchk(String id) {
 		/* System.out.println("id"+id); */
-		 int select = memberDao.select(id);
-		 int result = 0;
-		 if(select == 0) { //동일한 아이디가 없다
-			 result = 1;
-		 }
-		 else { //동일한 아이디가 존재하면
-			 result = 0;
-		 }
-		 return result;
+		 System.out.println(id);
+		int select = memberDao.select(id);
+		 
+		 return String.valueOf(select);
 	 }
 }
