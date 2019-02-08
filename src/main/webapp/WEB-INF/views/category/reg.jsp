@@ -41,7 +41,7 @@
 					<label>상위카테고리</label>
 					<select name="parentCategory">
 						<option>선택해주세요</option>
-						<option>상위1</option>
+						<option>IT개발</option>
 						<option>상위2</option>
 						<option>상위3</option>
 						<option>상위4</option>
@@ -51,10 +51,10 @@
 					<label>하위카테고리</label>
 					<select name="subCategory">
 						<option>선택해주세요</option>
-						<option>하위1</option>
-						<option>하위2</option>
-						<option>하위3</option>
-						<option>하위4</option>
+						<option>웹개발</option>
+						<option>앱개발</option>
+						<option>서버</option>
+						<option>데이터베이스</option>
 					</select>
 				</div>
 			</div>
