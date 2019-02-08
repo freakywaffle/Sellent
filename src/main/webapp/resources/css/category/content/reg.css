@@ -8,14 +8,13 @@
 	outline:none;
 }
 
-.navi{
+#main .navi{
 	display: flex;
 	border-bottom: 1px solid black;
 	height: 60px;
-	padding-top: 20px;
 }
 
-.navi li{
+#main .navi li{
 	width: 25%;
 	height: 50px;
 	text-align: center;
@@ -25,12 +24,12 @@
 	
 }
 
-.navi li .during{
+#main .navi li .during{
 	border: 1px solid rgb(255, 214, 51);
 	padding: 10px;
 }
 
-.navi li a.during:after {
+#main .navi li a.during:after {
 	content: " ";
 	position: absolute;
 	left: 46%;
@@ -41,22 +40,24 @@
 	border-bottom-color: rgb(255, 214, 51);
 }
 
-.reg-form{
+#main .reg-form{
 	text-align: center;
 	
 }
 
-.reg-form label{
+#main .reg-form label{
 	display: inline-block;
 }
 
-.reg-form h3{
+#main .reg-form h3{
 	width: 80px;
 	text-align: right;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 
-.reg-form .step{
+#main .reg-form .step{
 	display: inline-block;
 	box-sizing:border-box;
 	margin-top: 40px;
@@ -66,7 +67,7 @@
 }
 
 
-.reg-form>div>div{
+#main .reg-form>div>div{
 	padding-left: 20px;
 	margin-top: 40px;
 	display: flex;
@@ -75,7 +76,7 @@
 
 
 
-.sell-toggle-form{
+#main .sell-toggle-form{
 	height: 60px;
 	border-bottom: 1px solid black;
 	box-sizing: border-box;
@@ -84,18 +85,18 @@
 	display: flex;
 }
 
-.sell-toggle-form .sell-radio{
+#main .sell-toggle-form .sell-radio{
 	display: flex;
 	margin-left: 40px;
 }
 
-.sell-toggle-form .sell-radio label{
+#main .sell-toggle-form .sell-radio label{
 	margin-left: 10px;
 	width: 50px;
 	text-align: left;
 }
 
-.sell-toggle-form label,h3{
+#main .sell-toggle-form label,h3{
 	height: 35px;
 	
 	position: relative;
@@ -103,12 +104,12 @@
 }
 
 
-.sell-toggle-form .sell-chk{
+#main .sell-toggle-form .sell-chk{
 	display: none!important;
 	
 }
 
-.sell-toggle-form .radio-bt{
+#main .sell-toggle-form .radio-bt{
 	height: 20px;
 	width: 20px;
 	border-radius: 50%;
@@ -120,7 +121,7 @@
 
 
 
-.toggle-btn{
+#main .toggle-btn{
 	background-color: #F6F6F6;
 	width: 75px;
 	height: 20px;
@@ -134,7 +135,7 @@
 	
 }
 
-.toggle-btn .toggle-move{
+#main .toggle-btn .toggle-move{
 	position: absolute;
 	left: -7px;
 	top: -6px;
@@ -148,41 +149,41 @@
 }
 
 
-.action{
+#main .action{
 	transition: 0.5s;
 	left: 47px!important;
 	
 }
 
-.step1 .selected{
+#main .step1 .selected{
 	background-color: rgb(255, 214, 51)!important;
 }
 
-.change-color{
+#main .change-color{
 	border-color: #41FF3A!important;
 	transition: 0.5s;
 }
 
 
-.title{
+#main .title{
 	padding-bottom: 40px;
 	border-bottom: 1px solid black;
 }
 
-.title>div{
+#main .title>div{
 	position: relative;
 }
 
 
-.txt-cnt{
+#main .txt-cnt{
 	display:flex;
 }
 
-.txt-cnt span{
+#main .txt-cnt span{
 	margin-left: auto;
 }
 
-.title textarea{
+#main .title textarea{
 	font-size: 18px;
 	display: inline-block;
 	resize: none;
@@ -193,33 +194,33 @@
 	
 }
 
-.category{
+#main .category{
 	padding-bottom: 40px;
 	
 }
 
-.category .sub-category{
+#main .category .sub-category{
 	margin-left: 80px;
 }
 
-.category>div{
+#main .category>div{
 	margin-left: 40px;
 }
 
 
-.category label{
+#main .category label{
 	display: block;
 	font-size: 18px;
 	width: 120px;
 }
 
-.category select{
+#main .category select{
 	width: 250px;
 	height: 50px;
 	font-size: 20px;
 }
 
-.bts{
+#main .bts{
 	position: relative;
 	border: 1px solid black;
 	border-top: none;
@@ -231,7 +232,7 @@
 	margin-bottom: 40px;
 }
 
-.bts input{
+#main .bts input{
 	width: 100px;
 	height: 50px;
 	margin-left: auto;
@@ -239,32 +240,32 @@
 	background-color: rgb(255, 214, 51);
 }
 
-.prev{
+#main .prev{
 	margin-left: 60px!important;
 	background-color: white!important;
 	border: 1px solid black!important;	
 }
 
-.next{
+#main .next{
 	margin-right: 60px;
 }
 
-.submit{
+#main .submit{
 	position: absolute;
 	right: 60px;
 }
 
-.mg-left{
+#main .mg-left{
 	margin-left: 20px!important;
 }
 
 
-.basic{
+#main .basic{
 	margin-top:0px;
 	height: 400px;
 }
 
-.table{
+#main .table{
 	border: 1px solid black;
 	box-sizing: border-box;
 	overflow:hidden;
@@ -273,7 +274,7 @@
 	margin-left: 40px;
 }
 
-.table label{
+#main .table label{
 	padding-left: 10px;
 	width: 90px;
 	text-align: left;
@@ -281,17 +282,17 @@
 	top: 10px;
 }
 
-.row{
+#main .row{
 	display: flex;
 	border-bottom: 1px solid black;
 	
 }
 
-.row:last-child{
+#main .row:last-child{
 	border-bottom: none;
 }
 
-.simple-content{
+#main .simple-content{
 	box-sizing: border-box;
 	border: none;
 	border-left: 1px solid black;
@@ -301,7 +302,7 @@
 }
 
 
-.option{
+#main .option{
 	margin-top: 40px;
 	border: 1px solid black;
 	box-sizing: border-box;
@@ -311,12 +312,12 @@
 	margin-left: 40px;
 }
 
-.option label{
+#main .option label{
 	width: 70px;
 }
 
 
-.price{
+#main .price{
 	box-sizing: border-box;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
@@ -325,7 +326,7 @@
 	display: flex;
 }
 
-.price label{
+#main .price label{
 	width: 25px;
 	height: 35px;
 	padding-left: 0px;
@@ -333,7 +334,7 @@
 	text-align: right;
 }
 
-.price input{
+#main .price input{
 	font-size:20px!important;
 	text-align: left;
 	font-size: 15px!important;
@@ -349,7 +350,7 @@
 }
 
 
-.edit-cnt{
+#main .edit-cnt{
 	box-sizing: border-box;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
@@ -358,7 +359,7 @@
 	position: relative;
 }
 
-.edit-cnt select{
+#main .edit-cnt select{
 	text-align-last: center;
 	padding-right: 20px;
 	border: none;
@@ -373,15 +374,15 @@
 	-moz-appearance: none;    /* 화살표 없애기 for firefox*/
 	appearance: none;         /* 화살표 없애기 공통*/ 
 }
-.edit-cnt select::-ms-expand {
+#main .edit-cnt select::-ms-expand {
    display: none;            /* 화살표 없애기 for IE10, 11*/
 }
 
-.edit-cnt option{
+#main .edit-cnt option{
 	text-align: right;
 }
 
-.edit-cnt input{
+#main .edit-cnt input{
 	border: none;
 	font-size: 15px;
 	box-sizing: border-box!important;
@@ -394,14 +395,14 @@
 	text-align: center;
 }
 
-.edit-cnt input::-webkit-outer-spin-button,
-.edit-cnt input::-webkit-inner-spin-button{
+#main .edit-cnt input::-webkit-outer-spin-button,
+#main .edit-cnt input::-webkit-inner-spin-button{
 	-webkit-appearance: none; /* 화살표 없애기 for chrome*/
 	-moz-appearance: none;    /* 화살표 없애기 for firefox*/
 	appearance: none;         /* 화살표 없애기 공통*/ 
 }
 
-.edit-cnt label:last-child{
+#main .edit-cnt label:last-child{
 	position: absolute;
 	left: 100px;
 	top: 20px;
@@ -409,12 +410,12 @@
 	font-size: 12px;	
 }
 
-.put{
+#main .put{
 	z-index:2;
 }
 
 
-.term{
+#main .term{
 	box-sizing: border-box;
 	border-left: 1px solid black;
 	border-right: none;
@@ -423,7 +424,7 @@
 	position: relative;
 }
 
-.term select{
+#main .term select{
 	text-align-last: center;
 	padding-right: 20px;
 	border: none;
@@ -438,15 +439,15 @@
 	-moz-appearance: none;    /* 화살표 없애기 for firefox*/
 	appearance: none;         /* 화살표 없애기 공통*/ 
 }
-.term select::-ms-expand {
+#main .term select::-ms-expand {
    display: none;            /* 화살표 없애기 for IE10, 11*/
 }
 
-.term option{
+#main .term option{
 	text-align: right;
 }
 
-.term input{
+#main .term input{
 	border: none;
 	font-size: 15px;
 	box-sizing: border-box!important;
@@ -459,14 +460,14 @@
 	text-align: center;
 }
 
-.term input::-webkit-outer-spin-button,
-.term input::-webkit-inner-spin-button{
+#main .term input::-webkit-outer-spin-button,
+#main .term input::-webkit-inner-spin-button{
 	-webkit-appearance: none; /* 화살표 없애기 for chrome*/
 	-moz-appearance: none;    /* 화살표 없애기 for firefox*/
 	appearance: none;         /* 화살표 없애기 공통*/ 
 }
 
-.term label:last-child{
+#main .term label:last-child{
 	position: absolute;
 	left: 100px;
 	top: 20px;
@@ -474,16 +475,16 @@
 	font-size: 12px;	
 }
 
-.step3>div:first-child{
+#main .step3>div:first-child{
 	border-bottom: 1px dashed black;
 }
 
 
-.step3 .editor{
+#main .step3 .editor{
 	margin-left: 40px;
 }
 
-.editor textarea{
+#main .editor textarea{
 	resize: none;
 	border: 1px solid black;
 	width: 700px;
@@ -491,12 +492,12 @@
 	box-sizing: border-box;
 }
 
-.editor .txt-cnt{
+#main .editor .txt-cnt{
 	margin-bottom: 40px;
 }
 
 
-.up-images{
+#main .up-images{
 	position: relative;
 	width: 650px;
 	height: 400px;
@@ -507,24 +508,24 @@
 	box-sizing: border-box;
 }
 
-.up-images img{
+#main .up-images img{
 	width: 650px;
 	height: 400px;
 }
 
-.back-none{
+#main .back-none{
 	background: none!important;
 }
 
 
-.img-list{
+#main .img-list{
 	width: 650px;
 	margin-left: 65px;
 	border: 1px solid black;
 	margin-bottom: 40px;
 	position: relative;
 }
-.img-list ul{
+#main .img-list ul{
 	display: flex;
 	height: 150px;
 	margin-top: 10px;
@@ -532,7 +533,7 @@
 	
 }
 
-.img-list img{
+#main .img-list img{
 	width: 150px;
 	height: 150px;
 	margin-left: 10px;
@@ -540,178 +541,181 @@
 	box-sizing: border-box;
 }
 
-.reg-thumbnail{
+#main .reg-thumbnail{
 	display: flex;
 	margin-bottom: 40px;
 }
 
-.reg-thumbnail input{
+#main .reg-thumbnail input{
 	margin-left: auto;
 	border: 1px solid black;
 	background-color: white;
 	height: 35px;
 }
+#main h3 {
+	font-size: 20px!important;
+	}
 @media(max-width :480px) {
 	
-	.sell-radio{
+	#main .sell-radio{
 		display: none!important;
 	}
 	
-	.toggle-btn{
+	#main .toggle-btn{
 		display: flex!important;
 	}
 	
-	h3{
+	#main h3{
 		text-align: left!important;
 	}
 	
-	#main{
+	#main #main{
 		width: 100%;	
 	}
 	
-	.bts{
+	#main .bts{
 		width: 100%;
 		border-left: none!important;
 		border-right: none!important;
 	}
-	.step{
+	#main .step{
 		width: 100%!important;
 		border-left: none!important;
 		border-right: none!important;
 	}
-	.title,.category{
+	#main .title, #main .category{
 		display: block!important;
 		padding-left:3%!important;
 		padding-right:3%!important;
 		
 	}
 	
-	.title textarea{
+	#main .title textarea{
 		margin-left: 0px;
 		width: 100%;
 	}
 	
-	.category>div{
+	#main .category>div{
 		margin-left: 0px!important;
 	}
 	
-	.sub-category{
+	#main .sub-category{
 		margin-top: 20px;
 	}
 	
 	
-	.step2 .basic{
+	#main .step2 .basic{
 		height: auto!important;
 	}
 	
-	.step2>div{
+	#main .step2>div{
 		display: block!important;
 		padding-left:3%!important;
 		padding-right:3%!important;
 	}
 	
-	.step2 .table{
+	#main .step2 .table{
 		margin-left: 0px;
 		width: 100%;
 		border: none;
 	}
 	
-	.step2 .table .row{
+	#main .step2 .table .row{
 		display: block!important;
 		height: 100%;
 	}
-	.step2 .table .row>div:first-child{
+	#main .step2 .table .row>div:first-child{
 		height: 12%!important;
 		text-align: left;
 	}
 	
-	.step2 .table .row label{
+	#main .step2 .table .row label{
 		top: 0px!important;
 		
 	}
-	.step2 .table .row textarea{
+	#main .step2 .table .row textarea{
 		border-left: none;
 		width: 100%;
 		height: 88%!important;
 		border: 1px solid black;
 	}
 	
-	.step2 .option{
+	#main .step2 .option{
 		height: 400px;
 		margin-bottom: 20px;
 		border: none!important;
 	}
-	.step2 .option .row{
+	#main .step2 .option .row{
 		text-align: left!important;
 		
 	}
-	.step2 .option .price{
+	#main .step2 .option .price{
 		height: 50px!important;
 		border: 1px solid black!important;
 		margin-bottom: 20px;
 		overflow: hidden;
 	}
-	.step2 .option .price label{
+	#main .step2 .option .price label{
 		margin-top: 10px;
 	}
 	
-	.step2 .option .select{
+	#main .step2 .option .select{
 		border: 1px solid black!important;
 		overflow: hidden;
 		margin-bottom: 20px;
 	}
-	.step2 .option .select label{
+	#main .step2 .option .select label{
 		margin-top: 30px;
 	}
 	
 	
-	.step3>div{
+	#main .step3>div{
 		display: block!important;
 		padding-left:3%!important;
 		padding-right:3%!important;
 	}
 	
-	.step3>div:last-child>div{
+	#main .step3>div:last-child>div{
 		height: 450px;
 	}
-	.step3 h3{
+	#main .step3 h3{
 		width: 120px;
 	}
 	
-	.step3 .editor{
+	#main .step3 .editor{
 		margin-left: 0px!important;
 	}
-	.step3 .editor textarea{
+	#main .step3 .editor textarea{
 		width: 100%!important;
 	}
 	
-	.step3 .up-images{
+	#main .step3 .up-images{
 		width: 100%!important;
 		height: 50%!important;
 		margin-left: 0px;
 		background: url("/resources/images/add-images-mobile.png") no-repeat center;
 	}
-	.step3 .up-images img{
+	#main .step3 .up-images img{
 		width: 100%!important;
 		height: 100%!important;
 	}
 	
-	.step3 .img-list{
+	#main .step3 .img-list{
 		margin: 0px;
 		width: 100%!important;
 	}
-	.step3 .img-list li{
+	#main .step3 .img-list li{
 		position: absolute;
 		width: 45%;
 		height: 150px;
 		left: 3.3%;
 	}
-	.step3 .img-list li img{
+	#main .step3 .img-list li img{
 		margin-left: 0px!important;
 		width: 100%;
 	}
 	
-	.step3 .img-list li:nth-last-child(2){
+	#main .step3 .img-list li:nth-last-child(2){
 		left: 51.6%;
 	}
 	

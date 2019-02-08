@@ -35,7 +35,7 @@
 
 		<div class="table-top">
 			<div>총 게시판수 : 24</div>
-			<button id="total-edit-button" type="button">게시판편집</button>
+			<button id="total-edit-button" class="btn btn-success" type="button">게시판편집</button>
 		</div>
 
 		<table class="table-main">
@@ -93,7 +93,7 @@
 		</table>
 
 		<div class="table-bottom">
-			<button type="button">선택삭제</button>
+			<button id="select-remove" type="button">선택삭제</button>
 		</div>
 
 		<div class="paging">

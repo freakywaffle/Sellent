@@ -422,6 +422,11 @@
 						</section>
 							<input type="file" id="file" multiple="">
 							<label class="btn file-btn" for="file">파일첨부</label>
+							
+							
+							
+							
+							
 					</div>
 					<div style="width: 100%; height: 50px; margin-top: 20px">
 						<a class="btn a">문의 하기</a>

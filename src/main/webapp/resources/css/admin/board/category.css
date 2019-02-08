@@ -22,13 +22,6 @@
 	border:1px solid #ccc;
 }
 
-	.cancel-box{
-		text-align: end;
-	}
-		.cancel-box span{
-			cursor: pointer;
-		}
-
 	.category-edit{
 		border:1px solid #ccc!important;
 		height: 400px;
@@ -43,9 +36,9 @@
 			background-color:#ccc;
 		}
 
-		/* .category-list{
-			display: none;
-		} */
+		.category-list{
+			z-index: 5;
+		}
 
 		.category-name{
 			font-size: 15px;
@@ -106,42 +99,6 @@
 			height:40px;
 			width:100px;
 		}
-
-/*--------------modal2-삭제확인-------------------*/
-#modal2{
-	position: fixed;
-	top:0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.4);
-	z-index: 5;
-	display: none;
-}
-
-.modal2-content{
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
-	margin:15% auto;
-	width:400px;
-	border:1px solid #ccc;
-}
-
-	.modal2-content h1{
-		font-size: 20px;
-		text-align: center;
-	}
-
-	.modal2-checkbox{
-		text-align: center;
-		margin-top:20px;
-	}
-		.modal2-checkbox button{
-			width: 60px;
-			height: 30px;
-		}
-
 
 /*-------------modal3-카테고리수정---------------*/
 #modal3{

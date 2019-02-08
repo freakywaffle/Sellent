@@ -3,4 +3,10 @@
 
 
 
-
+#modal{
+    display: none;
+}
+    .reg-box{
+    	margin-top:5px;
+        text-align: end;
+    }
