@@ -61,6 +61,18 @@
 	text-align: center;
 	
 }
+.pwch{
+	position: relative;
+}
+#warning{
+
+	font-size: 13px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+	position: absolute;
+	right:60px;
+	top:10px;
+}
 #hidden {
 	display: none!important;
 }
@@ -108,6 +120,7 @@
 	.profile{width:100%;}
 	.profile img{margin-left:4%;}
 	.plus{margin-left:1.8%;}
+	.warning{visibility: hidden;}
 	#joinbtn input{width: 90%; margin-left:5%;}
 }
 

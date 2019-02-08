@@ -30,7 +30,7 @@
 				<div class="sub-title">비밀번호</div>
 				<input type="text" name="pwd"/>
 			</div>
-			<div class="twobind">
+			<div class="twobind pwch">
 				<div class="sub-title">비밀번호 재확인</div>
 				<input type="text" name="pwdchk"/>
 				<span id="warning"></span>

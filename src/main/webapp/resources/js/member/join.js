@@ -91,7 +91,14 @@ window.addEventListener("load",function(){
     	  
       });
       
- 
+      /*email 인증*/
+      var email = document.querySelector(".email");
+      var emailInput = email.querySelector("input[type='text']");
+      var emailBtn = email.querySelector("input[type='button']");
+   
+      emailBtn.addEventListener("click",function(){
+    	 alert("hi");   	  
+      });
 });
 
 
