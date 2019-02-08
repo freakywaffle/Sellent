@@ -76,16 +76,18 @@ window.addEventListener("load",function(){
       /*데이터베이스를 불러오는 작업은 컨트롤러가 해줌 유효성 검사는 자바스크립트에서도 가능하고 컨트롤러에서도 가능하다*/
       var idchk = document.querySelector("input[name='idchk']");
       idchk.addEventListener("click",function(){
+    	  var id = document.querySelector("input[name='id']").value;
     	  var xml = new XMLHttpRequest();
-    	  xml.open('POST','idchk',true);
-    	  xml.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    	  xml.addEventListener("load",function(event){
-    		var result =  XMLHttpRequest.response;
+    	  xml.open('POST','idchk');
+    	  xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    	  xml.send('id='+id);
+    	  xml.onload= function(){    		
+    		  var result =  xml.responseText;
+    		  alert(result);
+    		  
     		if(result == 0) alert("사용 가능한 아이디 입니다.");
     		else alert("동일한 아이디가 존재합니다");
-    	  });
-    	  var id = document.querySelector("input[name='id']").value;
-    	  xml.send('id='+id);
+    	  };
     	  
       });
       
