@@ -10,16 +10,16 @@
 			<li><a class="nav-3">STEP3</a></li>
 		</ul>
 	</div>
-	<form class="reg-form">
+	<form class="reg-form" action="reg" method="post">
 		<div class="step step1">
 			<div class="sell-toggle-form">
 				<h3>판매희망</h3>
 				<div class="sell-radio">
 					<div class="radio-bt selected"></div>
-					<input class="sell-chk" type="radio" checked="checked" value="판매" name="sell"/>
+					<input class="sell-chk" type="radio" checked="checked" value="0" name="sellCheck"/>
 					<label>비판매</label>
 					<div class="radio-bt"></div>
-					<input class="sell-chk" type="radio" value="비판매" name="sell"/>
+					<input class="sell-chk" type="radio" value="1" name="sellCheck"/>
 					<label>판매</label>
 				</div>
 				<div class="toggle-btn">
@@ -29,7 +29,7 @@
 			<div class="title">
 				<h3>제목</h3>
 				<div>
-					<textarea rows="5" cols="30"></textarea>
+					<textarea rows="5" cols="30" name="title"></textarea>
 					<div class="txt-cnt">
 						<span>0</span>/100byte
 					</div>
@@ -39,7 +39,7 @@
 				<h3>카테고리</h3>
 				<div class="parent-category">
 					<label>상위카테고리</label>
-					<select>
+					<select name="parentCategory">
 						<option>선택해주세요</option>
 						<option>상위1</option>
 						<option>상위2</option>
@@ -49,7 +49,7 @@
 				</div>
 				<div class="sub-category">
 					<label>하위카테고리</label>
-					<select>
+					<select name="subCategory">
 						<option>선택해주세요</option>
 						<option>하위1</option>
 						<option>하위2</option>
@@ -68,7 +68,7 @@
 							<div>
 								<label>설명</label>
 							</div>
-							<textarea class="simple-content"></textarea>
+							<textarea class="simple-content" name="simpleContent"></textarea>
 						</div>
 					</div>
 					<div class="table option">
@@ -76,7 +76,7 @@
 							<label>가격</label>
 							<div class="price">
 								<label>\</label> 
-								<input type="number" placeholder="가격을 입력하세요"/>
+								<input type="number" name="price" placeholder="가격을 입력하세요"/>
 							</div>
 							<label>수정횟수</label>
 							<div class="edit-cnt select">
@@ -91,6 +91,7 @@
 								</select>
 								<input type="number" min="0" placeholder="직접입력"/>
 								<label>회</label>
+								<input type="hidden" name="editCnt"/>
 							</div>
 							<label>작업기간</label>
 							<div class="term select">
@@ -105,6 +106,7 @@
 								</select>
 								<input type="number" min="0" placeholder="직접입력"/>
 								<label>일</label>
+								<input type="hidden" name="duration"/>
 							</div>
 						</div>
 					</div>
@@ -116,7 +118,7 @@
 			<div>
 				<h3>서비스 설명</h3>
 				<div class="editor">
-					<textarea rows="5" cols="10"></textarea>
+					<textarea rows="5" cols="10" name="detailContent"></textarea>
 					<div class="txt-cnt">
 						<span>0</span>/500byte
 					</div>

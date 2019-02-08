@@ -21,7 +21,7 @@ public class DispatcherServletInitializer
 		// TODO Auto-generated method stub
 		return new Class[] {
 				ServletContextConfig.class
-//				,ServiceContextConfig.class
+				,ServiceContextConfig.class
 //				,SecurityContextConfig.class
 		};
 	}
