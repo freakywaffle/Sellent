@@ -129,13 +129,11 @@
 				<div>
 					<div class="up-images">
 					</div>
-					<input type="file" class="openfolder hidden"/>
+					<input type="file" class="openfolder hidden" multiple="multiple"/>
 					<div class="img-list">
 						<ul>
 							<li><img src="/resources/images/650_400/post_img_650_400.png" /></li>
 							<li><img src="/resources/images/650_400/post_img2_650_400.png" /></li>
-							<li><img src="/resources/images/650_400/post_img4_650_400.png" /></li>
-							<li><img src="/resources/images/650_400/post_img5_650_400.png" /></li>
 						</ul>
 					</div>
 					

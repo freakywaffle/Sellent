@@ -169,4 +169,13 @@ $(document).ready(function(){
 	});
 	
 	
+	
+	//파일 다중업로드
+	openBt.change(function(e) {
+		alert(e.target.files);
+	});
+	
+	
+	
+	
 });
