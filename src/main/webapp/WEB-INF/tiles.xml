@@ -40,6 +40,15 @@
 		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
 	</definition>
 	
+	<definition name="member.bookmarks" 
+		template="/WEB-INF/views/member/bookmarks/layout.jsp">
+		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
+		<put-attribute name="bottomHeader" value="/WEB-INF/views/category/inc/bottomHeader.jsp" />
+		<put-attribute name="mypage" value="/WEB-INF/views/member/bookmarks.jsp" />
+		<put-attribute name="floatingBar" value="/WEB-INF/views/inc/floatingBar.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+	</definition>
+	
 	<definition name="member.*.*" 
 		template="/WEB-INF/views/member/inc/layout.jsp">
 		<put-attribute name="title" value="Sellent" />
