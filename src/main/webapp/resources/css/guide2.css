@@ -27,13 +27,13 @@ html, body {
 	z-index: 999;
 }
 
-.tab_container {
+#guide .tab_container {
 	width: 100%!important;
 	height: 100%!important;
 	padding:0px!important;
 }
 
-.tab-content {
+#guide .tab-content {
 	height: calc(100% - 50px);
 }
 
@@ -42,27 +42,27 @@ html, body {
 	height: 50px;
 }
 
-.999 {
+#guide .999 {
 	color: #757575;
 }
 
-.fa-search {
+#guide .fa-search {
 	position: absolute;
 	top: 70%;
 	left: 25px;
 }
-.search-box {
+#guide .search-box {
 	position: relative;
 	padding: 30px 15px;
 }
-.search-bar,
-.e-mail-bar,
-.title-bar {
+#guide .search-bar,
+#guide .e-mail-bar,
+#guide .title-bar {
 	width: 100%;
 	padding: 11px 14px 11px 30px; 
 }
 
-.text-del {
+#guide .text-del {
 	position: absolute;
 	top: 70%;
 	right: 25px;
@@ -70,43 +70,43 @@ html, body {
 }
 
 
-*,
-*:after,
-*:before {
+#guide *,
+#guide *:after,
+#guide *:before {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.clearfix:before,
-.clearfix:after {
+#guide .clearfix:before,
+#guide .clearfix:after {
 	content: " ";
 	display: table;
 }
 
-.clearfix:after {
+#guide .clearfix:after {
 	clear: both;
 }
 
-h1 {
+#guide h1 {
 	color: #4d4d4d;
 	font-size: 20px; 
 	font-weight: 550;
 }
-h5 {
+#guide h5 {
 	font-size: 13px; 
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
 
-a {
+#guide a {
   color: #ccc;
   text-decoration: none;
   outline: none;
 }
 
 /*Fun begins*/
-.tab_container {
+#guide .tab_container {
 	width: 90%;
 	margin: 0 auto;
 	padding-top: 70px;
@@ -135,54 +135,54 @@ a {
  box-shadow: inset 0 -3px #ccc;
 }
 
-.close-label {
+#guide .close-label {
   width: 10%!important;
 }
 
-#tab1:checked ~ #content1,
-#tab2:checked ~ #content2,
-#tab3:checked ~ #content3{
+#guide #tab1:checked ~ #content1,
+#guide #tab2:checked ~ #content2,
+#guide #tab3:checked ~ #content3{
   display: block;
   background: #fafafa;
   color: #999;
   border-bottom: 2px solid #f0f0f0;
 }
-.tab_container div + div,
-.tab_container .tab-content p,
-.tab_container .tab-content h3 {
+#guide .tab_container div + div,
+#guide .tab_container .tab-content p,
+#guide .tab_container .tab-content h3 {
   -webkit-animation: fadeInScale 0.7s ease-in-out;
   -moz-animation: fadeInScale 0.7s ease-in-out;
   animation: fadeInScale 0.7s ease-in-out;
 }
-.tab_container div + div div {
+#guide .tab_container div + div div {
 	-webkit-animation: none;
   -moz-animation: none;
   animation: none;
 }
-.tab_container .tab-content h3  {
+#guide .tab_container .tab-content h3  {
   text-align: center;
 }
 
-.tab_container [id^="tab"]:checked + label {
+#guide .tab_container [id^="tab"]:checked + label {
   background: #fff;
   box-shadow: inset 0 -3px #ffd400;
 }
 
-.tab_container [id^="tab"]:checked + label .fa {
+#guide .tab_container [id^="tab"]:checked + label .fa {
   color: #0CE;
 }
 
-label .fa {
+#guide label .fa {
   font-size: 1.3em;
 }
 
 /*Media query*/
 @media only screen and (max-width: 900px) {
-  label span {
+  #guide label span {
     display: none;
   }
   
-  .tab_container {
+  #guide .tab_container {
     width: 98%;
   }
 }
@@ -210,19 +210,19 @@ label .fa {
 
 <!--panel-->
 
-.wrapper{
+#guide .wrapper{
   width:70%;
 }
 @media(max-width:992px){
- .wrapper{
+ #guide .wrapper{
   width:100%;
 } 
 }
-.panel-heading {
+#guide .panel-heading {
   padding: 0;
 	border:0;
 }
-.panel-title>a, .panel-title>a:active{
+#guide .panel-title>a, .panel-title>a:active{
 	display:block;
 	padding:15px;
   color:#555;
@@ -233,42 +233,42 @@ label .fa {
   word-spacing:3px;
 	text-decoration:none;
 }
-.panel-heading  a:before {
+#guide .panel-heading  a:before {
    font-family: 'Glyphicons Halflings';
    content: "\e114";
    float: right;
    transition: all 0.5s;
 }
-.panel-heading.active a:before {
+#guide .panel-heading.active a:before {
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
-.panel {
+#guide .panel {
 	border-radius: 0px!important;
 	border-bottom: 0px!important;
 	margin-top: 0px!important;
 	text-align: left;
 }
-.panel-body {
+#guide .panel-body {
 	padding: 0px!important;
 }
-.dd li {
+#guide .dd li {
 	padding: 15px 40px;
 	border-top: 1px solid #ddd;
 	border-bottom: 0px;
 }
 
-.dd li > a:visited,
-.dd li > a:link{
+#guide .dd li > a:visited,
+#guide .dd li > a:link{
 	text-decoration: none;
 	color: #ccc;
 }
-.dd li > a:hover {
+#guide .dd li > a:hover {
 	text-decoration: none;
 	color: red;
 }
-.panel-group {
+#guide .panel-group {
 	margin-bottom: 0px!important;
 }
 
@@ -286,36 +286,36 @@ label .fa {
 
 
 /*怨좉컼�꽱�꽣*/
-textarea {
+#guide textarea {
 	resize: none;
 	width: 100%;
 	height: auto;
 	padding: 11px 30px;
 	border: 0px;
 }
-.question,
-.question-box {
+#guide .question,
+#guide .question-box {
 	padding:30px 15px 0px 15px;
 }
-.question-box h6 {
+#guide .question-box h6 {
 	margin: 10px 0px;
 }
-.question-box .area{
+#guide .question-box .area{
 	height: 204px;
 	width: 100%;
 	border: 1px solid #e6e6e6;
 	border-bottom: 0px;
 }
-.question-box div div{
+#guide .question-box div div{
 	margin: 5px;
 	height: auto;
 }
-.file-box {
+#guide .file-box {
 	min-height:50px; 
 	display: grid;
 	border: 1px solid #e6e6e6;
 }
-.question-box div a{	
+#guide .question-box div a{	
 	height: 30px;
 	border: 1px solid #e6e6e6;
 	border-radius: 4px;
@@ -323,16 +323,16 @@ textarea {
 	
 }
 
-.btn {
+#guide .btn {
 	background-color: #fff;
 }
-.btn:hover {
+#guide .btn:hover {
 	background-color: #fafafa;
 }
-.btn:active{
+#guide .btn:active{
 	background-color: #d4d4d4;
 }
-.a {
+#guide .a {
 	height: 100%!important;
 	width: 100%;
 	line-height: 50px!important;
@@ -342,11 +342,11 @@ textarea {
 	color: white!important;
 	font-weight: bold;
 }
-.a:hover {
+#guide .a:hover {
 	background-color: #ee3b27;
 	border-color: #e02611;
 }
-.a:active{
+#guide .a:active{
 	background-color: #e02611;
 	border-color: #e02611;
 }
@@ -364,7 +364,7 @@ textarea {
 
 <!--content 3-->
 
-#content 3 div{
+#guide #content 3 div{
 	border: 1px solid black;
 }
 
@@ -376,19 +376,19 @@ textarea {
   height:100%;
 }
 
-#wrap {
+#guide #wrap {
   width: 100%;
   height: 100%;
   margin: 0 auto;
 }
 
-.tab,
-.tab1 {
+#guide .tab,
+#guide .tab1 {
     cursor: pointer;
 }
 
 
-#container {
+#guide #container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -396,7 +396,7 @@ textarea {
     clear: left;
 }
 
-.box {
+#guide .box {
     display: inline-block;
     white-space: nowrap;
     position: absolute;
@@ -405,38 +405,38 @@ textarea {
     cursor: pointer;
 }
 
-#first {
+#guide #first {
     top: 0px;
     left: 0px;
 }
 
-#second {
+#guide #second {
     top: 0px;
     left: 100%;
 }
 
 
-#slide {
+#guide #slide {
     transition: transform 1s ease-in-out 0s;
     -moz-transition: -moz-transform 1s ease-in-out 0s;
     -webkit-transition: -webkit-transform 1s ease-in-out 0s;
     height: 100%;
 }
 
-.move-to-second {
+#guide .move-to-second {
     transform: translateX(-100%);
     -moz-transform: translateX(-100%);
     -webkit-transform: translateX(-100%);
 }
 
-.move-to-first {
+#guide .move-to-first {
     transform: translateX(0px);
     -moz-transform: translateX(0px);
     -webkit-transform: translateX(0px);    
 }
 
 
-.box section {
+#guide .box section {
 	display: block;
 }
 .panel-heading  a:before {
@@ -445,7 +445,7 @@ textarea {
    float: right;
    transition: all 0.5s;
 }
-.panel-heading.active a:before {
+#guide .panel-heading.active a:before {
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(180deg);
 	transform: rotate(180deg);
@@ -605,7 +605,7 @@ transform: rotate(135deg);
 #file {
 	display: none;
 }
-.btn {
+#guide .btn {
 	display: inline-block;
 	background-color: #f26656;
 	color: #fff;
@@ -614,19 +614,20 @@ transform: rotate(135deg);
 	height: 30px;
 	transition: all 200ms ease;
 }
-.file-btn {
+#guide .file-btn {
 	margin-top: 10px!important;
-	width: 85px;
-	box-shadow: none;
-	line-height: 14px;
+	width: 85px!important;
+	box-shadow: none!important;
+	line-height: 14px!important;
+	font-size: 14px!important;
 }
-.btn:hover {
-	background-color: #e02611;
+#guide .btn:hover {
+	background-color: #ee3d27;
 	color: #fff;
 	font-weight: normal;
 }
-.btn:active {
-	background-color: #ee3d27;
+#guide .btn:active {
+	background-color: #e02611;
 	transform: scale(0.98);
 	transition: all 70ms ease;
 }
@@ -650,7 +651,7 @@ transform: rotate(135deg);
 }
 #list > li > .thumb-wrapper {
 	width: 91px;
-	height: 91px;
+	height: 91px!important;
 	align-items: center;
 	border: 1px solid rgba(0,0,0,0.1);
 	padding: 3px;
