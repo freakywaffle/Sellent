@@ -1,0 +1,64 @@
+@charset "UTF-8";
+@import url("../inc/basic.css");
+
+
+
+
+
+.height-30{
+    height: 30px;
+}
+
+.height-40{
+    height: 40px;
+}
+
+#modal{
+    display: none;
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+}
+
+.modal-content{
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	border:1px solid #ccc;
+	padding: 20px;
+	margin:5% auto;
+	width:30%;
+}
+
+	.cancel-box{
+		text-align: end;
+	}
+	.cancel-box span{
+		cursor: pointer;
+	}
+
+	.input-box{
+		margin-top:10px;
+	}
+	
+	.input-box select{
+		height: 35px;
+		width:100%;
+	}
+
+	.input-box textarea{
+		height: 200px;
+		width:100%;
+	}
+
+	.reg-box{
+		text-align: end;
+	}
+
+	.reg-box button{
+		height:40px;
+		width:100px;
+	}
