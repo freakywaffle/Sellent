@@ -2,4 +2,148 @@
 @import url("../inc/basic.css");
 
 
+.category-sub button{
+    margin-left: auto;
+}
+
+.height-30{
+    height: 30px;
+}
+
+.width-60{
+    width:60%;
+}
+
+
+/*modal-회원등록*/
+#modal{
+    display: none;
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+}
+
+    #modal .modal-content{
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin:2% auto;
+        width:40%;
+    }
+    #modal .reg-button {
+        background-color: rgb(92, 184, 92);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+        width:100px;
+        height:40px;
+    }
+
+    #modal input[type=text],
+    #modal select,
+    #modal textarea{
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+        width:100%;
+    }
+
+    #modal textarea{
+        height: 100px;
+    }
+
+    #modal label {
+        display: inline-block;
+    }
+    
+    #modal .reg-box{
+        margin-top:10px;
+    }
+
+    #modal .col-25 {
+        margin-top: 10px;
+      }
+    
+    #modal .cancel-button{
+        font-size:20px;
+    }
+    #modal .cancel-button:hover{
+        cursor: pointer;
+    }
+
+
+/*modal2-메일전송*/
+
+#modal2{
+    display: none;
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+}
+/*수정구간-----------------------*/
+    #modal2 .mail{
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin:2% auto;
+        width:40%;
+    }
+
+    #modal2 .reg-button {
+        background-color: #5bc0de;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+        width:100px;
+        height:40px;
+    }
+
+    #modal2 .reg-box{
+        margin-top:10px;
+    }
+/*-------------------------------*/
+    #modal2 input[type=text],
+    #modal2 select,
+    #modal2 textarea{
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+        width:100%;
+    }
+
+    #modal2 textarea{
+        height: 200px;
+    }
+
+    #modal2 label {
+        display: inline-block;
+    }
+
+    #modal2 .col-25 {
+        margin-top: 10px;
+      }
+    
+    #modal2 .cancel-button{
+        font-size:20px;
+    }
+    #modal2 .cancel-button:hover{
+        cursor: pointer;
+    }
+
 

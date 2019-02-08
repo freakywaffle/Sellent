@@ -99,3 +99,27 @@
 	height:30px;
 	background-color:#7f7f7f;	
 }
+
+
+@media ( max-width :480px) {
+	.content{width:100%;}
+
+	#main-content,.message-list{		
+		margin-left:0px;
+		width: 100%;
+	}
+	.name-clock{width:auto;}
+	.message-profile img{
+		margin-left:10px;
+		width:100px;
+		height: 100px;
+	}
+	
+	.last-say{width:auto;}
+	.clock{margin-left:50%;}
+	.alarm{margin-left:85%;}
+	
+	
+	
+	
+}

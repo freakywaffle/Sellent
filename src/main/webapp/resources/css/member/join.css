@@ -1,150 +1,110 @@
- @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
- 
-  #main {
-     position: relative;
-     height: auto;
-     padding-top: 15px;
-     margin-left: auto;
-     margin-right: auto;
-    /*  background-color: indianred; */
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
 
-  }
-  #content-wrap{
-   	border:1px solid #8f939d;
-   	margin-bottom:20px;
-   	
-  }
-  #content-wrap, #joinbtn{
- 	width:800px;
- 	 margin-left: auto;
-    margin-right: auto;
-  }
-  .first-content, .second-content{
-  	width:755px;
-  	margin-left:45px;
- 
-  }
-  .first-content{
-  	border-bottom: dotted #d3d3d3;
-  	
-  }
-  .content-title{
-  	margin-top:20px;
-  	color:#ffd632;
-  	font-size:30px;
-  	 font-family: 'Do Hyeon', sans-serif;
-
-  	
-  }
-
-  .detail-content div{
-  	display: flex;
-  	margin-top:20px;
-  	}
-  	
-  	.detail-title,.detail-ctitle{
-		width:180px !important;
-  		direction:rtl;  		
-  		height:35px;
-  		font-size:18px;
-  		font-weight:bold;
-  		margin-top:0px !important;
-  		margin-left:0px !important;
-  		margin-right:20px !important;
+#main {
+   position: relative;
+   height: auto;
+   padding-top: 15px;
+   margin-left: auto;
+   margin-right: auto;
+}
+#wrap{
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	min-height: 500px;
+	border:1px solid #8f939d;
+}
+.basic{
+	width:790px;
+	margin-left:10px;
+	border-bottom: dotted #d3d3d3;
 	
-  	}
-  	.detail-text{
-		width:335px;
-  		margin-top:0px !important;
-  		margin-left:0px !important;
-  		margin-right: 0px !important;
-  	}
-  	.detail-text input{
-  		width:335px;
-  		border-radius: 8px;
-  		border:1px solid #8f939d;
-  		margin-right: 0px !important;
-  		margin-left:0px !important;
-  	}
-  	.detail-text2{
-	width:435px;
-	margin-top:0px !important;
-	margin-left:0px !important;
-	margin-right: 0px !important;
-  	}
-  	.detail-text2 input{
-  		width:435px;
-  		border-radius: 8px;
-  		border:1px solid #8f939d;
-  		margin-right: 0px !important;
-  		margin-left:0px !important;
-  	}
-  	
-  	.checkbtn input{
-  		color:white;
-  		text-align:center;
-  		font-size:13px;
-  		width:60px;
-  		height:30px;
-  		border:none;
-  		border-radius: 8px;	
-  		background-color: #8f939d;
-  		margin-left:10px !important;
-  		margin-right:0px !important;
-  	}
-  	.checkbtn{
-  	width:50px !important;
-  	margin-left: 0px !important;
-  	margin-right:0px !important;
-  	margin-top:3px !important;
-  	}
-  	.detail-ctext{
-		width:450px;
-  		margin-top:0px !important;
-  		margin-left:0px !important;
-  		margin-right: 0px !important;
-  	}
-  	.detail-ctext input{
-  		width:450px;
-  		border-radius: 8px;
-  		border:1px solid #8f939d;
-  		margin-right: 0px !important;
-  		margin-left:0px !important;
-  	}
-  	.detail-ctext textarea{
-  		width:450px;
-  		height:200px;
-  		border-radius: 8px;
-  		border:1px solid #8f939d;
-  		margin-right: 0px !important;
-  		margin-left:0px !important;
-  	}
-  	
-  	.tech{
-  		margin-bottom: 20px;
- 
-  	}
-  	
-  	#joinbtn{
-  		height: 50px;
-  		margin-bottom:10px;
-  		
-  	}
-  	#joinbtn input{
-  		width:500px;
-  		height: 50px;
-  		background-color: #ffd632;
-  		border-radius: 8px;
-  		margin-left:150px;
-  		color:white;
-  		text-align: center;
-  		font-size: 20px;
-  		font-weight: bold;
-  		border:none;
-  	}
-  	
-  	
-  	
-  	
-  	
+}
+.introduce{
+	width:790px;
+	margin-left:10px;
+	min-height:400px;
+}
+.head-title{
+	width:inherit;
+	min-height:50px;
+	font-size:30px;
+	line-height:50px;
+	color:#ffd632;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.profile{width:inherit; min-height: 150px; display:flex;}
+.profile img{
+	width:150px;
+	height: 150px; 
+	margin-left:325px;
+	border-radius: 100%;
+	border:1px solid;
+}
+.plus{
+	width:150px;
+	height: 150px; 
+	font-weight: bold;
+	border-radius: 100%;
+	opacity: 0.7;
+	color:white;
+	background-color:black;
+	border:none;
+	position:absolute;
+	margin-left:325px;
+	border:1px solid;
+	z-index: 30;
+	font-size:80px;
+	line-height:130px;
+	text-align: center;
+	
+}
+.twobind, .threebind, .ttwobind{width:inherit; display: flex; margin-top:20px;}
+.sub-title{ width:180px; height:30px; font-size:20px; font-weight: bold; margin-left:25px;direction: rtl;}
+.twobind input,.threebind input{margin-left:5px; width:400px; border-radius: 8px; border:1px solid #8f939d;}
+.ttwobind textarea{margin-left:5px; width:400px; border-radius: 8px; border:1px solid #8f939d; min-height: 250px;}
+.threebind input:first-child{margin-left:5px; margin-right:5px; border-radius: 8px; border:1px solid #8f939d;height: 30px;}
+.threebind input:last-child{background-color: gray; width:80px; color:white;  font-family: 'Do Hyeon', sans-serif; font-size:15px;}
+.email, .tech{margin-bottom: 10px;}
+#joinbtn{
+	width:800px;
+	min-height:50px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom: 20px;
+	
+}
+#joinbtn input{
+	width:600px;
+	height:50px;
+	margin-left: 100px;
+	color:white;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: #ffd632;
+	border-radius: 8px;
+	border:none; 
+}
+
+@media ( max-width :480px) {
+	#main{width:98%;}
+	#wrap, #joinbtn{width: 100%;}
+	.basic, .introduce, .head-title{width:auto}
+	.twobind, .threebind, .ttwobind{width:auto; display: unset;}
+	.sub-title{margin-bottom: 5px; margin-top:10px; direction: ltr; margin-left: 3%;}
+	.twobind input{width:90%; margin-left:4%; height: 30px;}
+	.threebind div:last-child{display:flex;}
+	.name input{width:70% !important;}
+	.threebind div:last-child input:first-child {width:83%; margin-left:4%;}
+	.threebind div:last-child input:last-child {width:75px;margin-left:0% !important; margin-right: 15px;}
+	.email div:last-child, .tech input{margin-bottom: 20px;}
+	.ttwobind textarea {width:90%; margin-left:4%;}
+	.profile{width:100%;}
+	.profile img{margin-left:4%;}
+	.plus{margin-left:1.8%;}
+	#joinbtn input{width: 90%; margin-left:5%;}
+}
+
+	
   	

@@ -26,9 +26,9 @@
 	</div>
 
 	<div class="complete">
-		<div>
+	
 			<input type="submit" value="수정하기" />
-		</div>
+
 	</div>
 	</div>
 </section>

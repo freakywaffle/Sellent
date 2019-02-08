@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/admin/board/banner.css" />
-<script src="/resources/js/admin/board/banner.js"></script>
+	href="/resources/css/admin/config/banner.css" />
+<script src="/resources/js/admin/config/banner.js"></script>
 
 <main id="main">
 
@@ -43,11 +43,12 @@
             </ul>
         </section>
 
-        <div class="category-sub">
+        <div class="table-top">
             <div>총 배너수 : 4</div>
+            <button type="button" class="btn btn-success reg-button">배너등록</button>
         </div>
 
-        <table class="category-list-table">
+        <table class="table-main">
             <thead class="thead">
                 <tr>
                     <td>
@@ -59,7 +60,7 @@
                     <td>시작일</td>
                     <td>마감일</td>
                     <td>남은기간</td>
-                    <td>순서</td>
+                    <td>순서(수정)</td>
                     <td>관리</td>
                     <td>편집</td>
                 </tr>
@@ -113,9 +114,8 @@
         </table>
 
 
-        <div class="select-delete">
+        <div class="table-bottom">
             <button type="button">선택삭제</button>
-            <button class="reg-button" type="button">배너등록</button>
         </div>
 
         <div class="last-check">
@@ -140,49 +140,49 @@
     </section>
 
     <div id="modal">
-        <div class="container">
+        <div class="modal-content">
             <form action="action_page.php">
                 <div style="width:100%; text-align:end">
                     <span class="glyphicon glyphicon-remove cancel-button" aria-hidden="true"></span>
                 </div>
-                <div class="row">
+                <div>
                 <div class="col-25">
                     <label for="fname">제목</label>
                 </div>
-                <div class="col-75">
-                    <input type="text" id="fname" name="firstname" placeholder="제목을 입력하세요..">
+                <div>
+                    <input class="height-30" type="text" id="fname" name="firstname" placeholder="제목을 입력하세요..">
                 </div>
                 </div>
-                <div class="row">
+                <div>
                 <div class="col-25">
                     <label for="lname">기간</label>
                 </div>
-                <div class="col-75">
-                    <input type="text" id="lname" name="lastname" placeholder="기간을 입력하세요..">
+                <div>
+                    <input class="height-30" type="text" id="lname" name="lastname" placeholder="기간을 입력하세요..">
                 </div>
                 </div>
-                <div class="row">
+                <div>
                 <div class="col-25">
                     <label for="country">이미지</label>
                 </div>
-                <div class="col-75">
-                    <select id="country" name="country">
-                    <option value="australia">Australia</option>
-                    <option value="canada">Canada</option>
-                    <option value="usa">USA</option>
+                <div>
+                    <select class="height-30" id="country" name="country">
+                        <option value="australia">Australia</option>
+                        <option value="canada">Canada</option>
+                        <option value="usa">USA</option>
                     </select>
                 </div>
                 </div>
-                <div class="row">
+                <div>
                 <div class="col-25">
                     <label for="subject">내용</label>
                 </div>
-                <div class="col-75">
+                <div>
                     <textarea id="subject" name="subject" placeholder="내용을 입력하세요.." style="height:200px"></textarea>
                 </div>
                 </div>
-                <div class="row">
-                <input type="button" value="배너등록">
+                <div >
+                    <input type="button" value="등록">
                 </div>
             </form>
         </div>

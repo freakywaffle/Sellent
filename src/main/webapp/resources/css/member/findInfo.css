@@ -76,22 +76,15 @@
       }
       #idFind input,  #pwdFind input{
          
-         margin-left: 77%;
+         margin-left: 70%;
       }
 
       .findId div:first-child, .findPwd div:first-child, .findId div input, .findPwd div input{
          /* background-color: #002060; */
          width: 90%;
-         margin-left: 25px;
+         margin-left: 5%;
+         margin-right: 5%;
       }
-      #login input{
-          margin-left: 30px;
-      }
-      .radioButton{
-          width: 100%;
-          padding-left: 20px;
-          
-      }
-      
+
       
         }

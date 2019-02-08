@@ -10,7 +10,7 @@
 }
 .select{
 	margin-top:25px;
-	margin-left:80%;
+	margin-left:70%;
 	
 }
 .select select{
@@ -91,5 +91,5 @@ thead th:first-child, tbody td:first-child{
 	.title, .table-id{
 		width:75%;
 	}
-	.select{margin-left:68%;}
+	.select{margin-left:60%;}
 }
