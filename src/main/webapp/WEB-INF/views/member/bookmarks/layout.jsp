@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/resources/js/category/layout.js" type="text/javascript"></script>
 <link href="/resources/css/common.css" rel="stylesheet"/>
 <link href="/resources/css/center.css" rel="stylesheet"/>
 

@@ -40,13 +40,12 @@ public class CategoryController {
 	public String reg() {
 		return "category.reg";
 	}
-	
 	@PostMapping("reg")
 	public String reg(Product product) {
 		
 		product.setWriterId("khh111");
 		List<ProductFile> files = new ArrayList<ProductFile>();
-		
+		System.out.println(product);
 		productService.insert(product, files);
 		
 		return "redirect:list";
