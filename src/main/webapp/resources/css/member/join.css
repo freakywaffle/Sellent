@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
 
+
 #main {
    position: relative;
    height: auto;
@@ -41,6 +42,7 @@
 	border-radius: 100%;
 	border:1px solid;
 }
+
 .plus{
 	width:150px;
 	height: 150px; 
@@ -58,6 +60,9 @@
 	line-height:130px;
 	text-align: center;
 	
+}
+#hidden {
+	display: none!important;
 }
 .twobind, .threebind, .ttwobind{width:inherit; display: flex; margin-top:20px;}
 .sub-title{ width:180px; height:30px; font-size:20px; font-weight: bold; margin-left:25px;direction: rtl;}
