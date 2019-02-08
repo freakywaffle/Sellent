@@ -96,6 +96,12 @@ public class MemberController {
 		return "member.mypage.index";
 	}
 	
+	@GetMapping("my_bookmarks")
+	public String bookmarks() {
+		
+		return "member.bookmarks";
+	}
+	
 	
 	 @PostMapping("idchk")
 	 @ResponseBody

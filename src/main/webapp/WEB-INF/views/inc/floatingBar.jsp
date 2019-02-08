@@ -567,7 +567,7 @@
   
   <div class="fab" id="fab4" data-tooltip="About"><a href="#"><i class="material-icons">account_circle</i></a></div>
   
-  <div class="fab" id="fab3" data-tooltip="Work"><a href="zzimm"><i class="material-icons">computer</i></a></div>
+  <div class="fab" id="fab3" data-tooltip="Work"><a href="/member/my_bookmarks"><i class="material-icons">computer</i></a></div>
   
     <div class="fab" id="fab2" data-tooltip="Contact"><a href="#"><i class="material-icons">send</i></a></div>
 </div>
