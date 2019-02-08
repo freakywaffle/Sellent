@@ -20,12 +20,14 @@ window.addEventListener("load", function(){
           reader.readAsDataURL(input.files[0]);
         }
     }
+})
 
+window.addEventListener("load", function(){
     //modal3
-    var fileBtn3 = document.querySelector("#modal3-file");
+    var fileBtn = document.querySelector("#modal3-file");
 
-    fileBtn3.onchange = function(){
-        readURL(fileBtn3);
+    fileBtn.onchange = function(){
+        readURL(fileBtn);
     }
 
     function readURL(input) {
@@ -39,9 +41,7 @@ window.addEventListener("load", function(){
           reader.readAsDataURL(input.files[0]);
         }
     }
-
 })
-
 
 /*modal- 이벤트전달- 버튼클릭시 input[type='file']실행 */
 window.addEventListener("load",function(){
@@ -55,9 +55,24 @@ window.addEventListener("load",function(){
         fileBtn.dispatchEvent(evt);
     })
 
-
-    
 })
+
+/*modal3- 이벤트전달- 버튼클릭시 input[type='file']실행 */
+window.addEventListener("load",function(){
+
+    var imgBtn = document.querySelector("#modal3-img-button");
+    var fileBtn = document.querySelector("#modal3-file");
+
+    imgBtn.addEventListener("click", function(){
+        var evt = new MouseEvent("click");
+
+        fileBtn.dispatchEvent(evt);
+    })
+
+})
+
+
+
 
 
 

@@ -196,11 +196,11 @@
                 </div>
 
                 <div class="modal3-img-box">
-                    
+                    <img id="modal3-img"/>
                 </div>
                 <div>
                     <input id="modal3-file" type="file" multiple="multiple"/>
-                    <button id="modal3-img" class="img-upload" type="button">이미지첨부</button>
+                    <button id="modal3-img-button" class="img-upload" type="button">이미지첨부</button>
                 </div>
             </div>
             <div>

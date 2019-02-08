@@ -161,6 +161,10 @@ div>input[type='file']{
         overflow: scroll;
     }
 
+	#modal-img{
+		width:100%;
+	}
+
     #modal-close-button{
         cursor: pointer;
     }
@@ -231,6 +235,10 @@ div>input[type='file']{
         height: 200px;
         overflow: scroll;
     }
+	
+	#modal3-img{
+		width:100%;
+	}
 
     #modal3-close-button{
         cursor: pointer;
