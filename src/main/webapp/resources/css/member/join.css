@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
 
+
 #main {
    position: relative;
    height: auto;
@@ -41,6 +42,7 @@
 	border-radius: 100%;
 	border:1px solid;
 }
+
 .plus{
 	width:150px;
 	height: 150px; 
@@ -58,6 +60,21 @@
 	line-height:130px;
 	text-align: center;
 	
+}
+.pwch{
+	position: relative;
+}
+#warning{
+
+	font-size: 13px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+	position: absolute;
+	right:60px;
+	top:10px;
+}
+#hidden {
+	display: none!important;
 }
 .twobind, .threebind, .ttwobind{width:inherit; display: flex; margin-top:20px;}
 .sub-title{ width:180px; height:30px; font-size:20px; font-weight: bold; margin-left:25px;direction: rtl;}
@@ -103,6 +120,7 @@
 	.profile{width:100%;}
 	.profile img{margin-left:4%;}
 	.plus{margin-left:1.8%;}
+	.warning{visibility: hidden;}
 	#joinbtn input{width: 90%; margin-left:5%;}
 }
 

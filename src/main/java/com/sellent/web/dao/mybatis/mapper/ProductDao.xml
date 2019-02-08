@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sellent.web.dao.ProductDao">
+	<select id="getList" resultType="com.sellent.web.entity.Product">
+		select * from product
+	</select>
+	<select id="get" resultType="com.sellent.web.entity.Product">
+		select 
+			no, 
+			title, 
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval 
+		from product where no = #{param1}
+	</select>
+	<insert id="insert" parameterType="com.sellent.web.entity.Product">
+		insert into product(
+			title, 
+			parent_category, 
+			sub_category, 
+			writer_id, 
+			simple_content, 
+			detail_content, 
+			price, 
+			sell_check, 
+			duration, 
+			edit_cnt)
+		values(
+			#{title}, 
+			#{parentCategory}, 
+			#{subCategory}, 
+			#{writerId}, 
+			#{simpleContent}, 
+			#{detailContent}, 
+			#{price}, 
+			#{sellCheck}, 
+			#{duration}, 
+			#{editCnt})
+	</insert>
+	<update id="update" parameterType="com.sellent.web.entity.Product">
+		update product set
+			title=#{title},
+			parent_category=#{parentCategory}, 
+			sub_category=#{subCategory}, 
+			writer_id=#{writerId}, 
+			simple_content=#{simpleContent}, 
+			detail_content=#{detailContent}, 
+			price=#{price}, 
+			sell_check=#{sellCheck}, 
+			duration=#{duration}, 
+			edit_cnt=#{editCnt}
+		where no=#{no}
+	</update>
+	<delete id="delete">
+		delete from product where no=#{param1}
+	</delete>
+</mapper>

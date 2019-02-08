@@ -125,6 +125,27 @@ $(document).ready(function(){
 		}
 	});
 	
+	//select, 직접입력을 hidden에 담기
+	function inputHidden(element){
+		var select = element.find('select');
+		var text = element.find('input');
+		var hidden = element.find('input[type="hidden"]');
+		
+		select.on('change', function(){
+			hidden.val(select.val());
+			if(select.val()=='직접입력'){
+				
+				text.off('keyup');
+				text.on('keyup',function(){
+					hidden.val(text.val());
+				});
+			}
+		});
+	}
+	
+	inputHidden($('.edit-cnt'));
+	inputHidden($('.term'));
+	
 	
 	//이미지 클릭해서 대표 선택
 	var imgs = $('.img-list img');
