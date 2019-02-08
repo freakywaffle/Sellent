@@ -37,7 +37,7 @@ html, body {
 	height: calc(100% - 50px);
 }
 
-label {
+#guide label {
 	margin: 0px!important;
 	height: 50px;
 }
@@ -120,7 +120,7 @@ a {
   border: 1px solid #e6e6e6;
 }
 
-label {
+#guide label {
   font-weight: 700;
   font-size: 16px;
   display: block;
@@ -136,7 +136,7 @@ label {
 }
 
 .close-label {
-  width: 10%;
+  width: 10%!important;
 }
 
 #tab1:checked ~ #content1,
@@ -285,7 +285,7 @@ label .fa {
 
 
 
-/*고객센터*/
+/*怨좉컼�꽱�꽣*/
 textarea {
 	resize: none;
 	width: 100%;
@@ -575,7 +575,7 @@ transform: rotate(135deg);
 
 
 
-<!--파일첨부-->
+<!--�뙆�씪泥⑤�-->
 
 
 
