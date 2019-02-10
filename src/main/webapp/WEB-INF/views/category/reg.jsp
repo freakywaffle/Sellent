@@ -10,7 +10,7 @@
 			<li><a class="nav-3">STEP3</a></li>
 		</ul>
 	</div>
-	<form class="reg-form" action="reg" method="post">
+	<form class="reg-form" action="reg" method="post" enctype="multipart/form-data">
 		<div class="step step1">
 			<div class="sell-toggle-form">
 				<h3>판매희망</h3>
@@ -90,8 +90,8 @@
 									<option>직접입력</option>
 								</select>
 								<input type="number" min="0" placeholder="직접입력"/>
-								<label>회</label>
 								<input type="hidden" name="editCnt"/>
+								<label>회</label>
 							</div>
 							<label>작업기간</label>
 							<div class="term select">
@@ -105,8 +105,8 @@
 									<option>직접입력</option>
 								</select>
 								<input type="number" min="0" placeholder="직접입력"/>
-								<label>일</label>
 								<input type="hidden" name="duration"/>
+								<label>일</label>
 							</div>
 						</div>
 					</div>
@@ -132,8 +132,6 @@
 					<input type="file" class="openfolder hidden" multiple="multiple"/>
 					<div class="img-list">
 						<ul>
-							<li><img src="/resources/images/650_400/post_img_650_400.png" /></li>
-							<li><img src="/resources/images/650_400/post_img2_650_400.png" /></li>
 						</ul>
 					</div>
 					

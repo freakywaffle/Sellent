@@ -147,35 +147,103 @@ $(document).ready(function(){
 	inputHidden($('.term'));
 	
 	
-	//이미지 클릭해서 대표 선택
-	var imgs = $('.img-list img');
-	var upImages = $('.up-images');
-	var img = $('<img />');
-	
-	imgs.on('click',function(e){
-		
-		upImages.addClass('back-none');
-		img.attr('src',$(e.target).attr('src'));
-		if(upImages.children().length==0)	
-			upImages.append(img);
-		else
-			upImages.find('img').replaceWith(img);
-	});
-	
 	//추가 이미지 클릭해서 파일띄우기
+	var upImages = $('.up-images');
 	var openBt = $('.openfolder');
 	upImages.on('click', function(){
 		openBt.trigger('click');
 	});
 	
+	//이미지 클릭해서 대표 선택
+	var imgList = $('.img-list');
+	
+	imgList.on('click', function(e){
+		var imgTag = new Image();
+		upImages.addClass('back-none');
+		imgTag.src = $(e.target).attr('src');
+		imgTag.onload = function(){
+			var canvas = $('<canvas></canvas>').get(0);
+			var canvasContext = canvas.getContext('2d');
+			
+			canvas.width = 650;
+			canvas.height = 400;
+			
+			canvasContext.drawImage(this, 0, 0, 650, 400);
+	
+			var dataURI = canvas.toDataURL("image/jpeg");
+			
+			imgTag.src = dataURI;
+		}
+		
+		if(upImages.children().length==0)	
+			upImages.append(imgTag);
+		else
+			upImages.find('img').replaceWith(imgTag);
+	});
 	
 	
-	//파일 다중업로드
-	openBt.change(function(e) {
-		alert(e.target.files);
+	//이미지 업로드
+	var preview = $('.img-list ul');
+	
+	openBt.on('change', function() {
+		var fileList = openBt.prop('files');
+		var formData = new FormData();
+		//업로드할 이미지 리스트화
+		for(var i=0;i<fileList.length;i++){
+			var reader = new FileReader();
+			reader.readAsDataURL(fileList[i]);
+			reader.addEventListener('load',function(e){
+				var li = $('<li></li>');
+				
+				var file = e.target;
+				var img = new Image();
+				img.src = file.result;
+				img.onload = function(){
+					var canvas = $('<canvas></canvas>').get(0);
+					var canvasContext = canvas.getContext('2d');
+					
+					canvas.width = 150;
+					canvas.height = 150;
+					
+					canvasContext.drawImage(this, 0, 0, 150, 150);
+
+					var dataURI = canvas.toDataURL("image/jpeg");
+
+					img.src = dataURI;
+				};
+				
+				li.append(img);
+				preview.append(li);
+				console.log(i+'완료');
+				
+				
+			});
+			//이미지 업로드
+			formData.append('img', fileList[i]);
+			
+		}
+		
+		
+		$.ajax({
+	        url: 'imageUp',
+	        data: formData,
+	        processData: false,
+	        contentType: false, 
+	        type: 'POST',
+
+	        success: function (data) {
+	        	preview.find('img').eq(0).trigger('click');
+	        }
+	    });
+		
+		
+		
 	});
 	
 	
 	
 	
 });
+
+
+
