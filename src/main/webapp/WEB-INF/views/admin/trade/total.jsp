@@ -27,11 +27,9 @@
             <label class="condition-title">등록일</label>
             
             <div class="condition-content">
-                <input type="date"/>
-                <span style="margin-right: 5px" class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                ~
-                <input class="mg-left-5" type="date"/>
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <input id="datepicker"type="text"/>
+                <span class="mg-left-5">~</span>
+                <input id="datepicker2" class="mg-left-5" type="text"/>
             </div>
         </div>
 
@@ -59,7 +57,7 @@
             <thead class="thead">
                 <tr>
                     <td>
-                        <input type="checkbox"/>
+                        <input id="total-check" type="checkbox"/>
                     </td>
                     <td>번호</td>
                     <td>구매자</td>
@@ -96,7 +94,7 @@
         </table>
 
 		<div class="table-bottom">
-            <button type="button">선택삭제</button>
+            <button id="select-remove" type="button">선택삭제</button>
         </div>
 
         <div class="paging">
@@ -114,7 +112,18 @@
             </div>
         </div>
     </section>
-
+	<div id="modal2">
+		<div class="modal2-content">
+			<div class="cancel-box">
+				<span id="modal2-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</div>
+			<h1>정말 삭제하시겠습니까?</h1>
+			<div class="modal2-checkbox">
+				<button id="modal2-check" type="button">확인</button>
+				<button id="modal2-cancel" type="button">취소</button>
+			</div>
+		</div>
+	</div>
 </main>
 
 

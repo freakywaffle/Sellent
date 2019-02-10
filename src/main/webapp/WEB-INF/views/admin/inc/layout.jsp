@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- 자바스크립트 공통 -->
+
 <!-- 구글 폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
@@ -43,6 +46,7 @@
 			</section>
 		</div>
 	</div>
+	
 	<!-- footer -->
 	<tiles:insertAttribute name="footer"/>
 </body>

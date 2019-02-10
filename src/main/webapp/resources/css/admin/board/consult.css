@@ -1,6 +1,12 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
 
+label{
+	height: 100%;
+}
+
+
+
 
 #modal{
 	display: none;
@@ -15,13 +21,13 @@
 
 .modal-content{
 	background:#fefefe;
-	width:40%;
+	padding:20px;
+	width:700px;
 	margin:3% auto;
 	border: 1px solid #ccc;
 }
 
 .modal-content h1{
-	margin:30px;
 	text-align: center;
 }
 
@@ -33,41 +39,51 @@
 	border-bottom:1px solid #ccc!important;
 }
 
-.customer-info label{
-	width:150px;
-	background-color:#e6e6e6;
-	border-right: 1px solid #ccc;
-	padding:10px;
+.customer-info{
+	margin-top:10px;
 }
 
+	.customer-info label{
+		width:150px;
+		background-color:#e6e6e6;
+		border-right: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		padding:10px;
+	}
 
-.anser-box{
-	padding:10px;
+	.customer-info div{
+		border-top:1px solid #ccc;
+		border-right: 1px solid #ccc;
+	}
+
+.customer-content{
 	margin-top:20px;
 }
 
-.anser-box div{
-	border:1px solid #ccc;
-	height: 150px;
+	.customer-content .admin-answer{
+		margin-top:20px;
+	}
+
+	.question textarea{
+		background-color:#e6e6e6;
+		height: 150px;
+		border:1px solid #ccc;
+		resize:none;
+	}
+
+	.admin-answer textarea{
+		border:1px solid #ccc;
+		height: 150px;
+		width:100%;
+		resize:none;
+	}
+
+.reg-box{
+	text-align: end;
+	margin-top:5px;
 }
 
-.question div{
-	background-color:#e6e6e6;
-}
-
-
-.admin-answer textarea{
-	border:1px solid #ccc;
-	height: 150px;
-	width:100%;
-	resize:none;
-}
-
-.check-box{
-	margin-bottom: 10px;
-}
-
-.check-box button{
-	width:70px;
-	height: 40px;
-}
+	.reg-box button{
+		height:40px;
+		width:100px;
+	}

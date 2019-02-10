@@ -5,64 +5,24 @@
 <script src="/resources/js/admin/config/banner.js"></script>
 
 <main id="main">
-
-    <section class="category-list bd-2 bd-color-gray  border-box">
-
-        <section class="banner-box">
-            <ul class="banner-list">
-                <li style="margin-right:1px" class="left-move"></li>
-                <li class="banner">
-                    <div class="banner-title">
-                        <label>제목</label>
-                        <span>X</span>
-                    </div>
-                    <div class="banner-img">이미지</div>
-                </li>
-                <li class="banner">
-                    <div class="banner-title">
-                        <label>제목</label>
-                        <span>X</span>
-                    </div>
-                    <div class="banner-img">이미지</div>
-                </li>
-                <li class="banner">
-                    <div class="banner-title">
-                        <label>제목</label>
-                        <span>X</span>
-                    </div>
-                    <div class="banner-img">이미지</div>
-                </li>
-                <li class="banner">
-                    <div class="banner-title">
-                        <label>제목</label>
-                        <span>X</span>
-                    </div>
-                    <div class="banner-img">이미지</div>
-                </li>
-                <li style="margin-left:1px" class="right-move"></li>
-            </ul>
-        </section>
-
+    <section class="content-box">
         <div class="table-top">
             <div>총 배너수 : 4</div>
-            <button type="button" class="btn btn-success reg-button">배너등록</button>
+            <button id="reg-button" type="button" class="btn btn-success">배너등록</button>
         </div>
 
         <table class="table-main">
             <thead class="thead">
                 <tr>
                     <td>
-                        <input type="checkbox"/>
+                        <input id="total-check" type="checkbox"/>
                     </td>
-                    <td>번호</td>
+                    <td>순서</td>
                     <td>이미지</td>
                     <td>제목</td>
-                    <td>시작일</td>
-                    <td>마감일</td>
-                    <td>남은기간</td>
-                    <td>순서(수정)</td>
+                    <td>사용여부</td>
+                    <td>종료일</td>
                     <td>관리</td>
-                    <td>편집</td>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -70,58 +30,59 @@
                     <td>
                         <input type="checkbox"/>
                     </td>
-                    <td>3</td>
-                    <td>이미지</td>
-                    <td>사이트 홍보</td>
-                    <td>2019.01.13</td>
-                    <td>2019.02.23</td>
-                    <td>20</td>
-                    <td>3</td>
+                    <td>2</td>
+                    <td class="text-align">
+                        <div class="img-box">
+
+                        </div>
+                    </td>
+                    <td>제목</td>
                     <td>
-                        <!-- Rounded switch -->
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
                         </label>
+                        <p>ON</p><p style="display:none;">OFF</p>
                     </td>
+                    <td>종료일</td>
                     <td>
-                        <button type="button" class="btn btn-primary edit-button">수정</button>
+                        <button type="button" class="btn btn-danger edit-button">수정
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox"/>
                     </td>
-                    <td>3</td>
-                    <td>이미지</td>
-                    <td>사이트 홍보</td>
-                    <td>2019.01.13</td>
-                    <td>2019.02.23</td>
-                    <td>20</td>
-                    <td>2</td>
+                    <td>1</td>
+                    <td class="text-align">
+                            <div class="img-box">
+    
+                            </div>
+                        </td>
+                    <td>제목</td>
                     <td>
-                        <!-- Rounded switch -->
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
                         </label>
+                        <p>ON</p><p style="display:none;">OFF</p>
                     </td>
+                    <td>종료일</td>
                     <td>
-                        <button type="button" class="btn btn-primary edit-button">수정</button>
+                        <button type="button" class="btn btn-danger edit-button">수정
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
-
-
-        <div class="table-bottom">
-            <button type="button">선택삭제</button>
-        </div>
-
-        <div class="last-check">
-            <button type="button" class="btn btn-danger">확인</button>
-            <button type="button" class="btn btn-danger">초기화</button>
-        </div>
+    </section>
+		<div class="table-bottom">
+            <button id="select-remove" type="button">선택삭제</button>
+            <button id="save-button" type="button" class="btn btn-warning">저장</button>
+		</div>
 
         <div class="paging">
             
@@ -139,54 +100,121 @@
         </div>
     </section>
 
-    <div id="modal">
-        <div class="modal-content">
-            <form action="action_page.php">
-                <div style="width:100%; text-align:end">
-                    <span class="glyphicon glyphicon-remove cancel-button" aria-hidden="true"></span>
-                </div>
-                <div>
+	<div id="modal">
+		<div class="modal-content">
+            <div class="cancel-box">
+                <span id="modal-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </div>
+
+            <h1>배너등록하기</h1>
+
+            <div>
                 <div class="col-25">
-                    <label for="fname">제목</label>
+                    <label>제목</label>
                 </div>
                 <div>
-                    <input class="height-30" type="text" id="fname" name="firstname" placeholder="제목을 입력하세요..">
+                    <input class="height-30" type="text">
                 </div>
-                </div>
-                <div>
+            </div>
+            <div>
                 <div class="col-25">
-                    <label for="lname">기간</label>
+                    <label>기간</label>
                 </div>
-                <div>
-                    <input class="height-30" type="text" id="lname" name="lastname" placeholder="기간을 입력하세요..">
+                <div class="end-date">
+                    <span class="mg-left-5">종료일 : </span>
+                    <input id="datepicker2" class="mg-left-5" type="text" style="width:150px"/>
                 </div>
-                </div>
-                <div>
+            </div>
+            <div>
                 <div class="col-25">
-                    <label for="country">이미지</label>
+                    <label>이미지</label>
                 </div>
+
+                <div class="modal-img-box">
+                    <img id="modal-img"/>
+                </div>
+
                 <div>
-                    <select class="height-30" id="country" name="country">
-                        <option value="australia">Australia</option>
-                        <option value="canada">Canada</option>
-                        <option value="usa">USA</option>
-                    </select>
+                    <input id="modal-file" type="file" multiple="multiple"/>
+                    <button id="modal-img-button" class="img-upload" type="button">이미지첨부</button>
                 </div>
-                </div>
-                <div>
+            </div>
+            <div>
                 <div class="col-25">
-                    <label for="subject">내용</label>
+                    <label>내용</label>
                 </div>
                 <div>
-                    <textarea id="subject" name="subject" placeholder="내용을 입력하세요.." style="height:200px"></textarea>
+                    <textarea placeholder="내용을 입력하세요."></textarea>
                 </div>
+            </div>
+
+            <div class="reg-box">
+                <button id="modal-check" type="button" class="btn btn-success">확인</button>
+			</div>
+		</div>
+	</div>
+	<div id="modal2">
+		<div class="modal2-content">
+			<div class="cancel-box">
+				<span id="modal2-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</div>
+			<h1>정말 삭제하시겠습니까?</h1>
+			<div class="modal2-checkbox">
+				<button id="modal2-check" type="button">확인</button>
+				<button id="modal2-cancel" type="button">취소</button>
+			</div>
+		</div>
+    </div>
+    <div id="modal3">
+        <div class="modal3-content">
+            <div class="cancel-box">
+                <span id="modal3-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </div>
+
+            <h1>배너수정</h1>
+
+            <div>
+                <div class="col-25">
+                    <label>제목</label>
                 </div>
-                <div >
-                    <input type="button" value="등록">
+                <div>
+                    <input class="height-30" type="text">
                 </div>
-            </form>
+            </div>
+            <div>
+                <div class="col-25">
+                    <label>기간</label>
+                </div>
+                <div class="end-date">
+                    <span class="mg-left-5">종료일 : </span>
+                    <input id="datepicker3" class="mg-left-5" type="text" style="width:150px"/>
+                </div>
+            </div>
+            <div>
+                <div class="col-25">
+                    <label>이미지</label>
+                </div>
+
+                <div class="modal3-img-box">
+                    <img id="modal3-img"/>
+                </div>
+                <div>
+                    <input id="modal3-file" type="file" multiple="multiple"/>
+                    <button id="modal3-img-button" class="img-upload" type="button">이미지첨부</button>
+                </div>
+            </div>
+            <div>
+                <div class="col-25">
+                    <label>내용</label>
+                </div>
+                <div>
+                    <textarea placeholder="내용을 입력하세요."></textarea>
+                </div>
+            </div>
+
+            <div class="reg-box">
+                <button id="modal3-check" type="button" class="btn btn-success">확인</button>
+            </div>
         </div>
     </div>
-
-
 </main>
