@@ -47,10 +47,17 @@ public class CategoryController {
 	public String detail(@PathVariable("no") Integer no, Model model) {
 		String root = "/sellent/upload/";
 		Map<String, Object> product = productService.getProductByNo(no);
-		model.addAttribute("product",product.get("product"));
-		model.addAttribute("files",product.get("files"));
-		model.addAttribute("root", root);
-		model.addAttribute("thumbnail", ((List<ProductFile>)product.get("files")).get(1).getSaveName());
+		
+		Product pp = (Product)product.get("product");
+		List<ProductFile> pf = (List<ProductFile>)product.get("files");
+		
+		if(pp != null) 
+			model.addAttribute("product", pp);
+		if(pf.size() != 0) {
+			model.addAttribute("files", pf);
+			model.addAttribute("root", root);
+			model.addAttribute("thumbnail", pf.get(0).getSaveName());
+		}
 		
 		return "category.detail";
 	}
@@ -60,7 +67,7 @@ public class CategoryController {
 		return "category.reg";
 	}
 	
-	private ArrayList<ProductFile> tempFiles; 
+	private ArrayList<ProductFile> tempFiles;
 	
 	@PostMapping("reg")
 	public String reg(Product product) {

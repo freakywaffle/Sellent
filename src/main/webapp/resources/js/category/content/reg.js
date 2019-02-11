@@ -69,8 +69,7 @@ $(document).ready(function(){
 		var current = $(e.target);
 		var idx = current.index('.radio-bt');
 		var sellChk = $('.sell-chk'); 
-		sellChk.attr('checked',false);
-		sellChk.eq(idx).attr('checked',true);
+		sellChk.eq(idx).prop('checked',true);
 		
 		
 		if(!current.hasClass('selected')){

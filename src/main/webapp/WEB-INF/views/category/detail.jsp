@@ -12,7 +12,9 @@
 			<div>
 				<div class="post-img">
 					<div>
-						<img src='<spring:url value="${root }"/>${product.no}/${thumbnail}' />
+						<c:if test="${!empty thumbnail}">
+							<img src='<spring:url value="${root }"/>${product.no}/${thumbnail}' />
+						</c:if>
 					</div>
 					<div>
 						<ul class="img-list">
