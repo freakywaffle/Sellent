@@ -25,7 +25,17 @@ public class MyBatisProductDao implements ProductDao{
 	@Override
 	public Product get(int no) {
 		// TODO Auto-generated method stub
-		return null;
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.get(no);
+	}
+	
+	@Override
+	public int getRecentlyNo() {
+		// TODO Auto-generated method stub
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getRecentlyNo();
 	}
 
 	@Override
@@ -48,4 +58,6 @@ public class MyBatisProductDao implements ProductDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 }

@@ -27,22 +27,16 @@
 	z-index: 5;
 }
 
+    #modal-close-button{
+        cursor: pointer;
+    }
+
     #modal .modal-content{
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;
-        margin:2% auto;
-        width:40%;
-    }
-    #modal .reg-button {
-        background-color: rgb(92, 184, 92);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        float: right;
-        width:100px;
-        height:40px;
+        margin:1% auto;
+        width:600px;
     }
 
     #modal input[type=text],
@@ -65,11 +59,17 @@
     }
     
     #modal .reg-box{
-        margin-top:10px;
+        margin-top:5px;
+        text-align: end;
     }
 
+        #modal-check{
+            height: 40px;
+            width: 100px;
+        }
+
     #modal .col-25 {
-        margin-top: 10px;
+        margin-top: 5px;
       }
     
     #modal .cancel-button{
@@ -80,9 +80,9 @@
     }
 
 
-/*modal2-메일전송*/
+/*modal3-메일전송*/
 
-#modal2{
+#modal3{
     display: none;
 	position: fixed;
 	top:0;
@@ -92,33 +92,26 @@
 	background: rgba(0,0,0,0.4);
 	z-index: 5;
 }
-/*수정구간-----------------------*/
-    #modal2 .mail{
+    #modal3 .mail{
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;
         margin:2% auto;
-        width:40%;
+        width:600px;
     }
 
-    #modal2 .reg-button {
-        background-color: #5bc0de;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        float: right;
+    #modal3-check{
         width:100px;
-        height:40px;
+        height: 40px;
     }
 
-    #modal2 .reg-box{
-        margin-top:10px;
+    #modal3 .reg-box{
+        text-align: end;
     }
-/*-------------------------------*/
-    #modal2 input[type=text],
-    #modal2 select,
-    #modal2 textarea{
+
+    #modal3 input[type=text],
+    #modal3 select,
+    #modal3 textarea{
         padding: 5px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -127,23 +120,102 @@
         width:100%;
     }
 
-    #modal2 textarea{
+    #modal3 textarea{
         height: 200px;
     }
 
-    #modal2 label {
+    #modal3 label {
         display: inline-block;
     }
 
-    #modal2 .col-25 {
-        margin-top: 10px;
+    #modal3 .col-25 {
+        margin-top: 5px;
       }
     
-    #modal2 .cancel-button{
+    #modal3 .readonly{
+    	background-color: #e6e6e6;
+    }
+    
+    #modal3 .cancel-button{
         font-size:20px;
     }
-    #modal2 .cancel-button:hover{
+    #modal3 .cancel-button:hover{
         cursor: pointer;
     }
 
+    #modal3-close-button{
+        cursor: pointer;
+    }
+    
 
+/*modal4-회원정보보기*/
+#modal4{
+    display: none;
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 5;
+}
+
+    #modal4 input[type='text']{
+        background-color: #e6e6e6;
+    }
+
+    #modal4 textarea{
+        background-color: #e6e6e6;
+    }
+
+    #modal4-close-button{
+        cursor: pointer;
+    }
+
+    #modal4 .modal4-content{
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin:1% auto;
+        width:700px;
+    }
+
+    #modal4 input[type=text],
+    #modal4 select,
+    #modal4 textarea{
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+        width:100%;
+    }
+
+    #modal4 textarea{
+        height: 100px;
+    }
+
+    #modal4 label {
+        display: inline-block;
+    }
+    
+    #modal4 .reg-box{
+        margin-top:5px;
+        text-align: end;
+    }
+
+        #modal4-check{
+            height: 40px;
+            width: 100px;
+        }
+
+    #modal4 .col-25 {
+        margin-top: 5px;
+      }
+    
+    #modal4 .cancel-button{
+        font-size:20px;
+    }
+    #modal4 .cancel-button:hover{
+        cursor: pointer;
+    }

@@ -13,5 +13,22 @@ public class MemberController {
 		return "admin.member.member";
 	}
 
+	@RequestMapping("point")
+	public String point() {
+		
+		return "admin.member.point";
+	}
+	
+	@RequestMapping("chat")
+	public String chat() {
+		
+		return "admin.member.chat";
+	}
+	
+	@RequestMapping("state")
+	public String state() {
+		
+		return "admin.member.state";
+	}
 	
 }

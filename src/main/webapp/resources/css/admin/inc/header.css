@@ -59,4 +59,24 @@
 }
 
 
+/*-----hover시 하위목록 보이기------*/
 
+.bottom-header-menu ul
+{
+	display:none;
+	position:relative;
+	padding:0;
+	border:1px solid rgb(255, 214, 51);
+	background-color: #fff;
+}
+
+.bottom-header-menu li:hover > ul
+{
+	z-index: 100;
+	display:block;
+}
+
+.bottom-header-menu li li{
+	height: 35px;
+	line-height: 35px;
+}

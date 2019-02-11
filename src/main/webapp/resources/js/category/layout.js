@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	var t = null;
 	var st = null;
 
@@ -53,4 +53,4 @@ $(document).ready(function() {
 		for (var i = 0; i < items.length; i++)
 			items.eq(i).css(x[i]);
 	});
-});
+});*/

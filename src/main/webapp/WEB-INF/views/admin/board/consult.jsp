@@ -26,11 +26,9 @@
             <label class="condition-title">등록일</label>
         
             <div class="condition-content">
-                <input type="date"/>
-                <span style="margin-right: 5px" class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                ~
-                <input class="mg-left-5" type="date"/>
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <input id="datepicker"type="text"/>
+                <span class="mg-left-5">~</span>
+                <input id="datepicker2" class="mg-left-5" type="text"/>
             </div>
         </div>
 
@@ -61,7 +59,7 @@
             <thead class="thead">
                 <tr>
                     <td>
-                        <input type="checkbox"/>
+                        <input id="total-check" type="checkbox"/>
                     </td>
                     <td>번호</td>
                     <td>제목</td>
@@ -98,7 +96,7 @@
 
 
         <div class="table-bottom">
-            <button type="button">선택삭제</button>
+            <button id="select-remove" type="button">선택삭제</button>
         </div>
 
         <div class="paging">
@@ -119,43 +117,55 @@
     <div id="modal">
 
         <div class="modal-content">
+            <div class="cancel-box">
+				<span id="modal-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </div>
             
             <h1>1:1문의 답변하기</h1>
             
-            <div class="customer-info border-top">
-                <label>제목</label>
-                <span>평가글 시스템 질문드립니다.</span>
-            </div>
-
-            <div class="customer-info border-top">
-                <label>작성자</label>
-                <span>newlec</span>
-            </div>
-
-            <div class="customer-info border-top border-bottom">
-                <label>이메일</label>
-                <span>newlec@naver.com</span>
-            </div>
-
-            <div class="question anser-box border-bottom">
-                <label>질문내용</label>
+            <section class="customer-info">
                 <div>
-                    <span>내용</span>
+                    <label>제목</label>
+                    <span>평가글 시스템 질문드립니다.</span>
                 </div>
-            </div>
 
-            <div class="admin-answer anser-box">
-                <label>답변내용</label>
-                <textarea>
-                    
-                </textarea>
-            </div>
+                <div>
+                    <label>작성자</label>
+                    <span>newlec</span>
+                </div>
 
-            <div class="check-box text-align">
-                <button class="check-button">확인</button>
-                <button class="cancel-button">취소</button>
-            </div>
+                <div class="border-bottom">
+                    <label>이메일</label>
+                    <span>newlec@naver.com</span>
+                </div>
+            </section>
+
+            <section class="customer-content">
+                <div class="question">
+                    <label style="display: block">질문내용</label>
+                    <textarea style="width:100%" placeholder="내용~~" readonly></textarea>
+                </div>
+
+                <div class="admin-answer">
+                    <label>답변내용</label>
+                    <textarea></textarea>
+                </div>
+            </section>
+            <div class="reg-box">
+				<button id="modal-check" type="button" class="btn btn-primary">답변하기</button>
+			</div>
         </div>
     </div>
-
+    <div id="modal2">
+		<div class="modal2-content">
+			<div class="cancel-box">
+				<span id="modal2-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</div>
+			<h1>정말 삭제하시겠습니까?</h1>
+			<div class="modal2-checkbox">
+				<button id="modal2-check" type="button">확인</button>
+				<button id="modal2-cancel" type="button">취소</button>
+			</div>
+		</div>
+	</div>
 </main>

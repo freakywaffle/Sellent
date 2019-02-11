@@ -7,110 +7,123 @@
 
 <main id="main">
 
-	<section class="content-box">
-		
-		<div class="condition-form">
-			
-			<label class="condition-title">게시판 검색</label>
-			
-			<div class="condition-content">
-				<select id="group-select">
-					<option>그룹검색</option>
-					<option>IT개발</option>
-					<option>디자인</option>
-					<option>번역</option>
-					<option>음악/더빙</option>
-				</select>
-				<select id="category-select" class="mg-left-5">
-						<option>카테고리검색</option>
-						<option>프로그래밍</option>
-						<option>데이터베이스</option>
-						<option>웹 퍼블리셔</option>
-						<option>홈페이지 제작</option>
-						<option>서버</option>
-					</select>
-				<input id="text" class="mg-left-5" type="text"/>
-				<button id="search-button" type="button" class="btn btn-primary">검색</button>
-			</div>
+    <section class="content-box">
+        
+        <div class="condition-form">
+
+            <label class="condition-title">회원등급</label>
+            
+            <div class="condition-content">
+                <select>
+                    <option>전체</option>
+                    <option>관리자</option>
+                    <option>일반회원</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="condition-form" style="border-top:none">
+            <label class="condition-title">등록일</label>
+        
+            <div class="condition-content">
+                <input id="datepicker"type="text"/>
+                <span class="mg-left-5">~</span>
+                <input id="datepicker2" class="mg-left-5" type="text"/>
+            </div>
+        </div>
+
+        <div class="condition-form" style="border-top:none">
+            <label class="condition-title">키워드검색</label>
+    
+            <div class="condition-content">
+                <select>
+                    <option>아이디</option>
+                    <option>이름</option>
+                </select>
+                <input class="mg-left-5" type="text">
+            </div>
+        </div>
+
+        <div class="search-form">
+			<button type="button" class="btn btn-primary">검색하기</button>
+        </div>
+
+		<div class="explan">
+			<p>1: 관리자</p>
+			<p>0: 일반회원</p>
 		</div>
 
-		<div class="table-top">
-			<div>총 게시판수 : 24</div>
-			<button id="total-edit-button" type="button">게시판편집</button>
-		</div>
+        <div class="table-top">
+            <div>총 게시판수 : 441</div>
+        </div>
 
-		<table class="table-main">
-			<thead class="thead">
-				<tr>
-					<td class="w-60">
-						<input id="total-check" type="checkbox"/>
-					</td>
-					<td class="w-100">번호</td>
-					<td>그룹명</td>
-					<td>게시판명</td>
-					<td class="w-100">게시물수</td>
-					<td class="w-100">기능</td>
-				</tr>
+        <table class="table-main">
+            <thead class="thead">
+                <tr>
+                    <td>번호</td>
+					<td>아이디</td>
+					<td>이름</td>
+					<td>등록일</td>
+					<td>등급</td>
+					<td>등급변경</td>
+                </tr>
 			</thead>
-
-			<tbody class="tbody">
-				<tr>
+			
+            <tbody class="tbody">
+                <tr>
+                    <td>4</td>
+					<td>asds30</td>
+					<td>장독대</td>
+					<td>관리자</td>
+					<td>2019.01.02</td>
 					<td>
-						<input type="checkbox"/>
+						<input class="spinner" name="value" value="1">
+						<button type="button" class="btn btn-danger check-button">확인</button>
 					</td>
-					<td>4</td>
-					<td>IT개발</td>
-					<td>웹 개발</td>
-					<td>54</td>
-					<td>
-						<button type="button" class="btn btn-danger edit-button">수정</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="checkbox"/>
-					</td>
-					<td>3</td>
-					<td>IT개발</td>
-					<td>프로그래밍 언어</td>
-					<td>33</td>
-					<td>
-						<button type="button" class="btn btn-danger edit-button">수정</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="checkbox"/>
-					</td>
+                </tr>
+                <tr>
 					<td>2</td>
-					<td>IT개발</td>
-					<td>데이터베이스</td>
-					<td>22</td>
+					<td>qwoeod22</td>
+					<td>김꺽정</td>
+					<td>일반회원</td>
+					<td>2019.01.20</td>
 					<td>
-						<button type="button" class="btn btn-danger edit-button">수정</button>
+						<input class="spinner" name="value" value="0">
+						<button type="button" class="btn btn-danger check-button">확인</button>
 					</td>
-				</tr>
-			</tbody>
+                </tr>
+            </tbody>
 		</table>
-
-		<div class="table-bottom">
-			<button type="button">선택삭제</button>
+	
+        <div class="paging">
+            <div>
+                <ul class="paging-number">
+                    <li><a href=""> << </a></li>
+                    <li><a href=""> < </a></li>
+                    <li><a href=""> 1 </a></li>
+                    <li><a href=""> 2 </a></li>
+                    <li><a href=""> 3 </a></li>
+                    <li><a href=""> > </a></li>
+                    <li><a href=""> >> </a></li>
+                </ul>	
+            </div>
 		</div>
 
-		<div class="paging">
-			<div>
-				<ul class="paging-number">
-					<li><a href=""> << </a></li>
-					<li><a href=""> < </a></li>
-					<li><a href=""> 1 </a></li>
-					<li><a href=""> 2 </a></li>
-					<li><a href=""> 3 </a></li>
-					<li><a href=""> > </a></li>
-					<li><a href=""> >> </a></li>
-				</ul>
+    </section>
+
+    <!--삭제확인-->
+	<div id="modal2">
+		<div class="modal2-content">
+			<div class="cancel-box">
+				<span id="modal2-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</div>
+			
+			<h1>정말 삭제하시겠습니까?</h1>
+
+			<div class="modal2-checkbox">
+				<button id="modal2-check" type="button">확인</button>
+				<button id="modal2-cancel" type="button">취소</button>
 			</div>
 		</div>
-
-	</section>
-	
+	</div>
 </main>

@@ -1,2 +1,52 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
+
+
+.thead td{
+    height: 33px;
+}
+
+.explan{
+    text-align: end;
+}
+
+.spinner{
+	width: 20px;
+    height: 15px;
+    text-align: center;
+}
+
+.ui-spinner{
+    height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

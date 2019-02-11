@@ -5,7 +5,9 @@ window.addEventListener("load",function(){
     
     var totalCheck = document.querySelector("#total-check");
     var checkBox = document.querySelectorAll("input[type='checkbox']");
-
+    var modal2 = document.querySelector("#modal2");
+    var selectRemove = document.querySelector("#select-remove");
+    
     totalCheck.onchange = function(){
         var check = totalCheck.checked;
         
@@ -14,7 +16,13 @@ window.addEventListener("load",function(){
         }
     }
 
+    selectRemove.onclick =function(){
+        modal2.style.display = "block";
+    }
+    
 })
+
+
 
 
 /*게시판편집 modal*/
@@ -79,6 +87,7 @@ window.addEventListener("load", function(){
     
     
 })
+
 // 드래그 앤 드롭으로 위치이동
 $( function() {
     $( ".category-list" ).sortable({
@@ -86,7 +95,7 @@ $( function() {
       }).disableSelection();
 
 
-    //$( ".list-box" ).sortable();
+    $( ".list-box" ).sortable();
 } );
 
 

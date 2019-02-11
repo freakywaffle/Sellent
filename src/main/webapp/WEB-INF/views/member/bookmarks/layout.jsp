@@ -23,7 +23,7 @@
 
 <div id="center">
 <tiles:insertAttribute name="mypage"/>
-<tiles:insertAttribute name="floatingBar"/> 
+<tiles:insertAttribute name="floatingBar"/>         
 </div>
 <tiles:insertAttribute name="footer"/>
 </body>
