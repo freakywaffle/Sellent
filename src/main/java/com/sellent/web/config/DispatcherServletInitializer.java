@@ -22,7 +22,7 @@ public class DispatcherServletInitializer
 		return new Class[] {
 				ServletContextConfig.class
 				,ServiceContextConfig.class
-//				,SecurityContextConfig.class
+				,SecurityContextConfig.class
 		};
 	}
 

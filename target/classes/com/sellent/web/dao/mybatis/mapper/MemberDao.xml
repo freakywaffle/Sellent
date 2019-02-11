@@ -8,4 +8,27 @@
 <select id="select"  resultType="int">
 	select count(id) from member where id= #{param1}
 </select>
+
+
+<insert id="insert" parameterType="com.sellent.web.entity.Member" >
+	insert into 
+	member(
+		id,
+		password,
+		nickname,
+		photo,
+		simple_introduction,
+		detail_introduction,
+		email
+	) 
+	values(
+		#{id},
+		#{password},
+		#{nickname},
+		#{photo},
+		#{simple_introduction},
+		#{detail_introduction},
+		#{email}
+	);
+</insert>
 </mapper>

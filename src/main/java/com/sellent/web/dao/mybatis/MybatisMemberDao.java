@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Skill;
+
 
 @Repository
 public class MybatisMemberDao implements MemberDao{
@@ -36,11 +38,8 @@ public class MybatisMemberDao implements MemberDao{
 	@Override
 	public int insert(Member member) {
 
-		/*
-		 * MemberDao memberDao = session.getMapper(MemberDao.class); return
-		 * memberDao.insert(member);
-		 */
-		return 0;
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.insert(member);
 	}
 
 	@Override
@@ -50,11 +49,16 @@ public class MybatisMemberDao implements MemberDao{
 		MemberDao memberDao = session.getMapper(MemberDao.class);
 		return memberDao.select(id);
 	}
+	
+	 
 
 	@Override
 	public int delete(Member member) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
+
 
 }

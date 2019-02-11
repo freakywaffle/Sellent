@@ -1,17 +1,31 @@
 package com.sellent.web.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
+import java.util.UUID;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sellent.web.dao.MemberDao;
+import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Skill;
+import com.sellent.web.service.MemberService;
 
 @Controller
 @RequestMapping("/member/")
@@ -20,17 +34,30 @@ public class MemberController {
 	@Autowired
 	private MemberDao memberDao;
 	
+	@Autowired
+	private MemberService memberService;
+
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
 	@GetMapping("login")
 	public String login() {
 		
 		return "member.login";
 	}
+	
 	@GetMapping("join")
 	public String join() {
 		
 		return "member.join";
 	}
-	
+	@PostMapping("join")
+	public String join(Member member, String skill) {
+		
+		memberService.insertMember(member, skill);
+		return "redirect:login";
+	}
+	 
 	@GetMapping("findInfo")
 	public String findInfo() {
 		
@@ -114,4 +141,62 @@ public class MemberController {
 		 
 		 return String.valueOf(select);
 	 }
+	 
+	 @PostMapping("email-send")
+	 @ResponseBody
+	 private String emailSend(String email) throws MessagingException{
+		 String checkId = UUID.randomUUID().toString() ;
+		 StringBuilder html = new StringBuilder();
+		 
+		 html.append("<!DOCTYPE html>");
+		 html.append("<html>");
+		 html.append("<head>");
+		 html.append("<meta charset=\"utf-8 \">");
+		 html.append("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
+		 html.append("<title>인증 메일</title>");
+		 html.append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+		 html.append("<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"main.css>");
+		 html.append("<script src=\"main.js\"></script>)");
+		 html.append("</head>)");
+		 html.append("<body>)");
+		 html.append("<h1>뉴렉처 Academy 인증을 위한 메일 발송</h1>");
+		 html.append("<section>");
+		 html.append("<h1>인증번호</h1>");
+		 html.append("<div style=\"color:palevioletred\">"+checkId+"</div>");
+		 html.append("</section>");
+		 html.append("</body>");
+		 html.append("</html>");
+		 
+		 MimeMessage message = javaMailSender.createMimeMessage();
+		 MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
+			
+		 helper.setFrom("haejeong1005@naver.com");
+		 helper.setTo(email);
+		 helper.setText(html.toString(), true);
+		 helper.setSubject("이메일 검증을 위한 번호 전달");
+			
+		 javaMailSender.send(message);
+		System.out.println(checkId);	
+		 return checkId;
+	 }
+	 
+	 @PostMapping("file-upload")
+	 @ResponseBody
+	 public String fileUpload(@RequestParam("uploadfile") MultipartFile filedata) throws IOException {
+		
+		 String filePath = "F:\\Upload\\";
+		 System.out.println(filedata.getOriginalFilename());
+		 File dir = new File(filePath);
+		 if(!dir.isDirectory()){
+            dir.mkdir();
+		 }
+		 byte[] data = filedata.getBytes();
+         FileOutputStream fos = new FileOutputStream(filePath + "\\" + filedata.getOriginalFilename());
+         fos.write(data);
+         fos.close();
+		 return null;
+	 }
+	 
+	
+	 
 }
