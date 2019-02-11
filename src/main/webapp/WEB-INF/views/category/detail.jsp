@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <link href="/resources/css/category/content/detail.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
@@ -10,14 +12,20 @@
 			<div>
 				<div class="post-img">
 					<div>
-						<img src="/resources/images/650_400/post_img3_650_400.jpg" />
+						<img src='<spring:url value="${root }"/>${product.no}/${thumbnail}' />
 					</div>
 					<div>
 						<ul class="img-list">
-							<li><img src="/resources/images/150_150/post_img_150_150.png" /></li>
-							<li><img src="/resources/images/150_150/post_img2_150_150.png" /></li>
-							<li class="mobile-hidden"><img src="/resources/images/150_150/post_img4_150_150.png" /></li>
-							<li class="mobile-hidden"><img src="/resources/images/150_150/post_img5_150_150.png" /></li>
+							<c:forEach var="n" items="${files }" varStatus="status">
+								<c:choose>
+									<c:when test="${status.index lt 2}">
+										<li><img src='<spring:url value="${root }" />${product.no}/${n.saveName}' /></li>
+									</c:when>
+									<c:otherwise>
+										<li class="mobile-hidden"><img src='<spring:url value="${root }" />${product.no}/${n.saveName}' /></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -32,20 +40,37 @@
 			</div>
 			<div class="simple-content">
 				<div class="sc-title">
-					홈페이지를 맞춤형으로 디자인부터 개발까지 한번에 제작해 드립니다.
+					${product.title}
 				</div>
 				<div class="sc-content">
-					<h2>디럭스 홈페이지</h2>
+					<h2>${product.writerId }</h2>
 					<div class="text">
-						·PC+MOBILE or 반응형 ·100% 맞춤형 디자인,코딩 ·기본제공기능+ SNS로그인기능+인스타그램연동
+						${product.simpleContent }
 					</div>
 					<ul>
-						<li><img src="/resources/images/price-tag.png"/>&nbsp;판매여부: YES </li>
-						<li><img src="/resources/images/clock.png"/>&nbsp;제작기간: 20일</li>
-						<li><img src="/resources/images/edit.png"/>&nbsp;수정횟수: 4회</li>
+						<li>
+							<img src="/resources/images/price-tag.png"/>
+							판매여부: 
+							<c:choose>
+								<c:when test="${product.sellCheck eq 0}">
+									NO 
+								</c:when>
+								<c:otherwise>
+									YES
+								</c:otherwise>
+							</c:choose> 
+						</li>
+						<li>
+							<img src="/resources/images/clock.png"/>
+							제작기간: ${product.duration }
+						</li>
+						<li>
+							<img src="/resources/images/edit.png"/>
+							수정횟수: ${product.editCnt } 
+						</li>
 					</ul>
 					<div>
-						<button class="buy-bt" type="button">50,000</button>
+						<button class="buy-bt" type="button">${product.price }</button>
 						<button class="like-bt" type="button"><img src="/resources/images/bin-heart.png"/><span>찜하기</span></button>
 					</div>
 				</div>
@@ -57,8 +82,7 @@
 					<img src="/resources/images/joboa.png"/>
 				</div>
 				<div class="profile-name">
-				
-					<span>디럭스 홈페이지</span>
+					<span>${product.writerId }</span>
 				</div>
 				<div class="profile-table">
 					<ul>
@@ -83,24 +107,7 @@
 					<div class="detail-content" >
 						<h2>상세설명</h2>
 						<div>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
+							${product.detailContent }
 						</div>
 					</div>
 					<div class="review-list">

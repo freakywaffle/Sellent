@@ -7,7 +7,10 @@ import com.sellent.web.entity.Product;
 public interface ProductDao {
 	List<Product> getList();
 	
+	
+	
 	Product get(int no);
+	int getRecentlyNo();
 	int insert(Product product);
 	int update(Product product);
 	int delete(int no);
