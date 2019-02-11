@@ -15,9 +15,25 @@ public class Member{
 	private String account;
 	private int enable;
 	
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+	//for inserting
+	public Member(String id, String password, String nickname, String photo, String simple_introduction,String detail_introduction, String email) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.nickname = nickname;
+		this.photo = photo;
+		this.simple_introduction = simple_introduction;
+		this.detail_introduction = detail_introduction;
+		this.email = email;
+	}
+	
+	
 	public Member(String id, String password, String nickname, String photo, String simple_introduction,
 			String detail_introduction, String email, Date regdate, int point, String account, int enable) {
-		super();
+		
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -30,6 +46,9 @@ public class Member{
 		this.account = account;
 		this.enable = enable;
 	}
+
+
+
 
 	public String getId() {
 		return id;

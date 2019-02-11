@@ -31,12 +31,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
     
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../../resources/css/guide2.css">
 
 	<div>
-		
+	
 
+
+ 
+
+ 
 	
 	<div id="modal" class="hidden" style="position: fixed; width: 100%; height: 100%; display: flex; align-items: center; z-index: 998; top:0; left: 0;">
 		<div id="ccc" style="width: 100%; height: 100%; background: rgba(0,0,0,.5) ; display: flex; align-items: center; z-index: 999">
@@ -386,59 +392,51 @@
 					<h1>안녕하세요, Sellent 고객센터 입니다.</h1>
 					<h5>문의내용을 상세히 작성하여 보내주시면, 입력된 이메일 주소을 통해 빠르게 답변해드리도록 하겠습니다.</h5>
 				</div>
-				<div class="question-box">
-					<h6>이메일</h6>
-			      	<input class="block e-mail-bar" type="text" name="e-mail" placeholder="이메일 땡겨오기"></input>
-					<h6>제목</h6>
-			      	<input class="block title-bar" type="text" name="title" placeholder="제목을 작성해주세요."></input>
-					<h6>내용</h6>
-					<div class="area">
-						<textarea rows="9" cols="" placeholder="문의 내용을 작성해주세요."></textarea>
-					</div>
-					<div class="file-box">
-						<!-- 
-						<div class="file flex">
-							<div style="position:relative; height: 88.5px; width: 25%; border: 1px solid black; border-radius: 25px;">
-								<i class="fa fa-times-circle" style="position:absolute; right: -5px; top:-5px;"></i>
-							</div>
-							<div style="position:relative; height: 88.5px; width: 25%; border: 1px solid black; border-radius: 25px;">
-								<i class="fa fa-times-circle" style="position:absolute; right: -5px; top:-5px;"></i>
-							</div>
-							<div style="position:relative; height: 88.5px; width: 25%; border: 1px solid black; border-radius: 25px;">
-								<i class="fa fa-times-circle" style="position:absolute; right: -5px; top:-5px;"></i>
-							</div>
-							<div style="position:relative; height: 88.5px; width: 25%; border: 1px solid black; border-radius: 25px;">
-								<i class="fa fa-times-circle" style="position:absolute; right: -5px; top:-5px;"></i>
-							</div>
-						</div>
-						 -->
+				
 						
-						<section class="sec sec-select" id="fileDrag">
-							<span id="span">drag & drop</span>
-							<section class="sec sec-list">
-								<ul id="list" style="display:flex;">
-								</ul>
+					<div class="question-box">
+						<h6>이메일</h6>
+				      	<input class="block e-mail-bar" type="text" name="e-mail" placeholder="이메일 땡겨오기"></input>
+						<h6>제목</h6>
+				      	<input class="block title-bar" type="text" name="title" placeholder="제목을 작성해주세요."></input>
+						
+						<h6>파일이름</h6>
+				      	<input class="block title-bar" type="text" name="file_name" value="aaa"></input>
+						
+						<h6>내용</h6>
+						<div class="area">
+							<textarea rows="9" cols="" placeholder="문의 내용을 작성해주세요."></textarea>
+						</div>
+						<div class="file-box">
+							
+							<section class="sec sec-select" id="fileDrag">
+								<span id="span">drag & drop</span>
+								<section class="sec sec-list">
+									<ul id="list" style="display:flex;">
+									</ul>
+								</section>
 							</section>
-						</section>
-							<input type="file" id="file" multiple="">
-							<label class="btn file-btn" for="file">파일첨부</label>
-							
-							
-							
-							
-							
+								<input type="file" id="file" multiple="">
+								<label class="btn file-btn" for="file">파일첨부</label>										
+						</div>
+						<div style="width: 100%; height: 50px; margin-top: 20px">
+							<a class="btn a" id="question_btn">문의 하기</a>
+						</div>
+						
+						<div>
+							<ul style="padding: 10px 0px 0px 20px; list-style: initial!important;">
+								<li>주말·공휴일은 답변이 늦어질 수 있습니다.</li>
+								<li>파일 첨부는 최대 4개까지 가능합니다.</li>							
+							</ul>
+						</div>
 					</div>
-					<div style="width: 100%; height: 50px; margin-top: 20px">
-						<a class="btn a">문의 하기</a>
-					</div>
+
+						 
 					
-					<div>
-						<ul style="padding: 10px 0px 0px 20px; list-style: initial!important;">
-							<li>주말·공휴일은 답변이 늦어질 수 있습니다.</li>
-							<li>파일 첨부는 최대 4개까지 가능합니다.</li>							
-						</ul>
-					</div>
-				</div>
+					
+					
+ 
+				
 			</section>
 
 
@@ -627,16 +625,19 @@ ccc.addEventListener('click', function () {
 
 //파일 첨부
 
-
+var img = document.querySelector("input[name='file_name']");
 var fileList = []
 var fileDrag = document.getElementById("fileDrag")
 var span = document.getElementById("span")
 // get file list when user click on Select button
+	
 document.getElementById("file").addEventListener("change", (e) => {
-	fileList = e.target.files
 
+	fileList = e.target.files
 	handleFiles(fileList);
+
 }, false)
+
 
 
 
@@ -644,6 +645,7 @@ fileDrag.addEventListener("dragenter", (e) => {
 	e.stopPropagation()
 	e.preventDefault()
 
+		
 	fileDrag.classList.add("dragenter") 
 }, false)
 
@@ -678,7 +680,6 @@ var handleFiles = (files) => {
 	let imageType = /^image\//;
 
 	for (let file of files) {
-
 		let li = document.createElement("li")
 		let thumbWrapper = document.createElement("div")
 		
@@ -720,11 +721,16 @@ var handleFiles = (files) => {
 		thumbWrapper.classList.add("thumb-wrapper")
 		li.appendChild(thumbWrapper)
 
+		let divInfo = document.createElement("div")
+		let divName = document.createElement("div")
 
+		divName.innerText = file.name
+		divInfo.classList.add("file-info")
+		divInfo.appendChild(divName)
+		li.appendChild(divInfo)
 		
-
-
 		list.appendChild(li)
+
 
 
 	}
@@ -750,6 +756,50 @@ var handleFiles = (files) => {
 
 
 </script>
+
+	 <script>
+
+
+						 var bb = document.querySelector("#question_btn");
+						 var email = document.querySelector("input[name='e-mail']");
+						 var title = document.querySelector("input[name='title']");
+						 var content = document.querySelector(".area textarea");
+						 var img = document.querySelector(".file-info div");
+						 
+						 bb.onclick=function() {
+							 
+							 alert(img)
+						 	var arr = [email.value, title.value, content.value];
+						 	$.ajax({
+						 	    method      : 'POST',
+						 	    url         : 'test.do',
+						 	    traditional : true,
+						 	    data        : {
+						 	        'main' : arr
+						 	    },
+						 	    success     : function(data) {
+						 	        alert("보냇음");        
+						 	    },
+						 	    error       : function(request, status, error) {
+						 	        alert(error);
+						 	    }	
+						 		
+							 	   
+						 	});
+						 	   email.value = "";
+						 	   title.value = "";
+						 	   content.value = "";
+						 };
+
+
+
+
+
+
+						   
+
+						 </script>
 	
 
 	</div>
+	

@@ -3,19 +3,19 @@
 <link href="/resources/css/member/join.css" rel="stylesheet"/>
 <script src="/resources/js/member/join.js"></script>
 <main id="main">
-	<div id="wrap">
+	<form id="wrap" action="join" method="post">
 		<div class="basic">
 			<div class="head-title">기본정보</div>
 			<div class="profile">
 				
 				<div><img  id="blah"  alt="" src="/resources/images/profile.png"></div>
 				<div class="plus">+</div>
-				<input type='file' class="imgInp hidden" />
+				<input type='file' name='photo'  class="imgInp hidden" />
 				 
 			</div>
 			<div class="twobind name">
-				<div class="sub-title">이름</div>
-				<input type="text"/>
+				<div class="sub-title">닉네임</div>
+				<input type="text" name="nickname"/>
 			</div>
 			
 			<div class="threebind">
@@ -28,7 +28,7 @@
 			
 			<div class="twobind">
 				<div class="sub-title">비밀번호</div>
-				<input type="text" name="pwd"/>
+				<input type="text" name="password"/>
 			</div>
 			<div class="twobind pwch">
 				<div class="sub-title">비밀번호 재확인</div>
@@ -38,6 +38,13 @@
 			
 			<div class="threebind email">
 				<div class="sub-title">이메일</div>
+				<div>
+					<input type="text" name="email"/>
+					<input type="button" name="checkbtn" value="인증발송"/>
+				</div>
+			</div>
+			<div class="threebind emailchk">
+				<div class="sub-title">인증확인</div>
 				<div>
 					<input type="text"/>
 					<input type="button" name="checkbtn" value="인증확인"/>
@@ -49,21 +56,22 @@
 			<div class="head-title">자기소개</div>
 			<div class="twobind">
 				<div class="sub-title">제목</div>
-				<input type="text"/>
+				<input type="text" name="simple_introduction"/>
 			</div>
 			
 			<div class="ttwobind">
 				<div class="sub-title">내용</div>
-				<textarea></textarea>
+				<textarea name="detail_introduction"></textarea>
 			</div>
 			
 				<div class="twobind tech">
 				<div class="sub-title">보유기술</div>
-				<input type="text"/>
+				<input type="text" name="skill"/>
 			</div>
 		</div>
-	</div>
-	<div id="joinbtn">
-		<input type="submit" value="가입완료"/>
-	</div>
+		<div id="join">
+		<input type="submit" name="joinbtn" value="가입완료"/>
+		</div>
+	</form>
+	
 </main>
