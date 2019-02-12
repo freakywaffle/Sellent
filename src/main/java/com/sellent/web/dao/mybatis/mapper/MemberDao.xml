@@ -34,4 +34,11 @@
 		#{email}
 	);
 </insert>
+<select id="findID" resultType="com.sellent.web.entity.Member">
+	select id from member where nickname=#{param1} and email=#{param2}
+</select>
+
+<select id="findPwd" resultType="int">
+	select count(id) from member where id=#{param1} and email=#{param2}
+</select>
 </mapper>

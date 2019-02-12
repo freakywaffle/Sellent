@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
@@ -16,6 +17,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.MemberRole;
 import com.sellent.web.entity.Skill;
 import com.sellent.web.service.MemberService;
 
@@ -56,7 +60,10 @@ public class MemberController {
 	}
 	@PostMapping("join")
 	public String join(Member member, String skill) {
-		
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		String pwd = encoder.encode(member.getPassword());
+		System.out.println(pwd);
+		member.setPassword(pwd);
 		memberService.insertMember(member, skill);
 		return "redirect:login";
 	}
@@ -199,6 +206,30 @@ public class MemberController {
 		 return null;
 	 }
 	 
-	
+	 @PostMapping("idFind")
+	 @ResponseBody
+	 public String idFind(
+			 String nickname, String email
+			 ) {
+		/* System.out.println("id"+id); */
+		 //System.out.println("hi");
+		 //System.out.println(id);
+		 //System.out.println(email);
+		 Member select = memberDao.findID(nickname,email);
+		 System.out.println(select.getId());
+		 
+		 return select.getId();
+	 }
+	 @PostMapping("pwdFind")
+	 @ResponseBody
+	 public String pwdFind(  String id, String email ) {
+		
+		 System.out.println(id);
+		 System.out.println(email);
+		 int select = memberDao.findPwd(id,email);
+		 
+		 
+		 return id;
+	 }
 	 
 }
