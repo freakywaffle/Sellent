@@ -12,5 +12,5 @@ public interface ProductService {
 	
 	int insert(Product product, List<ProductFile> files);
 	Map<String, Object> getProductByNo(int no);
-	
+	int regReview(String json);
 }

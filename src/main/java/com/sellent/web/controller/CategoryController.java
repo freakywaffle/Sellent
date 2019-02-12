@@ -3,6 +3,7 @@ package com.sellent.web.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
+import com.sellent.web.entity.Review;
 import com.sellent.web.service.ProductService;
 
 @Controller
@@ -35,8 +39,6 @@ public class CategoryController {
 	@Autowired
 	private ProductService productService;
 	
-	
-	
 	@GetMapping("list")
 	public String list() {
 		
@@ -45,19 +47,9 @@ public class CategoryController {
 	
 	@GetMapping("{no}")
 	public String detail(@PathVariable("no") Integer no, Model model) {
-		String root = "/sellent/upload/";
+		
 		Map<String, Object> product = productService.getProductByNo(no);
-		
-		Product pp = (Product)product.get("product");
-		List<ProductFile> pf = (List<ProductFile>)product.get("files");
-		
-		if(pp != null) 
-			model.addAttribute("product", pp);
-		if(pf.size() != 0) {
-			model.addAttribute("files", pf);
-			model.addAttribute("root", root);
-			model.addAttribute("thumbnail", pf.get(0).getSaveName());
-		}
+		model.addAttribute("map", product);
 		
 		return "category.detail";
 	}
@@ -70,9 +62,9 @@ public class CategoryController {
 	private ArrayList<ProductFile> tempFiles;
 	
 	@PostMapping("reg")
-	public String reg(Product product) {
+	public String reg(Product product, Principal principal) {
 		
-		product.setWriterId("khh111");
+		product.setWriterId(principal.getName());
 		
 		System.out.println(product);
 		productService.insert(product, tempFiles);
@@ -111,6 +103,13 @@ public class CategoryController {
 			tempFiles.add(pf);
 		}
 		
+		return "ok";
+	}
+	
+	@PostMapping("review")
+	@ResponseBody
+	public String review(String json) {
+		productService.regReview(json);
 		return "ok";
 	}
 }

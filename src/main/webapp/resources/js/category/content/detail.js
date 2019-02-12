@@ -16,4 +16,29 @@ $(document).ready(function(){
 		$('html').animate({scrollTop:focusTop-90},400);
 	});
 	
+	
+	//review 등록
+	var reviewForm = $('.review-reg-form');
+	var reviewBt = reviewForm.find('input[type="button"]');
+	reviewBt.on('click',function(){
+		var json = {
+				"content":reviewForm.find('textarea').val(),
+				"starpoint":reviewForm.find('input[type="hidden"]').val(),
+				"productNo": $('.sc-title input').val()
+				
+		};
+		
+		
+		$.ajax({
+			url: 'review',
+			type:'POST',
+			data: "json="+JSON.stringify(json),
+			success: function(){
+				alert(1);
+			}
+		
+		});
+	});
+	
+	
 });

@@ -12,19 +12,19 @@
 			<div>
 				<div class="post-img">
 					<div>
-						<c:if test="${!empty thumbnail}">
-							<img src='<spring:url value="${root }"/>${product.no}/${thumbnail}' />
+						<c:if test="${!empty map.thumbnail}">
+							<img src='<spring:url value="${map.root }"/>${map.product.no}/${map.thumbnail}' />
 						</c:if>
 					</div>
 					<div>
 						<ul class="img-list">
-							<c:forEach var="n" items="${files }" varStatus="status">
+							<c:forEach var="n" items="${map.files }" varStatus="status">
 								<c:choose>
 									<c:when test="${status.index lt 2}">
-										<li><img src='<spring:url value="${root }" />${product.no}/${n.saveName}' /></li>
+										<li><img src='<spring:url value="${map.root }" />${map.product.no}/${n.saveName}' /></li>
 									</c:when>
 									<c:otherwise>
-										<li class="mobile-hidden"><img src='<spring:url value="${root }" />${product.no}/${n.saveName}' /></li>
+										<li class="mobile-hidden"><img src='<spring:url value="${map.root }" />${map.product.no}/${n.saveName}' /></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -42,19 +42,20 @@
 			</div>
 			<div class="simple-content">
 				<div class="sc-title">
-					${product.title}
+					<input type="hidden" value="${map.product.no }">
+					${map.product.title}
 				</div>
 				<div class="sc-content">
-					<h2>${product.writerId }</h2>
+					<h2>${map.product.writerId }</h2>
 					<div class="text">
-						${product.simpleContent }
+						${map.product.simpleContent }
 					</div>
 					<ul>
 						<li>
 							<img src="/resources/images/price-tag.png"/>
 							판매여부: 
 							<c:choose>
-								<c:when test="${product.sellCheck eq 0}">
+								<c:when test="${map.product.sellCheck eq 0}">
 									NO 
 								</c:when>
 								<c:otherwise>
@@ -64,15 +65,15 @@
 						</li>
 						<li>
 							<img src="/resources/images/clock.png"/>
-							제작기간: ${product.duration }
+							제작기간: ${map.product.duration }
 						</li>
 						<li>
 							<img src="/resources/images/edit.png"/>
-							수정횟수: ${product.editCnt } 
+							수정횟수: ${map.product.editCnt } 
 						</li>
 					</ul>
 					<div>
-						<button class="buy-bt" type="button">${product.price }</button>
+						<button class="buy-bt" type="button">${map.product.price }</button>
 						<button class="like-bt" type="button"><img src="/resources/images/bin-heart.png"/><span>찜하기</span></button>
 					</div>
 				</div>
@@ -84,13 +85,13 @@
 					<img src="/resources/images/joboa.png"/>
 				</div>
 				<div class="profile-name">
-					<span>${product.writerId }</span>
+					<span>${map.product.writerId }</span>
 				</div>
 				<div class="profile-table">
 					<ul>
-						<li><p>10</p><p>판매건수</p></li>
-						<li><p>23</p><p>작업개수</p></li>
-						<li><p>4.1</p><p>평점</p></li>
+						<li><p>${map.member.sell_count }</p><p>판매건수</p></li>
+						<li><p>${map.member.product_count }</p><p>작업개수</p></li>
+						<li><p>${map.member.star_point }</p><p>평점</p></li>
 					</ul>
 				</div>
 				<div class="chat-bt">
@@ -109,7 +110,7 @@
 					<div class="detail-content" >
 						<h2>상세설명</h2>
 						<div>
-							${product.detailContent }
+							${map.product.detailContent }
 						</div>
 					</div>
 					<div class="review-list">
@@ -170,10 +171,10 @@
 							<input type="button" value="더보기"/>
 						</div>
 					</div>
-					<div class="review-reg-form">
+					<form class="review-reg-form">
 						<h2>평가작성</h2>
 						<div>
-							<textarea rows="10" cols="100"></textarea>
+							<textarea rows="10" cols="100" name="content"></textarea>
 							<div>
 								<select>
 									<option>★★★★★</option>
@@ -182,10 +183,11 @@
 									<option>★★☆☆☆</option>
 									<option>★☆☆☆☆</option>
 								</select>
+								<input type="hidden" value="3.0" name="starpoint"/>
 								<input type="button" value="작성" />
 							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

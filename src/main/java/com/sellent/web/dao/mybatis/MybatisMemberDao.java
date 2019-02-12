@@ -24,9 +24,10 @@ public class MybatisMemberDao implements MemberDao{
 	}
 
 	@Override
-	public Member getMember(int id) {
+	public Member getMemberById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.getMemberById(id);
 	}
 
 	@Override

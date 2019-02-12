@@ -19,24 +19,26 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.httpBasic().and()
-		.authorizeRequests()
-				
-			.antMatchers("/**")//ROLE_를 뺀다. .hasAnyRole("ADMIN")
-			.access("permitAll")	  
-			.and()
-		.formLogin()
-			.loginPage("/member/login")
-			.loginProcessingUrl("/member/login")
-			.defaultSuccessUrl("/index")
-			.and()
-		.logout()
-			.logoutUrl("/member/logout")
-			.logoutSuccessUrl("/index" )
-			.invalidateHttpSession(true)
-			.and()
-		.csrf()
-			.disable();
+			.authorizeRequests()
+				.antMatchers("/member/login","/member/join")
+					.access("permitAll")
+				.antMatchers("/admin/**")
+					.hasAnyRole("ADMIN")
+				.antMatchers("/member/**","/category/reg")
+					.hasAnyRole("MEMBER")
+				.and()
+			.formLogin()
+				.loginPage("/member/login")
+				.loginProcessingUrl("/member/login")
+				.defaultSuccessUrl("/index")
+				.and()
+			.logout()
+				.logoutUrl("/member/logout")
+				.logoutSuccessUrl("/index" )
+				.invalidateHttpSession(true)
+				.and()
+			.csrf()
+				.disable();
 	}
 	
 	@Override
@@ -44,12 +46,12 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 			
 			auth
 			.jdbcAuthentication()
-			//.passwordEncoder(new BCryptPasswordEncoder())
+			.passwordEncoder(new BCryptPasswordEncoder())
 			.dataSource(dataSource)
 			.usersByUsernameQuery(
-	                  "select id, password, enabled from member where id=?");
-	         /*   .authoritiesByUsernameQuery(
-	                  "select memberId, roleId from MemberRole where memberId=?");*/
+	                  "select id, password, enabled from member where id=?")
+			.authoritiesByUsernameQuery(
+	                  "select id, role from member_role where id=?");
 			
 			
 	}

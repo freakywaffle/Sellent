@@ -68,8 +68,11 @@
 
 .after-login {
 	height: 50px;
+	min-width: 100px;
+	text-align: right;
 }
 .after-login span{
+	font-size: 20px;
 	display:inline-block;
 	vertical-align:top;
 	line-height:50px;
@@ -89,7 +92,7 @@
 }
 
 .after-login .my-menu ul{
-	height: 100px;
+	height: 140px;
 	border: 1px solid black;	
 }
 
@@ -138,7 +141,7 @@
 }
 
 #header .search-bar input {
-	width: 350px;
+	width: 340px;
 	color: gray;
 	font-weight: bold;
 	height: 35px;

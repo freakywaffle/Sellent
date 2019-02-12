@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <link href="/resources/css/category/inc/aside.css" rel="stylesheet"/>
 <script src="/resources/js/category/inc/aside.js"></script>
-<section class="aside close">
+<section class="aside aside-close">
 	<h1 class="hidden">사이드 메뉴</h1>	
 	<div class="ct-wrapper">	
 		<h2>카테고리 제목</h2>
