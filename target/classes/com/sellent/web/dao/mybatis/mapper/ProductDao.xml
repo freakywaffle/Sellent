@@ -7,7 +7,7 @@
 	<select id="getList" resultType="com.sellent.web.entity.Product">
 		select * from product
 	</select>
-	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.Product">
+	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">
 		select 
 			no, 
 			title, 
@@ -22,8 +22,9 @@
 			edit_cnt editCnt, 
 			avg_starpoint avgStarPoint, 
 			regdate, 
-			approval 
-		from product where no = #{param1}
+			approval,
+			reviewCnt
+		from productView where no = #{param1}
 	</select>
 	<select id="getRecentlyNo" resultType="int">
 		select no 

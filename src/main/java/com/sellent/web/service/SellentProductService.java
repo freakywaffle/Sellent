@@ -1,5 +1,6 @@
 package com.sellent.web.service;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
+import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.Review;
 
 @Service
@@ -52,41 +54,37 @@ public class SellentProductService implements ProductService{
 	public Map<String, Object> getProductByNo(int no) {		
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		Product product = productDao.get(no);
+		ProductView product = productDao.get(no);
 		List<ProductFile> files = productFileDao.get(no);
 		Member member = memberDao.getMemberById(product.getWriterId());
 		map.put("root", "/sellent/upload/");
 		map.put("product", product);
 		map.put("files", files);
-		map.put("thumbnail", files.get(0).getSaveName());
+		if(files.size() != 0)
+			map.put("thumbnail", files.get(0).getSaveName());
 		map.put("member", member);
 		return map;
 	}
 
 
 	@Override
-	public int regReview(String json) {
-		// TODO Auto-generated method stub
+	public int regReview(Integer no, String json, Principal principal) {
 		JsonParser parser = new JsonParser();
 		Review review = new Review();
+		review.setProduct_no(no);
+		review.setWriter_id(principal.getName());
+		
 		review.setContent(
 				parser.parse(json)
 				.getAsJsonObject()
 				.get("content")
 				.getAsString());
 		
-		review.setProduct_no(
-				parser.parse(json)
-				.getAsJsonObject()
-				.get("productNo")
-				.getAsInt());
-		
 		review.setStarpoint(
 				parser.parse(json)
 				.getAsJsonObject()
 				.get("starpoint")
 				.getAsDouble());
-		
 		
 		
 		return reviewDao.insert(review);

@@ -16,4 +16,14 @@
 			#{content},
 			#{starpoint})
 	</insert>
+	<select id="getListByProductNo" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ReviewView">
+		select * 
+		from (
+			select (@rownum:= @rownum+1) as rownum
+			, reviewView.* from reviewView
+			, (select @rownum:=0) as r  
+		where product_no = #{param1} 
+		order by regdate desc) rv 
+		where rownum &lt;= #{param2};
+	</select>
 </mapper>

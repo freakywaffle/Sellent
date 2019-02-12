@@ -24,9 +24,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.sellent.web.dao.ProductDao;
+import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.Review;
+import com.sellent.web.entity.ReviewView;
 import com.sellent.web.service.ProductService;
 
 @Controller
@@ -39,6 +41,9 @@ public class CategoryController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private ReviewDao reviewDao;
+	
 	@GetMapping("list")
 	public String list() {
 		
@@ -49,10 +54,14 @@ public class CategoryController {
 	public String detail(@PathVariable("no") Integer no, Model model) {
 		
 		Map<String, Object> product = productService.getProductByNo(no);
+		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
 		model.addAttribute("map", product);
+		if(reviews.size()!=0)
+			model.addAttribute("reviews", reviews);
 		
 		return "category.detail";
 	}
+	
 	
 	@GetMapping("reg")
 	public String reg() {
@@ -106,10 +115,39 @@ public class CategoryController {
 		return "ok";
 	}
 	
-	@PostMapping("review")
+	@PostMapping("{no}/review")
 	@ResponseBody
-	public String review(String json) {
-		productService.regReview(json);
-		return "ok";
+	public String review(@PathVariable("no") Integer no, String json, Principal principal) {
+		productService.regReview(no, json, principal);
+		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
+		String jsonArr = "{\"reviews\":["; 
+		for(int i = 0; i<reviews.size();i++) {
+			jsonArr+=reviews.get(i).toString();
+			if(i != reviews.size()-1)
+				jsonArr+=",";
+		}
+		jsonArr += "]";
+		
+		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
+		
+		
+		System.out.println(jsonArr);
+		return jsonArr;
+	}
+	
+	@GetMapping("{no}/moreReview")
+	@ResponseBody
+	public String moreReview(@PathVariable("no") Integer no, @RequestParam int cnt) {
+		List<ReviewView> reviews = reviewDao.getListByProductNo(no, cnt);
+		String jsonArr = "{\"reviews\":["; 
+		for(int i = 0; i<reviews.size();i++) {
+			jsonArr+=reviews.get(i).toString();
+			if(i != reviews.size()-1)
+				jsonArr+=",";
+		}
+		jsonArr += "]";
+		
+		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
+		return jsonArr;
 	}
 }

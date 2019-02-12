@@ -1,5 +1,6 @@
 package com.sellent.web.service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -12,5 +13,5 @@ public interface ProductService {
 	
 	int insert(Product product, List<ProductFile> files);
 	Map<String, Object> getProductByNo(int no);
-	int regReview(String json);
+	int regReview(Integer no, String json, Principal principal);
 }

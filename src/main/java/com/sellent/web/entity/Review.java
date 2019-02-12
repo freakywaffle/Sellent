@@ -85,6 +85,13 @@ public class Review {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
+
+	@Override
+	public String toString() {
+		return "{\"no\":" + no + ", \"product_no\":" + product_no + ", \"writer_id\":\"" + writer_id + "\", \"content\":\"" + content
+				+ "\", \"starpoint\":" + starpoint + ", \"regdate\":\"" + regdate + "\"}";
+	}
 	
 	
 }
