@@ -17,8 +17,8 @@
     </div>
     <div class="buttones">
         <div>
-            <input type="button" value="ID/PW찾기" />
-            <input type="button" value="회원가입" />
+            <input type="button" onClick="location.href='../member/findInfo'"value="ID/PW찾기" />
+            <input type="button" onClick="location.href='../member/join'" value="회원가입" />
         </div>
     </div>
     </form>

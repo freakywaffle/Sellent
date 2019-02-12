@@ -49,13 +49,25 @@ public class MybatisMemberDao implements MemberDao{
 		MemberDao memberDao = session.getMapper(MemberDao.class);
 		return memberDao.select(id);
 	}
-	
-	 
-
 	@Override
 	public int delete(Member member) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Member findID(String nickname, String email) {
+		// TODO Auto-generated method stub
+		
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.findID(nickname, email);
+	}
+
+	@Override
+	public int findPwd(String id, String email) {
+		// TODO Auto-generated method stub
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.findPwd(id, email);
 	}
 
 
