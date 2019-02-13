@@ -40,7 +40,7 @@ window.addEventListener("load",function(){
                 console.log(e.target.result);
                 var blah = document.getElementById("blah");
                 blah.setAttribute('src',e.target.result);
-                alert(blah.getAttribute('src'));
+                //alert(blah.getAttribute('src'));
                 
               }
               reader.readAsDataURL(input.files[0]);

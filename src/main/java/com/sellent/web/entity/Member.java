@@ -31,6 +31,14 @@ public class Member{
 	}
 	
 	
+	public Member(String nickname, String password, String photo, String email, String id) {
+		super();
+		this.nickname = nickname;
+		this.password = password;
+		this.photo = photo;
+		this.email = email;
+		this.id = id;
+	}
 	public Member(String id, String password, String nickname, String photo, String simple_introduction,
 			String detail_introduction, String email, Date regdate, int point, String account, int enable) {
 		
