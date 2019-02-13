@@ -12,8 +12,8 @@
 		</div>
 		<div class="login">
 			<ul>
-				<li>로그인</li>
-				<li>회원가입</li>
+				<li><a href="../member/login">로그인</a></li>
+				<li><a href="../member/join">회원가입</a></li>
 			</ul>
 		</div>
 		<div class="logo">SELLENT</div>

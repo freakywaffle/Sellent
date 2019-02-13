@@ -5,7 +5,10 @@
       background-color: #ffd632;
       height: 250px;
    }
-
+a:link{text-decoration: none; color:#002060;}
+a:visited{text-decoration: none; color:#002060;}
+a:active{text-decoration: none; color:#002060;}
+a:hover{text-decoration: none; color:gray;}
    #header-wrap {
       position: relative;
       height: inherit;
@@ -17,7 +20,7 @@
    }
 
    .hamburger {
-   	  visibility: hidden;
+   	  visibility: visible;
       position: absolute;
       right: 0px;
       margin-right: 15px;
@@ -32,7 +35,7 @@
 		
 	}
    .login {
-      /* visibility:hidden; */
+      visibility:hidden;
       transition: 500ms; 
       position: absolute;
       margin-top:10px;
@@ -50,7 +53,9 @@
 
    .login li {
       padding-right: 15px;
+      cursor: pointer;
    }
+   .login li
 
    .logo{
       font-family: 'Do Hyeon', sans-serif;
