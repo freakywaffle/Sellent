@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sellent.web.dao.MemberDao;ㄴ
+import com.sellent.web.dao.MemberDao;
 
 import com.sellent.web.entity.Member;
 import com.sellent.web.service.MemberService;
