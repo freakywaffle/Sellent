@@ -9,6 +9,9 @@
 	select count(id) from member where id= #{param1}
 </select>
 
+<select id="getMemberById" parameterType="java.lang.String" resultType="com.sellent.web.entity.Member">
+	select * from member where id=#{param1}
+</select>
 
 <insert id="insert" parameterType="com.sellent.web.entity.Member" >
 	insert into 

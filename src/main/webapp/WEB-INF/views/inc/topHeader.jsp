@@ -1,26 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/security/tags" %>
 <link href="/resources/css/inc/topHeader.css" rel="stylesheet"/>
 <script src="/resources/js/inc/topHeader.js"></script>
 <section class="top-header">
 	<div class="logo-bar">
 		<div class="logo">SELLENT</div>
 		<div class="member-menu">
-			<ul class="before-login hidden">
-				<li class="menu"><a href="#">로그인</a></li>
-				<li class="menu"><a href="#">회원가입</a></li>
-			</ul>
-			<div class="after-login">
-				<span class="mobile-hidden">김형호김형호김형호</span>
-				<img src="/resources/images/joboa.png" />
-				<div class="my-menu hidden">
-					<ul>
-						<li>1500P</li>
-						<li>마이페이지</li>
-						<li>로그아웃</li>
-					</ul>
+			<spring:authorize access="isAnonymous()">
+				<ul class="before-login">
+					<li class="menu"><a href="#">로그인</a></li>
+					<li class="menu"><a href="#">회원가입</a></li>
+				</ul>
+			</spring:authorize>
+			<spring:authorize access="isAuthenticated()">
+				<div class="after-login">
+					<span class="mobile-hidden">${pageContext.request.userPrincipal.name}</span>
+					<img src="/resources/images/joboa.png" />
+					<div class="my-menu hidden">
+						<ul>
+							<li>1500P</li>
+							<li>마이페이지</li>
+							<li>프로필</li>
+							<li>로그아웃</li>
+						</ul>
+					</div>
 				</div>
-			</div>
+			</spring:authorize>
 		</div>
 	</div>
 	<div class="search-bar">

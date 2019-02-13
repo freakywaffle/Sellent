@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
+
    @Autowired
    private DataSource dataSource;
    
@@ -47,6 +48,8 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
             .and()
          .csrf()
             .disable();
+      
+      
    }
    
    @Override

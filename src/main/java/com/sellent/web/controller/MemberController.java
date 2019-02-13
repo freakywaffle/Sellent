@@ -7,14 +7,13 @@ import java.lang.ProcessBuilder.Redirect;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
+
 import java.util.UUID;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -26,21 +25,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.dao.SkillDao;
+
 import com.sellent.web.entity.Member;
-import com.sellent.web.entity.MemberRole;
 import com.sellent.web.entity.Skill;
 import com.sellent.web.service.MemberService;
+
 
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
+	
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -178,7 +178,8 @@ public class MemberController {
 		
 		return "member.bookmarks";
 	}
-
+	
+	
 	 @PostMapping("idchk")
 	 @ResponseBody
 	 public String idchk(String id) {

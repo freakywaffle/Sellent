@@ -11,7 +11,6 @@ public interface MemberDao {
 
 	//List<Member> getMember();
 
-	
 	Member getMember(String id);
 	int update(Member member);
 	int insert(Member member);
