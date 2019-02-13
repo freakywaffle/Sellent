@@ -232,6 +232,7 @@ $(document).ready(function(){
 	        type: 'POST',
 
 	        success: function (data) {
+	        	
 	        	preview.find('img').eq(0).trigger('click');
 	        }
 	    });

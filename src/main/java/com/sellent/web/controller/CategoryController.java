@@ -80,7 +80,6 @@ public class CategoryController {
         String root = "E:\\sellent\\upload\\";
         int recentNo = productDao.getRecentlyNo()+1;
         String path = root+recentNo;
-        
         File dir = new File(path);
         if(!dir.isDirectory()){
             dir.mkdir();

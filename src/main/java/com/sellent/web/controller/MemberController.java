@@ -1,5 +1,11 @@
 package com.sellent.web.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,12 +19,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sellent.web.dao.MemberDao;
+import com.sellent.web.dao.ProductDao;
+import com.sellent.web.entity.ProductFile;
+import com.sellent.web.service.ProductService;
 
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
+	
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -106,7 +117,8 @@ public class MemberController {
 		
 		return "member.bookmarks";
 	}
-
+	
+	
 	 @PostMapping("idchk")
 	 @ResponseBody
 	 public String idchk(String id) {
