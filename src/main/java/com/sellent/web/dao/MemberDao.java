@@ -1,9 +1,5 @@
 package com.sellent.web.dao;
 
-import java.util.List;
-
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.sellent.web.entity.Member;
 
 
@@ -13,7 +9,7 @@ public interface MemberDao {
 
 	Member getMember(String id);
 	int update(Member member);
-	int insert(Member member);
+	int insertMember(Member member);
 	int select(String id);
 	int delete(Member member);
 	Member findID(String nickname, String email);

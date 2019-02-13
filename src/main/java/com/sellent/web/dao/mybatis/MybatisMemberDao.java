@@ -39,10 +39,10 @@ public class MybatisMemberDao implements MemberDao{
 	}
 
 	@Override
-	public int insert(Member member) {
+	public int insertMember(Member member) {
 
 		MemberDao memberDao = session.getMapper(MemberDao.class);
-		return memberDao.insert(member);
+		return memberDao.insertMember(member);
 	}
 
 	@Override
