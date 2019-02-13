@@ -5,56 +5,52 @@
 
 <mapper namespace="com.sellent.web.dao.MemberDao">
 
-<select id="select"  resultType="int">
-	select count(id) from member where id= #{param1}
-</select>
-
-<select id="getMemberById" parameterType="java.lang.String" resultType="com.sellent.web.entity.Member">
-	select * from member where id=#{param1}
-</select>
-
-<insert id="insert" parameterType="com.sellent.web.entity.Member" >
-	insert into 
-	member(
-		id,
-		password,
-		nickname,
-		photo,
-		simple_introduction,
-		detail_introduction,
-		email
-	) 
-	values(
-		#{id},
-		#{password},
-		#{nickname},
-		#{photo},
-		#{simple_introduction},
-		#{detail_introduction},
-		#{email}
-	);
-</insert>
-<select id="findID" resultType="com.sellent.web.entity.Member">
-	select id from member where nickname=#{param1} and email=#{param2}
-</select>
-
-<select id="findPwd" resultType="int">
-	select count(id) from member where id=#{param1} and email=#{param2}
-</select>
-
-<update id="changePwd" parameterType="java.lang.String">
-	update member set password=#{param2} where id=#{param1}
-</update>
-<select id="getMember" resultType="com.sellent.web.entity.Member">
-	select * from member where id=#{param1}
-</select>
-
-<update id="editData" parameterType="com.sellent.web.entity.Member"> 
-	update member set nickname=#{nickname}, password=#{password},photo=#{photo}, email=#{email} where id=#{id}
-</update>
-
-<update id="updateIntro">
-	update member set simple_introduction=#{simple_introduction}, detail_introduction=#{detail_introduction} where id=#{id}
-</update>
-
+	<select id="select"  resultType="int">
+		select count(id) from member where id= #{param1}
+	</select>
+	
+	<insert id="insertMember" parameterType="com.sellent.web.entity.Member" >
+		insert into 
+		member(
+			id,
+			password,
+			nickname,
+			photo,
+			simple_introduction,
+			detail_introduction,
+			email
+		) 
+		values(
+			#{id},
+			#{password},
+			#{nickname},
+			#{photo},
+			#{simple_introduction},
+			#{detail_introduction},
+			#{email}
+		)
+	</insert>
+	
+	<select id="findID" resultType="com.sellent.web.entity.Member">
+		select id from member where nickname=#{param1} and email=#{param2}
+	</select>
+	
+	<select id="findPwd" resultType="int">
+		select count(id) from member where id=#{param1} and email=#{param2}
+	</select>
+	
+	<update id="changePwd" parameterType="java.lang.String">
+		update member set password=#{param2} where id=#{param1}
+	</update>
+	<select id="getMember" resultType="com.sellent.web.entity.Member">
+		select * from member where id=#{param1}
+	</select>
+	
+	<update id="editData" parameterType="com.sellent.web.entity.Member"> 
+		update member set nickname=#{nickname}, password=#{password},photo=#{photo}, email=#{email} where id=#{id}
+	</update>
+	
+	<update id="updateIntro">
+		update member set simple_introduction=#{simple_introduction}, detail_introduction=#{detail_introduction} where id=#{id}
+	</update>
 </mapper>

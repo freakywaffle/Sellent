@@ -29,7 +29,7 @@ public class SellentMemberService implements MemberService {
 	public int insertMember(Member member, String skill) {
 		// TODO Auto-generated method stub
 		
-		memberDao.insert(member);
+		memberDao.insertMember(member);
 		String [] skills = skill.split(",");
 		for(String s: skills) {
 			Skill sk = new Skill();

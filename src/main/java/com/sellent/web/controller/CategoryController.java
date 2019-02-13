@@ -21,14 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
-import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
 import com.sellent.web.service.ProductService;
 
