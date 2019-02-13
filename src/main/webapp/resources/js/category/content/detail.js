@@ -67,6 +67,14 @@ $(document).ready(function(){
 	//찜하기
 	var likeBt = $('.like-bt')
 	likeBt.on('click',function(){
+		
+		if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
+			alert('로그인해주세요');
+			$(location).attr('pathname', '/member/login');
+			return;
+		}
+		
+		
 		var heart = likeBt.find('.fa-heart');
 		if(!heart.hasClass('fav')){
 			$.ajax({

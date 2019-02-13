@@ -12,10 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
+import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
+import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
@@ -33,7 +35,8 @@ public class SellentProductService implements ProductService{
 	private MemberDao memberDao;
 	@Autowired
 	private ReviewDao reviewDao;
-	
+	@Autowired
+	private LikeDao likeDao;
 	
 	@Override
 	@Transactional(rollbackFor=Exception.class)
@@ -63,6 +66,7 @@ public class SellentProductService implements ProductService{
 		if(files.size() != 0)
 			map.put("thumbnail", files.get(0).getSaveName());
 		map.put("member", member);
+		
 		return map;
 	}
 

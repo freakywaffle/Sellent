@@ -22,7 +22,7 @@
 							<li>1500P</li>
 							<li>마이페이지</li>
 							<li>프로필</li>
-							<li>로그아웃</li>
+							<li><a href="/member/logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</div>
