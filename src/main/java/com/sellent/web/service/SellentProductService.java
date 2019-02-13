@@ -56,7 +56,7 @@ public class SellentProductService implements ProductService{
 
 		ProductView product = productDao.get(no);
 		List<ProductFile> files = productFileDao.get(no);
-		Member member = memberDao.getMemberById(product.getWriterId());
+		Member member = memberDao.getMember(product.getWriterId());
 		map.put("root", "/sellent/upload/");
 		map.put("product", product);
 		map.put("files", files);

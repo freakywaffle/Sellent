@@ -33,7 +33,7 @@ window.addEventListener("load",function(){
 	  xml.open('POST','/member/pwdFind');
 	  xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	  xml.onload = function(){
-			if(xml.responseText == idInput){
+			if(xml.responseText == 1){
 				  toggleModal();
 				  var newpwdChk = document.querySelector("input[name='newpwdChk']");
 				  var warning = document.querySelector(".warning");
@@ -44,6 +44,23 @@ window.addEventListener("load",function(){
 						   warning.style.visibility="visible";
 					    	warning.innerText="비밀번호 사용가능";
 					    	warning.style.color="blue";
+					    	var changeBtn = document.querySelector("input[name='changeBtn']");
+					    	 changeBtn.addEventListener("click",function(){
+					    		  
+					    		 var request =new XMLHttpRequest();
+					    		 request.open('POST','changePwd');
+					    		 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					    		 request.onload=function(){
+					    			 if(request.responseText == 0 ){
+					    				 location.href='../member/login';
+					    			 }
+					    			 else{
+					    				 alert("??");
+					    			 }
+					    		 };
+					    		 request.send("id="+idInput+"&newPwd="+newpwdChkInput);
+		
+					    	  });
 					    }
 					    else{
 					    	warning.style.visibility="visible";
@@ -56,13 +73,25 @@ window.addEventListener("load",function(){
 			}
 			else{
 				toggleModal();
-				 var pwdInput = document.querySelector(".pwdInput");
-				 pwdInput.style.visibility="hidden";
+				 var newpwdChk = document.querySelector("input[name='newpwdChk']");
+				 var newPwd = document.querySelector("input[name='newPwd']");
+				 var warning = document.querySelector(".warning");
+				 var notID = document.querySelector(".notID");
+				 var changeBtn = document.querySelector("input[name='changeBtn']");
+				 newpwdChk.style.visibility="hidden";
+				 newPwd.style.visibility="hidden";
+				 warning.style.visibility="hidden";
+				 changeBtn.style.visibility="hidden";
+				 
+				 notID.style.visibility="visible";
+				
 			}
 		
 		  };
 	  xml.send("id="+idInput+"&email="+emailInput); 
   });
+  
+  
   
 });
 

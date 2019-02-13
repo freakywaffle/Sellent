@@ -21,11 +21,19 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
    protected void configure(HttpSecurity http) throws Exception {
       http
          .authorizeRequests()
-            .antMatchers("/member/login","/member/join","/member/findInfo","/member/idchk","/member/pwdFind","/member/idFind","/member/email-send","/member/file-upload")
+            .antMatchers("/member/login","/member/join",
+	            		 "/member/findInfo","/member/idchk",
+	            		 "/member/pwdFind","/member/idFind",
+	            		 "/member/email-send","/member/file-upload",
+	            		 "/member/changePwd"
+            		)
                .access("permitAll")
             .antMatchers("/admin/**")
                .hasAnyRole("ADMIN")
-            .antMatchers("/member/**","/category/reg")
+            .antMatchers("/member/**","/category/reg",
+            		     "/member/editInfo","/member/introduce",
+            		     "/member/skill-send","member/delete-tech"
+            		     )
                .hasAnyRole("MEMBER")
             .and()
          .formLogin()
