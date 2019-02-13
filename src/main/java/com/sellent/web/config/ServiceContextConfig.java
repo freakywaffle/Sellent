@@ -11,11 +11,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages= {"com.sellent.web.dao","com.sellent.web.service"})
+@EnableTransactionManagement
 public class ServiceContextConfig {
 	
 	@Autowired
@@ -57,6 +61,13 @@ public class ServiceContextConfig {
 		
 		return sqlSession;
 	}
+	
+	@Bean
+    public DataSourceTransactionManager transactionManager() {
+        final DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource());
+        return transactionManager;
+    }
+	
 	
 //	이메일 인증을 위한 smtp 설정
 	@Bean

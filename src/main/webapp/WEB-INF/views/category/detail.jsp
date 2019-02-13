@@ -13,7 +13,7 @@
 				<div class="post-img">
 					<div>
 						<c:if test="${!empty map.thumbnail}">
-							<img src='<spring:url value="${map.root }"/>${map.product.no}/${map.thumbnail}' />
+							<img class="thumbnail" src='<spring:url value="${map.root }"/>${map.product.no}/${map.thumbnail}' />
 						</c:if>
 					</div>
 					<div>
@@ -32,12 +32,17 @@
 					</div>
 				</div>
 				<div class="star-point">
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<span>(10명의 평가)</span>
+					<div class="star">
+						<c:forEach begin="1" end="${map.product.avgStarPoint-(map.product.avgStarPoint%1) }">
+							<img src="/resources/images/big-fullstar.png"/>
+						</c:forEach>
+						<c:forEach begin="${map.product.avgStarPoint-(map.product.avgStarPoint%1)+1}" end="5">
+							<img src="/resources/images/big-binstar.png"/>
+						</c:forEach>
+					</div>
+					<div>
+						<span class="avgStarPoint">${map.product.avgStarPoint }</span>&nbsp;&nbsp;&nbsp;<span class="reviewCnt">(${map.product.reviewCnt }명의 평가)</span>
+					</div>
 				</div>
 			</div>
 			<div class="simple-content">
@@ -73,7 +78,7 @@
 					</ul>
 					<div>
 						<button class="buy-bt" type="button">${map.product.price }</button>
-						<button class="like-bt" type="button"><img src="/resources/images/bin-heart.png"/><span>찜하기</span></button>
+						<button class="like-bt" type="button"><i class="fas fa-heart"></i><span>찜하기</span></button>
 					</div>
 				</div>
 			</div>
@@ -101,14 +106,14 @@
 				<div class="detail-index">
 					<ul>
 						<li class="lookup">상세설명</li>
-						<li class="no-lookup">사용자평가</li>
-						<li class="no-lookup">평가작성</li>
+						<li>사용자평가</li>
+						<li>평가작성</li>
 					</ul>
 				</div>
 				<div class="contents">
 					<div class="detail-content" >
 						<h2>상세설명</h2>
-						<div>a
+						<div>
 							${map.product.detailContent }
 						</div>
 					</div>
@@ -118,7 +123,9 @@
 							<spring:url var="springroot" value="/sellent/profile/"/>
 							<c:forEach var="review" items="${reviews }">
 								<div class="review">
-									<img src='${springroot}${review.writer_id }/${review.photo}'/>
+									<div class="review-profile-photo">
+										<img src='${springroot}${review.writer_id }/${review.photo}'/>
+									</div>
 									<div class="rv-content">
 										<p>${review.writer_id }</p>
 										<div>
@@ -140,13 +147,14 @@
 							<textarea rows="10" cols="100" name="content"></textarea>
 							<div>
 								<select>
-									<option>★★★★★</option>
-									<option>★★★★☆</option>
-									<option>★★★☆☆</option>
-									<option>★★☆☆☆</option>
-									<option>★☆☆☆☆</option>
+									<option value="0">별점선택</option>
+									<option value="5">★★★★★</option>
+									<option value="4">★★★★☆</option>
+									<option value="3">★★★☆☆</option>
+									<option value="2">★★☆☆☆</option>
+									<option value="1">★☆☆☆☆</option>
 								</select>
-								<input type="hidden" value="3.0" name="starpoint"/>
+								<input type="hidden" name="starpoint"/>
 								<input type="button" value="작성" />
 							</div>
 						</div>
@@ -163,10 +171,16 @@
 								$(location).attr('pathname', '/member/login');
 								return;
 							}
+							var starpoint = reviewForm.find('input[type="hidden"]').val()
+							var textarea = reviewForm.find('textarea');
+							if(starpoint == 0){
+								alert('별점을 선택해주세요');
+								return;
+							}
 							
 							var json = {
-									"content":reviewForm.find('textarea').val(),
-									"starpoint":reviewForm.find('input[type="hidden"]').val(),
+									"content":textarea.val(),
+									"starpoint":starpoint,
 							};
 							
 							
@@ -206,6 +220,21 @@
 									}
 									if(totalCnt>10)
 										more.removeClass('hidden');
+									
+									textarea.val('');
+									var avgStarPoint = jsonData.avgStarPoint.toFixed(1);
+									var star = $('.star');
+									
+									for(var i=1; i<= avgStarPoint;i++){
+										star += '<img src="/resources/images/big-fullstar.png"/>';
+									}
+									
+									for(var i=avgStarPoint-avgStarPoint%1+1; i<=5;i++){
+										star += '<img src="/resources/images/big-binstar.png"/>';
+									}
+										
+									$('.avgStarPoint').text(avgStarPoint);
+									$('.star-point').find('.reviewCnt').text('('+totalCnt+'명의 평가)');
 								}
 							
 							});

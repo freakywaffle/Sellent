@@ -26,4 +26,7 @@
 		order by regdate desc) rv 
 		where rownum &lt;= #{param2};
 	</select>
+	<select id="getAvgStarPointByProductNo" resultType="double">
+		select round(avg(starpoint),1) from review where product_no = #{param1}
+	</select>
 </mapper>

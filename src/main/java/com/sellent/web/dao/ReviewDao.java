@@ -8,4 +8,5 @@ import com.sellent.web.entity.ReviewView;
 public interface ReviewDao {
 	int insert(Review review);
 	List<ReviewView> getListByProductNo(int productNo, int cnt);
+	double getAvgStarPointByProductNo(int productNo);
 }

@@ -79,4 +79,9 @@
 	<delete id="delete">
 		delete from product where no=#{param1}
 	</delete>
+	<update id="updateStarPointByNo" >
+		update product set
+			avg_starpoint=#{param2}
+		where no=#{param1}
+	</update>
 </mapper>

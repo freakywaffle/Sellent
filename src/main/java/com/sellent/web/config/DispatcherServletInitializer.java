@@ -39,7 +39,7 @@ public class DispatcherServletInitializer
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
 		
-//		DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
+		DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
 		
 		return new Filter[] {characterEncodingFilter};
 	}

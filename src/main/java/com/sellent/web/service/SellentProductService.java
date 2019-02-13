@@ -36,7 +36,7 @@ public class SellentProductService implements ProductService{
 	
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	public int insert(Product product, List<ProductFile> files) {
 		
 		productDao.insert(product);
@@ -68,6 +68,7 @@ public class SellentProductService implements ProductService{
 
 
 	@Override
+	@Transactional
 	public int regReview(Integer no, String json, Principal principal) {
 		JsonParser parser = new JsonParser();
 		Review review = new Review();
@@ -85,9 +86,12 @@ public class SellentProductService implements ProductService{
 				.getAsJsonObject()
 				.get("starpoint")
 				.getAsDouble());
+		reviewDao.insert(review);
 		
+		double avgStarPoint = reviewDao.getAvgStarPointByProductNo(no);
+		productDao.updateStarPointByNo(no, avgStarPoint);
 		
-		return reviewDao.insert(review);
+		return 0;
 	}
 	
 }

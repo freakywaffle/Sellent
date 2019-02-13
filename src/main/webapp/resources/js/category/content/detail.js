@@ -14,113 +14,81 @@ $(document).ready(function(){
 	
 	//상세내용 포커스 이동하기
 	var detailIndex = $('.detail-index').find('ul');
-	detailIndex.find('li').on('click',function(){
+	detailIndex.find('li').on('click',function(e){
 		var focusTop = $('.contents').children().eq($(this).index()).offset().top;
 		$('html').animate({scrollTop:focusTop-90},400);
 	});
 	
+	//포커스 이동에 따른 lookup 변경
+	var index1 = $('.contents').children().eq(0);
+	var index2 = $('.contents').children().eq(1);
+	var index3 = $('.contents').children().eq(2);
+	$(window).scroll(function(){
+		
+		if($(this).scrollTop()+90>index1.offset().top){
+			detailIndex.find('li').eq(0).addClass('lookup');
+			detailIndex.find('li').eq(1).removeClass('lookup');
+			detailIndex.find('li').eq(2).removeClass('lookup');
+			
+		}
+		if($(this).scrollTop()+90>index2.offset().top-40){
+			detailIndex.find('li').eq(1).addClass('lookup');
+			detailIndex.find('li').eq(0).removeClass('lookup');
+			detailIndex.find('li').eq(2).removeClass('lookup');
+		}
+		if($(this).scrollTop()>index3.offset().top-500){
+			detailIndex.find('li').eq(2).addClass('lookup');
+			detailIndex.find('li').eq(0).removeClass('lookup');
+			detailIndex.find('li').eq(1).removeClass('lookup');
+		}
+	});
 	
-	//review 등록
-//	var reviewForm = $('.review-reg-form');
-//	var reviewBt = reviewForm.find('input[type="button"]');
-//	reviewBt.on('click',function(){
-//		
-//		if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
-//			alert('로그인해주세요');
-//			$(location).attr('pathname', '/member/login');
-//			return;
-//		}
-//		
-//		var json = {
-//				"content":reviewForm.find('textarea').val(),
-//				"starpoint":reviewForm.find('input[type="hidden"]').val(),
-//		};
-//		
-//		
-//		$.ajax({
-//			url: $(location).attr('pathname')+'/review',
-//			type:'POST',
-//			data: "json="+JSON.stringify(json),
-//			success: function(data){
-//				
-//				
-//				
-//				var reviewsCnt = $('.review-list').find('span');
-//				var jsonData = jQuery.parseJSON(data);
-//			
-//				var reviews = jsonData.reviews;
-//				var totalCnt = jsonData.reviewCnt;
-//				
-//				reviewsCnt.text(totalCnt);
-//				
-//				var reviewListDiv = $('.review-list').children().eq(1);
-//				reviewListDiv.empty();
-//				for(var i=0;i<reviews.length;i++){
-//					var p =$('<p></p>').text(reviews[i].writer_id);
-//					var contentDiv = $('<div></div>').text(reviews[i].content);
-//					var rvContent = $('<div></div>').addClass('rv-content');
-//					rvContent.append(p);
-//					rvContent.append(contentDiv);
-//					var profilePhoto = $('<img />').attr('src', '<spring:url value="/sellent/profile/"/>'+reviews[i].writer_id+'/'+reviews[i].photo);
-//					var reviewDiv = $('<div></div>').addClass('review');
-//					reviewDiv.append(profilePhoto);
-//					reviewDiv.append(rvContent);
-//					
-//					reviewListDiv.append(reviewDiv);
-//				}
-//				if(totalCnt>10)
-//					more.removeClass('hidden');
-//			}
-//		
-//		});
-//	});
 	
-	//reviews 페이징
-//	var more = $('.more');
-//	more.on('click',function(){
-//		var cnt = $('.review').length;
-//		var pageCnt = Math.ceil((cnt)/10)*10;
-//		if(pageCnt == cnt)
-//			pageCnt+=10;
-//		$.ajax({
-//			url: $(location).attr('pathname')+'/moreReview?cnt='+pageCnt,
-//			type:'GET',
-//			success: function(data){
-//				var reviewsCnt = $('.review-list').find('span');
-//				var jsonData = jQuery.parseJSON(data);
-//				
-//				var reviews = jsonData.reviews;
-//				var totalCnt = jsonData.reviewCnt;
-//				
-//				reviewsCnt.text(totalCnt);
-//				
-//				var reviewListDiv = $('.review-list').children().eq(1);
-//				reviewListDiv.empty();
-//				for(var i=0;i<reviews.length;i++){
-//					var p =$('<p></p>').text(reviews[i].writer_id);
-//					var contentDiv = $('<div></div>').text(reviews[i].content);
-//					var rvContent = $('<div></div>').addClass('rv-content');
-//					rvContent.append(p);
-//					rvContent.append(contentDiv);
-//					
-//					var springurl = '<img src=${springroot} />';
-//					
-//					//var profilePhoto = $('<img />').attr('src', springurl+reviews[i].writer_id+'/'+reviews[i].photo);
-//					var reviewDiv = $('<div></div>').addClass('review');
-//					//reviewDiv.append(profilePhoto);
-//					reviewDiv.append(springurl);
-//					reviewDiv.append(rvContent);
-//					reviewListDiv.append(reviewDiv);
-//				}
-//				
-//				
-//				if(reviews.length >= totalCnt)
-//					more.addClass('hidden');
-//				else
-//					more.removeClass('hidden');
-//			}
-//		
-//		});
-//	});
+	//이미지 선택
+	var imgList = $('.img-list');
+	imgList.find('li').on('click', function(e){
+		var src = $(e.target).attr('src');
+		var thumbnail = $('.thumbnail');
+		thumbnail.attr('src', src);
+		
+	});
 	
+	
+	//별점 선택
+	var starPoint = $('input[name="starpoint"]');
+	var starSelect = $('.review-reg-form select');
+	starSelect.on('change',function(){
+		starPoint.val(starSelect.val());
+		console.log(starPoint.val());
+	});
+	
+	
+	
+	//찜하기
+	var likeBt = $('.like-bt')
+	likeBt.on('click',function(){
+		var heart = likeBt.find('.fa-heart');
+		if(!heart.hasClass('fav')){
+			$.ajax({
+				url: $(location).attr('pathname')+'/like',
+				type: 'get',
+				success: function(){
+					
+					likeBt.find('.fa-heart').toggleClass('fav');
+				}
+				
+			});
+		}else{
+			$.ajax({
+				url: $(location).attr('pathname')+'/delike',
+				type: 'get',
+				success: function(){
+					
+					likeBt.find('.fa-heart').toggleClass('fav');
+				}
+				
+			});
+		}
+		
+	});
 });

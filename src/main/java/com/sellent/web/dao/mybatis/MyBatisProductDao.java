@@ -60,5 +60,12 @@ public class MyBatisProductDao implements ProductDao{
 		return 0;
 	}
 
+	@Override
+	public int updateStarPointByNo(int no, double avgStarPoint) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.updateStarPointByNo(no, avgStarPoint);
+	}
+
 	
 }

@@ -27,6 +27,7 @@ import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
+import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
 import com.sellent.web.service.ProductService;
@@ -128,7 +129,10 @@ public class CategoryController {
 		}
 		jsonArr += "]";
 		
-		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
+		ProductView product = productDao.get(no);
+		
+		jsonArr += ", \"reviewCnt\":"+product.getReviewCnt();
+		jsonArr += ", \"avgStarPoint\":"+product.getAvgStarPoint()+"}";
 		
 		
 		System.out.println(jsonArr);
@@ -150,4 +154,19 @@ public class CategoryController {
 		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
 		return jsonArr;
 	}
+	
+	@GetMapping("{no}/like")
+	@ResponseBody
+	public String like(@PathVariable("no") Integer no) {
+		System.out.println("in"+no);
+		return "";
+	}
+	@GetMapping("{no}/delike")
+	@ResponseBody
+	public String delike(@PathVariable("no") Integer no) {
+		System.out.println("del"+no);
+		return "";
+	}
+	
+	
 }

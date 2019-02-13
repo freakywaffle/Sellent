@@ -31,4 +31,11 @@ public class MybatisReviewDao implements ReviewDao{
 		return reviewDao.getListByProductNo(productNo, cnt);
 	}
 
+	@Override
+	public double getAvgStarPointByProductNo(int productNo) {
+		ReviewDao reviewDao = session.getMapper(ReviewDao.class);
+		
+		return reviewDao.getAvgStarPointByProductNo(productNo);
+	}
+
 }
