@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Skill;
+
 
 @Repository
 public class MybatisMemberDao implements MemberDao{
@@ -22,9 +24,10 @@ public class MybatisMemberDao implements MemberDao{
 	}
 
 	@Override
-	public Member getMember(int id) {
+	public Member getMemberById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.getMemberById(id);
 	}
 
 	@Override
@@ -36,11 +39,8 @@ public class MybatisMemberDao implements MemberDao{
 	@Override
 	public int insert(Member member) {
 
-		/*
-		 * MemberDao memberDao = session.getMapper(MemberDao.class); return
-		 * memberDao.insert(member);
-		 */
-		return 0;
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.insert(member);
 	}
 
 	@Override
@@ -50,11 +50,28 @@ public class MybatisMemberDao implements MemberDao{
 		MemberDao memberDao = session.getMapper(MemberDao.class);
 		return memberDao.select(id);
 	}
-
 	@Override
 	public int delete(Member member) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public Member findID(String nickname, String email) {
+		// TODO Auto-generated method stub
+		
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.findID(nickname, email);
+	}
+
+	@Override
+	public int findPwd(String id, String email) {
+		// TODO Auto-generated method stub
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.findPwd(id, email);
+	}
+
+
+
 
 }

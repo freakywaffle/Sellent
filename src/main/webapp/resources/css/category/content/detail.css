@@ -55,11 +55,12 @@
 .top-content .star-point{
 	margin-top: 20px;
 	text-align: center;
+	font-size: 20px;
 }
 
 .top-content .star-point img{
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	vertical-align: middle;
 	line-height: 50px;
 }
@@ -67,6 +68,8 @@
 	vertical-align: middle;
 	line-height: 50px;
 }
+
+
 
 
 .top-content .simple-content{
@@ -137,11 +140,14 @@
 	vertical-align: middle;
 	line-height: 40px;
 }
-.sc-content .like-bt img{
-	height:20px;
-	vertical-align:middle;
-	line-height: 40px;
+
+.sc-content .like-bt i{
+	color: #CCCCCC;
 }
+.sc-content .like-bt .fav{
+	color:#fe7676;
+}
+
 .sc-content .like-bt span{
 	margin-left: 10px;
 }
@@ -245,11 +251,12 @@
 	vertical-align: middle;
 	line-height: 80px;
 	font-size: 30px;	
+	border-bottom: 1px solid black;
 }
 
 .lookup{
 	border: 1px solid black;
-	border-bottom: none;
+	border-bottom: none!important;
 }
 
 .no-lookup{
@@ -280,8 +287,14 @@
 	
 }
 
+.review .review-profile-photo{
+	overflow: hidden;
+}
+
 .review img{
+	border-radius: 50%;
 	height: 80px;
+	width: 80px;
 }
 
 .rv-content{

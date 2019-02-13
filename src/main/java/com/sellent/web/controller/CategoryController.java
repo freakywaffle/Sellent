@@ -3,6 +3,7 @@ package com.sellent.web.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,9 +21,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.sellent.web.dao.ProductDao;
+import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
+import com.sellent.web.entity.ProductView;
+import com.sellent.web.entity.Review;
+import com.sellent.web.entity.ReviewView;
 import com.sellent.web.service.ProductService;
 
 @Controller
@@ -35,7 +42,8 @@ public class CategoryController {
 	@Autowired
 	private ProductService productService;
 	
-	
+	@Autowired
+	private ReviewDao reviewDao;
 	
 	@GetMapping("list")
 	public String list() {
@@ -45,27 +53,28 @@ public class CategoryController {
 	
 	@GetMapping("{no}")
 	public String detail(@PathVariable("no") Integer no, Model model) {
-		String root = "/sellent/upload/";
+		
 		Map<String, Object> product = productService.getProductByNo(no);
-		model.addAttribute("product",product.get("product"));
-		model.addAttribute("files",product.get("files"));
-		model.addAttribute("root", root);
-		model.addAttribute("thumbnail", ((List<ProductFile>)product.get("files")).get(1).getSaveName());
+		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
+		model.addAttribute("map", product);
+		if(reviews.size()!=0)
+			model.addAttribute("reviews", reviews);
 		
 		return "category.detail";
 	}
+	
 	
 	@GetMapping("reg")
 	public String reg() {
 		return "category.reg";
 	}
 	
-	private ArrayList<ProductFile> tempFiles; 
+	private ArrayList<ProductFile> tempFiles;
 	
 	@PostMapping("reg")
-	public String reg(Product product) {
+	public String reg(Product product, Principal principal) {
 		
-		product.setWriterId("khh111");
+		product.setWriterId(principal.getName());
 		
 		System.out.println(product);
 		productService.insert(product, tempFiles);
@@ -105,4 +114,58 @@ public class CategoryController {
 		
 		return "ok";
 	}
+	
+	@PostMapping("{no}/review")
+	@ResponseBody
+	public String review(@PathVariable("no") Integer no, String json, Principal principal) {
+		productService.regReview(no, json, principal);
+		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
+		String jsonArr = "{\"reviews\":["; 
+		for(int i = 0; i<reviews.size();i++) {
+			jsonArr+=reviews.get(i).toString();
+			if(i != reviews.size()-1)
+				jsonArr+=",";
+		}
+		jsonArr += "]";
+		
+		ProductView product = productDao.get(no);
+		
+		jsonArr += ", \"reviewCnt\":"+product.getReviewCnt();
+		jsonArr += ", \"avgStarPoint\":"+product.getAvgStarPoint()+"}";
+		
+		
+		System.out.println(jsonArr);
+		return jsonArr;
+	}
+	
+	@GetMapping("{no}/moreReview")
+	@ResponseBody
+	public String moreReview(@PathVariable("no") Integer no, @RequestParam int cnt) {
+		List<ReviewView> reviews = reviewDao.getListByProductNo(no, cnt);
+		String jsonArr = "{\"reviews\":["; 
+		for(int i = 0; i<reviews.size();i++) {
+			jsonArr+=reviews.get(i).toString();
+			if(i != reviews.size()-1)
+				jsonArr+=",";
+		}
+		jsonArr += "]";
+		
+		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
+		return jsonArr;
+	}
+	
+	@GetMapping("{no}/like")
+	@ResponseBody
+	public String like(@PathVariable("no") Integer no) {
+		System.out.println("in"+no);
+		return "";
+	}
+	@GetMapping("{no}/delike")
+	@ResponseBody
+	public String delike(@PathVariable("no") Integer no) {
+		System.out.println("del"+no);
+		return "";
+	}
+	
+	
 }

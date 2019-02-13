@@ -8,4 +8,37 @@
 <select id="select"  resultType="int">
 	select count(id) from member where id= #{param1}
 </select>
+
+<select id="getMemberById" parameterType="java.lang.String" resultType="com.sellent.web.entity.Member">
+	select * from member where id=#{param1}
+</select>
+
+<insert id="insert" parameterType="com.sellent.web.entity.Member" >
+	insert into 
+	member(
+		id,
+		password,
+		nickname,
+		photo,
+		simple_introduction,
+		detail_introduction,
+		email
+	) 
+	values(
+		#{id},
+		#{password},
+		#{nickname},
+		#{photo},
+		#{simple_introduction},
+		#{detail_introduction},
+		#{email}
+	);
+</insert>
+<select id="findID" resultType="com.sellent.web.entity.Member">
+	select id from member where nickname=#{param1} and email=#{param2}
+</select>
+
+<select id="findPwd" resultType="int">
+	select count(id) from member where id=#{param1} and email=#{param2}
+</select>
 </mapper>

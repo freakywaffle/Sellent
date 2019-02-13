@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.entity.Product;
+import com.sellent.web.entity.ProductView;
 
 
 @Repository
@@ -23,7 +24,7 @@ public class MyBatisProductDao implements ProductDao{
 	}
 
 	@Override
-	public Product get(int no) {
+	public ProductView get(int no) {
 		// TODO Auto-generated method stub
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
@@ -57,6 +58,13 @@ public class MyBatisProductDao implements ProductDao{
 	public int delete(int no) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int updateStarPointByNo(int no, double avgStarPoint) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.updateStarPointByNo(no, avgStarPoint);
 	}
 
 	

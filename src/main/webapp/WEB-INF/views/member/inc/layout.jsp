@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="/resources/css/common.css" rel="stylesheet"/>
 <link href="/resources/css/center.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
