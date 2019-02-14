@@ -18,9 +18,10 @@ public class MyBatisProductDao implements ProductDao{
 	private SqlSessionTemplate session;
 
 	@Override
-	public List<Product> getList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductView> getList() {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getList();
 	}
 
 	@Override

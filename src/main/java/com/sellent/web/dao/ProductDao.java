@@ -6,7 +6,7 @@ import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductView;
 
 public interface ProductDao {
-	List<Product> getList();
+	List<ProductView> getList();
 	
 	
 	
