@@ -315,6 +315,5 @@ public class MemberController {
 		 int skillDel = skillDao.skillDele(skill);
 		 return deltech;
 	 }
-	 
-	 
+
 }

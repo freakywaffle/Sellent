@@ -91,8 +91,4 @@ public class MybatisMemberDao implements MemberDao{
 		MemberDao memberDao = session.getMapper(MemberDao.class);
 		return memberDao.updateIntro(member);
 	}
-
-
-
-
 }

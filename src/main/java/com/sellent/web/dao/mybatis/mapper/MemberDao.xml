@@ -53,4 +53,5 @@
 	<update id="updateIntro">
 		update member set simple_introduction=#{simple_introduction}, detail_introduction=#{detail_introduction} where id=#{id}
 	</update>
+
 </mapper>

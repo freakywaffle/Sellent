@@ -14,4 +14,5 @@ public interface SkillDao {
 	int update(Skill skill);
 	int skillinsert(String id, Skill skill);
 	int skillDele(Skill skill);
+	String select(Skill skill);
 }
