@@ -58,8 +58,8 @@ public class QnaContent {
 	}
 	@Override
 	public String toString() {
-		return "\"QnaContent\": {sub_no=" + sub_no + ", content1=" + content1 + ", content2=" + content2 + ", content3="
-				+ content3 + ", content4=" + content4 + ", content5=" + content5 + "}";
+		return "{\"sub_no\":" + sub_no + ", \"content1\":\"" + content1 + "\", \"content2\":\"" + content2 + "\", \"content3\":\""
+				+ content3 + "\", \"content4\":\"" + content4 + "\", \"content5\":\"" + content5 + "\"}";
 	}
 	
 	

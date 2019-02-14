@@ -19,7 +19,7 @@
 	</definition>
 
 	<definition name="category.*" 
-		template="/WEB-INF/views/category/inc/layout/{1}.jsp">
+		template="/WEB-INF/views/category/inc/layout/{1}.jsp" preparer="com.sellent.web.controller.HomePreparer">
 		<put-attribute name="title" value="Sellent" />
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
 		<put-attribute name="bottomHeader" value="/WEB-INF/views/category/inc/bottomHeader.jsp" />
@@ -36,12 +36,11 @@
 		template="/WEB-INF/views/member/mypage/layout.jsp">
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
 		<put-attribute name="mypage" value="/WEB-INF/views/member/mypage/index.jsp" />
-		<put-attribute name="floatingBar" value="/WEB-INF/views/inc/floatingBar.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
 	</definition>
 	
 	<definition name="member.bookmarks" 
-		template="/WEB-INF/views/member/bookmarks/layout.jsp">
+		template="/WEB-INF/views/member/bookmarks/layout.jsp"  preparer="com.sellent.web.controller.HomePreparer">
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
 		<put-attribute name="bottomHeader" value="/WEB-INF/views/category/inc/bottomHeader.jsp" />
 		<put-attribute name="mypage" value="/WEB-INF/views/member/bookmarks.jsp" />
@@ -50,7 +49,7 @@
 	</definition>
 	
 	<definition name="member.*.*" 
-		template="/WEB-INF/views/member/inc/layout.jsp">
+		template="/WEB-INF/views/member/inc/layout.jsp"   preparer="com.sellent.web.controller.HomePreparer">
 		<put-attribute name="title" value="Sellent" />
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
 		<put-attribute name="bottomHeader" value="/WEB-INF/views/member/inc/bottomHeader.jsp" />
@@ -61,7 +60,7 @@
 	</definition>
 	
 	<definition name="member.*" 
-		template="/WEB-INF/views/member/layout.jsp">
+		template="/WEB-INF/views/member/layout.jsp"   preparer="com.sellent.web.controller.HomePreparer"> 
 		<put-attribute name="title" value="Sellent" />
 		<put-attribute name="mainHeader" value="/WEB-INF/views/inc/mainHeader.jsp" />
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
@@ -73,7 +72,7 @@
 	</definition>
 		
 	<definition name="*" 
-		template="/WEB-INF/views/inc/layout.jsp">
+		template="/WEB-INF/views/inc/layout.jsp"   preparer="com.sellent.web.controller.HomePreparer">
 		<put-attribute name="title" value="Sellent" />
 		<put-attribute name="mainHeader" value="/WEB-INF/views/inc/mainHeader.jsp" />
 		<put-attribute name="mainMain" value="/WEB-INF/views/index.jsp" />

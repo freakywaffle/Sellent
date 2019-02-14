@@ -1,13 +1,7 @@
 /*panel*/
- 
-	$('.panel-collapse').on('show.bs.collapse', function () {
-    $(this).siblings('.panel-heading').addClass('active');
-  });
 
-  $('.panel-collapse').on('hide.bs.collapse', function () {
-    $(this).siblings('.panel-heading').removeClass('active');
-  });
-  
+	
+
   window.addEventListener("load",function(){
 	    var close = document.querySelector(".close-label");
 	    var guideTab = document.querySelector("#guide");	    
@@ -28,19 +22,14 @@
 	  var c = $(".dd");
 	 
   
-  for(var i = 0; i < a.length; i++) {
+  for(var i = 0; i < a.length; i++) 
 	  a.eq(i).click(moveToFirst);
-	 
-	  
-	  
-  }
+ 
+
 	
   for(var i = 0; i < b.length; i++)
 	  	b.eq(i).click(moveToSecond);	  
   
-	
-
-	
 	
 	function moveToFirst() {
 		
@@ -50,17 +39,41 @@
 	}
 	
 	function moveToSecond() {
-		alert($(this).text())
+		//alert($(this).text())
 		var title = $(this).text();
+		var contentTitle = $("#contentTitle")
+		contentTitle.text(title);
 		
 		$.ajax({
 				    method      : 'POST',
-				    url         : '/Qna/qna',
+				    url         : '/Qna/ajax',
 				    data        : { "title" : title },
-				    success     : function(data) {
+				    success     : function(json) {
+				    	
+				    	var a = JSON.parse(json)
+				    	
+				    	var content = $(".qna_content")
+				    	content.remove();
+				    	contentTitle.text(title)
+				    	var contentBox = $(".qna_contentBox")
+				    	
+				    	var contentList = new Array( a[0].content1,a[0].content2, a[0].content3, a[0].content4, a[0].content5 );
+				    	
+				    	for(var i=0; i<contentList.length; i++){
+				    		if(contentList[i]!=null) {
+				    			var a = $("<div class='qna_content'></div><br class='qna_content'>").text(contentList[i]);   // Create with jQuery		    		
+				    			contentBox.append(a);
+				    		}
+				    	}
+				    	
+
+  
+				    	
 				    },
 				    error       : function(request, status, error) {
-				        	alert(error);
+				    	var content = $(".qna_content")
+				    	content.remove();
+				    	contentTitle.text(title)
 				    }	
 					
 				 	   
@@ -353,6 +366,16 @@
 	}
 	});
 	
+	$(function () {
+		$('.panel-collapse').on('show.bs.collapse', function () {
+		
+		    $(this).siblings('.panel-heading').addClass('active');
+		  });
+
+			$('.panel-collapse').on('hide.bs.collapse', function () {
 	
+		    $(this).siblings('.panel-heading').removeClass('active');
+		  });
+		});
    
 	
