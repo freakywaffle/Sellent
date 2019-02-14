@@ -42,6 +42,7 @@ public class SellentLoginSuccessHandler implements AuthenticationSuccessHandler{
 		session.setAttribute("skill", skill );
 		
 		String redirectUrl = (String) session.getAttribute("prevPage");
+
         if (redirectUrl != null) {
         	String lastUrl = redirectUrl.split("/")[redirectUrl.split("/").length-1];
         	if(!lastUrl.equals("login")) {
