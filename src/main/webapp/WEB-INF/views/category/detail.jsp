@@ -179,7 +179,7 @@
 							
 							if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
 								alert('로그인해주세요');
-								$(location).attr('pathname', '/member/login');
+								$(location).attr('pathname', '/login');
 								return;
 							}
 							var starpoint = reviewForm.find('input[type="hidden"]').val()

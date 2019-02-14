@@ -30,7 +30,6 @@ public class SellentLoginSuccessHandler implements AuthenticationSuccessHandler{
 		Member member = memberDao.getMember(id);
 		session.setAttribute("member", member);
 		
-		
         String redirectUrl = (String) session.getAttribute("prevPage");
         if (redirectUrl != null) {
             session.removeAttribute("prevPage");
