@@ -3,6 +3,7 @@ package com.sellent.web.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.sellent.web.dao.QnaDao;
 import com.sellent.web.entity.QnaContent;
 import com.sellent.web.entity.QnaFile;
@@ -54,22 +56,23 @@ public class QnaController {
 		model.addAttribute("list",list);
 		model.addAttribute("subList",subList);
 		
-		List<QnaContent> content = qnaService.getContent(title);
-		System.out.println("dskjdjlkmlk"+content);
 		
-		model.addAttribute("content",content);
 		
 		return "/inc/floatingBar";
 	}
 	
 	@RequestMapping("ajax")
 	@ResponseBody
-	public String subQna(String title) {
+	public String subQna(String title, Principal p) {
 			
-		System.out.println(title);
-		qnaService.getContent(title);
-		 
-		return "ok";
+		List<QnaContent> content = qnaService.getContent(title);
+		System.out.println("p"+p.getName());
+		System.out.println(content);
+		System.out.println(content.get(0).getContent1());
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(content);
+		return json;
 	}
 	
 	

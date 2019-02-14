@@ -6,24 +6,23 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
 	<!-- Optional JavaScript -->
 	
 
 	<!-- 슬라이드 -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>  
-	
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
     
-     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../../resources/css/guide2.css">
-	 <script src="../../resources/js/inc/floatingBar.js"></script>
+	<script src="../../resources/js/inc/floatingBar.js"></script>
 
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<div>
 	
 
@@ -82,7 +81,7 @@
 					   <div class="panel panel-default">
 					      <div class="panel-heading" role="tab" id="headingOne">
 					        <h4 class="panel-title">
-					          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${i.parent_no}" aria-expanded="false" aria-controls="collapse${i.parent_no}">
+					          <a id="mainTitle" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${i.parent_no}" aria-expanded="false" aria-controls="collapse${i.parent_no}">
 					            	${i.title}
 					          </a>
 					        </h4>
@@ -118,17 +117,16 @@
 				           
 				           
 				           
-				           <div id="second" class="box">
-				         	  	<div id="taba3" class="tab">들어가</div>
-							    <div id="taba4" class="tab">저리가</div>
-							    <div id="taba5" class="tab">사라져</div>
+				           <div id="second" class="box qna_contentBox">
+				          
+				         	  	<div id="taba3" class="tab"><i class="fa fa-arrow-left color-gray-d1" aria-hidden="true"></i>&nbsp;&nbsp;뒤로가기</div>
+							    <br>
+							    <div id="contentTitle" class="tab qna_content">서브title</div>
+				           		<br>
 				           	
-				           	<c:forEach var="a" items="${content}">
-				           ${a.content1}
-				           	</c:forEach>
 				           	
 				           
-				           
+				           	
 				           
 				           </div>
 				         </div>
@@ -265,13 +263,16 @@
 
 	<div class="inner-fabs" id="aaaaaa">
 		<div class="fab" id="fab5" data-tooltip="FAQ"><a href="#"><i class="material-icons">help</i></a></div>
-		<div class="fab" id="fab4" data-tooltip="About"><a href="#"><i class="material-icons">account_circle</i></a></div>
-		<div class="fab" id="fab3" data-tooltip="Work"><a href="/member/my_bookmarks"><i class="material-icons">computer</i></a></div>	  
-		<div class="fab" id="fab2" data-tooltip="Contact"><a href="#"><i class="material-icons">send</i></a></div>
+		<div class="fab" id="fab4" data-tooltip="구매 가이드"><a href="#"><i class="material-icons">account_circle</i></a></div>
+		<div class="fab" id="fab3" data-tooltip="Bookmark"><a href="/member/my_bookmarks"><i class="material-icons">computer</i></a></div>	  
 	</div>
 	<div class="fab" id="fab1"><i class="material-icons" id="fabIcon">add</i></div>
 
 	<!-- Floating Bar ======================================================================================== -->
 
 </div>
-	
+
+
+<script>
+
+</script>	
