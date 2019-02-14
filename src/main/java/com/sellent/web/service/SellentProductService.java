@@ -14,11 +14,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.MemberDao;
+import com.sellent.web.dao.PointHistoryDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.PointHistory;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
@@ -37,6 +39,8 @@ public class SellentProductService implements ProductService{
 	private ReviewDao reviewDao;
 	@Autowired
 	private LikeDao likeDao;
+	@Autowired
+	private PointHistoryDao pointHistoryDao;
 	
 	@Override
 	@Transactional(rollbackFor=Exception.class)
@@ -94,6 +98,15 @@ public class SellentProductService implements ProductService{
 		
 		double avgStarPoint = reviewDao.getAvgStarPointByProductNo(no);
 		productDao.updateStarPointByNo(no, avgStarPoint);
+		
+		
+		memberDao.addPoint(principal.getName(), 100);
+		
+		PointHistory pointHistory = new PointHistory();
+		pointHistory.setMember_id(principal.getName());
+		pointHistory.setContent("리뷰등록");
+		pointHistory.setPoint(100);
+		pointHistoryDao.insert(pointHistory);
 		
 		return 0;
 	}

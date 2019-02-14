@@ -92,6 +92,12 @@ public class MybatisMemberDao implements MemberDao{
 		return memberDao.updateIntro(member);
 	}
 
+	@Override
+	public int addPoint(String id, int point) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.addPoint(id, point);
+	}
+
 
 
 

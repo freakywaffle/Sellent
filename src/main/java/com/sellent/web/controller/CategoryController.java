@@ -50,6 +50,8 @@ public class CategoryController {
 	@GetMapping("list")
 	public String list() {
 		
+		
+		
 		return "category.list";
 	}
 	

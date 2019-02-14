@@ -18,5 +18,5 @@ public interface MemberDao {
 	int editData(Member member);
 	int updateIntro(Member member);
 
-
+	int addPoint(String id, int point);
 }

@@ -15,7 +15,7 @@
 			</spring:authorize>
 			<spring:authorize access="isAuthenticated()">
 				<div class="after-login">
-					<span class="mobile-hidden">${pageContext.request.userPrincipal.name}</span>
+					<span class="mobile-hidden">${sessionScope.member.nickname}</span>
 					<img src="/resources/images/joboa.png" />
 					<div class="my-menu hidden">
 						<ul>

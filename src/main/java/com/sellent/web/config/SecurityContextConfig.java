@@ -3,19 +3,29 @@ package com.sellent.web.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
+@ComponentScan(basePackages="com.sellent.web.config")
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 
    @Autowired
    private DataSource dataSource;
+   @Autowired
+   private AuthenticationSuccessHandler handler;
    
    @Override
    protected void configure(HttpSecurity http) throws Exception {
@@ -40,6 +50,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
             .loginPage("/member/login")
             .loginProcessingUrl("/member/login")
             .defaultSuccessUrl("/index")
+            .successHandler(handler)
             .and()
          .logout()
             .logoutUrl("/member/logout")
@@ -64,6 +75,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
          .authoritiesByUsernameQuery(
                      "select id, role from member_role where id=?");
          
-         
    }
+   
+   
 }

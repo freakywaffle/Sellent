@@ -12,7 +12,7 @@ import java.util.UUID;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -55,7 +55,10 @@ public class MemberController {
 	private JavaMailSender javaMailSender;
 	
 	@GetMapping("login")
-	public String login() {
+	public String login(HttpServletRequest request) {
+		
+		String prevPage = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", prevPage);
 		
 		return "member.login";
 	}
