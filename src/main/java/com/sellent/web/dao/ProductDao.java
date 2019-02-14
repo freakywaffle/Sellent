@@ -7,9 +7,9 @@ import com.sellent.web.entity.ProductView;
 
 public interface ProductDao {
 	List<Product> getList();
-	
-	
-	
+	List<Product> getList(int page);	
+	List<Product> getList(int page, String selector );	
+	List<Product> getList(int page, String selector, String query);	
 	ProductView get(int no);
 	int getRecentlyNo();
 	int insert(Product product);

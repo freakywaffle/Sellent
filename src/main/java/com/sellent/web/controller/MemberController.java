@@ -134,12 +134,7 @@ public class MemberController {
 		
 		return "member.review.list";
 	}
-	
-	@GetMapping("mypage")
-	public String mypage() {
-		
-		return "member.mypage.index";
-	}
+
 	
 	@GetMapping("my_bookmarks")
 	public String bookmarks() {
