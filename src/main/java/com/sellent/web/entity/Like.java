@@ -2,12 +2,12 @@ package com.sellent.web.entity;
 
 public class Like {
 	private String member_id;
-	private String product_no;
+	private int product_no;
 	
 	public Like() {
 	}
 
-	public Like(String member_id, String product_no) {
+	public Like(String member_id, int product_no) {
 		this.member_id = member_id;
 		this.product_no = product_no;
 	}
@@ -20,11 +20,11 @@ public class Like {
 		this.member_id = member_id;
 	}
 
-	public String getProduct_no() {
+	public int getProduct_no() {
 		return product_no;
 	}
 
-	public void setProduct_no(String product_no) {
+	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
 	}
 	

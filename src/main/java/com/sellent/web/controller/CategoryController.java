@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ReviewDao;
+import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
@@ -42,17 +44,33 @@ public class CategoryController {
 	@Autowired
 	private ReviewDao reviewDao;
 	
+	@Autowired
+	private LikeDao likeDao;
+	
 	@GetMapping("list")
 	public String list() {
+		
+		
 		
 		return "category.list";
 	}
 	
 	@GetMapping("{no}")
-	public String detail(@PathVariable("no") Integer no, Model model) {
+	public String detail(@PathVariable("no") Integer no, Model model, Principal principal) {
 		
 		Map<String, Object> product = productService.getProductByNo(no);
 		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
+		
+		
+		if(principal != null) {
+			Like like = new Like();
+			like.setMember_id(principal.getName());
+			like.setProduct_no(no);
+			int affected = likeDao.hasLike(like);
+			if(affected != 0)
+				product.put("like", true);
+		}
+		
 		model.addAttribute("map", product);
 		if(reviews.size()!=0)
 			model.addAttribute("reviews", reviews);
@@ -153,14 +171,20 @@ public class CategoryController {
 	
 	@GetMapping("{no}/like")
 	@ResponseBody
-	public String like(@PathVariable("no") Integer no) {
-		System.out.println("in"+no);
+	public String like(@PathVariable("no") Integer no, Principal principal) {
+		Like like = new Like();
+		like.setMember_id(principal.getName());
+		like.setProduct_no(no);
+		likeDao.insert(like);
 		return "";
 	}
 	@GetMapping("{no}/delike")
 	@ResponseBody
-	public String delike(@PathVariable("no") Integer no) {
-		System.out.println("del"+no);
+	public String delike(@PathVariable("no") Integer no, Principal principal) {
+		Like like = new Like();
+		like.setMember_id(principal.getName());
+		like.setProduct_no(no);
+		likeDao.delete(like);
 		return "";
 	}
 	

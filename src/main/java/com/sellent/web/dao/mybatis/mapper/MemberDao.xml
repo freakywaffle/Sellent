@@ -54,4 +54,8 @@
 		update member set simple_introduction=#{simple_introduction}, detail_introduction=#{detail_introduction} where id=#{id}
 	</update>
 
+	<insert id="addPoint">
+		update member set point = point + #{param2} where id = #{param1}
+	</insert>
+
 </mapper>

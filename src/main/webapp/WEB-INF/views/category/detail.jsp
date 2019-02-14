@@ -78,7 +78,18 @@
 					</ul>
 					<div>
 						<button class="buy-bt" type="button">${map.product.price }</button>
-						<button class="like-bt" type="button"><i class="fas fa-heart"></i><span>찜하기</span></button>
+						<button class="like-bt" type="button">
+							<c:choose>
+								<c:when test="${empty map.like }">
+									<i class="fas fa-heart"></i>
+								</c:when>
+								<c:otherwise>
+									<i class="fas fa-heart fav"></i>
+								</c:otherwise>
+							</c:choose>
+							<span>찜하기</span>
+						</button>
+								
 					</div>
 				</div>
 			</div>
