@@ -35,7 +35,7 @@ public class SellentMemberService implements MemberService {
 			Skill sk = new Skill();
 			sk.setMemberId(member.getId());
 			System.out.println("skill-memberid= " + sk.getMemberId());
-			sk.setName(s);
+			sk.setName(s);	
 			System.out.println("skill-skillname= " + sk.getName());
 			skillDao.insert(sk);
 		}
@@ -44,6 +44,7 @@ public class SellentMemberService implements MemberService {
 		return 0;
 	
 	}
+
 
 	
 

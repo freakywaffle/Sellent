@@ -10,4 +10,5 @@ import com.sellent.web.entity.Skill;
 public interface MemberService {
 
 	int insertMember(Member member, String skill);
+
 }

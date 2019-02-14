@@ -71,7 +71,8 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
          .passwordEncoder(new BCryptPasswordEncoder())
          .dataSource(dataSource)
          .usersByUsernameQuery(
-                     "select id, password, enabled from member where id=?")
+                     /*"select * enabled from member where id=?"*/
+        		 "select id, password, enabled from member where id=?")
          .authoritiesByUsernameQuery(
                      "select id, role from member_role where id=?");
          

@@ -20,4 +20,5 @@
 <delete id="skillDele" parameterType="com.sellent.web.entity.Skill">
 	delete from skill where name=#{name} and member_id=#{memberId};
 </delete>
+
 </mapper>
