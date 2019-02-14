@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	
 	//aside 튀어나오기
-	
 	var menuBt = $('.menu-button');
 	var closeBt = $('.close-button');
 	
@@ -41,5 +40,12 @@ $(document).ready(function(){
 			$(this).attr('src','/resources/images/full-heart.png');
 		else
 			$(this).attr('src','/resources/images/bin-heart.png');
+	});
+	
+	
+	//글쓰기 이동
+	var regBt = $('.reg-bt');
+	regBt.click(function(){
+		$(location).attr('pathname', 'category/reg');
 	});
 });

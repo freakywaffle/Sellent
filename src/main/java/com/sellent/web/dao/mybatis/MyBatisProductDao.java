@@ -18,9 +18,10 @@ public class MyBatisProductDao implements ProductDao{
 	private SqlSessionTemplate session;
 
 	@Override
-	public List<Product> getList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductView> getList() {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getList();
 	}
 
 	@Override
@@ -67,28 +68,7 @@ public class MyBatisProductDao implements ProductDao{
 		return productDao.updateStarPointByNo(no, avgStarPoint);
 	}
 
-	@Override
-	public List<Product> getList(int page) {
-		// TODO Auto-generated method stub
-		ProductDao productDao = session.getMapper(ProductDao.class);
-		
-		return productDao.getList(page);
-	}
 
-	@Override
-	public List<Product> getList(int page, String selector) {
-		ProductDao productDao = session.getMapper(ProductDao.class);
-		
-		return productDao.getList(page, selector);
-	}
-
-	@Override
-	public List<Product> getList(int page, String selector, String query) {
-		// TODO Auto-generated method stub
-		ProductDao productDao = session.getMapper(ProductDao.class);
-		
-		return productDao.getList(page, selector, query);
-	}
 
 	
 }

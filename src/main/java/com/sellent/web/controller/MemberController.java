@@ -30,7 +30,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sellent.web.dao.MemberDao;
+
 import com.sellent.web.dao.SkillDao;
+
 
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.Skill;
@@ -94,7 +96,7 @@ public class MemberController {
 		String pwd = encoder.encode(member.getPassword());
 		member.setPassword(pwd);
 		int select = memberDao.editData(member);
-		return "redirect:login";
+		return "redirect:./introduce";
 	}
 	 
 	

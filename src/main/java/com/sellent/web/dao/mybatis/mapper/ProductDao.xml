@@ -4,13 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.sellent.web.dao.ProductDao">
-	<select id="getList" resultType="com.sellent.web.entity.Product">
-		select * from product
+	<select id="getList" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
 	</select>
 	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">
 		select 
 			no, 
 			title, 
+			thumbnail,
 			parent_category parentCategory, 
 			sub_category subCategory, 
 			writer_id writerId, 
@@ -42,6 +61,7 @@
 	<insert id="insert" parameterType="com.sellent.web.entity.Product">
 		insert into product(
 			title, 
+			thumbnail,
 			parent_category, 
 			sub_category, 
 			writer_id, 
@@ -53,6 +73,7 @@
 			edit_cnt)
 		values(
 			#{title}, 
+			#{thumbnail},
 			#{parentCategory}, 
 			#{subCategory}, 
 			#{writerId}, 
@@ -66,6 +87,7 @@
 	<update id="update" parameterType="com.sellent.web.entity.Product">
 		update product set
 			title=#{title},
+			thumbnail=#{thumbnail},
 			parent_category=#{parentCategory}, 
 			sub_category=#{subCategory}, 
 			writer_id=#{writerId}, 

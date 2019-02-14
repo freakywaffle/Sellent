@@ -46,11 +46,19 @@ public class SellentProductService implements ProductService{
 	@Transactional(rollbackFor=Exception.class)
 	public int insert(Product product, List<ProductFile> files) {
 		
+		String thumbnail = product.getThumbnail();
+		System.out.println(thumbnail);
+		
+		for(ProductFile pf : files) {
+			if(pf.getName().equals(thumbnail)) 
+				product.setThumbnail(pf.getSaveName());			
+		}
+		
 		productDao.insert(product);
 		
 		for(ProductFile pf : files) {
 			
-			productFileDao.insert(pf);
+			productFileDao.insert(pf);				
 		}
 		
 		return 0;

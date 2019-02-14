@@ -36,6 +36,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
             .and()
          .formLogin()
             .loginPage("/login")
+            .loginProcessingUrl("/login")
             .successHandler(handler)
             .and()
          .logout()
