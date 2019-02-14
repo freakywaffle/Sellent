@@ -50,7 +50,7 @@
 					${map.product.title}
 				</div>
 				<div class="sc-content">
-					<h2>${map.product.writerId }</h2>
+					<h2>${map.product.nickname }</h2>
 					<div class="text">
 						${map.product.simpleContent }
 					</div>
@@ -78,7 +78,18 @@
 					</ul>
 					<div>
 						<button class="buy-bt" type="button">${map.product.price }</button>
-						<button class="like-bt" type="button"><i class="fas fa-heart"></i><span>찜하기</span></button>
+						<button class="like-bt" type="button">
+							<c:choose>
+								<c:when test="${empty map.like }">
+									<i class="fas fa-heart"></i>
+								</c:when>
+								<c:otherwise>
+									<i class="fas fa-heart fav"></i>
+								</c:otherwise>
+							</c:choose>
+							<span>찜하기</span>
+						</button>
+								
 					</div>
 				</div>
 			</div>
@@ -89,7 +100,7 @@
 					<img src="/resources/images/joboa.png"/>
 				</div>
 				<div class="profile-name">
-					<span>${map.product.writerId }</span>
+					<span>${map.product.nickname }</span>
 				</div>
 				<div class="profile-table">
 					<ul>
@@ -127,7 +138,7 @@
 										<img src='${springroot}${review.writer_id }/${review.photo}'/>
 									</div>
 									<div class="rv-content">
-										<p>${review.writer_id }</p>
+										<p>${review.nickname }</p>
 										<div>
 											${review.content }
 										</div>
@@ -168,7 +179,7 @@
 							
 							if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
 								alert('로그인해주세요');
-								$(location).attr('pathname', '/member/login');
+								$(location).attr('pathname', '/login');
 								return;
 							}
 							var starpoint = reviewForm.find('input[type="hidden"]').val()
@@ -203,7 +214,7 @@
 									var reviewListDiv = $('.review-list').children().eq(1);
 									reviewListDiv.empty();
 									for(var i=0;i<reviews.length;i++){
-										var p =$('<p></p>').text(reviews[i].writer_id);
+										var p =$('<p></p>').text(reviews[i].nickname);
 										var contentDiv = $('<div></div>').text(reviews[i].content);
 										var rvContent = $('<div></div>').addClass('rv-content');
 										rvContent.append(p);
@@ -262,7 +273,7 @@
 									var reviewListDiv = $('.review-list').children().eq(1);
 									reviewListDiv.empty();
 									for(var i=0;i<reviews.length;i++){
-										var p =$('<p></p>').text(reviews[i].writer_id);
+										var p =$('<p></p>').text(reviews[i].nickname);
 										var contentDiv = $('<div></div>').text(reviews[i].content);
 										var rvContent = $('<div></div>').addClass('rv-content');
 										rvContent.append(p);

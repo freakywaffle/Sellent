@@ -23,7 +23,8 @@
 			avg_starpoint avgStarPoint, 
 			regdate, 
 			approval,
-			reviewCnt
+			reviewCnt,
+			nickname
 		from productView where no = #{param1}
 	</select>
 	<select id="getRecentlyNo" resultType="int">

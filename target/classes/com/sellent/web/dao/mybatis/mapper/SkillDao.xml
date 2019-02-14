@@ -8,4 +8,17 @@
 <insert id="insert" parameterType="com.sellent.web.entity.Skill" >
 	insert into skill(member_id,name) values(#{memberId},#{name});
 </insert>
+
+<select id="select" resultType="com.sellent.web.entity.Skill" >
+	select * from skill where member_id=#{param1}
+</select>
+
+<insert id="skillinsert" parameterType="com.sellent.web.entity.Skill">
+	insert into skill(member_id,name) values(#{memberId},#{name});
+</insert>
+
+<delete id="skillDele" parameterType="com.sellent.web.entity.Skill">
+	delete from skill where name=#{name} and member_id=#{memberId};
+</delete>
+
 </mapper>

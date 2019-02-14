@@ -106,6 +106,9 @@
     transform: scale(1.0); 
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
 } 
+.pwdInput{
+	position: relative;
+}
 .newPwd{
 	margin-top:20px;
 	width: 90%;
@@ -144,12 +147,15 @@
 	border:none;
 }
 .notID{
+	position:absolute;
 	visibility:hidden;
-	background-color:pink;
 	width:90%;
 	height: 50%;
+	top:0px;
+	margin-top:80px;
+	font-size:20px;
+	font-weight:bold;
 	text-align: center;
-	margin-top: 50px;
 	margin-left: 20px;
 }
  /* modal end  */  

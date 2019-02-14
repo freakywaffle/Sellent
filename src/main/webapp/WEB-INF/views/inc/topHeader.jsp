@@ -15,14 +15,14 @@
 			</spring:authorize>
 			<spring:authorize access="isAuthenticated()">
 				<div class="after-login">
-					<span class="mobile-hidden">${pageContext.request.userPrincipal.name}</span>
+					<span class="mobile-hidden">${sessionScope.member.nickname}</span>
 					<img src="/resources/images/joboa.png" />
 					<div class="my-menu hidden">
 						<ul>
 							<li>1500P</li>
 							<li>마이페이지</li>
 							<li>프로필</li>
-							<li>로그아웃</li>
+							<li><a href="/member/logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</div>

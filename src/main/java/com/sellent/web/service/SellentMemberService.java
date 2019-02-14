@@ -29,13 +29,13 @@ public class SellentMemberService implements MemberService {
 	public int insertMember(Member member, String skill) {
 		// TODO Auto-generated method stub
 		
-		memberDao.insert(member);
+		memberDao.insertMember(member);
 		String [] skills = skill.split(",");
 		for(String s: skills) {
 			Skill sk = new Skill();
 			sk.setMemberId(member.getId());
 			System.out.println("skill-memberid= " + sk.getMemberId());
-			sk.setName(s);
+			sk.setName(s);	
 			System.out.println("skill-skillname= " + sk.getName());
 			skillDao.insert(sk);
 		}
@@ -44,6 +44,7 @@ public class SellentMemberService implements MemberService {
 		return 0;
 	
 	}
+
 
 	
 

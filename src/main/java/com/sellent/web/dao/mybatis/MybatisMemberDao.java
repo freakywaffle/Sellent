@@ -17,17 +17,19 @@ public class MybatisMemberDao implements MemberDao{
 	@Autowired
 	private SqlSessionTemplate session;
 	
-	@Override
+	/*@Override
 	public List<Member> getMember() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
-	public Member getMemberById(String id) {
+	public Member getMember(String id) {
+
 		// TODO Auto-generated method stub
 		MemberDao memberDao = session.getMapper(MemberDao.class);
-		return memberDao.getMemberById(id);
+		
+		return memberDao.getMember(id);
 	}
 
 	@Override
@@ -37,10 +39,10 @@ public class MybatisMemberDao implements MemberDao{
 	}
 
 	@Override
-	public int insert(Member member) {
+	public int insertMember(Member member) {
 
 		MemberDao memberDao = session.getMapper(MemberDao.class);
-		return memberDao.insert(member);
+		return memberDao.insertMember(member);
 	}
 
 	@Override
@@ -71,7 +73,30 @@ public class MybatisMemberDao implements MemberDao{
 		return memberDao.findPwd(id, email);
 	}
 
+	@Override
+	public int changePwd(String id, String newPwd) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.changePwd(id, newPwd);
+	}
+
+	@Override
+	public int editData(Member member) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.editData(member);
+	}
+
+	@Override
+	public int updateIntro(Member member) {
+		// TODO Auto-generated method stub
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.updateIntro(member);
+	}
 
 
+	@Override
+	public int addPoint(String id, int point) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.addPoint(id, point);
+	}
 
 }
