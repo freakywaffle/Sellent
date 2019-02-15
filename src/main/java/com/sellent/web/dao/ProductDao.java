@@ -16,4 +16,6 @@ public interface ProductDao {
 	int update(Product product);
 	int delete(int no);
 	int updateStarPointByNo(int no, double avgStarPoint);
+
+
 }
