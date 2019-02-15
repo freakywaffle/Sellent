@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- 자바스크립트 공통 -->
-
 <!-- 구글 폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
@@ -31,19 +29,10 @@
 		<tiles:insertAttribute name="header"/>
 		
 		<div id="center">
-		
-			<!-- aside -->
-			<tiles:insertAttribute name="aside"/>
 			
-			<section class="content">	
+			<!-- main -->
+			<tiles:insertAttribute name="main"/>
 			
-				<!-- topContent -->
-				<tiles:insertAttribute name="topContent"/>
-			
-				<!-- main -->
-				<tiles:insertAttribute name="main"/>
-	
-			</section>
 		</div>
 	</div>
 	

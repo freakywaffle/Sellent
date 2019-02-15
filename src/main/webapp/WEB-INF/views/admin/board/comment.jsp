@@ -4,8 +4,30 @@
 	href="/resources/css/admin/board/comment.css" />
 <script src="/resources/js/admin/board/comment.js"></script>
 
-<main id="main">
+<section class="aside">
+	<div class="aside-title">
+		게시판관리
+	</div>
+	<ul class="aside-category-list">
+		<li><a href="/admin/board/category">카테고리</a></li>
+		<li><a href="/admin/board/board">게시물</a></li>
+		<li><a href="/admin/board/sale">판매요청</a></li>
+		<li><a href="/admin/board/comment">후기</a></li>
+		<li><a href="/admin/board/consult">1:1상담</a></li>
+	</ul>
+</section>
 
+<section class="content">
+
+	<div class="top-content">
+		<label>게시판관리 > 후기</label>
+		<div class="top-right-content">
+			
+		</div>
+	</div>
+	
+	<main id="main">
+	
         <section class="content-box">
         
             <div class="condition-form">
@@ -135,3 +157,4 @@
             </div>
         </div>
     </main>
+</section>	   

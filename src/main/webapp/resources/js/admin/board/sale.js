@@ -78,3 +78,10 @@ window.addEventListener("load", function(){
         }
     }
 })
+
+$(function(){
+
+    var a = $("#datepicker").val();
+
+    
+})
