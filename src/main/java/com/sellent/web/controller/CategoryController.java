@@ -106,7 +106,7 @@ public class CategoryController {
 	@ResponseBody
 	public String imageUp(@RequestParam("img") ArrayList<MultipartFile> files) throws IOException {
 		tempFiles = new ArrayList<ProductFile>();
-        String root = "E:\\sellent\\upload\\";
+        String root = "F:\\sellent\\upload\\";
         int recentNo = productDao.getRecentlyNo()+1;
         String path = root+recentNo;
         File dir = new File(path);

@@ -58,12 +58,14 @@ public class HomeController {
 		return "member.join";
 	}
 	@PostMapping("join")
-	public String join(Member member, String skill) {
+	public String join(Member member, String skill, @RequestParam("profile") MultipartFile filedata) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		String pwd = encoder.encode(member.getPassword());
 		System.out.println(pwd);
 		member.setPassword(pwd);
-		memberService.insertMember(member, skill);
+		memberService.insertMember(member, skill, filedata);
+		
+		
 		return "redirect:login";
 	}
 
@@ -116,22 +118,6 @@ public class HomeController {
 		 return checkId;
 	 }
 	 
-	 @PostMapping("file-upload")
-	 @ResponseBody
-	 public String fileUpload(@RequestParam("uploadfile") MultipartFile filedata) throws IOException {
-		
-		 String filePath = "F:\\Upload\\";
-		 System.out.println(filedata.getOriginalFilename());
-		 File dir = new File(filePath);
-		 if(!dir.isDirectory()){
-           dir.mkdir();
-		 }
-		 byte[] data = filedata.getBytes();
-        FileOutputStream fos = new FileOutputStream(filePath + "\\" + filedata.getOriginalFilename());
-        fos.write(data);
-        fos.close();
-		 return null;
-	 }
 	 
 	 @PostMapping("idFind")
 	 @ResponseBody

@@ -113,7 +113,24 @@
 	
 	<!-- 오버라이드 했을 때 가장 큰놈만 -->
 	<select id="getListById" resultType="com.sellent.web.entity.ProductView">
-		select * from product 
+		select no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+	    from productView 
 		where writer_id= #{param1} and sell_check=#{param3}
 		order by regdate desc limit #{param2}, 5;
 	</select>

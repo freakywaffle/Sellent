@@ -3,16 +3,18 @@
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="/resources/css/member/project.css" rel="stylesheet" />
+<script src="/resources/js/management/project.js"></script>
+
 <section class="content">
 	<div id="top-content">
 		<div class="small-title">
 			<a>프로젝트</a> <a>→</a> <a>평가</a>
 		</div>
 		<div class="select">
-			<select>
-				<option>평가</option>
-				<option>판매</option>
-				<option>구매</option>
+			<select id="options">
+				<option class="anl" name="anl"  value=0 class="selec">평가</option>
+				<option name="sell" value=1 class="selec">판매</option>
+				<option name="buy"  value=2 class="selec">구매</option>
 			</select>
 		</div>
 	</div>
@@ -57,7 +59,7 @@
 	<div id="page">
 		<ul>
 			<li><img alt="이전" src="/resources/images/prev.png"></li>
-			<c:forEach var="n" begin="${startpage}" end="${endpage }">	
+			<c:forEach var="n" begin="${startpage+1}" end="${endpage }">	
 				<li><a href="?p=${n }">${n }</a></li>
 			</c:forEach>
 			<li><img alt="다음" src="/resources/images/next.png"></li>
