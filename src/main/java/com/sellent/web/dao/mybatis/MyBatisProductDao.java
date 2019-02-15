@@ -81,8 +81,6 @@ public class MyBatisProductDao implements ProductDao{
 		return productDao.getAllCnt();
 	}
 
-	
-
 
 	
 }
