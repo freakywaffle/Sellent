@@ -4,8 +4,43 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
 <link href="/resources/css/category/content/list.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/list.js"></script>
-
-
+<template id="tmpl">
+	<div class="contents">
+		<div class="title-img"><img alt="타이틀 이미지" src='' onerror="this.src='/sellent/default/기본.gif'"/></div>
+		<div class="detail"  onclick="">
+			<div class="like">
+				<input type="hidden" name="pno" value=""/>
+				<i class="fas fa-heart"></i>
+			</div>
+			<div class="title">
+				
+			</div>
+			<div class="detail-data">
+				<div class="edit">
+					<div class="edit-img"><img alt="편집횟수" src="/resources/images/edit.png"></div>
+					<div>편집 횟수: </div>
+					<div><a></a>회</div>
+				</div>
+				<div class="make">
+					<div class="make-img"><img alt="소요일" src="/resources/images/clock.png"></div>
+					<div>작업 일: </div>
+					<div><a></a>일</div>
+				</div>
+				<div class="name"></div>
+			</div>
+			<div class="won-star">
+				<div class="won">
+					<div class="won-img"><img alt="돈" src="/resources/images/save-money.png"></div>
+					<div class="money"></div>
+				</div>
+				<div class="star-point">
+					<div><img alt="별점" src="/resources/images/small-fullstar.png"/></div>
+					<div><img alt="별점" src="/resources/images/small-binstar.png"/></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
 <section class="content">
 	<div class="menu-button mobile-block">
 		<input type="button" value=">" />
@@ -21,12 +56,22 @@
 	</div>
 	<div id="main-content">
 		<c:forEach var="p" items="${plist }">
+			<c:set var="fav" value="" />
+			<c:set var="loop" value="false" />
+			<c:forEach var="l" items="${llist }">
+				<c:if test="${not loop}">
+					<c:if test="${p.no == l.product_no}">
+						<c:set var="fav" value="fav" />
+						<c:set var="loop" value="true" />
+					</c:if>
+				</c:if>
+			</c:forEach>
 			<div class="contents">
 				<div class="title-img"><img alt="타이틀 이미지" src='<spring:url value="/sellent/upload/"/>${p.no}/${p.thumbnail}' onerror="this.src='/sellent/default/기본.gif'"/></div>
-				<div class="detail"  onclick="$(location).attr('pathname', '/category/${p.no}');">
+				<div class="detail" onclick="">
 					<div class="like">
-						<input type="hidden" value="${p.no }"/>
-						<i class="fas fa-heart"></i>
+						<input type="hidden" name="pno" value="${p.no }"/>
+						<i class="fas fa-heart ${fav }"></i>
 					</div>
 					<div class="title">
 						${p.title }
@@ -66,7 +111,3 @@
 		<input type="button" value="더보기" class="more"/>
 	</div>
 </section>
-
-<script>
-	
-</script>

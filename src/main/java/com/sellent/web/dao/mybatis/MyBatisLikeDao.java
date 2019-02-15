@@ -1,5 +1,7 @@
 package com.sellent.web.dao.mybatis;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,6 +34,13 @@ public class MyBatisLikeDao implements LikeDao{
 	public int hasLike(Like like) {
 		LikeDao likeDao = session.getMapper(LikeDao.class);
 		return likeDao.hasLike(like);
+	}
+
+
+	@Override
+	public List<Like> getListById(String id) {
+		LikeDao likeDao = session.getMapper(LikeDao.class);
+		return likeDao.getListById(id);
 	}
 	
 }

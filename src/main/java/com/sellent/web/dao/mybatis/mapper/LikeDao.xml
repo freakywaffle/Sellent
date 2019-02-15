@@ -15,4 +15,7 @@
 	<select id="hasLike" parameterType="com.sellent.web.entity.Like" resultType="int">
 		select count(*) from `like` where (member_id = #{member_id}) and (product_no = #{product_no})
 	</select>
+	<select id="getListById" resultType="com.sellent.web.entity.Like">
+		select * from `like` where member_id = #{param1}
+	</select>
 </mapper>
