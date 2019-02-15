@@ -52,7 +52,7 @@ window.addEventListener("load",function(){
 	
 		if(e.target.classList.contains("close-button"))
 		{
-			//e.target.parentNode.style.display="none";
+			e.target.parentNode.style.display="none";
 			var deltech =e.target.parentNode.children[0].innerText;
 			alert(deltech);
 			var xml = new XMLHttpRequest();   	  

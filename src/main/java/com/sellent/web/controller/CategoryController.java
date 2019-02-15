@@ -52,11 +52,15 @@ public class CategoryController {
 	private LikeDao likeDao;
 	
 	@GetMapping("list")
-	public String list(Model model) {
+	public String list(Principal principal, Model model) {
 		
 		List<ProductView> plist = productDao.getList();
 		model.addAttribute("plist", plist);
-		System.out.println(plist.get(0).getEditCnt());
+		if(principal != null) {
+			List<Like> llist = likeDao.getListById(principal.getName());
+			model.addAttribute("llist", llist);
+		}
+		
 		
 		return "category.list";
 	}
@@ -106,7 +110,7 @@ public class CategoryController {
 	@ResponseBody
 	public String imageUp(@RequestParam("img") ArrayList<MultipartFile> files) throws IOException {
 		tempFiles = new ArrayList<ProductFile>();
-        String root = "E:\\sellent\\upload\\";
+        String root = "F:\\sellent\\upload\\";
         int recentNo = productDao.getRecentlyNo()+1;
         String path = root+recentNo;
         File dir = new File(path);
@@ -195,13 +199,19 @@ public class CategoryController {
 	
 	@GetMapping("moreCategory")
 	@ResponseBody
-	public String moreCategory(@RequestParam int cnt){
+	public String moreCategory(@RequestParam int cnt, Principal principal){
 		Gson gson = new Gson();
+		Map<String, Object> temp = new HashMap<>();
 	
 		List<ProductView> morelist = productDao.getList(cnt, 7);
 		int allCnt = productDao.getAllCnt();
+		if(principal != null) {
+			List<Like> llist = likeDao.getListById(principal.getName());
+			temp.put("llist", llist);
+		}
 		
-		Map<String, Object> temp = new HashMap<>();
+		
+		
 		temp.put("morelist", morelist);
 		temp.put("allCnt", allCnt);
 		

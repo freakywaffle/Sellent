@@ -121,12 +121,12 @@ window.addEventListener("load",function(){
 
       
       var join = document.getElementById("join");
-      var joinbtn = join.querySelector("input[type='submit']");
+      /*var joinbtn = join.querySelector("input[type='submit']");
       joinbtn.addEventListener("click",function(){
     
     	  uploadfile();
           
-      });
+      });*/
       
       
       function uploadfile() {

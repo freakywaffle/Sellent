@@ -58,13 +58,43 @@ public class MemberController {
 	
 	@Autowired
 	private ProductDao productDao;
-	/////
+
 	
 	@GetMapping("project")
-	public String project() {
+	public String project(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") int page, @RequestParam(value="optionValue", defaultValue="0")Integer selector, Product product) {
+		//System.out.println("p:"+p);
+		//System.out.println("changeP"+p+5);
+		//page = Integer.parseInt(p);
+		System.out.println("selectornum: " + selector);
+		List<ProductView> showPage = productDao.getListById(principal.getName(),page, selector);		
+		int allCnt = productDao.getAllCntById(principal.getName(),selector);
+		System.out.println("total page: " +allCnt );
+		int num=5; //화면에 보여질 페이지 번호의 갯수
+		//끝 페이지 번호
+		int endpage;
+		endpage = (int)(Math.ceil((double)page/(double)num)*(double)num);
+		System.out.println("endpage: " +endpage);
+		int startpage= (endpage-num);
+		System.out.println("startpage: "+startpage);
+		//마지막 페이지 번호
+		int tempendpage = (int)(Math.ceil((double)allCnt/(double)num));
+		System.out.println("tempendpage: " +tempendpage);
+		if (endpage > tempendpage) {
+			endpage = tempendpage;
+			System.out.println("endpage2:" + endpage);
+		}
+	
+		//시작페이지번호
 		
+		model.addAttribute("product",showPage);
+		model.addAttribute("startpage",startpage);
+		model.addAttribute("endpage",endpage);
+		model.addAttribute("tempendpage",tempendpage);
+		model.addAttribute("page",page);
+		model.addAttribute("allCnt",allCnt);
 		return "member.management.project";
 	}
+
 	
 	@GetMapping("history")
 	public String history() {
@@ -130,7 +160,7 @@ public class MemberController {
 		member.setDetail_introduction(member.getDetail_introduction());
 		System.out.println("'detail_intro:' " + member.getDetail_introduction());
 		int updateIntro = memberDao.updateIntro(member);
-		//memberService.insertMember(member, skill);
+		//smemberService.insertMember(member, skill);
 		return "redirect:login";
 	}
 	

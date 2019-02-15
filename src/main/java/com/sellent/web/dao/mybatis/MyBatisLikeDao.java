@@ -44,4 +44,11 @@ public class MyBatisLikeDao implements LikeDao{
 		return likeDao.select(id);
 	}
 	
+	@Override
+	public List<Like> getListById(String id) {
+		LikeDao likeDao = session.getMapper(LikeDao.class);
+		return likeDao.getListById(id);
+
+	}
+	
 }

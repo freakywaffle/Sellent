@@ -12,4 +12,6 @@ public interface LikeDao {
 	int insert(Like like);
 	int delete(Like like);
 	int hasLike(Like like);
+	
+	List<Like> getListById(String id);
 }

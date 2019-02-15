@@ -3,14 +3,14 @@
 <link href="/resources/css/member/join.css" rel="stylesheet"/>
 <script src="/resources/js/member/join.js"></script>
 <main id="main">
-	<form id="wrap" action="join" method="post">
+	<form id="wrap" action="join" method="post" enctype="multipart/form-data">
 		<div class="basic">
 			<div class="head-title">기본정보</div>
 			<div class="profile">
 				
 				<div><img  id="blah"  alt="" src="/resources/images/profile.png"></div>
 				<div class="plus">+</div>
-				<input type='file' name='photo'  class="imgInp hidden" />
+				<input type='file' name='profile'  class="imgInp hidden" />
 				 
 			</div>
 			<div class="twobind name">
