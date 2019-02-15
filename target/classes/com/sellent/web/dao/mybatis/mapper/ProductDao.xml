@@ -107,4 +107,17 @@
 			avg_starpoint=#{param2}
 		where no=#{param1}
 	</update>
+	
+	<!-- 오버라이드 했을 때 가장 큰놈만 -->
+	<select id="getListById" resultType="com.sellent.web.entity.ProductView">
+		select * from product 
+		where writer_id= #{param1} and sell_check=#{param3}
+		order by regdate desc limit #{param2}, 5;
+	</select>
+	
+	<select id="getAllCntById" resultType="int">
+		select count(title) from product where writer_id = #{param1} and sell_check=#{param2};
+	</select>
+	
+	
 </mapper>

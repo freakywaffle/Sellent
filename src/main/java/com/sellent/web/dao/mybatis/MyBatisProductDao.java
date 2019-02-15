@@ -1,5 +1,6 @@
 package com.sellent.web.dao.mybatis;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -67,6 +68,35 @@ public class MyBatisProductDao implements ProductDao{
 		
 		return productDao.updateStarPointByNo(no, avgStarPoint);
 	}
+
+	@Override
+	public List<ProductView> getListById(String id, int page) {
+		
+		return getListById(id, page, 0);
+	}
+	@Override
+	public List<ProductView> getListById(String id, int page, int selector) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		System.out.println(id);
+		System.out.println(page);
+		System.out.println(selector);
+		page = (page-1)*5;
+		return productDao.getListById(id,page,selector);
+	}
+
+	@Override
+	public int getAllCntById(String id, int selector) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getAllCntById(id, selector);
+	}
+
+	
+
+	
+	
+
+	
 
 
 

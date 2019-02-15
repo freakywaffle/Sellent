@@ -14,8 +14,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 
 import com.sellent.web.dao.MemberDao;
+import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.SkillDao;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Product;
 import com.sellent.web.entity.Skill;
 
 @Component
@@ -26,6 +28,9 @@ public class SellentLoginSuccessHandler implements AuthenticationSuccessHandler{
 	
 	@Autowired
 	SkillDao skillDao;
+	
+	@Autowired
+	ProductDao productDao;
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
