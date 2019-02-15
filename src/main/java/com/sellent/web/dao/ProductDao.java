@@ -1,5 +1,6 @@
 package com.sellent.web.dao;
 
+import java.security.Principal;
 import java.util.List;
 
 import com.sellent.web.entity.Product;
@@ -8,6 +9,9 @@ import com.sellent.web.entity.ProductView;
 public interface ProductDao {
 
 	List<ProductView> getList();
+
+	List<ProductView> getListById(String id, int page);
+	List<ProductView> getListById(String id, int page, int selector);
 	List<ProductView> getList(int start, int cnt);
 	
 	ProductView get(int no);
@@ -18,4 +22,6 @@ public interface ProductDao {
 	int update(Product product);
 	int delete(int no);
 	int updateStarPointByNo(int no, double avgStarPoint);
+	int getAllCntById(String id, int selector);
+
 }

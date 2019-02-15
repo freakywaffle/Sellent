@@ -30,11 +30,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sellent.web.dao.MemberDao;
-
+import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.SkillDao;
 
 
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Product;
+import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.Skill;
 import com.sellent.web.service.MemberService;
 
@@ -50,10 +52,39 @@ public class MemberController {
 	@Autowired
 	private SkillDao skillDao;
 	
+	@Autowired
+	private ProductDao productDao;
+	
 	
 	@GetMapping("project")
-	public String project() {
+	public String project(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") Integer page, @RequestParam(defaultValue="0")Integer selector, Product product) {
 		
+		List<ProductView> showPage = productDao.getListById(principal.getName(),page);		
+		int allCnt = productDao.getAllCntById(principal.getName(),selector);
+		System.out.println("total page: " +allCnt );
+		
+		int num=5; //화면에 보여질 페이지 번호의 갯수
+		//끝 페이지 번호
+		int endpage;
+		endpage = (int)(Math.ceil((double)page/(double)num)*(double)num);
+		System.out.println("endpage: " +endpage);
+		int startpage= (endpage-num)+1;
+		System.out.println("startpage: "+startpage);
+		//마지막 페이지 번호
+		int tempendpage = (int)(Math.ceil((double)allCnt/(double)num));
+		System.out.println("tempendpage: " +tempendpage);
+		if (endpage > tempendpage) {
+			endpage = tempendpage;
+			System.out.println("endpage2:" + endpage);
+		}
+	
+		//시작페이지번호
+		
+		model.addAttribute("product",showPage);
+		model.addAttribute("startpage",startpage);
+		model.addAttribute("endpage",endpage);
+		model.addAttribute("tempendpage",tempendpage);
+		model.addAttribute("page",page);
 		return "member.management.project";
 	}
 	
@@ -121,7 +152,7 @@ public class MemberController {
 		member.setDetail_introduction(member.getDetail_introduction());
 		System.out.println("'detail_intro:' " + member.getDetail_introduction());
 		int updateIntro = memberDao.updateIntro(member);
-		//memberService.insertMember(member, skill);
+		//smemberService.insertMember(member, skill);
 		return "redirect:login";
 	}
 	

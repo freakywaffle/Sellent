@@ -59,6 +59,13 @@ public class PointHistory {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
+	@Override
+	public String toString() {
+		return "PointHistory [no=" + no + ", member_id=" + member_id + ", content=" + content + ", regdate=" + regdate
+				+ ", point=" + point + "]";
+	}
+	
 	
 	
 }	

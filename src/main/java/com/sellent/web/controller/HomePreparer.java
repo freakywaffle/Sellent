@@ -8,6 +8,8 @@ import org.apache.tiles.AttributeContext;
 import org.apache.tiles.preparer.ViewPreparer;
 import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.sellent.web.entity.QnaPaCategory;
@@ -26,14 +28,14 @@ public class HomePreparer implements ViewPreparer {
    @Override
    public void execute(Request tilesRequest, 
          AttributeContext attributeContext) {
-      
-
+    
 	   List<QnaPaCategory> list = qnaService.getOftenQnaList();
 	   List<QnaSubCategory> subList = qnaService.getOftenQnaSubList();
 
 	   Map<String, Object> model = tilesRequest.getContext("request");           
        model.put("list", list);
        model.put("subList", subList);
+       
        
        
    }

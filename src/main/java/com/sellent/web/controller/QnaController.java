@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.sellent.web.dao.PointHistoryDao;
+import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.QnaDao;
+import com.sellent.web.entity.PointHistory;
 import com.sellent.web.entity.QnaContent;
 import com.sellent.web.entity.QnaFile;
 import com.sellent.web.entity.QnaPaCategory;
@@ -35,6 +39,9 @@ public class QnaController {
 
 	@Autowired
 	private QnaDao qnaDao;
+	
+	@Autowired
+	private PointHistoryDao pointHistoryDao;
 	
 	@Autowired
 	private QnaService qnaService;
@@ -63,13 +70,10 @@ public class QnaController {
 	
 	@RequestMapping("ajax")
 	@ResponseBody
-	public String subQna(String title, Principal p) {
+	public String subQna(String title) {
 			
 		List<QnaContent> content = qnaService.getContent(title);
-		System.out.println("p"+p.getName());
-		System.out.println(content);
-		System.out.println(content.get(0).getContent1());
-		
+
 		Gson gson = new Gson();
 		String json = gson.toJson(content);
 		return json;
@@ -126,6 +130,50 @@ public class QnaController {
 
 		System.out.println(tempFiles);
 		 qnaService.insert(email, title, content, tempFiles);
+		 //qnaService.insert(email, title, content);
+		 
+		return "ok";
+	}
+	
+	
+	
+	@RequestMapping("point")
+	@ResponseBody
+	public String point( HttpServletRequest request, int point, Principal principal) {
+		
+		System.out.println(point);
+
+		Object principal2 = SecurityContextHolder.getContext()
+
+				.getAuthentication().getPrincipal();
+		
+		if(principal2.equals("anonymousUser"))
+			System.out.println(principal2);
+		
+		else {
+			System.out.println(principal.getName());
+			List<PointHistory> list = pointHistoryDao.select_sy(principal.getName());
+			
+			System.out.println(list);
+			if(list.isEmpty()) {
+				System.out.println("비었!!");
+				int a = pointHistoryDao.insert_sy(principal.getName(),point);
+				
+			}
+			else if(!list.isEmpty())
+				System.out.println("안비었!!");
+		};
+				
+		
+//		String email = main[0];
+//		String title = main[1];
+//		String content = main[2];
+//		System.out.println(main[0]);
+//		System.out.println(main[1]);
+//		System.out.println(main[2]);
+//
+//		System.out.println(tempFiles);
+//		 qnaService.insert(email, title, content, tempFiles);
 		 //qnaService.insert(email, title, content);
 		 
 		return "ok";

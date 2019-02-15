@@ -377,5 +377,29 @@
 		    $(this).siblings('.panel-heading').removeClass('active');
 		  });
 		});
+	
+	
+	//guide point
+	$(function() {
+		var btn = $("#fab4");
+		var point = 500
+		btn.click(function() {
+			
+			$.ajax({
+			    method      : 'POST',
+			    url         : '/Qna/point',
+			    data        : {"point" : point},
+			    success     : function(data) {
+			    },
+			    error       : function(request, status, error) {
+			    }	
+				
+			 	   
+			});
+		})
+	});
+	
+	
+	
    
 	
