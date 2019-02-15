@@ -24,6 +24,8 @@
 			reviewCnt,
 			nickname
  		from productView
+ 		limit #{param1}, #{param2} 
+ 		
 	</select>
 	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">
 		select 
@@ -107,6 +109,7 @@
 			avg_starpoint=#{param2}
 		where no=#{param1}
 	</update>
+
 	
 	<!-- 오버라이드 했을 때 가장 큰놈만 -->
 	<select id="getListById" resultType="com.sellent.web.entity.ProductView">
@@ -118,6 +121,9 @@
 	<select id="getAllCntById" resultType="int">
 		select count(title) from product where writer_id = #{param1} and sell_check=#{param2};
 	</select>
-	
-	
+
+	<select id="getAllCnt" resultType="int">
+		select count(*) from product
+	</select>
+
 </mapper>

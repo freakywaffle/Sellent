@@ -20,9 +20,15 @@ public class MyBatisProductDao implements ProductDao{
 
 	@Override
 	public List<ProductView> getList() {
+		
+		return getList(0, 7);
+	}
+	
+	@Override
+	public List<ProductView> getList(int start, int cnt) {
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
-		return productDao.getList();
+		return productDao.getList(start, cnt);
 	}
 
 	@Override
@@ -93,10 +99,11 @@ public class MyBatisProductDao implements ProductDao{
 
 	
 
-	
-	
-
-	
+	public int getAllCnt() {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getAllCnt();
+	}
 
 
 

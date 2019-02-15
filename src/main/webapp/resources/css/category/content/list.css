@@ -137,11 +137,19 @@ select:focus {
 	
 	padding-left:450px;
 	padding-top:15px;
-	padding-bottom:10px;
 	
 }
 .like img{
 	heihgt:20px; width:20px;
+}
+
+.like .fa-heart{
+	color: #CCCCCC;
+	font-size: 30px;
+}
+
+.like .fav{
+	color:#fe7676;
 }
 
 .title{

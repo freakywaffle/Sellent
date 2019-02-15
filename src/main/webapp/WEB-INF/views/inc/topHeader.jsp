@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>  
 <link href="/resources/css/inc/topHeader.css" rel="stylesheet"/>
 <script src="/resources/js/inc/topHeader.js"></script>
 <section class="top-header">
@@ -16,7 +17,7 @@
 			<spring:authorize access="isAuthenticated()">
 				<div class="after-login">
 					<span class="mobile-hidden">${sessionScope.member.nickname}</span>
-					<img src="/resources/images/joboa.png" />
+					<img src='<spr:url value="/sellent/profile/"/>${sessionScope.member.id}/${sessionScope.member.photo}' />
 					<div class="my-menu hidden">
 						<ul>
 							<li>1500P</li>

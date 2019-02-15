@@ -48,7 +48,7 @@
 	
 	<update id="editData" parameterType="com.sellent.web.entity.Member"> 
 		update member set nickname=#{nickname}, password=#{password},
-		<if test="email!=null">
+		<if test="photo!=''">
 			photo=#{photo}, 
 		</if>
 		email=#{email} where id=#{id}
