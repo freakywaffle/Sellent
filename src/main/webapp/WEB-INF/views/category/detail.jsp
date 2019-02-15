@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <link href="/resources/css/category/content/detail.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
@@ -10,43 +12,84 @@
 			<div>
 				<div class="post-img">
 					<div>
-						<img src="/resources/images/650_400/post_img3_650_400.jpg" />
+						<c:if test="${!empty map.thumbnail}">
+							<img class="thumbnail" src='<spring:url value="${map.root }"/>${map.product.no}/${map.thumbnail}' />
+						</c:if>
 					</div>
 					<div>
 						<ul class="img-list">
-							<li><img src="/resources/images/150_150/post_img_150_150.png" /></li>
-							<li><img src="/resources/images/150_150/post_img2_150_150.png" /></li>
-							<li class="mobile-hidden"><img src="/resources/images/150_150/post_img4_150_150.png" /></li>
-							<li class="mobile-hidden"><img src="/resources/images/150_150/post_img5_150_150.png" /></li>
+							<c:forEach var="n" items="${map.files }" varStatus="status">
+								<c:choose>
+									<c:when test="${status.index lt 2}">
+										<li><img src='<spring:url value="${map.root }" />${map.product.no}/${n.saveName}' /></li>
+									</c:when>
+									<c:otherwise>
+										<li class="mobile-hidden"><img src='<spring:url value="${map.root }" />${map.product.no}/${n.saveName}' /></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
 				<div class="star-point">
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<img src="/resources/images/small-fullstar.png"/>
-					<span>(10명의 평가)</span>
+					<div class="star">
+						<c:forEach begin="1" end="${map.product.avgStarPoint-(map.product.avgStarPoint%1) }">
+							<img src="/resources/images/big-fullstar.png"/>
+						</c:forEach>
+						<c:forEach begin="${map.product.avgStarPoint-(map.product.avgStarPoint%1)+1}" end="5">
+							<img src="/resources/images/big-binstar.png"/>
+						</c:forEach>
+					</div>
+					<div>
+						<span class="avgStarPoint">${map.product.avgStarPoint }</span>&nbsp;&nbsp;&nbsp;<span class="reviewCnt">(${map.product.reviewCnt }명의 평가)</span>
+					</div>
 				</div>
 			</div>
 			<div class="simple-content">
 				<div class="sc-title">
-					홈페이지를 맞춤형으로 디자인부터 개발까지 한번에 제작해 드립니다.
+					${map.product.title}
 				</div>
 				<div class="sc-content">
-					<h2>디럭스 홈페이지</h2>
+					<h2>${map.product.nickname }</h2>
 					<div class="text">
-						·PC+MOBILE or 반응형 ·100% 맞춤형 디자인,코딩 ·기본제공기능+ SNS로그인기능+인스타그램연동
+						${map.product.simpleContent }
 					</div>
 					<ul>
-						<li><img src="/resources/images/price-tag.png"/>&nbsp;판매여부: YES </li>
-						<li><img src="/resources/images/clock.png"/>&nbsp;제작기간: 20일</li>
-						<li><img src="/resources/images/edit.png"/>&nbsp;수정횟수: 4회</li>
+						<li>
+							<img src="/resources/images/price-tag.png"/>
+							판매여부: 
+							<c:choose>
+								<c:when test="${map.product.sellCheck eq 0}">
+									NO 
+								</c:when>
+								<c:otherwise>
+									YES
+								</c:otherwise>
+							</c:choose> 
+						</li>
+						<li>
+							<img src="/resources/images/clock.png"/>
+							제작기간: ${map.product.duration }
+						</li>
+						<li>
+							<img src="/resources/images/edit.png"/>
+							수정횟수: ${map.product.editCnt } 
+						</li>
 					</ul>
 					<div>
-						<button class="buy-bt" type="button">50,000</button>
-						<button class="like-bt" type="button"><img src="/resources/images/bin-heart.png"/><span>찜하기</span></button>
+						<button class="buy-bt" type="button">${map.product.price }</button>
+						<button class="like-bt" type="button">
+							<c:choose>
+								<c:when test="${empty map.like }">
+									<i class="fas fa-heart"></i>
+								</c:when>
+								<c:otherwise>
+									<i class="fas fa-heart fav"></i>
+								</c:otherwise>
+							</c:choose>
+							<span>찜하기</span>
+						</button>
+								
 					</div>
 				</div>
 			</div>
@@ -57,14 +100,13 @@
 					<img src="/resources/images/joboa.png"/>
 				</div>
 				<div class="profile-name">
-				
-					<span>디럭스 홈페이지</span>
+					<span>${map.product.nickname }</span>
 				</div>
 				<div class="profile-table">
 					<ul>
-						<li><p>10</p><p>판매건수</p></li>
-						<li><p>23</p><p>작업개수</p></li>
-						<li><p>4.1</p><p>평점</p></li>
+						<li><p>${map.member.sell_count }</p><p>판매건수</p></li>
+						<li><p>${map.member.product_count }</p><p>작업개수</p></li>
+						<li><p>${map.member.star_point }</p><p>평점</p></li>
 					</ul>
 				</div>
 				<div class="chat-bt">
@@ -75,108 +117,188 @@
 				<div class="detail-index">
 					<ul>
 						<li class="lookup">상세설명</li>
-						<li class="no-lookup">사용자평가</li>
-						<li class="no-lookup">평가작성</li>
+						<li>사용자평가</li>
+						<li>평가작성</li>
 					</ul>
 				</div>
 				<div class="contents">
 					<div class="detail-content" >
 						<h2>상세설명</h2>
 						<div>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
-							칸채우기<br/>
+							${map.product.detailContent }
 						</div>
 					</div>
 					<div class="review-list">
-						<h2>사용자평가(10)</h2>
+						<h2>사용자평가(<span>${map.product.reviewCnt }</span>)</h2>
 						<div>
-							<div class="review">
-								<img src="/resources/images/joboa.png"/>
-								<div class="rv-content">
-									<p>khh1111</p>
-									<div>
-										작업속도가 굉장히 빠르시고 완성도도 정말 마음에 드네요!
-										다음에도 일이 생기면 꼭 의뢰하겠습니다
+							<spring:url var="springroot" value="/sellent/profile/"/>
+							<c:forEach var="review" items="${reviews }">
+								<div class="review">
+									<div class="review-profile-photo">
+										<img src='${springroot}${review.writer_id }/${review.photo}'/>
+									</div>
+									<div class="rv-content">
+										<p>${review.nickname }</p>
+										<div>
+											${review.content }
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="review">
-								<img src="/resources/images/joboa.png"/>
-								<div class="rv-content">
-									<p>khh1111</p>
-									<div>
-										작업속도가 굉장히 빠르시고 완성도도 정말 마음에 드네요!
-										다음에도 일이 생기면 꼭 의뢰하겠습니다
-									</div>
-								</div>
-							</div>
-							<div class="review">
-								<img src="/resources/images/joboa.png"/>
-								<div class="rv-content">
-									<p>khh1111</p>
-									<div>
-										작업속도가 굉장히 빠르시고 완성도도 정말 마음에 드네요!
-										다음에도 일이 생기면 꼭 의뢰하겠습니다
-									</div>
-								</div>
-							</div>
-							<div class="review">
-								<img src="/resources/images/joboa.png"/>
-								<div class="rv-content">
-									<p>khh1111</p>
-									<div>
-										작업속도가 굉장히 빠르시고 완성도도 정말 마음에 드네요!
-										다음에도 일이 생기면 꼭 의뢰하겠습니다
-									</div>
-								</div>
-							</div>
-							<div class="review">
-								<img src="/resources/images/joboa.png"/>
-								<div class="rv-content">
-									<p>khh1111</p>
-									<div>
-										작업속도가 굉장히 빠르시고 완성도도 정말 마음에 드네요!
-										다음에도 일이 생기면 꼭 의뢰하겠습니다
-									</div>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 						<div>
-							<input type="button" value="더보기"/>
+							<input type="button" value="더보기" class="more"/>
 						</div>
 					</div>
+					
+					
 					<div class="review-reg-form">
 						<h2>평가작성</h2>
 						<div>
-							<textarea rows="10" cols="100"></textarea>
+							<textarea rows="10" cols="100" name="content"></textarea>
 							<div>
 								<select>
-									<option>★★★★★</option>
-									<option>★★★★☆</option>
-									<option>★★★☆☆</option>
-									<option>★★☆☆☆</option>
-									<option>★☆☆☆☆</option>
+									<option value="0">별점선택</option>
+									<option value="5">★★★★★</option>
+									<option value="4">★★★★☆</option>
+									<option value="3">★★★☆☆</option>
+									<option value="2">★★☆☆☆</option>
+									<option value="1">★☆☆☆☆</option>
 								</select>
+								<input type="hidden" name="starpoint"/>
 								<input type="button" value="작성" />
 							</div>
 						</div>
 					</div>
+					<script>
+					$(document).ready(function(){
+						//review 등록
+						var reviewForm = $('.review-reg-form');
+						var reviewBt = reviewForm.find('input[type="button"]');
+						reviewBt.on('click',function(){
+							
+							if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
+								alert('로그인해주세요');
+								$(location).attr('pathname', '/login');
+								return;
+							}
+							var starpoint = reviewForm.find('input[type="hidden"]').val()
+							var textarea = reviewForm.find('textarea');
+							if(starpoint == 0){
+								alert('별점을 선택해주세요');
+								return;
+							}
+							
+							var json = {
+									"content":textarea.val(),
+									"starpoint":starpoint,
+							};
+							
+							
+							$.ajax({
+								url: $(location).attr('pathname')+'/review',
+								type:'POST',
+								data: "json="+JSON.stringify(json),
+								success: function(data){
+									
+									
+									
+									var reviewsCnt = $('.review-list').find('span');
+									var jsonData = jQuery.parseJSON(data);
+								
+									var reviews = jsonData.reviews;
+									var totalCnt = jsonData.reviewCnt;
+									
+									reviewsCnt.text(totalCnt);
+									
+									var reviewListDiv = $('.review-list').children().eq(1);
+									reviewListDiv.empty();
+									for(var i=0;i<reviews.length;i++){
+										var p =$('<p></p>').text(reviews[i].nickname);
+										var contentDiv = $('<div></div>').text(reviews[i].content);
+										var rvContent = $('<div></div>').addClass('rv-content');
+										rvContent.append(p);
+										rvContent.append(contentDiv);
+										
+										var springurl = '${springroot}';
+										
+										var profilePhoto = $('<img />').attr('src', springurl+reviews[i].writer_id+'/'+reviews[i].photo);
+										var reviewDiv = $('<div></div>').addClass('review');
+										reviewDiv.append(profilePhoto);
+										reviewDiv.append(rvContent);
+										
+										reviewListDiv.append(reviewDiv);
+									}
+									if(totalCnt>10)
+										more.removeClass('hidden');
+									
+									textarea.val('');
+									var avgStarPoint = jsonData.avgStarPoint.toFixed(1);
+									var star = $('.star');
+									
+									for(var i=1; i<= avgStarPoint;i++){
+										star += '<img src="/resources/images/big-fullstar.png"/>';
+									}
+									
+									for(var i=avgStarPoint-avgStarPoint%1+1; i<=5;i++){
+										star += '<img src="/resources/images/big-binstar.png"/>';
+									}
+										
+									$('.avgStarPoint').text(avgStarPoint);
+									$('.star-point').find('.reviewCnt').text('('+totalCnt+'명의 평가)');
+								}
+							
+							});
+						});
+						
+						//review페이징 처리
+						var more = $('.more');
+						more.on('click',function(){
+							var cnt = $('.review').length;
+							var pageCnt = Math.ceil((cnt)/10)*10;
+							if(pageCnt == cnt)
+								pageCnt+=10;
+							$.ajax({
+								url: $(location).attr('pathname')+'/moreReview?cnt='+pageCnt,
+								type:'GET',
+								success: function(data){
+									var reviewsCnt = $('.review-list').find('span');
+									var jsonData = jQuery.parseJSON(data);
+									
+									var reviews = jsonData.reviews;
+									var totalCnt = jsonData.reviewCnt;
+									
+									reviewsCnt.text(totalCnt);
+									
+									var reviewListDiv = $('.review-list').children().eq(1);
+									reviewListDiv.empty();
+									for(var i=0;i<reviews.length;i++){
+										var p =$('<p></p>').text(reviews[i].nickname);
+										var contentDiv = $('<div></div>').text(reviews[i].content);
+										var rvContent = $('<div></div>').addClass('rv-content');
+										rvContent.append(p);
+										rvContent.append(contentDiv);
+										
+										var springurl = '${springroot}';
+										
+										var profilePhoto = $('<img />').attr('src', springurl+reviews[i].writer_id+'/'+reviews[i].photo);
+										var reviewDiv = $('<div></div>').addClass('review');
+										reviewDiv.append(profilePhoto);
+										reviewDiv.append(rvContent);
+										reviewListDiv.append(reviewDiv);
+									}
+									
+									
+									if(reviews.length >= totalCnt)
+										more.addClass('hidden');
+									else
+										more.removeClass('hidden');
+								}
+							
+							});
+						});
+					});
+					</script>
 				</div>
 			</div>
 		</div>

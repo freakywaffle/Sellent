@@ -75,14 +75,16 @@
 .aside h2{
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 30px;
-	padding-right: 50px;
+	padding-right: 30px;
 	padding-bottom: 20px;
 	border-bottom: 2px solid rgb(255, 214, 51);
 	height: 80px;
 	box-sizing: border-box;
 	vertical-align: middle;
 	line-height: 60px;
-	
+	margin-top: 0px;
+	margin-bottom: 0px;
+
 }
 
 .aside h3{
@@ -99,7 +101,7 @@
 		display: flex;
 	}
 	
-	.close{
+	.aside-close{
 		left: -100%!important;
 		transition: 0.5s;
 		z-index: 10;

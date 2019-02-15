@@ -3,6 +3,7 @@ package com.sellent.web.config;
 import javax.servlet.Filter;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
@@ -22,7 +23,7 @@ public class DispatcherServletInitializer
 		return new Class[] {
 				ServletContextConfig.class
 				,ServiceContextConfig.class
-//				,SecurityContextConfig.class
+				,SecurityContextConfig.class
 		};
 	}
 
@@ -37,6 +38,8 @@ public class DispatcherServletInitializer
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
+		
+		DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
 		
 		return new Filter[] {characterEncodingFilter};
 	}

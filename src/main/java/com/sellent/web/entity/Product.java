@@ -5,6 +5,7 @@ import java.util.Date;
 public class Product {
 	private int no; 
 	private String title; 
+	private String thumbnail;
 	private String parentCategory; 
 	private String subCategory; 
 	private String writerId; 
@@ -24,11 +25,15 @@ public class Product {
 	}
 
 
-	public Product(int no, String title, String parentCategory, String subCategory, String writerId,
+	
+
+
+	public Product(int no, String title, String thumbnail, String parentCategory, String subCategory, String writerId,
 			String simpleContent, String detailContent, int price, int sellCheck, int duration, int editCnt,
 			double avgStarPoint, Date regdate, int approval) {
 		this.no = no;
 		this.title = title;
+		this.thumbnail = thumbnail;
 		this.parentCategory = parentCategory;
 		this.subCategory = subCategory;
 		this.writerId = writerId;
@@ -43,10 +48,14 @@ public class Product {
 		this.approval = approval;
 	}
 
+	
 
-	public Product(String title, String parentCategory, String subCategory, String writerId, String simpleContent,
-			String detailContent, int price, int sellCheck, int duration, int editCnt) {
+
+
+	public Product(String title, String thumbnail, String parentCategory, String subCategory, String writerId,
+			String simpleContent, String detailContent, int price, int sellCheck, int duration, int editCnt) {
 		this.title = title;
+		this.thumbnail = thumbnail;
 		this.parentCategory = parentCategory;
 		this.subCategory = subCategory;
 		this.writerId = writerId;
@@ -57,6 +66,9 @@ public class Product {
 		this.duration = duration;
 		this.editCnt = editCnt;
 	}
+
+
+	
 
 
 	public int getNo() {
@@ -64,9 +76,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setNo(int no) {
 		this.no = no;
 	}
+
+
+
 
 
 	public String getTitle() {
@@ -74,9 +92,31 @@ public class Product {
 	}
 
 
+
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
+
+
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+
+
+
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+
+
 
 
 	public String getParentCategory() {
@@ -84,9 +124,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setParentCategory(String parentCategory) {
 		this.parentCategory = parentCategory;
 	}
+
+
+
 
 
 	public String getSubCategory() {
@@ -94,9 +140,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setSubCategory(String subCategory) {
 		this.subCategory = subCategory;
 	}
+
+
+
 
 
 	public String getWriterId() {
@@ -104,9 +156,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setWriterId(String writerId) {
 		this.writerId = writerId;
 	}
+
+
+
 
 
 	public String getSimpleContent() {
@@ -114,9 +172,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setSimpleContent(String simpleContent) {
 		this.simpleContent = simpleContent;
 	}
+
+
+
 
 
 	public String getDetailContent() {
@@ -124,9 +188,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setDetailContent(String detailContent) {
 		this.detailContent = detailContent;
 	}
+
+
+
 
 
 	public int getPrice() {
@@ -134,9 +204,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+
+
 
 
 	public int getSellCheck() {
@@ -144,9 +220,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setSellCheck(int sellCheck) {
 		this.sellCheck = sellCheck;
 	}
+
+
+
 
 
 	public int getDuration() {
@@ -154,9 +236,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+
+
+
 
 
 	public int getEditCnt() {
@@ -164,9 +252,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setEditCnt(int editCnt) {
 		this.editCnt = editCnt;
 	}
+
+
+
 
 
 	public double getAvgStarPoint() {
@@ -174,9 +268,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setAvgStarPoint(double avgStarPoint) {
 		this.avgStarPoint = avgStarPoint;
 	}
+
+
+
 
 
 	public Date getRegdate() {
@@ -184,9 +284,15 @@ public class Product {
 	}
 
 
+
+
+
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
+
+
 
 
 	public int getApproval() {
@@ -194,22 +300,26 @@ public class Product {
 	}
 
 
+
+
+
 	public void setApproval(int approval) {
 		this.approval = approval;
 	}
 
 
+
+
+
 	@Override
 	public String toString() {
-		return "Product [no=" + no + ", title=" + title + ", parentCategory=" + parentCategory + ", subCategory="
-				+ subCategory + ", writerId=" + writerId + ", simpleContent=" + simpleContent + ", detailContent="
-				+ detailContent + ", price=" + price + ", sellCheck=" + sellCheck + ", duration=" + duration
-				+ ", editCnt=" + editCnt + ", avgStarPoint=" + avgStarPoint + ", regdate=" + regdate + ", approval="
-				+ approval + "]";
+		return "Product [no=" + no + ", title=" + title + ", thumbnail=" + thumbnail + ", parentCategory="
+				+ parentCategory + ", subCategory=" + subCategory + ", writerId=" + writerId + ", simpleContent="
+				+ simpleContent + ", detailContent=" + detailContent + ", price=" + price + ", sellCheck=" + sellCheck
+				+ ", duration=" + duration + ", editCnt=" + editCnt + ", avgStarPoint=" + avgStarPoint + ", regdate="
+				+ regdate + ", approval=" + approval + "]";
 	}
-	
-	
-	
+
 	
 	
 	

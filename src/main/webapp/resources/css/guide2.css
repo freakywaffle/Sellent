@@ -42,8 +42,9 @@ html, body {
 	height: 50px;
 }
 
-#guide .999 {
+#guide .lh-50 {
 	color: #757575;
+	line-height: 50px;
 }
 
 #guide .fa-search {
@@ -439,17 +440,7 @@ html, body {
 #guide .box section {
 	display: block;
 }
-.panel-heading  a:before {
-   font-family: 'Glyphicons Halflings';
-   content: "\e114";
-   float: right;
-   transition: all 0.5s;
-}
-#guide .panel-heading.active a:before {
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	transform: rotate(180deg);
-} 	
+
 
 
 
@@ -631,11 +622,27 @@ transform: rotate(135deg);
 	transform: scale(0.98);
 	transition: all 70ms ease;
 }
+#guide span {
+	vertical-align: unset!important;
+}
+#guide #span {
+	font-weight: bold;
+	height: 0px;
+	margin: 0px!important;
+}
 
 
+#guide ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+#guide li {
+	list-style: none;
+}
 #list {
-	margin: 0;
-	padding-left: 0;
+	margin: 0px;
+	padding-left: 0px;
 	list-style: none;
 }
 #list > li {
@@ -721,3 +728,23 @@ transform: rotate(135deg);
 .ref a {
 	color: #fff;
 }
+
+#second {
+	padding: 15px;
+}
+
+#second div{
+	font-size: 16px;
+	font-weight: bold;
+	white-space: normal!important;
+}
+#second div:first-child {
+	font-size: 15px;
+	font-weight: bold;
+}
+#second div:nth-child(3){
+	font-size: 22px;
+	font-weight: bold;
+	color: black;
+}
+

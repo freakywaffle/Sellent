@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Skill;
+
 
 @Repository
 public class MybatisMemberDao implements MemberDao{
@@ -15,16 +17,19 @@ public class MybatisMemberDao implements MemberDao{
 	@Autowired
 	private SqlSessionTemplate session;
 	
-	@Override
+	/*@Override
 	public List<Member> getMember() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
-	public Member getMember(int id) {
+	public Member getMember(String id) {
+
 		// TODO Auto-generated method stub
-		return null;
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		
+		return memberDao.getMember(id);
 	}
 
 	@Override
@@ -34,13 +39,10 @@ public class MybatisMemberDao implements MemberDao{
 	}
 
 	@Override
-	public int insert(Member member) {
+	public int insertMember(Member member) {
 
-		/*
-		 * MemberDao memberDao = session.getMapper(MemberDao.class); return
-		 * memberDao.insert(member);
-		 */
-		return 0;
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.insertMember(member);
 	}
 
 	@Override
@@ -50,11 +52,51 @@ public class MybatisMemberDao implements MemberDao{
 		MemberDao memberDao = session.getMapper(MemberDao.class);
 		return memberDao.select(id);
 	}
-
 	@Override
 	public int delete(Member member) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Member findID(String nickname, String email) {
+		// TODO Auto-generated method stub
+		
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.findID(nickname, email);
+	}
+
+	@Override
+	public int findPwd(String id, String email) {
+		// TODO Auto-generated method stub
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.findPwd(id, email);
+	}
+
+	@Override
+	public int changePwd(String id, String newPwd) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.changePwd(id, newPwd);
+	}
+
+	@Override
+	public int editData(Member member) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.editData(member);
+	}
+
+	@Override
+	public int updateIntro(Member member) {
+		// TODO Auto-generated method stub
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.updateIntro(member);
+	}
+
+
+	@Override
+	public int addPoint(String id, int point) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.addPoint(id, point);
 	}
 
 }

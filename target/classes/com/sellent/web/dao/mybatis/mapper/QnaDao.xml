@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sellent.web.dao.QnaDao">
+	<select id="getList" resultType="com.sellent.web.entity.Qna">
+		select * from product
+	</select>
+	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.Qna">
+		select 
+			no, 
+			title, 
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval 
+		from product where no = #{param1}
+	</select>
+	<select id="getRecentlyNo" resultType="int">
+		select no 
+		from (
+			select 
+				(@rownum:=@rownum+1) as rownum, 
+				no 
+			from 
+				send_qna,
+				(SELECT @rownum :=0) AS R 
+			order by regdate desc) as sub 
+		where rownum = 1;
+	</select>
+	<insert id="insert" parameterType="com.sellent.web.entity.Qna">
+		insert into send_qna(
+			email,
+			title, 
+			content)
+		values(
+			#{param1}, 
+			#{param2}, 
+			#{param3})
+	</insert>
+	<update id="update" parameterType="com.sellent.web.entity.Qna">
+		update product set
+			title=#{title},
+			parent_category=#{parentCategory}, 
+			sub_category=#{subCategory}, 
+			writer_id=#{writerId}, 
+			simple_content=#{simpleContent}, 
+			detail_content=#{detailContent}, 
+			price=#{price}, 
+			sell_check=#{sellCheck}, 
+			duration=#{duration}, 
+			edit_cnt=#{editCnt}
+		where no=#{no}
+	</update>
+	<delete id="delete">
+		delete from product where no=#{param1}
+	</delete>
+	<select id="OftenQnaList" resultType="com.sellent.web.entity.QnaPaCategory">
+		select * from qna_parent_category
+	</select>
+	<select id="OftenQnaSubList" resultType="com.sellent.web.entity.QnaSubCategory">
+		select * from qna_sub_category
+	</select>
+	<select id="getQnaContent" resultType="com.sellent.web.entity.QnaContent">
+		select * from qna_content where sub_no = (select sub_no from qna_sub_category where title=#{param1})
+	</select>
+	
+</mapper>

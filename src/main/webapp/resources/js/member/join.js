@@ -40,6 +40,8 @@ window.addEventListener("load",function(){
                 console.log(e.target.result);
                 var blah = document.getElementById("blah");
                 blah.setAttribute('src',e.target.result);
+                //alert(blah.getAttribute('src'));
+                
               }
               reader.readAsDataURL(input.files[0]);
           }
@@ -59,7 +61,7 @@ window.addEventListener("load",function(){
       var pc = document.querySelector("input[name='pwdchk']");
       
       pc.addEventListener('keyup',function(){
-    	  var pw = document.querySelector("input[name='pwd']").value;
+    	  var pw = document.querySelector("input[name='password']").value;
     	  var pwck = document.querySelector("input[name='pwdchk']").value;
           if(pw != pwck){
         	  var warning = document.getElementById("warning");
@@ -83,8 +85,7 @@ window.addEventListener("load",function(){
     	  xml.send('id='+id);
     	  xml.onload= function(){    		
     		  var result =  xml.responseText;
-    		  alert(result);
-    		  
+    		   		  
     		if(result == 0) alert("사용 가능한 아이디 입니다.");
     		else alert("동일한 아이디가 존재합니다");
     	  };
@@ -93,12 +94,63 @@ window.addEventListener("load",function(){
       
       /*email 인증*/
       var email = document.querySelector(".email");
-      var emailInput = email.querySelector("input[type='text']");
       var emailBtn = email.querySelector("input[type='button']");
-   
+	  var emailInput = email.querySelector("input[type='text']");
+
       emailBtn.addEventListener("click",function(){
-    	 alert("hi");   	  
+    	  var xml = new XMLHttpRequest();   	  
+    	  xml.open('POST','email-send');
+    	  xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    	  xml.send("email="+emailInput.value);   
+    	  
+    	  xml.onload = function(){
+  
+				var emailchk = document.querySelector(".emailchk");
+				emailchk.style.display = "flex";
+							
+				var emailChkBtn = emailchk.querySelector("input[type='button']");
+				
+				emailChkBtn.addEventListener("click",function(){
+					var emailChkInput = emailchk.querySelector("input[type='text']").value;
+					if(xml.responseText == emailChkInput) alert("인증되었습니다");
+					else alert("인증에 실패되었습니다.");
+				});
+			}
       });
+      /*가입완료 버튼 데이터베이스 올리고 파일업로드*/
+
+      
+      var join = document.getElementById("join");
+      /*var joinbtn = join.querySelector("input[type='submit']");
+      joinbtn.addEventListener("click",function(){
+    
+    	  uploadfile();
+          
+      });*/
+      
+      
+      function uploadfile() {
+    	  var file = document.querySelector(".imgInp");
+          var filedata = new FormData(); // FormData 인스턴스 생성
+        
+          if (!file.value) return; // 파일이 없는 경우 빠져나오기
+        
+          filedata.append('uploadfile', file.files[0]);
+        
+          var xml = new XMLHttpRequest();
+          xml.open('POST', 'file-upload', true);
+          //uestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xml.send(filedata);
+          xml.onload = function(event) {
+           /* if (xml.status == 200) {
+              alert('Uploaded');
+            }
+            else {
+              alert('Error');
+            }*/
+          };
+
+        }; 
 });
 
 

@@ -76,7 +76,7 @@ html, body {
 	width: 100%;
 }
 .content {
-	width: 25%;
+	width: 222.5px;
 	height: 330px;
 	margin: 10px;
 }
@@ -128,7 +128,8 @@ html, body {
 }
 .content .price {
 	margin: 15px 0px;
-	padding-left: 100px;
+	padding-right: 20px;
+	text-align: right;
 }
 
 .text .heart {
