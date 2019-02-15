@@ -1,6 +1,6 @@
 package com.sellent.web.dao;
 
-import java.util.List;  
+import java.util.List;   
 
 import com.sellent.web.entity.AdminPaging;
 import com.sellent.web.entity.CategoryView;

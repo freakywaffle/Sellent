@@ -1,6 +1,6 @@
 package com.sellent.web.service;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import com.sellent.web.dao.SkillDao;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.MemberRole;
 import com.sellent.web.entity.Skill;
-
+ 
 
 @Service
 public class SellentMemberService implements MemberService {
