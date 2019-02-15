@@ -24,6 +24,8 @@
 			reviewCnt,
 			nickname
  		from productView
+ 		limit #{param1}, #{param2} 
+ 		
 	</select>
 	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">
 		select 
@@ -107,4 +109,7 @@
 			avg_starpoint=#{param2}
 		where no=#{param1}
 	</update>
+	<select id="getAllCnt" resultType="int">
+		select count(*) from product
+	</select>
 </mapper>

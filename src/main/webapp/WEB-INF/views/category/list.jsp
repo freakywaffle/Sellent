@@ -4,6 +4,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
 <link href="/resources/css/category/content/list.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/list.js"></script>
+
+
 <section class="content">
 	<div class="menu-button mobile-block">
 		<input type="button" value=">" />
@@ -20,10 +22,11 @@
 	<div id="main-content">
 		<c:forEach var="p" items="${plist }">
 			<div class="contents">
-				<div class="title-img"><img alt="타이틀 이미지" src='<spring:url value="/sellent/upload/"/>${p.no}/${p.thumbnail}'/></div>
-				<div class="detail">
+				<div class="title-img"><img alt="타이틀 이미지" src='<spring:url value="/sellent/upload/"/>${p.no}/${p.thumbnail}' onerror="this.src='/sellent/default/기본.gif'"/></div>
+				<div class="detail"  onclick="$(location).attr('pathname', '/category/${p.no}');">
 					<div class="like">
-						<img alt="좋아요" src="/resources/images/bin-heart.png">
+						<input type="hidden" value="${p.no }"/>
+						<i class="fas fa-heart"></i>
 					</div>
 					<div class="title">
 						${p.title }
@@ -47,11 +50,12 @@
 							<div class="money">${p.price }</div>
 						</div>
 						<div class="star-point">
-							<div><img alt="별점" src="/resources/images/small-fullstar.png"/></div>
-							<div><img alt="별점" src="/resources/images/small-fullstar.png"/></div>
-							<div><img alt="별점" src="/resources/images/small-halfstar.png"/></div>
-							<div><img alt="별점" src="/resources/images/small-binstar.png"/></div>
-							<div><img alt="별점" src="/resources/images/small-binstar.png"/></div>
+							<c:forEach begin="1" end="${p.avgStarPoint-(p.avgStarPoint%1) }">
+								<div><img alt="별점" src="/resources/images/small-fullstar.png"/></div>
+							</c:forEach>
+							<c:forEach begin="${p.avgStarPoint-(p.avgStarPoint%1)+1}" end="5">
+								<div><img alt="별점" src="/resources/images/small-binstar.png"/></div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -59,6 +63,10 @@
 		</c:forEach>
 	</div>
 	<div class="bottom-content">
-		<input type="button" value="더보기" />
+		<input type="button" value="더보기" class="more"/>
 	</div>
 </section>
+
+<script>
+	
+</script>

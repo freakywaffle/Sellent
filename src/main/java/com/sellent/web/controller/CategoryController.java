@@ -7,6 +7,7 @@ import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
@@ -191,5 +193,21 @@ public class CategoryController {
 		return "";
 	}
 	
+	@GetMapping("moreCategory")
+	@ResponseBody
+	public String moreCategory(@RequestParam int cnt){
+		Gson gson = new Gson();
 	
+		List<ProductView> morelist = productDao.getList(cnt, 7);
+		int allCnt = productDao.getAllCnt();
+		
+		Map<String, Object> temp = new HashMap<>();
+		temp.put("morelist", morelist);
+		temp.put("allCnt", allCnt);
+		
+		String json = gson.toJson(temp);
+		
+		
+		return json;
+	}
 }
