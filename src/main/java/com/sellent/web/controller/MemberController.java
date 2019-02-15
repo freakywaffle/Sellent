@@ -96,7 +96,7 @@ public class MemberController {
 		String pwd = encoder.encode(member.getPassword());
 		member.setPassword(pwd);
 		int select = memberDao.editData(member);
-		return "redirect:login";
+		return "redirect:./introduce";
 	}
 	 
 	
@@ -136,12 +136,7 @@ public class MemberController {
 		
 		return "member.review.list";
 	}
-	
-	@GetMapping("mypage")
-	public String mypage() {
-		
-		return "member.mypage.index";
-	}
+
 	
 	@GetMapping("my_bookmarks")
 	public String bookmarks() {

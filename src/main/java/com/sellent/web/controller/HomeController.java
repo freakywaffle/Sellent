@@ -106,7 +106,7 @@ public class HomeController {
 		 MimeMessage message = javaMailSender.createMimeMessage();
 		 MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
 			
-		 helper.setFrom("haejeong1005@naver.com");
+		 helper.setFrom("sellent@naver.com");
 		 helper.setTo(email);
 		 helper.setText(html.toString(), true);
 		 helper.setSubject("이메일 검증을 위한 번호 전달");

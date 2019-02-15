@@ -130,6 +130,7 @@
 					<div class="up-images">
 					</div>
 					<input type="file" class="openfolder hidden" multiple="multiple"/>
+					<input type="hidden" name="thumbnail" />
 					<div class="img-list">
 						<ul>
 						</ul>

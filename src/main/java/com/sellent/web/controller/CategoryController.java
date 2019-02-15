@@ -7,10 +7,12 @@ import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.ProductDao;
+import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Product;
@@ -48,15 +52,17 @@ public class CategoryController {
 	private LikeDao likeDao;
 	
 	@GetMapping("list")
-	public String list() {
+	public String list(Model model) {
 		
-		
+		List<ProductView> plist = productDao.getList();
+		model.addAttribute("plist", plist);
+		System.out.println(plist.get(0).getEditCnt());
 		
 		return "category.list";
 	}
 	
 	@GetMapping("{no}")
-	public String detail(@PathVariable("no") Integer no, Model model, Principal principal) {
+	public String detail(@PathVariable("no") Integer no, Model model, Principal principal){
 		
 		Map<String, Object> product = productService.getProductByNo(no);
 		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
@@ -90,7 +96,6 @@ public class CategoryController {
 	public String reg(Product product, Principal principal) {
 		
 		product.setWriterId(principal.getName());
-		
 		System.out.println(product);
 		productService.insert(product, tempFiles);
 		
@@ -188,5 +193,21 @@ public class CategoryController {
 		return "";
 	}
 	
+	@GetMapping("moreCategory")
+	@ResponseBody
+	public String moreCategory(@RequestParam int cnt){
+		Gson gson = new Gson();
 	
+		List<ProductView> morelist = productDao.getList(cnt, 7);
+		int allCnt = productDao.getAllCnt();
+		
+		Map<String, Object> temp = new HashMap<>();
+		temp.put("morelist", morelist);
+		temp.put("allCnt", allCnt);
+		
+		String json = gson.toJson(temp);
+		
+		
+		return json;
+	}
 }

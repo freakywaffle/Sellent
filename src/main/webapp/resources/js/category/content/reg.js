@@ -186,6 +186,10 @@ $(document).ready(function(){
 	
 	openBt.on('change', function() {
 		var fileList = openBt.prop('files');
+		
+		var thumbnail = $('input[name="thumbnail"]');
+		thumbnail.val(fileList[0].name);
+		
 		var formData = new FormData();
 		//업로드할 이미지 리스트화
 		for(var i=0;i<fileList.length;i++){

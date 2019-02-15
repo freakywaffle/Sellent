@@ -76,8 +76,8 @@ public class ServiceContextConfig {
 		javaMailSender.setDefaultEncoding("UTF-8");
 		javaMailSender.setHost("smtp.naver.com");
 		javaMailSender.setPort(587);
-		javaMailSender.setUsername("haejeong1005@naver.com");
-		javaMailSender.setPassword("Lhj63262688*");
+		javaMailSender.setUsername("sellent@naver.com");
+		javaMailSender.setPassword("Sellent0123!");
 		
 		Properties javaMailProperties = new Properties();
 		javaMailProperties.put("mail.transport.protocol","smtp");

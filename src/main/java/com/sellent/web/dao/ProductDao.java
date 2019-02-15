@@ -6,11 +6,13 @@ import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductView;
 
 public interface ProductDao {
-	List<Product> getList();
-	
-	
+
+	List<ProductView> getList();
+	List<ProductView> getList(int start, int cnt);
 	
 	ProductView get(int no);
+	
+	int getAllCnt();
 	int getRecentlyNo();
 	int insert(Product product);
 	int update(Product product);
