@@ -7,6 +7,8 @@ import com.sellent.web.entity.ProductView;
 
 public interface ProductDao {
 
+	List<ProductView> getLikeView(int no);
+	
 	List<ProductView> getList();
 	List<ProductView> getList(int start, int cnt);
 	

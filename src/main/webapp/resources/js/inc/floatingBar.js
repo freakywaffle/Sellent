@@ -279,11 +279,10 @@
 		        contentType: false,
 			    data        : formData,
 			    success     : function(data) {
-			        alert("이미지"); 
 			        
 			    },
 			    error       : function(request, status, error) {
-			        alert("실패");
+			        alert("이미지 전송 실패");
 			    }	
 				
 			 	   
@@ -309,7 +308,6 @@
 			        'main' : arr
 			    },
 			    success     : function(data) {
-			      alert(a); 
 			    	
 			      email.value = "";
 			 	  title.value = "";
@@ -321,7 +319,7 @@
 			 	  a = 0;
 			    },
 			    error       : function(request, status, error) {
-			        alert(error);
+			        alert("문의 전송 실패");
 			    }	
 				
 			 	   
@@ -342,30 +340,37 @@
 	
 	
 	
-	//검색어 삭제
-	window.addEventListener('load',function(){
-		var del = document.getElementById("del")
-		 $(".search-bar").bind("change paste keyup", function() {
-			 if($(this).val() == "") {
-				 $("#del").addClass("hidden")
-			 }
-		     else if ($(this).val() != "") {
-		    	 $("#del").removeClass("hidden")
-		     }
-		 
-		 });
+	
 	
 		 
 		 
 
 	
+	//searchBar del=======================================================================
+	window.addEventListener('load',function(){
+		
+		var del = document.getElementById("del")
+		
+		$(".search-bar").bind("change paste keyup", function() {
+			if($(this).val() == "") {
+				$("#del").addClass("hidden")
+			}
+			else if ($(this).val() != "") {
+				$("#del").removeClass("hidden")
+			}
+	 
+		});
 	
-	del.onclick = function() {
-		search.value = "";
-		 $("#del").addClass("hidden")
-	}
+		del.onclick = function() {
+			search.value = "";
+			$("#del").addClass("hidden")
+		}
 	});
+	//searchBar del=======================================================================
 	
+	
+	
+	//guide transition=====================================================================
 	$(function () {
 		$('.panel-collapse').on('show.bs.collapse', function () {
 		
@@ -377,9 +382,11 @@
 		    $(this).siblings('.panel-heading').removeClass('active');
 		  });
 		});
+	//guide transition=====================================================================
 	
 	
-	//guide point
+	
+	//guide point=====================================================================
 	$(function() {
 		var btn = $("#fab4");
 		var point = 500
@@ -398,7 +405,7 @@
 			});
 		})
 	});
-	
+	//guide point=====================================================================
 	
 	
    

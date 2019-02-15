@@ -17,7 +17,7 @@ import com.sellent.web.entity.QnaSubCategory;
 import com.sellent.web.service.QnaService;
 
 @Component
-public class HomePreparer implements ViewPreparer {
+public class HomePreparer2 implements ViewPreparer {
 
 
 	@Autowired

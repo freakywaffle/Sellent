@@ -27,6 +27,12 @@ public class Like {
 	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
 	}
+
+	@Override
+	public String toString() {
+		return "Like [member_id=" + member_id + ", product_no=" + product_no + "]";
+	}
+	
 	
 	
 }

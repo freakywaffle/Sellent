@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+     
 <!DOCTYPE html>
 
 <head>
@@ -51,9 +55,17 @@
 				</div>
 			</div>
 			<div class="main h-100">
-				<div class="content-box flex">
-					<div class="content bbb">
-						<a href="#">
+				
+		
+			<c:forEach var="a" items="${likeList}" varStatus="index">
+				
+				<c:if test="${index.count%4 eq 1}">
+				
+					<div class="content-box flex">
+				</c:if>
+				
+				<div class="content bbb">
+						<a href="/category/${a.no}">
 							<div class="img-box bbb">
 								<div class="img"></div>
 								<div class="profile"></div>
@@ -61,120 +73,40 @@
 						</a>
 						<div class="text">
 							<a href="#">
-								<div class="writer-id">seyeon1491</div>
-								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price">5,000,000원 ~</div>
+								<div class="writer-id">${a.writerId}</div>
+								<div class="title" style="height: 40px">${a.parentCategory}  ${a.title}</div>
+								<div class="price"><fmt:formatNumber value="${a.price}" type="number"/>원 ~</div>
 							</a>
 							<div class="flex">
 								<div class="product">
 										<div class="fornt">
 											<div class="img-wrap">
-												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
+												<i class="fa fa-heart fav" style="left: 10px; top: 3px;"></i>
 											</div>
 										</div>
 									</div>
-								<div class="star">★★★★★ (0)</div>
+								<div class="star"> ★★★★★ (${a.reviewCnt})</div>
 							</div>
 						</div>
 					</div>
-					<div class="content bbb">
-						<a href="#">
-							<div class="img-box bbb">
-								<div class="img"></div>
-								<div class="profile"></div>
-							</div>
-						</a>
-						<div class="text">
-							<a href="#">
-								<div class="writer-id">seyeon1491</div>
-								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price">5,000,000원 ~</div>
-							</a>
-							<div class="flex">
-								<div class="product">
-										<div class="fornt">
-											<div class="img-wrap">
-												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
-											</div>
-										</div>
-									</div>
-								<div class="star">★★★★★ (0)</div>
-							</div>
-						</div>
+					
+					<c:if test="${index.count%4 eq 0}">
+				
 					</div>
-					<div class="content bbb">
-						<a href="#">
-							<div class="img-box bbb">
-								<div class="img"></div>
-								<div class="profile"></div>
-							</div>
-						</a>
-						<div class="text">
-							<a href="#">
-								<div class="writer-id">seyeon1491</div>
-								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price">5,000,000원 ~</div>
-							</a>
-							<div class="flex">
-								<div class="product">
-										<div class="fornt">
-											<div class="img-wrap">
-												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
-											</div>
-										</div>
-									</div>
-								<div class="star">★★★★★ (0)</div>
-							</div>
-						</div>
-					</div>
-					<div class="content bbb">
-						<a href="#">
-							<div class="img-box bbb">
-								<div class="img"></div>
-								<div class="profile" style="background: url('../../resources/images/design.png') no-repeat center;"></div>
-							</div>
-						</a>
-						<div class="text">
-							<a href="#">
-								<div class="writer-id">seyeon1491</div>
-								<div class="title">워드프레스 웹사이트 제작, 테마설치 한번 시원하게</div>
-								<div class="price">5,000,000원 ~</div>
-							</a>
-							<div class="flex">
-								<div class="product">
-										<div class="fornt">
-											<div class="img-wrap">
-												<i class="fa fa-heart" style="left: 10px; top: 3px;"></i>
-											</div>
-										</div>
-									</div>
-								<div class="star">★★★★★ (0)</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="content-box flex bbb">
-					<div class="content bbb"></div>
-					<div class="content bbb"></div>
-					<div class="content bbb"></div>
-					<div class="content bbb"></div>
-				</div>
-				<div class="content-box flex bbb">
-					<div class="content bbb"></div>
-					<div class="content bbb"></div>
-					<div class="content bbb"></div>
-					<div class="content bbb"></div>
-				</div>
+					</c:if>
+					
+					
+				
+				</c:forEach>
+ 
+			
+			
 			</div>
 		</div>
 	</div>
 	
 	<script>
-	/* window.addEventListener("load",function(){		 
-	var b = document.querySelector(".title");
-		b.innerHTML = b.textContent.substring(0,27)+"···";		
-	 });
-	*/
+
 	
 	
 	
@@ -187,6 +119,8 @@
 			
 
 		});
+	
+
 	
 	
 	</script>

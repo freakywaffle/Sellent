@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,12 +30,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.MemberDao;
-
+import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.SkillDao;
-
-
+import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Member;
+import com.sellent.web.entity.Product;
+import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.Skill;
 import com.sellent.web.service.MemberService;
 
@@ -49,7 +52,13 @@ public class MemberController {
 	
 	@Autowired
 	private SkillDao skillDao;
+	/////
+	@Autowired
+	private LikeDao likeDao;
 	
+	@Autowired
+	private ProductDao productDao;
+	/////
 	
 	@GetMapping("project")
 	public String project() {
@@ -139,8 +148,38 @@ public class MemberController {
 
 	
 	@GetMapping("my_bookmarks")
-	public String bookmarks() {
+	public String bookmarks(Principal principal, Model model) {
 		
+		/////////////////////////////////////////
+		String id = principal.getName();
+		List<Like> list = likeDao.select(id);
+		
+		List likeList = new ArrayList();
+		
+		for(Like li : list) {
+			List<ProductView> likeProduct = productDao.getLikeView(li.getProduct_no());
+			System.out.println(likeProduct.get(0).getReviewCnt());
+			String title = likeProduct.get(0).getTitle().substring(0,5);
+			likeProduct.get(0).setTitle(title);
+			likeList.add(likeProduct.get(0));
+		}
+		
+		model.addAttribute("likeList",likeList);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/////////////////////////////////////////
 		return "member.bookmarks";
 	}
 	
