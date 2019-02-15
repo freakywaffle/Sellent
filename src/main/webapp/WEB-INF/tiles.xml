@@ -5,7 +5,7 @@
 <tiles-definitions>
 
 	<definition name="admin.*.*"
-	template="/WEB-INF/views/admin/inc/layout.jsp">
+	template="/WEB-INF/views/admin/inc/layout.jsp"  preparer="com.sellent.web.controller.HomePreparer">
 	<put-attribute name="header"
 		value="/WEB-INF/views/admin/inc/header.jsp" />
 	<put-attribute name="aside"
@@ -33,7 +33,7 @@
 	</definition>
 	
 	<definition name="member.mypage.index" 
-		template="/WEB-INF/views/member/mypage/layout.jsp">
+		template="/WEB-INF/views/member/mypage/layout.jsp"  preparer="com.sellent.web.controller.HomePreparer">
 		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
 		<put-attribute name="mypage" value="/WEB-INF/views/member/mypage/index.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
