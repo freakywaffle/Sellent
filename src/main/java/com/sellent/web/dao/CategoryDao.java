@@ -1,6 +1,6 @@
 package com.sellent.web.dao;
 
-import java.util.List;   
+import java.util.List;    
 
 import com.sellent.web.entity.AdminPaging;
 import com.sellent.web.entity.CategoryView;
@@ -19,6 +19,8 @@ public interface CategoryDao {
 	int insertParent(String parentValue);
 	int insertSub(String parentValue, String subValue);
 
-	int delteParent(String parentLabel);
+	int deleteParent(String parentLabel);
 	int deleteSub(String parentLabel, String subLabel);
+	
+	int update(String parentBefore, String subBefore, String subAfter);
 }

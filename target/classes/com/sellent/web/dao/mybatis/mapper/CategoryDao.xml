@@ -55,6 +55,9 @@
 	<if test="param2 != ''">
 		and `name`=#{param2}
 	</if>
-	
 	</delete>
+	
+	<update id="update">
+		update sub_category set `name`=#{param3} where `parent_name`=#{param1} and `name`=#{param2}
+	</update>
 </mapper>

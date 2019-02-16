@@ -216,11 +216,7 @@
 					<legend>변경 후</legend>
 					<div class="flex">
 						<label>그룹</label>
-						<select id="modal3-parent-after">
-							<c:forEach items="${parentList }" var="parent">
-								<option value="${parent.name }">${parent.name}</option>
-							</c:forEach>
-						</select>
+						<input id="modal3-parent-after" type="text" readonly/>
 					</div>
 					<div class="flex mg-top-5">
 						<label>카테고리명</label>

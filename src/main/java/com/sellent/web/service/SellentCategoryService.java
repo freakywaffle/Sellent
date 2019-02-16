@@ -38,9 +38,7 @@ public class SellentCategoryService implements CategoryService{
 	public List<SubCategory> getSubList() {
 		return categoryDao.getSubList();
 	}
-
-
-
+	
 	@Override
 	public int insertParent(String parentValue) {
 		return categoryDao.insertParent(parentValue);
@@ -53,14 +51,20 @@ public class SellentCategoryService implements CategoryService{
 
 
 	@Override
-	public int delteParent(String parentLabel) {
-		return categoryDao.delteParent(parentLabel);
+	public int deleteParent(String parentLabel) {
+		return categoryDao.deleteParent(parentLabel);
 	}
-
-
+	
 	@Override
 	public int deleteSub(String parentLabel, String subLabel) {
 		return categoryDao.deleteSub(parentLabel, subLabel);
 	}
 
+
+	@Override
+	public int update(String parentBefore, String subBefore, String subAfter) {
+		return categoryDao.update(parentBefore, subBefore, subAfter);
+	}
+
+	
 }

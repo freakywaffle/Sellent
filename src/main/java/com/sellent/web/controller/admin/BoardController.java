@@ -91,11 +91,12 @@ public class BoardController {
 	
 	@PostMapping("parentDelete")
 	@ResponseBody
-	public String subAdd(
+	public String parentDelete(
 			String parentLabel,
 			Model model) {
 		
-		int result = categoryService.delteParent(parentLabel);
+		
+		int result = categoryService.deleteParent(parentLabel);
 		
 		return "ok";
 	}
@@ -129,13 +130,10 @@ public class BoardController {
 	public String categoryUpdate(
 			String parentBefore,
 			String subBefore,
-			String parentAfter,
 			String subAfter,
 			Model model) {
-		
-		int result = categoryService.deleteSub(parentBefore, subBefore);
-		int resul2 = categoryService.insertSub(parentAfter, subAfter);
-		
+
+		int result = categoryService.update(parentBefore, subBefore, subAfter);
 		return "admin.board.category";
 	}
 	
@@ -166,12 +164,7 @@ public class BoardController {
 		String query = 
 				"?approval="+approval+"&startDate="+startDate
 				+"&endDate="+endDate+"&condition="+condition+"&text="+text;
-				
-		System.out.println(cnt);
-		System.out.println(paging.getStartCount());
-		System.out.println(paging.getEndCount());
-		System.out.println(list.size());
-		
+
 		model.addAttribute("list",list);
 		model.addAttribute("paging",paging);
 		model.addAttribute("query",query);
