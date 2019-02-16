@@ -1,6 +1,6 @@
 package com.sellent.web.dao.mybatis;
 
-import java.util.List;    
+import java.util.List;   
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,13 @@ public class MaBatisCategoryDao implements CategoryDao{
 		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
 		
 		return categoryDao.getCategoryCnt(parent, sub);
+	}
+
+	@Override
+	public int getProductCnt(String parentBefore, String subBefore) {
+		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
+		
+		return categoryDao.getProductCnt(parentBefore, subBefore);
 	}
 
 	@Override
@@ -70,11 +77,11 @@ public class MaBatisCategoryDao implements CategoryDao{
 		return categoryDao.deleteSub(parentLabel, subLabel);
 	}
 
+
 	@Override
-	public int update(String parentBefore, String subBefore, String subAfter) {
+	public int updateProduct(String subBefore, String subAfter) {
 		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
-		return categoryDao.update(parentBefore, subBefore, subAfter);
+		return categoryDao.updateProduct(subBefore, subAfter);
 	}
-	
 	
 }

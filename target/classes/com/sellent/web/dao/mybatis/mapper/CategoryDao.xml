@@ -39,6 +39,10 @@
 		</if>
 	</select>
 	
+	<select id="getProductCnt" resultType="int">
+		select count(*) from product where `parent_category`=#{param1} and `sub_category`=#{param2}
+	</select>
+	
 	<insert id="insertParent"> 
 		insert into parent_category(`name`) values(#{param1})
 	</insert>
@@ -57,7 +61,7 @@
 	</if>
 	</delete>
 	
-	<update id="update">
-		update sub_category set `name`=#{param3} where `parent_name`=#{param1} and `name`=#{param2}
+	<update id="updateProduct">
+		update product set `sub_category`=#{param2} where `sub_category`=#{param1}
 	</update>
 </mapper>

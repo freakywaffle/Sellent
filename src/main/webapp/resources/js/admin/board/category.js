@@ -280,7 +280,7 @@ $(function(){
                     
                 },
                 error : function(){
-                    alert("이미 있는 값입니다")
+                    alert("이미 존재합니다")
 
                 }
             })
@@ -313,7 +313,7 @@ $(function(){
                     
                 },
                 error : function(){
-                    alert("이미 있는 값입니다")
+                    alert("이미 존재합니다")
                 }
 
             })
@@ -375,7 +375,7 @@ $(function(){
 
                     },
                     error : function(){
-                        alert("존재하는 게시물이 있습니다")
+                        alert("이미존재합니다")
                     }
                 })
             }

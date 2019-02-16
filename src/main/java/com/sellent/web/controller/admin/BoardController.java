@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sellent.web.dao.AdminProductDao;
+import com.sellent.web.dao.CategoryDao;
 import com.sellent.web.entity.AdminPaging;
 import com.sellent.web.entity.AdminProductView;
 import com.sellent.web.entity.CategoryView;
@@ -29,7 +30,7 @@ public class BoardController {
 
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private AdminProductService adminProductService;
 
@@ -134,7 +135,14 @@ public class BoardController {
 			Model model) {
 
 		int result = categoryService.update(parentBefore, subBefore, subAfter);
-		return "admin.board.category";
+		String dd;
+		if(result !=0) {
+			dd ="ok";
+		}else {
+			dd ="no";
+		}
+		
+		return dd;
 	}
 	
 	

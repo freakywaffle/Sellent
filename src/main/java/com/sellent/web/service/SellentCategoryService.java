@@ -1,6 +1,6 @@
 package com.sellent.web.service;
 
-import java.util.List;    
+import java.util.List;   
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,8 +63,16 @@ public class SellentCategoryService implements CategoryService{
 
 	@Override
 	public int update(String parentBefore, String subBefore, String subAfter) {
-		return categoryDao.update(parentBefore, subBefore, subAfter);
+		
+		int productCnt = categoryDao.getProductCnt(parentBefore, subBefore);
+		
+		if(productCnt != 0) {
+			int a = categoryDao.insertSub(parentBefore, subAfter);
+			int b = categoryDao.updateProduct(subBefore, subAfter);
+			int c = categoryDao.deleteSub(parentBefore, subBefore);
+		}
+
+		return productCnt;
 	}
 
-	
 }
