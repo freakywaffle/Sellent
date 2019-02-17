@@ -195,9 +195,12 @@ public class BoardController {
 	
 	@PostMapping("saleRemove")
 	@ResponseBody
-	public String saleRemove(int no) {
-		
-		int result = adminProductService.delete(no);
+	public String saleRemove(@RequestParam(name="arr")ArrayList<Integer> arr) {
+
+		for(int i=0;i<arr.size();i++) {
+			
+			int result = adminProductService.delete(arr.get(i));
+		}
 		return "ok";
 	}
 	

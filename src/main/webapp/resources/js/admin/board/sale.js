@@ -88,28 +88,33 @@ $(function(){
     $("#modal2-check").click(function(){
         $("#modal2").css("display","none")
         
+        var arr = new Array()    // ajax를 배열로 전송하는 경우 스프링에서는 ArrayList로 받는다
+
         $(".check-box").each(function(){
             if($(this).is(":checked")==true){
 
                 var no = $(this).parents(".sale-obj").children(".sale-no").text()
-                
-                $.ajax({
+                arr.push(no)
+            }
+        })
 
-                    method:'POST',
-                    url:'saleRemove',
-                    data:{"no":no},
-                    success:function(){
-                        var mouse = new MouseEvent("click")
-                        var request = $("<a class='tmp hidden' href=''></a>")
-                        $("html").append(request)
+        jQuery.ajaxSettings.traditional = true; // 배열을 전송할떄 끝 []를 없애줌
 
-                        var tmp = document.querySelector(".tmp")
-                        tmp.dispatchEvent(mouse)
-                    },
-                    error:function(){
-                        alert("에러")
-                    }
-                })
+        $.ajax({
+
+            method:'POST',
+            url:'saleRemove',
+            data:{"arr":arr},
+            success:function(){
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+            },
+            error:function(){
+                alert("에러")
             }
         })
     })
