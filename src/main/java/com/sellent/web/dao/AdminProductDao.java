@@ -21,4 +21,6 @@ public interface AdminProductDao {
 			String endDate,
 			String condition,
 			String text);
+	int update(String approval, int no);
+	int delete(int no);
 }

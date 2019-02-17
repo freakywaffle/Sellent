@@ -167,7 +167,7 @@ public class BoardController {
 		AdminPaging paging = new AdminPaging();
 		paging.setTotalCount(cnt);
 		paging.setPage(page);
-		
+
 		List<AdminProductView> list = adminProductService.getViewList(approval, startDate, endDate, condition, text, paging);
 		String query = 
 				"?approval="+approval+"&startDate="+startDate
@@ -178,6 +178,27 @@ public class BoardController {
 		model.addAttribute("query",query);
 		
 		return "admin.board.sale";
+	}
+	
+	@PostMapping("saleApproval")
+	@ResponseBody
+	public String saleApproval(
+			String approval,
+			int no,
+			Model model) {
+		System.out.println(approval);
+		System.out.println(no);
+		int result = adminProductService.update(approval, no);
+		
+		return "ok";
+	}
+	
+	@PostMapping("saleRemove")
+	@ResponseBody
+	public String saleRemove(int no) {
+		
+		int result = adminProductService.delete(no);
+		return "ok";
 	}
 	
 	@RequestMapping("consult")

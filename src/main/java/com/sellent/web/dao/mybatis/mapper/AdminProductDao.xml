@@ -9,28 +9,50 @@
 		select * from AdminProductView	
 		where 
 			approval like CONCAT('%', #{param1}, '%') 
-			
-		<if test="param2 != '' and param3 != ''">
-			and regdate between date(#{param2}) and date(#{param3})+1 	
+		<choose>
+			<when test="param2 == '' and param3 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param3}) 
+			</when>
+			<when test="param2 !='' and param3 == ''">
+				and regdate <![CDATA[ > ]]> date(#{param2}) 
+			</when>
+			<when test="param2 != '' and param3 != ''">
+				and regdate between date(#{param2}) and date(#{param3})+1 
+			</when>
+		</choose>
+		<if test="param5 !='' ">
+			and ${param4} like #{param5}
 		</if>
-				
-		<if test="param5 != ''">
-			and  #{param4} like CONCAT('%', #{param5}, '%')
-		</if>
-			limit #{param6.startCount}, #{param6.endCount};
+			limit #{param6.startCount}, 10
 	</select>
 
 	<select id="getProductCnt" resultType="int">
-		select count(*) from AdminProductView
-<!-- 		where 
-			approval like CONCAT('%', #{param1}, '%') and 
-			regdate between date(#{param2}) and date(#{param3})+1 
-		<if test="param4 == ''">
-			and `title`=#{param5} or `writerId`=#{param5} 
+		select count(*) from AdminProductView 
+		where 
+			approval like CONCAT('%', #{param1}, '%') 
+		<choose>
+			<when test="param2 == '' and param3 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param3}) 
+			</when>
+			<when test="param2 !='' and param3 == ''">
+				and regdate <![CDATA[ > ]]> date(#{param2}) 
+			</when>
+			<when test="param2 != '' and param3 != ''">
+				and regdate between date(#{param2}) and date(#{param3})+1 
+			</when>
+		</choose>
+		<if test="param5 !='' ">
+			and ${param4} like #{param5}
 		</if>
-		<if test="param5 =! ''">
-			and  #{param4} like CONCAT('%', #{param5}, '%')
-		</if> -->
+
 	</select>
+
+	<update id="update">
+		update product set `approval`=#{param1} where `no`=#{param2}
+	</update>
+
+	<delete id="delete">
+		delete from product where no=#{param1}
+	</delete>
 
 </mapper>

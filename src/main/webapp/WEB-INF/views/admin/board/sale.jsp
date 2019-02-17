@@ -35,46 +35,46 @@
 	
 	    <section class="content-box">
 	
-	        <div class="condition-form">
-	            
-	            <label class="condition-title">처리상태</label>
-	            
-	            <div class="condition-content">
-	                <select name="approval">
-	                    <option value="">전체</option>
-	                    <option value="0">대기</option>
-	                    <option value="1">승인</option>
-	                </select>
-	            </div>
-	        </div>
-	
-	        <div class="condition-form" style="border-top:none">
-	            <label class="condition-title">등록일</label>
-	        
-	            <div class="condition-content">
-	                <input name="startDate" id="datepicker"type="text"/>
-	                <span class="mg-left-5">~</span>
-	                <input name="endDate" id="datepicker2" class="mg-left-5" type="text"/>
-	            </div>
-	        </div>
-	
-	        <div class="condition-form" style="border-top:none">
-	            <label class="condition-title">키워드검색</label>
-	    
-	            <div class="condition-content">
-	                <select name="condition">
-	                    <option value="title">제목</option>
-	                    <option value="writerId">작성자</option>
-	                    <option value="">제목+작성자</option>
-	                </select>
-	                <input name="text" class="mg-left-5" type="text">
-	            </div>
-	        </div>
-	
-	        <div class="search-form">
-	            <button type="button" class="btn btn-primary">검색하기</button>
-	        </div>
-	
+			<form action="sale">
+				<div class="condition-form">
+					
+					<label class="condition-title">처리상태</label>
+					
+					<div class="condition-content">
+						<select name="approval">
+							<option value="">전체</option>
+							<option value="0">대기</option>
+							<option value="1">승인</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="condition-form" style="border-top:none">
+					<label class="condition-title">등록일</label>
+				
+					<div class="condition-content">
+						<input name="startDate" id="datepicker" type="text" readonly/>
+						<span class="mg-left-5">~</span>
+						<input name="endDate" id="datepicker2" class="mg-left-5" type="text" readonly/>
+					</div>
+				</div>
+		
+				<div class="condition-form" style="border-top:none">
+					<label class="condition-title">키워드검색</label>
+			
+					<div class="condition-content">
+						<select name="condition">
+							<option value="title">제목</option>
+							<option value="writerId">작성자</option>
+						</select>
+						<input name="text" class="mg-left-5" type="text">
+					</div>
+				</div>
+		
+				<div class="search-form">
+					<button id="search-button" type="submit" class="btn btn-primary">검색하기</button>
+				</div>
+			</form>
 	
 	        <div class="table-top">
 	            <div>총 게시판수 : ${paging.totalCount }</div>
@@ -99,11 +99,11 @@
 	            <tbody class="tbody">
 	            
 	            	<c:forEach items="${list }" var="product">
-						<tr>
+						<tr class="sale-obj">
 							<td>
-								<input type="checkbox"/>
+								<input class="check-box" type="checkbox"/>
 							</td>
-							<td>${product.no}</td>
+							<td class="sale-no">${product.no}</td>
 							<td>${product.parentCategory }</td>
 							<td>${product.subCategory }</td>
 							<td>${product.title }</td>
@@ -113,9 +113,18 @@
 							</td>
 
 							<td>
-								<fmt:formatDate value="${product.regdate}" pattern="MM월dd일"/>
+								<fmt:formatDate value="${product.regdate}" pattern="yyyy-MM-dd"/>
 							</td>
-							<td>${product.approval }</td>
+							<td class="approval-state">
+								<c:choose>
+									<c:when test="${product.approval eq 0}">
+										<button class="approval-button btn btn-primary" type="button" >대기</button>
+									</c:when>
+									<c:when test="${product.approval eq 1}">
+										<span class="approval-ok">처리완료</span>
+									</c:when>
+								</c:choose>
+							</td>
 						</tr>
 	                </c:forEach>
 	            </tbody>

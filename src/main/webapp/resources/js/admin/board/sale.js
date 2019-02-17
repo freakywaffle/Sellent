@@ -27,61 +27,92 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+
+    $("#datepicker").val("");
+    $("#datepicker2").val("");
 });
 
 
-/*선택삭제 */
-window.addEventListener("load",function(){
-    
-    var totalCheck = document.querySelector("#total-check");
-    var checkBox = document.querySelectorAll("input[type='checkbox']");
-    var modal2 = document.querySelector("#modal2");
-    var selectRemove = document.querySelector("#select-remove");
-    
-    totalCheck.onchange = function(){
-        var check = totalCheck.checked;
-        
-        for(var i=0; i<checkBox.length;i++){
-            checkBox[i].checked = check;
-        }
-    }
-
-    selectRemove.onclick =function(){
-        modal2.style.display = "block";
-    }
-    
-})
-
-window.addEventListener("load", function(){
-    
-    var modal2 = document.querySelector("#modal2");
-    var closeBtn = document.querySelector("#modal2-close-button");
-    var cancelBtn = document.querySelector("#modal2-cancel");
-    var removeBtn = document.querySelectorAll(".remove-button");
-    var checkBtn = document.querySelector("#modal2-check");
-
-    closeBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    for(var i = 0; i<removeBtn.length; i++){
-        removeBtn[i].onclick = function(){
-            modal2.style.display = "block";
-        }
-    }
-})
-
+// 판매요청 승인
 $(function(){
+    $(".approval-button").click(function(){
+        var saleObj = $(this).parents(".sale-obj")
+        var no = $(saleObj).children(".sale-no").text()
+        
+        var approval = 1
 
-    var a = $("#datepicker").val();
+        $.ajax({
+            method:'POST',
+            url:'saleApproval',
+            data:{"approval":approval, "no":no},
+            success:function(){
 
-    
+                var state = saleObj.children(".approval-state")
+                
+                state.empty()
+
+                var span = $("<span class='approval-ok'>처리완료</span>")
+                state.append(span)
+                
+            },
+            error:function(){
+                alert("실패")
+            }
+        })
+    })
 })
+
+
+// 선택삭제
+$(function(){
+    $("#total-check").click(function(){
+        if($(this).is(":checked") == true){
+            $(".check-box").prop("checked",true)
+        }else{
+            $(".check-box").prop("checked", false)
+        }
+    })
+
+    $("#select-remove").click(function(){
+        $("#modal2").css("display","blocK")
+    })
+
+    $("#modal2-close-button").click(function(){
+        $("#modal2").css("display","none")
+    })
+    
+    $("#modal2-cancel").click(function(){
+        $("#modal2").css("display","none")
+    })
+    
+    $("#modal2-check").click(function(){
+        $("#modal2").css("display","none")
+        
+        $(".check-box").each(function(){
+            if($(this).is(":checked")==true){
+
+                var no = $(this).parents(".sale-obj").children(".sale-no").text()
+                
+                $.ajax({
+
+                    method:'POST',
+                    url:'saleRemove',
+                    data:{"no":no},
+                    success:function(){
+                        var mouse = new MouseEvent("click")
+                        var request = $("<a class='tmp hidden' href=''></a>")
+                        $("html").append(request)
+
+                        var tmp = document.querySelector(".tmp")
+                        tmp.dispatchEvent(mouse)
+                    },
+                    error:function(){
+                        alert("에러")
+                    }
+                })
+            }
+        })
+    })
+})
+
+

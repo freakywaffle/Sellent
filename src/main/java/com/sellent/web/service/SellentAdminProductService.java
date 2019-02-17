@@ -31,6 +31,14 @@ public class SellentAdminProductService implements AdminProductService{
 		return adminProductDao.getProductCnt(approval, startDate, endDate, condition, text);
 	}
 
-	
+	@Override
+	public int update(String approval, int no) {
+		return adminProductDao.update(approval, no);
+	}
+
+	@Override
+	public int delete(int no) {
+		return adminProductDao.delete(no);
+	}
 	
 }
