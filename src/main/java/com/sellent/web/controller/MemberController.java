@@ -5,8 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.security.Principal;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import java.util.UUID;
@@ -30,7 +39,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import com.google.gson.Gson;
+
 import com.sellent.web.dao.LikeDao;
+
 import com.sellent.web.dao.MemberDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.SkillDao;
@@ -62,20 +75,21 @@ public class MemberController {
 	
 	@GetMapping("project")
 	public String project(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") int page, @RequestParam(value="optionValue", defaultValue="0")Integer selector, Product product) {
-		//System.out.println("p:"+p);
-		//System.out.println("changeP"+p+5);
-		//page = Integer.parseInt(p);
 		System.out.println("selectornum: " + selector);
 		List<ProductView> showPage = productDao.getListById(principal.getName(),page, selector);		
 		int allCnt = productDao.getAllCntById(principal.getName(),selector);
+		System.out.println("now Page: " + page);
 		System.out.println("total page: " +allCnt );
 		int num=5; //화면에 보여질 페이지 번호의 갯수
 		//끝 페이지 번호
 		int endpage;
 		endpage = (int)(Math.ceil((double)page/(double)num)*(double)num);
 		System.out.println("endpage: " +endpage);
-		int startpage= (endpage-num);
-		System.out.println("startpage: "+startpage);
+		
+		//시작페이지번호
+				int startpage= (endpage-num);
+				System.out.println("startpage: "+startpage);
+				
 		//마지막 페이지 번호
 		int tempendpage = (int)(Math.ceil((double)allCnt/(double)num));
 		System.out.println("tempendpage: " +tempendpage);
@@ -83,8 +97,15 @@ public class MemberController {
 			endpage = tempendpage;
 			System.out.println("endpage2:" + endpage);
 		}
-	
-		//시작페이지번호
+		
+		
+		
+		//이전버튼 생성 여부
+		boolean prev = startpage == 0 ? false:true;
+		System.out.println("prevbutton 여부: " + prev);
+		//다음버튼 생성 여부
+		boolean next = endpage * 5 >= allCnt ? false:true;
+		System.out.println("nextbutton 여부: " + next);
 		
 		model.addAttribute("product",showPage);
 		model.addAttribute("startpage",startpage);
@@ -92,6 +113,8 @@ public class MemberController {
 		model.addAttribute("tempendpage",tempendpage);
 		model.addAttribute("page",page);
 		model.addAttribute("allCnt",allCnt);
+		model.addAttribute("prev",prev);
+		model.addAttribute("next",next);
 		return "member.management.project";
 	}
 
@@ -103,9 +126,48 @@ public class MemberController {
 	}
 	@GetMapping("statics")
 	public String statics() {
+
 		
 		return "member.management.static";
 	}
+	
+	@PostMapping("sendStatic")
+	@ResponseBody
+	public String sendStatic(Principal principal, Model model,  @RequestParam(value="optionValue", defaultValue="0")Integer selector, Product product) {
+		Date date = new Date();
+        SimpleDateFormat sdformat = new SimpleDateFormat("MM");
+        SimpleDateFormat sdformat2 = new SimpleDateFormat("YYYY");
+
+		Calendar cal = Calendar.getInstance();
+
+        int month = Calendar.MONTH;
+        
+        System.out.println(month);
+		
+        List<List<ProductView>> showStatic = new ArrayList<List<ProductView>>();
+        Double [][] arr = new Double[4][2];
+        for(int i =0 ; i<4 ;i++) {
+        	cal.setTime(date);
+        	cal.add(month, -i);
+        	int pmonth = Integer.parseInt(sdformat.format(cal.getTime()));
+    		int pyear = Integer.parseInt(sdformat2.format(cal.getTime()));
+        	System.out.println(i+"월: "+pmonth+"년도" + pyear);
+        	
+        	System.out.println("principal:" + principal);
+        	System.out.println("selector" + selector);
+        	Double ss = productDao.getListToStatic(principal.getName(),selector,pmonth,  pyear);
+        	System.out.println(ss);
+        	arr[i][0] = Double.valueOf(pmonth);
+        	arr[i][1]= ss;
+        	
+        }
+        
+        Gson gson = new Gson();
+        String json = gson.toJson(arr);
+        	
+		return json;
+	}
+	
 
 
 	@GetMapping("messageList")

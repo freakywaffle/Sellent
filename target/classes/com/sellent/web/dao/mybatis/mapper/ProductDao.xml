@@ -147,6 +147,18 @@
 	<select id="getAllCnt" resultType="int">
 		select count(*) from product
 	</select>
+	
+	<select id="getListToStatic" resultType="java.lang.Double">
+		select avg(avg_starpoint)
+	    from product 
+	    where date_format(regdate, '%m' ) = #{param3} and  
+	    date_format(regdate, '%Y' ) = #{param4} and
+		writer_id= #{param1} and 
+		sell_check=#{param2} and 
+		avg_starpoint is not null;
+		
+		
+	</select>
 
 	
 	<select id="getLikeView" resultType="com.sellent.web.entity.ProductView">
