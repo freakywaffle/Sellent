@@ -24,7 +24,11 @@
 			reviewCnt,
 			nickname
  		from productView
- 		limit #{param1}, #{param2} 
+ 		where parent_category = #{param1} 
+ 		<if test="param2 != ''">
+ 			and sub_category = #{param2}
+ 		</if>
+ 		limit #{param3}, #{param4} 
  		
 	</select>
 	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">

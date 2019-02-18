@@ -12,7 +12,8 @@ public interface ProductDao {
 
 	List<ProductView> getListById(String id, int page);
 	List<ProductView> getListById(String id, int page, int selector);
-	List<ProductView> getList(int start, int cnt);
+	List<ProductView> getList(String parent, int start, int cnt);
+	List<ProductView> getList(String parent, String sub, int start, int cnt);
 	
 	ProductView get(int no);
 	
