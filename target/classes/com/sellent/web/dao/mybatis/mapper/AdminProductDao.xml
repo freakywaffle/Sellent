@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sellent.web.dao.AdminProductDao">
+
+	<select id="getViewList" resultType="com.sellent.web.entity.AdminProductView">
+		select * from AdminProductView	
+		where 
+			approval like CONCAT('%', #{param1}, '%') 
+		<choose>
+			<when test="param2 == '' and param3 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param3}) 
+			</when>
+			<when test="param2 !='' and param3 == ''">
+				and regdate <![CDATA[ > ]]> date(#{param2}) 
+			</when>
+			<when test="param2 != '' and param3 != ''">
+				and regdate between date(#{param2}) and date(#{param3})+1 
+			</when>
+		</choose>
+		<if test="param5 !='' ">
+			and ${param4} like #{param5}
+		</if>
+			limit #{param6.startCount}, 10
+	</select>
+
+	<select id="getProductCnt" resultType="int">
+		select count(*) from AdminProductView 
+		where 
+			approval like CONCAT('%', #{param1}, '%') 
+		<choose>
+			<when test="param2 == '' and param3 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param3}) 
+			</when>
+			<when test="param2 !='' and param3 == ''">
+				and regdate <![CDATA[ > ]]> date(#{param2}) 
+			</when>
+			<when test="param2 != '' and param3 != ''">
+				and regdate between date(#{param2}) and date(#{param3})+1 
+			</when>
+		</choose>
+		<if test="param5 !='' ">
+			and ${param4} like #{param5}
+		</if>
+
+	</select>
+
+	<update id="update">
+		update product set `approval`=#{param1} where `no`=#{param2}
+	</update>
+
+	<delete id="delete">
+		delete from product where no=#{param1}
+	</delete>
+
+</mapper>

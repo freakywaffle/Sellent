@@ -147,6 +147,8 @@ body {
 	min-height:600px;
 }
 
+/*---header-------------------------*/
+
 
 
 /*--table--------------------------*/
@@ -246,12 +248,12 @@ input[type="checkbox"]{
 	text-align:center;
 }
 
-	.paging-number{
+	.paging-box{
 		margin-top:10px;
 		display:inline-block;
 	}
 
-	.paging-number li{
+	.paging-box li{
 		display:inline-block;
 		border: 1px solid #ccc;
 		width:30px;
@@ -260,18 +262,24 @@ input[type="checkbox"]{
 		text-align:center;
 	}
 
-	.paging-number a{
+	.paging-box a{
 		font-weight:bold;
 		color:#ccc;
 	}
 
 
-	.paging-number a:hover{
+	.paging-box a:hover{
 		font-weight: bold;
-		color:rgb(240, 173, 78);
-		text-decoration: none;
+		Background-color:#fff;
+		color:rgb(63, 99, 191);
 	}
 
+.strong{	
+	Background-color:#fff;
+	color:rgb(63, 99, 191)!important;
+	font-weight: bold!important;
+}
+	
 
 /*----modal공용------------------------*/
 .cancel-box{

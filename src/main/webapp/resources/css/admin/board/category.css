@@ -1,6 +1,10 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
 
+/* #category-select option{
+	display: none;
+}
+ */
 /*----modal-게시판편집-----------------------------*/
 #modal{
 	position: fixed;
@@ -140,3 +144,6 @@
 			height: 40px;
 			width:80px;
 		}
+	#modal3-parent-after{
+		background-color: #eee;
+	}
