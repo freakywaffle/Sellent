@@ -38,9 +38,17 @@ public class MyBatisLikeDao implements LikeDao{
 
 
 	@Override
+	public List<Like> select(String id) {
+		// TODO Auto-generated method stub
+		LikeDao likeDao = session.getMapper(LikeDao.class);
+		return likeDao.select(id);
+	}
+	
+	@Override
 	public List<Like> getListById(String id) {
 		LikeDao likeDao = session.getMapper(LikeDao.class);
 		return likeDao.getListById(id);
+
 	}
 	
 }

@@ -24,7 +24,11 @@
 			reviewCnt,
 			nickname
  		from productView
- 		limit #{param1}, #{param2} 
+ 		where parent_category = #{param1} 
+ 		<if test="param2 != ''">
+ 			and sub_category = #{param2}
+ 		</if>
+ 		limit #{param3}, #{param4} 
  		
 	</select>
 	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">
@@ -154,5 +158,30 @@
 		
 		
 	</select>
+
+	
+	<select id="getLikeView" resultType="com.sellent.web.entity.ProductView">
+			select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+		from productView where no=#{param1}
+	</select>
+
+
 
 </mapper>

@@ -6,7 +6,7 @@
 	<h1 class="hidden">사이드 메뉴</h1>	
 	<div class="ct-wrapper">	
 		<h2>카테고리 제목</h2>
-		<div class="ct-price">
+		<div class="ct-price hidden">
 			<h3>가격</h3>
 			<ul>
 				<li class="search-option" >
@@ -25,12 +25,12 @@
 			<h3>판매여부</h3>
 			<ul>
 				<li class="search-option">
-					<input type="checkbox" class="hidden"/>
+					<input type="checkbox" class="hidden" value="1"/>
 					<img src="/resources/images/blank-check-box.png"/>
 					<span>YES</span>
 				</li>
 				<li class="search-option">
-					<input type="checkbox" class="hidden"/>
+					<input type="checkbox" class="hidden" value="0"/>
 					<img src="/resources/images/blank-check-box.png"/>
 					<span>NO</span>
 				</li>
@@ -39,19 +39,10 @@
 		<div class="ct-sub-category">
 			<h3>카테고리</h3>
 			<ul>
-				<li>세부1</li>
-				<li>세부2</li>
-				<li>세부3</li>
-				<li>세부4</li>
-				<li>세부5</li>
-				<li>세부6</li>
-				<li>세부7</li>
-				<li>세부8</li>
-				<li>세부8</li>
-				<li>세부8</li>
-				<li>세부8</li>
-				<li>세부8</li>
-				<li>세부8</li>
+				<li><a href="?sub=데이터베이스">데이터베이스</a></li>
+				<li><a href="?sub=서버">서버</a></li>
+				<li><a href="?sub=웹개발">웹개발</a></li>
+				<li><a href="?sub=앱개발">앱개발</a></li>
 			</ul>
 		</div>
 	</div>

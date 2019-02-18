@@ -85,7 +85,7 @@ public class QnaController {
 	public String Attachments( HttpServletRequest request,@RequestParam("img") ArrayList<MultipartFile> files) throws IOException {
 		System.out.println(files);
 		tempFiles = new ArrayList<QnaFile>();
-        String root = "C:\\Users\\nodoi\\Desktop\\새 폴더 (2)\\img";
+        String root = "F:\\sellent\\qna\\qna";
         int recentNo = qnaDao.getRecentlyNo()+1;
         String path = root+recentNo;
         File dir = new File(path);
