@@ -83,9 +83,9 @@ public class MyBatisProductDao implements ProductDao{
 	@Override
 	public List<ProductView> getListById(String id, int page, int selector) {
 		ProductDao productDao = session.getMapper(ProductDao.class);
-		System.out.println(id);
-		System.out.println(page);
-		System.out.println(selector);
+		//System.out.println(id);
+		//System.out.println(page);
+		//System.out.println(selector);
 		page = (page-1)*5;
 		return productDao.getListById(id,page,selector);
 	}
@@ -103,6 +103,14 @@ public class MyBatisProductDao implements ProductDao{
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
 		return productDao.getAllCnt();
+	}
+
+	@Override
+	public Double getListToStatic(String id, int selector, int pmonth, int pyear) {
+		// TODO Auto-generated method stub
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getListToStatic(id,selector,pmonth, pyear);
 	}
 
 

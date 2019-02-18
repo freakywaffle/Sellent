@@ -13,6 +13,7 @@ public interface ProductDao {
 	List<ProductView> getListById(String id, int page);
 	List<ProductView> getListById(String id, int page, int selector);
 	List<ProductView> getList(int start, int cnt);
+	Double getListToStatic(String id, int selector, int pmonth, int pyear);
 	
 	ProductView get(int no);
 	
