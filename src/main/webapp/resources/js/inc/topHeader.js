@@ -7,4 +7,6 @@ $('window').ready(function(){
 		$(this).find('.my-menu').addClass('hidden');		
 	});
 	
+	
+	
 });

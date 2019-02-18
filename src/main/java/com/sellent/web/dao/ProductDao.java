@@ -14,9 +14,13 @@ public interface ProductDao {
 
 	List<ProductView> getListById(String id, int page);
 	List<ProductView> getListById(String id, int page, int selector);
+
+	List<ProductView> getList(int start, int cnt);
+	Double getListToStatic(String id, int selector, int pmonth, int pyear);
+
 	List<ProductView> getList(String parent, int start, int cnt);
 	List<ProductView> getList(String parent, String sub, int start, int cnt);
-	
+
 	ProductView get(int no);
 	
 	int getAllCnt();
@@ -27,4 +31,7 @@ public interface ProductDao {
 	int updateStarPointByNo(int no, double avgStarPoint);
 	int getAllCntById(String id, int selector);
 
+	
+	
+	List<ProductView> getListBySearch(String parent, String sub, int sellChk, int start, int cnt);
 }

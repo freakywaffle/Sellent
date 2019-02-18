@@ -52,7 +52,7 @@ select:focus {
     color: #fff;
 }
 
-.table td{
+.table td, .table th{
     width:120px;
     text-align: center;
     font-size: 15px;
