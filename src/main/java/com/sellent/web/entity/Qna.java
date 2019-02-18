@@ -9,7 +9,7 @@ public class Qna {
 	private String title; 
 	private String content;
 	private Date regdate; 
-	
+	private int state;
 	
 	public Qna() {
 		super();
@@ -81,6 +81,16 @@ public class Qna {
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+
+
+	public int getState() {
+		return state;
+	}
+
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 
