@@ -18,15 +18,30 @@ public class MyBatisAdminProductDao implements AdminProductDao{
 	private SqlSessionTemplate session;
 	
 	@Override
-	public List<AdminProductView> getViewList(String approval, String startDate, String endDate, String condition,
-			String text, AdminPaging paging) {
-		
+	public List<AdminProductView> getBoard(String parent, String sub, int sale, String startDate,
+			String endDate, String condition, String text, AdminPaging paging) {
+
 		AdminProductDao adminProductDao = session.getMapper(AdminProductDao.class);
-		return adminProductDao.getViewList(approval, startDate, endDate, condition, text, paging);
+		return adminProductDao.getBoard(parent, sub, sale, startDate, endDate, condition, text, paging);
 	}
 
 	@Override
-	public int getProductCnt(
+	public List<AdminProductView> getSale(String approval, String startDate, String endDate, String condition,
+			String text, AdminPaging paging) {
+		
+		AdminProductDao adminProductDao = session.getMapper(AdminProductDao.class);
+		return adminProductDao.getSale(approval, startDate, endDate, condition, text, paging);
+	}
+	
+	@Override
+	public int getBoardCnt(String parent, String sub, int sale, String startDate, String endDate,
+			String condition, String text) {
+		AdminProductDao adminProductDao = session.getMapper(AdminProductDao.class);
+		return adminProductDao.getBoardCnt(parent, sub, sale, startDate, endDate, condition, text);
+	}
+
+	@Override
+	public int getSaleCnt(
 			String approval,
 			String startDate,
 			String endDate,
@@ -34,8 +49,9 @@ public class MyBatisAdminProductDao implements AdminProductDao{
 			String text) {
 		
 		AdminProductDao adminProductDao = session.getMapper(AdminProductDao.class);
-		return adminProductDao.getProductCnt(approval, startDate, endDate, condition, text);
+		return adminProductDao.getSaleCnt(approval, startDate, endDate, condition, text);
 	}
+
 	@Override
 	public int update(String approval, int no) {
 		AdminProductDao adminProductDao = session.getMapper(AdminProductDao.class);
@@ -47,5 +63,6 @@ public class MyBatisAdminProductDao implements AdminProductDao{
 		AdminProductDao adminProductDao = session.getMapper(AdminProductDao.class);
 		return adminProductDao.delete(no);
 	}
+
 	
 }

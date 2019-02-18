@@ -1,30 +1,3 @@
-/*문의답변하기 */
-window.addEventListener("load",function(){
-
-    
-    var btn = document.querySelectorAll(".tbody button");
-    var modal = document.querySelector("#modal");
-    var checkBtn = modal.querySelector("#modal-check");
-    var cancelBtn = modal.querySelector("#modal-close-button");
-
-
-    for(var i=0; i<btn.length;i++){
-        btn[i].onclick = function(){
-            modal.style.display = "block";
-        }
-    }
-
-    checkBtn.onclick = function(){
-        modal.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal.style.display = "none";
-    }
-
-})
-
-
 $(function() {
     //모든 datepicker에 대한 공통 옵션 설정
     $.datepicker.setDefaults({
@@ -54,50 +27,142 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    $("#datepicker").val("");
+    $("#datepicker2").val("");
 });
 
+// 판매요청 승인
+$(function(){
+    $("#modal-close-button").click(function(){
+        $("#modal").css("display","none")
+    })
 
-/*선택삭제 */
-window.addEventListener("load",function(){
-    
-    var totalCheck = document.querySelector("#total-check");
-    var checkBox = document.querySelectorAll("input[type='checkbox']");
-    var modal2 = document.querySelector("#modal2");
-    var selectRemove = document.querySelector("#select-remove");
-    
-    totalCheck.onchange = function(){
-        var check = totalCheck.checked;
+    // 대기버튼 클릭
+    $(".state-button").click(function(){
         
-        for(var i=0; i<checkBox.length;i++){
-            checkBox[i].checked = check;
+        $("#modal").css("display","block")
+        
+        var parent = $(this).parents(".consult-obj")
+        var index = $(".consult-obj").index(parent)
+        
+        var thisObj = $(".consult-obj").eq(index)
+
+        var title = thisObj.children(".consult-title").text()
+        var email = thisObj.children(".consult-email").text()
+        var regdate = thisObj.children(".consult-regdate").text()
+        var content = thisObj.children(".consult-content").text()
+
+        $("#modal-title").text(title)
+        $("#modal-email").text(email)
+        $("#modal-regdate").text(regdate)
+        $("#modal-content").text(content)
+
+        // 모달창 확인 누르면 처리완료로 변경
+        var modalCheck = document.querySelector("#modal-check")
+        
+        var consultObj = $(this).parents(".consult-obj")
+        
+
+        modalCheck.onclick = function(){
+
+            var answer = document.querySelector("#modal-answer")
+
+            var content = $(answer).val()
+
+            var no = $(consultObj).children(".consult-no").text()
+            var state = 1
+
+            $("#modal").css("display","none")
+            
+            $.ajax({
+                method:'POST',
+                url:'email-send',
+                data:{"title":title,"email":email,"content":content},
+
+                success:function(){
+                    $.ajax({
+                        method:'POST',
+                        url:'consultState',
+                        data:{"state":state, "no":no},
+                        success:function(){
+                            
+                            var state = consultObj.children(".state-state")
+                        
+                            state.empty()
+                        
+                            var span = $("<span class='state-ok'>처리완료</span>")
+                            state.append(span)
+        
+                        },
+                        error:function(){
+                            alert("실패")
+                        }
+                    })
+                },
+                error:function(){
+                    alert("잘못된 이메일 형식")
+                }
+            })
+
         }
-    }
-
-    selectRemove.onclick =function(){
-        modal2.style.display = "block";
-    }
-    
-})
-
-/*모달2-삭제 확인 */
-window.addEventListener("load", function(){
-    
-    var modal2 = document.querySelector("#modal2");
-    var closeBtn = document.querySelector("#modal2-close-button");
-    var cancelBtn = document.querySelector("#modal2-cancel");
-    var checkBtn = document.querySelector("#modal2-check");
-
-    closeBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
+    })
 })
 
 
+
+// 선택삭제
+$(function(){
+    $("#total-check").click(function(){
+        if($(this).is(":checked") == true){
+            $(".check-box").prop("checked",true)
+        }else{
+            $(".check-box").prop("checked", false)
+        }
+    })
+
+    $("#select-remove").click(function(){
+        $("#modal2").css("display","blocK")
+    })
+
+    $("#modal2-close-button").click(function(){
+        $("#modal2").css("display","none")
+    })
+    
+    $("#modal2-cancel").click(function(){
+        $("#modal2").css("display","none")
+    })
+    
+    $("#modal2-check").click(function(){
+        $("#modal2").css("display","none")
+        
+        var arr = new Array()    // ajax를 배열로 전송하는 경우 스프링에서는 ArrayList로 받는다
+
+        $(".check-box").each(function(){
+            if($(this).is(":checked")==true){
+
+                var no = $(this).parents(".consult-obj").children(".consult-no").text()
+                arr.push(no)
+            }
+        })
+
+        jQuery.ajaxSettings.traditional = true; // 배열을 전송할떄 끝 []를 없애줌
+
+        $.ajax({
+
+            method:'POST',
+            url:'consultRemove',
+            data:{"arr":arr},
+            success:function(){
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+            },
+            error:function(){
+                alert("에러")
+            }
+        })
+    })
+})
