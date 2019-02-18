@@ -21,7 +21,7 @@
 		<if test="param5 !='' ">
 			and ${param4} like CONCAT('%', #{param5}, '%')
 		</if>
-			limit #{param6.startCount}, 10
+			order by no desc limit #{param6.startCount}, 10
 	</select>
 	
 	<select id="getQnaCnt" resultType="int">
