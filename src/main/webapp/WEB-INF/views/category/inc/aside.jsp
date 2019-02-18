@@ -25,12 +25,12 @@
 			<h3>판매여부</h3>
 			<ul>
 				<li class="search-option">
-					<input type="checkbox" class="hidden" value="1"/>
+					<input type="checkbox" name="yes" class="hidden" value="1"/>
 					<img src="/resources/images/blank-check-box.png"/>
 					<span>YES</span>
 				</li>
 				<li class="search-option">
-					<input type="checkbox" class="hidden" value="0"/>
+					<input type="checkbox" name="no" class="hidden" value="0"/>
 					<img src="/resources/images/blank-check-box.png"/>
 					<span>NO</span>
 				</li>

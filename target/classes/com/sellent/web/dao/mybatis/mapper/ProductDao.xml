@@ -28,6 +28,7 @@
  		<if test="param2 != ''">
  			and sub_category = #{param2}
  		</if>
+ 		order by regdate desc
  		limit #{param3}, #{param4} 
  		
 	</select>
@@ -170,6 +171,36 @@
 		from productView where no=#{param1}
 	</select>
 
+	<select id="getListBySearch" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
+ 		where parent_category = #{param1} 
+ 		<if test="param2 != ''">
+ 			and sub_category = #{param2}
+ 		</if>
+ 		<if test="param3 != -1">
+ 			and sell_check = #{param3}
+ 		</if>
+ 		order by regdate desc
+ 		limit #{param4}, #{param5} 
+	</select>
 
 
 </mapper>
