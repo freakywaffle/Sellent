@@ -21,14 +21,21 @@ public class MyBatisProductDao implements ProductDao{
 	@Override
 	public List<ProductView> getList() {
 		
-		return getList(0, 7);
+		return getList("", "", 0, 7);
 	}
 	
 	@Override
-	public List<ProductView> getList(int start, int cnt) {
+	public List<ProductView> getList(String parent, int start, int cnt) {
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
-		return productDao.getList(start, cnt);
+		return productDao.getList(parent, start, cnt);
+	}
+
+	@Override
+	public List<ProductView> getList(String parent, String sub, int start, int cnt) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getList(parent, sub, start, cnt);
 	}
 
 	@Override
@@ -104,6 +111,8 @@ public class MyBatisProductDao implements ProductDao{
 		
 		return productDao.getAllCnt();
 	}
+
+	
 
 
 	@Override

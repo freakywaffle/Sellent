@@ -4,9 +4,11 @@ $(document).ready(function(){
 	bindLink();
 	
 	
-	//좋아요 바인드
+	//링크타기
 	function link(path){
-		$(location).attr('pathname', '/category/'+path);
+		var url = $(location).attr('pathname');
+		var origin = $(location).attr('origin');
+		$(location).attr('href', origin+url+'/'+path);
 	};
 	
 	//링크 바인드
@@ -63,15 +65,17 @@ $(document).ready(function(){
 			
 			if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
 				alert('로그인해주세요');
-				$(location).attr('pathname', '/login');
+				var origin = $(location).attr('origin');
+				$(location).attr('href', origin+'/login');
 				return;
 			}
 			
 			var pno = $(this).prev().val();
 			console.log(pno);
+			var url = $(location).attr('pathname');
 			if(!$(e.target).hasClass('fav')){
 				$.ajax({
-					url: '/category/'+pno+'/like',
+					url: url+'/'+pno+'/like',
 					type: 'get',
 					success: function(){
 						
@@ -81,7 +85,7 @@ $(document).ready(function(){
 				});
 			}else{
 				$.ajax({
-					url: '/category/'+pno+'/delike',
+					url: url+'/'+pno+'/delike',
 					type: 'get',
 					success: function(){
 						
@@ -98,7 +102,8 @@ $(document).ready(function(){
 	//글쓰기 이동
 	var regBt = $('.reg-bt');
 	regBt.click(function(){
-		$(location).attr('pathname', 'category/reg');
+		var origin = $(location).attr('origin');
+		$(location).attr('href', origin+'/category/reg');
 	});
 	
 	
@@ -110,18 +115,22 @@ $(document).ready(function(){
 	var more = $('.more');
 	more.on('click',function(){
 	
+		var url = $(location).attr('pathname');
+		var sub = getJsonFromUrl().sub;
 		
+		console.log(sub);
 		var cnt = $('.contents').length;
 		$.ajax({
-			url: '/category/moreCategory?cnt='+cnt,
-			type:'GET',
+			url: url+'/'+'moreCategory',
+			type:'POST',
+			dataType: 'json',
+			data: {'cnt': cnt, 'parent':'IT개발', 'sub':sub},
 			success: function(data){
+				//var json = jQuery.parseJSON(data);
 				
-				var json = jQuery.parseJSON(data);
-				
-				var moreList = json.morelist;
-				var allCnt = json.allCnt;
-				var likeList = json.llist;
+				var moreList = data.morelist;
+				var allCnt = data.allCnt;
+				var likeList = data.llist;
 				
 				for(var p=0; p<moreList.length; p++){
 					var product = moreList[p];
@@ -139,18 +148,18 @@ $(document).ready(function(){
 					var money = template.find('.money');
 					
 					var starPoint = template.find('.star-point');
-					var fullStar = starPoint.find('div:first-child');
-					var binStar = starPoint.find('div:last-child');
 	
 					starPoint.empty();
 	
 					titleImg.attr('src','<spring:url value="/sellent/upload/"/>'+product.no+'/'+product.thumbnail);
-					for(var i=0; i<likeList.length; i++){
-						if(product.no == likeList[i].product_no){
-							likeBt.addClass('fav');
-							break;
-						}
-					}	
+					if(likeList){
+						for(var i=0; i<likeList.length; i++){
+							if(product.no == likeList[i].product_no){
+								likeBt.addClass('fav');
+								break;
+							}
+						}	
+					}
 					pno.val(product.no);
 					title.text(product.title);
 	
@@ -158,12 +167,18 @@ $(document).ready(function(){
 					duration.text(product.duration);
 					name.text(product.nickname);
 					money.text(product.price);
-					for(var i=1;i<=starpoint;i++)
+					
+					console.log(starpoint);
+					
+					for(var i=1;i<=starpoint;i++){
+						var fullStar = $('<div><img alt="별점" src="/resources/images/small-fullstar.png"/></div>');
 						starPoint.append(fullStar);
+					}
 					
-					for(var i=starpoint+1;i<=5;i++)
+					for(var i=starpoint+1;i<=5;i++){
+						var binStar = $('<div><img alt="별점" src="/resources/images/small-binstar.png"/></div>');
 						starPoint.append(binStar);
-					
+					}
 					
 					mainContent.append(template);
 					
@@ -193,4 +208,20 @@ $(document).ready(function(){
 	});
 	
 	
+	
+	
+	
+	
 });
+
+
+//url 쿼리스트링 json화
+function getJsonFromUrl(){
+	var query = $(location).attr('search').substr(1);
+	var result = {};
+	query.split('&').forEach(function(part){
+		var item = part.split("=");
+		result[item[0]] = decodeURIComponent(item[1]);	
+	});
+	return result;
+}

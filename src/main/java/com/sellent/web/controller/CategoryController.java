@@ -51,10 +51,14 @@ public class CategoryController {
 	@Autowired
 	private LikeDao likeDao;
 	
-	@GetMapping("list")
-	public String list(Principal principal, Model model) {
+	@GetMapping("{category}")
+	public String list(@PathVariable("category") String category, 
+			@RequestParam(value="sub",defaultValue="") String sub,
+			Principal principal, 
+			Model model) {
+		System.out.println(category);
 		
-		List<ProductView> plist = productDao.getList();
+		List<ProductView> plist = productDao.getList(category, sub, 0, 7);
 		model.addAttribute("plist", plist);
 		if(principal != null) {
 			List<Like> llist = likeDao.getListById(principal.getName());
@@ -65,7 +69,7 @@ public class CategoryController {
 		return "category.list";
 	}
 	
-	@GetMapping("{no}")
+	@GetMapping("{category}/{no}")
 	public String detail(@PathVariable("no") Integer no, Model model, Principal principal){
 		
 		Map<String, Object> product = productService.getProductByNo(no);
@@ -139,7 +143,7 @@ public class CategoryController {
 		return "ok";
 	}
 	
-	@PostMapping("{no}/review")
+	@PostMapping("{category}/{no}/review")
 	@ResponseBody
 	public String review(@PathVariable("no") Integer no, String json, Principal principal) {
 		productService.regReview(no, json, principal);
@@ -162,7 +166,7 @@ public class CategoryController {
 		return jsonArr;
 	}
 	
-	@GetMapping("{no}/moreReview")
+	@GetMapping("{category}/{no}/moreReview")
 	@ResponseBody
 	public String moreReview(@PathVariable("no") Integer no, @RequestParam int cnt) {
 		List<ReviewView> reviews = reviewDao.getListByProductNo(no, cnt);
@@ -178,7 +182,7 @@ public class CategoryController {
 		return jsonArr;
 	}
 	
-	@GetMapping("{no}/like")
+	@GetMapping("{category}/{no}/like")
 	@ResponseBody
 	public String like(@PathVariable("no") Integer no, Principal principal) {
 		Like like = new Like();
@@ -187,7 +191,7 @@ public class CategoryController {
 		likeDao.insert(like);
 		return "";
 	}
-	@GetMapping("{no}/delike")
+	@GetMapping("{category}/{no}/delike")
 	@ResponseBody
 	public String delike(@PathVariable("no") Integer no, Principal principal) {
 		Like like = new Like();
@@ -197,13 +201,17 @@ public class CategoryController {
 		return "";
 	}
 	
-	@GetMapping("moreCategory")
+	@PostMapping("{category}/moreCategory")
 	@ResponseBody
-	public String moreCategory(@RequestParam int cnt, Principal principal){
+	public String moreCategory(@RequestParam int cnt, 
+			@PathVariable("category") String parent,
+			@RequestParam(value="sub",defaultValue="") String sub,
+			Principal principal){
 		Gson gson = new Gson();
 		Map<String, Object> temp = new HashMap<>();
-	
-		List<ProductView> morelist = productDao.getList(cnt, 7);
+		System.out.println("parent"+parent);
+		System.out.println("sub"+sub);
+		List<ProductView> morelist = productDao.getList(parent, sub, cnt, 7);
 		int allCnt = productDao.getAllCnt();
 		if(principal != null) {
 			List<Like> llist = likeDao.getListById(principal.getName());
@@ -217,7 +225,23 @@ public class CategoryController {
 		
 		String json = gson.toJson(temp);
 		
+		System.out.println(json);
+		
 		
 		return json;
+	}
+	
+	@PostMapping("{category}/search")
+	@ResponseBody
+	public String search(
+			@PathVariable("category") String parent,
+			String sub,
+			String sellChk,
+			String keyword) {
+		System.out.println(parent);
+		System.out.println(sub);
+		System.out.println(sellChk);
+		System.out.println(keyword);
+		return "";
 	}
 }
