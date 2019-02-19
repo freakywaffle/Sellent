@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sellent.web.dao.ProductDao;
+import com.sellent.web.entity.LikeView;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductView;
 
@@ -107,11 +108,19 @@ public class MyBatisProductDao implements ProductDao{
 
 
 	@Override
-	public List<ProductView> getLikeView(int no) {
+	public List<LikeView> getLikeView(int no) {
 		// TODO Auto-generated method stub
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
 		return productDao.getLikeView(no);
+	}
+
+	@Override
+	public List<ProductView> getLikeView1(int no, String category) {
+		// TODO Auto-generated method stub
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getLikeView1(no,category);
 	}
 
 

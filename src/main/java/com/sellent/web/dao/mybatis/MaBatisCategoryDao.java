@@ -10,6 +10,7 @@ import com.sellent.web.dao.CategoryDao;
 import com.sellent.web.entity.AdminPaging;
 import com.sellent.web.entity.CategoryView;
 import com.sellent.web.entity.ParentCategory;
+import com.sellent.web.entity.ParentCategorySY;
 import com.sellent.web.entity.SubCategory;
 
 
@@ -82,6 +83,12 @@ public class MaBatisCategoryDao implements CategoryDao{
 	public int updateProduct(String subBefore, String subAfter) {
 		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
 		return categoryDao.updateProduct(subBefore, subAfter);
+	}
+
+	@Override
+	public List<ParentCategorySY> getParentCntList(String id) {
+		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
+		return categoryDao.getParentCntList(id);
 	}
 	
 }
