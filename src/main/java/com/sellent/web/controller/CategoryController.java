@@ -130,7 +130,11 @@ public class CategoryController {
 			int affected = likeDao.hasLike(like);
 			if(affected != 0)
 				product.put("like", true);
-		}
+			
+			int affected2 = historyDao.hasBuy(principal.getName(), no);
+			if(affected2 != 0)
+				model.addAttribute("buyed", "true");
+		}	
 		
 		model.addAttribute("map", product);
 		if(reviews.size()!=0)
@@ -250,14 +254,29 @@ public class CategoryController {
 	
 	@GetMapping("{category}/{no}/buy")
 	@ResponseBody
-	public String buy(@PathVariable("no") Integer no, Principal principal) {
+	public String buy(@PathVariable("no") Integer no, Principal principal, String seller) {
 		String id = principal.getName();
 		
 		History history = new History();
 		history.setBuyer_id(id);
+		history.setSeller_id(seller);
 		history.setProduct_no(no);
 		
 		historyDao.insert(history);
+		
+		return "";
+	}
+	@GetMapping("{category}/{no}/cancelBuy")
+	@ResponseBody
+	public String cancelBuy(@PathVariable("no") Integer no, Principal principal, String seller) {
+		String id = principal.getName();
+		System.out.println(id);
+		System.out.println(no);
+		History history = new History();
+		history.setBuyer_id(id);
+		history.setProduct_no(no);
+		
+		historyDao.delete(history);
 		
 		return "";
 	}
