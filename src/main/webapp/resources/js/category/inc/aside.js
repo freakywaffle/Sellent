@@ -16,8 +16,10 @@ $('window').ready(function(){
 		
 	});
 */	
-	
-	
+	var pathname = $(location).attr('pathname');
+	var parentCt = pathname.split('/')[pathname.split('/').length-1];
+	var h2 = $('.ct-wrapper').find('h2');
+	h2.text(decodeURI(parentCt));
 	
 });
 

@@ -183,7 +183,7 @@
 		from productView where no=#{param1}
 	</select>
 
-	<select id="getListBySearch" resultType="com.sellent.web.entity.ProductView">
+	<select id="getListByFilter" resultType="com.sellent.web.entity.ProductView">
 		select 
 			no, 
 			title, 
@@ -214,5 +214,71 @@
  		limit #{param4}, #{param5} 
 	</select>
 
+	<select id="getListBySearch" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
+ 		where title like '%${param1}%'
+ 		<if test="@com.sellent.web.config.mybatis.MyBatisCheck@notEmpty(param2)">
+ 			and parent_category in 
+ 			<foreach collection="param2" item="ct" open="(" close=")" separator=",">
+	 			#{ct.name}
+ 			</foreach>
+ 		</if>
+ 		<if test="param3 != -1">
+ 			and sell_check = #{param3}
+ 		</if>
+ 		order by regdate desc
+ 		limit #{param4}, #{param5}
+	</select>
+	
+	<select id="getListBySearchAll" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
+ 		where title like '%${param1}%'
+ 		<if test="@com.sellent.web.config.mybatis.MyBatisCheck@notEmpty(param2)">
+ 			and parent_category in 
+ 			<foreach collection="param2" item="ct" open="(" close=")" separator=",">
+	 			#{ct.name}
+ 			</foreach>
+ 		</if>
+ 		<if test="param3 != -1">
+ 			and sell_check = #{param3}
+ 		</if>
+ 		order by regdate desc
+	</select>
 
 </mapper>

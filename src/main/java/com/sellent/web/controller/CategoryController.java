@@ -24,13 +24,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.sellent.web.dao.CategoryDao;
+import com.sellent.web.dao.HistoryDao;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
+import com.sellent.web.entity.History;
 import com.sellent.web.entity.Like;
+import com.sellent.web.entity.ParentCategory;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
@@ -53,6 +58,12 @@ public class CategoryController {
 	@Autowired
 	private LikeDao likeDao;
 	
+	@Autowired
+	private CategoryDao categoryDao;
+	
+	@Autowired
+	private HistoryDao historyDao;
+	
 	@GetMapping("{category}")
 	public String list(@PathVariable("category") String category, 
 			@RequestParam(value="sub",defaultValue="") String sub,
@@ -67,9 +78,43 @@ public class CategoryController {
 			model.addAttribute("llist", llist);
 		}
 		
+		model.addAttribute("subCtList", categoryDao.getSubListByParent(category));
+		
 		
 		return "category.list";
 	}
+	
+	
+	@GetMapping("search")
+	public String search(String keyword, 
+			ArrayList<ParentCategory> categoryList,
+			Principal principal, 
+			Model model){
+		
+		
+		List<ProductView> plist = productDao.getListBySearch(keyword, categoryList,-1, 0, 7);
+		
+		model.addAttribute("plist", plist);
+		if(principal != null) {
+			List<Like> llist = likeDao.getListById(principal.getName());
+			model.addAttribute("llist", llist);
+		}
+		
+		List<ProductView> allList = productDao.getListBySearchAll(keyword, categoryList, -1);
+		List<String> sideList = new ArrayList<String>();
+		
+		for(ProductView pv: allList) {
+			if(!sideList.contains(pv.getParentCategory())) {
+				sideList.add(pv.getParentCategory());
+			}
+		}
+		
+		model.addAttribute("sideList", sideList);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("allCnt", allList.size());
+		return "category.search";
+	}
+	
 	
 	@GetMapping("{category}/{no}")
 	public String detail(@PathVariable("no") Integer no, Model model, Principal principal){
@@ -203,6 +248,21 @@ public class CategoryController {
 		return "";
 	}
 	
+	@GetMapping("{category}/{no}/buy")
+	@ResponseBody
+	public String buy(@PathVariable("no") Integer no, Principal principal) {
+		String id = principal.getName();
+		
+		History history = new History();
+		history.setBuyer_id(id);
+		history.setProduct_no(no);
+		
+		historyDao.insert(history);
+		
+		return "";
+	}
+	
+	
 	@PostMapping("{category}/moreCategory")
 	@ResponseBody
 	public String moreCategory(int cnt, 
@@ -215,16 +275,12 @@ public class CategoryController {
 		JsonElement jsonQuery = parser.parse(query);
 		JsonElement jsonSellChk = parser.parse(sellChk);
 		
-		String keyword = "";
 		String sub = "";
 		int yes = 0;
 		int no = 0;
 		
 		if(jsonQuery.getAsJsonObject().get("sub") != null) {
 			sub = jsonQuery.getAsJsonObject().get("sub").getAsString();
-		}
-		if(jsonQuery.getAsJsonObject().get("keyword") != null) {
-			keyword = jsonQuery.getAsJsonObject().get("keyword").getAsString();
 		}
 		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
 			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
@@ -248,7 +304,7 @@ public class CategoryController {
 		System.out.println("parent"+parent);
 		System.out.println("sub"+sub);
 		
-		List<ProductView> morelist = productDao.getList(parent, sub, cnt, 7);
+		List<ProductView> morelist = productDao.getListByFilter(parent, sub, sell_chk, cnt, 7);
 		int allCnt = productDao.getAllCnt();
 		if(principal != null) {
 			List<Like> llist = likeDao.getListById(principal.getName());
@@ -268,9 +324,9 @@ public class CategoryController {
 		return json;
 	}
 	
-	@PostMapping("{category}/search")
+	@PostMapping("{category}/filter")
 	@ResponseBody
-	public String search(
+	public String filter(
 			@PathVariable("category") String parent,
 			String query,
 			String sellChk,
@@ -317,7 +373,7 @@ public class CategoryController {
 		System.out.println(keyword);
 		System.out.println(sell_chk);
 		
-		List<ProductView> plist = productDao.getListBySearch(parent, sub, sell_chk, 0, 7);
+		List<ProductView> plist = productDao.getListByFilter(parent, sub, sell_chk, 0, 7);
 		
 		temp.put("plist", plist);
 		
@@ -332,4 +388,145 @@ public class CategoryController {
 		
 		return json;
 	}
+	
+	@PostMapping("search/parentFilter")
+	@ResponseBody
+	public String parentFilter(
+			String keyword,
+			String sellChk,
+			String parents,
+			Principal principal) {
+		Map<String, Object> temp = new HashMap<>();
+		
+		if(principal != null) {
+			List<Like> llist = likeDao.getListById(principal.getName());
+			temp.put("llist", llist);
+		}
+		
+		JsonParser parser = new JsonParser();
+		JsonElement jsonSellChk = parser.parse(sellChk);
+		JsonElement jsonParents = parser.parse(parents);
+		
+		int yes = 0;
+		int no = 0;
+		
+		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
+			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
+		}
+		if(jsonSellChk.getAsJsonObject().get("no") != null) {
+			no = jsonSellChk.getAsJsonObject().get("no").getAsInt();
+		}
+		
+		int sell_chk = -1;
+		
+		if(yes==0 && no==1) {
+			sell_chk = 0;
+		}else if(yes==1 && no==0) {
+			sell_chk = 1;
+		}
+		
+		
+		
+		List<ParentCategory> parentList = new ArrayList<ParentCategory>();
+		
+		
+		if(jsonParents!=null) {
+			JsonArray parentArr = jsonParents.getAsJsonArray();
+			for(int i=0;i<parentArr.size();i++) {
+				System.out.println(i+"번쨰: "+parentArr.get(i));
+				if(!String.valueOf(parentArr.get(i)).equals("null")) {
+					String parent = parentArr.get(i).getAsString();
+					parentList.add(new ParentCategory(parent));
+					System.out.println(parent);
+					
+				}
+			}
+		}
+		
+		
+		List<ProductView> plist = productDao.getListBySearch(keyword, parentList, sell_chk, 0, 7);
+		List<ProductView> pAll = productDao.getListBySearchAll(keyword, parentList, sell_chk);
+		temp.put("plist", plist);
+		
+		
+		System.out.println(keyword);
+		System.out.println(sell_chk);
+		
+		temp.put("allCnt", pAll.size());
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(temp);
+		
+		
+		return json;
+	}
+	
+	@PostMapping("search/moreSearch")
+	@ResponseBody
+	public String moreSearch(int cnt,
+			String keyword,
+			String sellChk,
+			String parents,
+			Principal principal) {
+		Map<String, Object> temp = new HashMap<>();
+		
+		if(principal != null) {
+			List<Like> llist = likeDao.getListById(principal.getName());
+			temp.put("llist", llist);
+		}
+		
+		JsonParser parser = new JsonParser();
+		JsonElement jsonSellChk = parser.parse(sellChk);
+		JsonElement jsonParents = parser.parse(parents);
+		
+		int yes = 0;
+		int no = 0;
+		
+		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
+			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
+		}
+		if(jsonSellChk.getAsJsonObject().get("no") != null) {
+			no = jsonSellChk.getAsJsonObject().get("no").getAsInt();
+		}
+		
+		int sell_chk = -1;
+		
+		if(yes==0 && no==1) {
+			sell_chk = 0;
+		}else if(yes==1 && no==0) {
+			sell_chk = 1;
+		}
+		
+		List<ParentCategory> parentList = new ArrayList<ParentCategory>();
+		
+		if(jsonParents!=null) {
+			JsonArray parentArr = jsonParents.getAsJsonArray();
+			for(int i=0;i<parentArr.size();i++) {
+				System.out.println(i+"번쨰: "+parentArr.get(i));
+				if(!String.valueOf(parentArr.get(i)).equals("null")) {
+					String parent = parentArr.get(i).getAsString();
+					parentList.add(new ParentCategory(parent));
+					System.out.println(parent);
+					
+				}
+			}
+		}
+		List<ProductView> plist = productDao.getListBySearch(keyword, parentList, sell_chk, cnt, 7);
+		List<ProductView> pAll = productDao.getListBySearchAll(keyword, parentList, sell_chk);
+		temp.put("plist", plist);
+		
+		System.out.println(keyword);
+		System.out.println(sell_chk);
+		
+		temp.put("allCnt", pAll.size());
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(temp);
+		
+		
+		return json;
+	}
+	
+	
+	
 }

@@ -28,6 +28,14 @@
 			name
 		from sub_category;
 	</select>
+	
+	<select id="getSubListByParent" resultType="com.sellent.web.entity.SubCategory">
+		select 
+			parent_name parentName,
+			name
+		from sub_category
+		where parent_name = #{param1};
+	</select>
 
 	<select id="getCategoryCnt" resultType="int">
 		select 
