@@ -16,7 +16,7 @@
 					<div class="header-sub-category hidden">
 						<div>
 							<c:forEach var="sc" items="${ct }">
-								<a href="${ct[0].parentName }?sub=${sc.name }">${sc.name }</a>
+								<a href="/category/${ct[0].parentName }?sub=${sc.name }">${sc.name }</a>
 							</c:forEach>
 						</div>
 					</div>

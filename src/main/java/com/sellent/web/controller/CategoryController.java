@@ -28,10 +28,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.sellent.web.dao.CategoryDao;
+import com.sellent.web.dao.HistoryDao;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
+import com.sellent.web.entity.History;
 import com.sellent.web.entity.Like;
 import com.sellent.web.entity.ParentCategory;
 import com.sellent.web.entity.Product;
@@ -58,6 +60,9 @@ public class CategoryController {
 	
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private HistoryDao historyDao;
 	
 	@GetMapping("{category}")
 	public String list(@PathVariable("category") String category, 
@@ -243,6 +248,21 @@ public class CategoryController {
 		return "";
 	}
 	
+	@GetMapping("{category}/{no}/buy")
+	@ResponseBody
+	public String buy(@PathVariable("no") Integer no, Principal principal) {
+		String id = principal.getName();
+		
+		History history = new History();
+		history.setBuyer_id(id);
+		history.setProduct_no(no);
+		
+		historyDao.insert(history);
+		
+		return "";
+	}
+	
+	
 	@PostMapping("{category}/moreCategory")
 	@ResponseBody
 	public String moreCategory(int cnt, 
@@ -255,16 +275,12 @@ public class CategoryController {
 		JsonElement jsonQuery = parser.parse(query);
 		JsonElement jsonSellChk = parser.parse(sellChk);
 		
-		String keyword = "";
 		String sub = "";
 		int yes = 0;
 		int no = 0;
 		
 		if(jsonQuery.getAsJsonObject().get("sub") != null) {
 			sub = jsonQuery.getAsJsonObject().get("sub").getAsString();
-		}
-		if(jsonQuery.getAsJsonObject().get("keyword") != null) {
-			keyword = jsonQuery.getAsJsonObject().get("keyword").getAsString();
 		}
 		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
 			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
@@ -288,7 +304,7 @@ public class CategoryController {
 		System.out.println("parent"+parent);
 		System.out.println("sub"+sub);
 		
-		List<ProductView> morelist = productDao.getList(parent, sub, cnt, 7);
+		List<ProductView> morelist = productDao.getListByFilter(parent, sub, sell_chk, cnt, 7);
 		int allCnt = productDao.getAllCnt();
 		if(principal != null) {
 			List<Like> llist = likeDao.getListById(principal.getName());
@@ -510,4 +526,7 @@ public class CategoryController {
 		
 		return json;
 	}
+	
+	
+	
 }

@@ -1,6 +1,5 @@
 
 
-
 $(document).ready(function(){
 	//헤더 사라지기
 	$(window).scroll(function(){
@@ -62,6 +61,33 @@ $(document).ready(function(){
 		console.log(starPoint.val());
 	});
 	
+	//구매버튼
+	var buyBt = $('.buy-bt');
+	buyBt.click(function(){
+		swal({
+			  title: "구매하시겠습니까?",
+			  icon: "warning",
+			  buttons: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+				$.ajax({
+					url: $(location).attr('pathname')+'/buy',
+					type: 'get',
+					success: function(data){
+						swal("신청했습니다.", {
+						  icon: "success",
+						});
+					}
+					
+				});
+			    
+			  } else {
+			    swal("취소했습니다");
+			  }
+			});
+	});
+	
 	
 	
 	//찜하기
@@ -83,6 +109,10 @@ $(document).ready(function(){
 				success: function(){
 					
 					likeBt.find('.fa-heart').toggleClass('fav');
+					swal({
+						  title: "이 상품을 찜했습니다",
+						  icon: "success",
+					});
 				}
 				
 			});
@@ -93,6 +123,10 @@ $(document).ready(function(){
 				success: function(){
 					
 					likeBt.find('.fa-heart').toggleClass('fav');
+					swal({
+						  title: "찜을 해제 했습니다",
+						  icon: "success",
+					});
 				}
 				
 			});

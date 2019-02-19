@@ -76,8 +76,12 @@
 							수정횟수: ${map.product.editCnt } 
 						</li>
 					</ul>
+					<div class="priceTag">
+						가격: ${map.product.price }
+					</div>
+					
 					<div>
-						<button class="buy-bt" type="button">${map.product.price }</button>
+						<button class="buy-bt" type="button">구매신청</button>
 						<button class="like-bt" type="button">
 							<c:choose>
 								<c:when test="${empty map.like }">

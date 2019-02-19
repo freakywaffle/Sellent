@@ -8,12 +8,12 @@
 <script src="/resources/js/inc/topHeader.js"></script>
 <section class="top-header">
 	<div class="logo-bar">
-		<div class="logo"><a href="../index">SELLENT</a></div>
+		<div class="logo"><a href="/index">SELLENT</a></div>
 		<div class="member-menu">
 			<spring:authorize access="isAnonymous()">
 				<ul class="before-login">
-					<li class="menu"><a href="#">로그인</a></li>
-					<li class="menu"><a href="#">회원가입</a></li>
+					<li class="menu"><a href="/login">로그인</a></li>
+					<li class="menu"><a href="/join">회원가입</a></li>
 				</ul>
 			</spring:authorize>
 			<spring:authorize access="isAuthenticated()">
@@ -23,7 +23,7 @@
 					<div class="my-menu hidden">
 					<ul>
 						<li>1500P</li>
-						<li><a href="../member/project">마이페이지</a></li>
+						<li><a href="/member/project">마이페이지</a></li>
 						<li class="prof">프로필</li>
 						<li><a href="/member/logout">로그아웃</a></li>
 					</ul>
