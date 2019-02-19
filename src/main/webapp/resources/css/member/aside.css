@@ -31,8 +31,8 @@
 	margin-left:5%;
 	margin-bottom:10px;
 }
-.aside .ct-wrapper li {
-	display:flex;
+.aside .ct-wrapper li, .aside .ct-wrapper a {
+	display:flex !important;
 	
 }
 .ct-wrapper li div{

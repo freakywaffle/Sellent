@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
+
    <link href="/resources/css/profile/editinfo.css" rel="stylesheet" />
    <script src="/resources/js/member/editInfo.js"></script>
 <section class="content">
 <form id="wrap" action="editInfo" method="post">
-	<div class="profile">
-		<img alt="프로필" id='blah' src='<spring:url value="/upload"/>/${member.photo}'>
+	<div class="profile-box">
+		<img alt="프로필" id='blah' src='<spring:url value="/sellent/profile/"/>${member.id}/${member.photo}'>
 		<div class=profilebtn>
 			<input type="button" class="profileBtn" name='picedit' value="수정" />
 			<input type="button" class="profileBtn" name='picdel' value="삭제" />

@@ -12,9 +12,9 @@
 			<div class="ct-sub-category">
 			<h3>카테고리</h3>
 			<ul>
-				<li><div>ㅡ</div><div>프로젝트</div></li>
-				<li><div>ㅡ</div><div>HISTORY</div></li>
-				<li><div>ㅡ</div><div>통계</div></li>
+				<li><a href="../member/project"><div>ㅡ</div><div>프로젝트</div></a></li>
+				<li><a href="../member/history"><div>ㅡ</div><div>HISTORY</div></a></li>
+				<li><a href="../member/static"><div>ㅡ</div><div>통계</div></a></li>
 				
 			</ul>
 		</div>
@@ -33,9 +33,9 @@
 			<div class="ct-sub-category">
 			<h3>카테고리</h3>
 			<ul>
-				<li><div>ㅡ</div><div>정보소개</div></li>
-				<li><div>ㅡ</div><div>자기소개</div></li>
-				<li><div>ㅡ</div><div>포인트내역</div></li>
+				<li><a href="../member/editInfo"><div>ㅡ</div><div>정보소개</div></a></li>
+				<li><a href="../member/introduce"><div>ㅡ</div><div>자기소개</div></a></li>
+				<li><a href="../member/point"><div>ㅡ</div><div>포인트내역</div></a></li>
 				
 			</ul>
 		</div>
@@ -45,7 +45,7 @@
 			<div class="ct-sub-category">
 			<h3>카테고리</h3>
 			<ul>
-				<li><div>ㅡ</div><div>후기</div></li>				
+				<li><a href="../member/review"><div>ㅡ</div><div>후기</div></a></li>				
 			</ul>
 		</div>
 		</c:if>
