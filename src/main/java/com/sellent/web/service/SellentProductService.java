@@ -61,6 +61,8 @@ public class SellentProductService implements ProductService{
 			productFileDao.insert(pf);				
 		}
 		
+		int update = pointHistoryDao.update_sy(product.getWriterId(),-100);
+		
 		return 0;
 	}
 

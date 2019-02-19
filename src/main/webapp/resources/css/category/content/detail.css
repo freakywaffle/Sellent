@@ -12,6 +12,17 @@
 	width: 1200px;
 }
 
+.main-content .user-bt-group{
+	position: relative;
+	height: 30px;
+}
+.main-content .user-bt-group>div{
+	float: right;
+}
+.main-content .user-bt-group>div input{
+	border: 1px solid black;
+}
+
 
 .top-content .post-img{
 	width: 650px;

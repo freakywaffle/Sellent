@@ -6,7 +6,12 @@
 <script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
 	<div class="main-content">
-		
+		<div class="user-bt-group">
+			<div>
+				<input type="button" value="삭제"/>
+				<input type="button" value="수정"/>
+			</div>
+		</div>
 		<div class="breadcrumb">홈>메인카테고리>서브카테고리</div>
 		<div class="top-content">
 			<div>
