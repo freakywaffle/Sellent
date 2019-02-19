@@ -50,7 +50,8 @@
 			regdate, 
 			approval,
 			reviewCnt,
-			nickname
+			nickname,
+			photo
 		from productView where no = #{param1}
 	</select>
 	<select id="getRecentlyNo" resultType="int">

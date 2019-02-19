@@ -7,14 +7,13 @@ public class LikeView extends ProductView{
 	private String photo;
 	
 
-
-	public LikeView(int no, String title, String thumbnail, String photo, String parentCategory, String subCategory,
-			String writerId, String simpleContent, String detailContent, int price, int sellCheck, int duration,
-			int editCnt, double avgStarPoint, Date regdate, int approval, int reviewCnt, String nickname) {
+	public LikeView(int no, String title, String thumbnail, String parentCategory, String subCategory, String writerId,
+			String simpleContent, String detailContent, int price, int sellCheck, int duration, int editCnt,
+			double avgStarPoint, Date regdate, int approval, int reviewCnt, String nickname, String photo,
+			String photo2) {
 		super(no, title, thumbnail, parentCategory, subCategory, writerId, simpleContent, detailContent, price,
-				sellCheck, duration, editCnt, avgStarPoint, regdate, approval, reviewCnt, nickname);
-		this.photo = photo;
-
+				sellCheck, duration, editCnt, avgStarPoint, regdate, approval, reviewCnt, nickname, photo);
+		photo = photo2;
 	}
 
 
