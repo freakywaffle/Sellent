@@ -177,7 +177,7 @@ public class QnaController {
 			if(list.isEmpty()) {
 				System.out.println("비었!!");
 				int a = pointHistoryDao.insert_sy(principal.getName(),point);
-				
+				int update = pointHistoryDao.update_sy(principal.getName(),point);
 			}
 			else if(!list.isEmpty())
 				System.out.println("안비었!!");

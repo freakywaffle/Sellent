@@ -162,7 +162,7 @@
 	</select>
 
 	
-	<select id="getLikeView" resultType="com.sellent.web.entity.LikeView">
+	<select id="getLikeView" resultType="com.sellent.web.entity.ProductView">
 			select 
 			no, 
 			title, 
@@ -182,7 +182,7 @@
 			approval,
 			reviewCnt,
 			nickname
-		from (select p.*,m.photo  from productView AS p left join member AS m on p.writer_id = m.id) a where no=#{param1}
+		from productView where no=#{param1}
 	</select>
 	
 	<select id="getLikeView1" resultType="com.sellent.web.entity.ProductView">

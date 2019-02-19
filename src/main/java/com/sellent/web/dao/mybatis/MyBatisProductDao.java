@@ -129,7 +129,7 @@ public class MyBatisProductDao implements ProductDao{
 
 
 	@Override
-	public List<LikeView> getLikeView(int no) {
+	public List<ProductView> getLikeView(int no) {
 		// TODO Auto-generated method stub
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		

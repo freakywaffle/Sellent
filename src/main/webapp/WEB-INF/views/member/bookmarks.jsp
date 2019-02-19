@@ -59,7 +59,7 @@
 				</c:if>
 				
 				<div class="content bbb" style="">
-						<a href="/category/${a.no}">
+						<a href="/category/${a.parentCategory}/${a.no}">
 							<div class="img-box bbb">
 								<div class="img">${a.thumbnail}</div>
 								<div class="profile">${a.photo}</div>
@@ -121,6 +121,7 @@
  				var main = $('.main');
  				var ff = b.length;
 				var size = 4;
+				var t = 0;
  				for(var j=0; j<qq; j++) {
  					
 	 				
@@ -131,9 +132,9 @@
  					
  					for(var i=0; i <size; i++) {
 				
-	 				var aaaa = b[i].price;
+	 				var aaaa = b[t].price;
 	 				var price = aaaa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-	
+					
 								
 				
 	 				
@@ -142,22 +143,22 @@
 						
  					var q = $("<div class='content bbb'></div>"); 	
 					
-		 			var cc = $("<a href='/category/"+b[i].no+"'><div class='img-box bbb'><div class='img'></div><div class='profile'></div></div></a>")
+		 			var cc = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'><div class='img-box bbb'><div class='img'></div><div class='profile'></div></div></a>")
 				
 		 			
 		 			var dd = $("<div class='text'></div>")
 		 			var qqq = $("<a href='#'></a>")
-		 			var www = $("<div class='writer-id'>"+b[i].writerId+"</div>")
-		 			var eee = $("<div class='title' style='height: 40px'>"+b[i].title+"</div>")
+		 			var www = $("<div class='writer-id'>"+b[t].writerId+"</div>")
+		 			var eee = $("<div class='title' style='height: 40px'>"+b[t].title+"</div>")
 		 			var rrr = $("<div class='price'>"+price+"원~"+"</div>")
 		 			
 		 			var flex = $("<div class='flex'></div>")
 					var product = $("<div class='product'></div>")
-					var star = $("<div class='star'>"+"("+b[i].reviewCnt+")"+"</div>")
+					var star = $("<div class='star'>"+"("+b[t].reviewCnt+")"+"</div>")
 					
 					var fornt = $("<div class='fornt'></div>")
 					var imgWrap = $("<div class='img-wrap'></div>")
-					var heart = $("<i class='fa fa-heart fav' style='left: 10px; top: 3px;'><div class='hidden'>"+b[i].no+"</div></i>")
+					var heart = $("<i class='fa fa-heart fav' style='left: 10px; top: 3px;'><div class='hidden'>"+b[t].no+"</div></i>")
 					
 					qqq.append(www)	
 					qqq.append(eee)	
@@ -173,7 +174,7 @@
 		 			q.append(dd)
 					
 	 				cv.append(q);
-					
+					t++
 		 				
 						}
  				main.append(cv);

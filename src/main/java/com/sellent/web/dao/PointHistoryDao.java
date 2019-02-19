@@ -8,6 +8,7 @@ public interface PointHistoryDao {
 	int insert(PointHistory pointHistory);
 
 	int insert_sy(String name, int point);
+	int update_sy(String name, int point);
 	List<PointHistory> select_sy(String member_id);
 
 	List<PointHistory>  getListById(String id, int page);
