@@ -1,12 +1,15 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
 
+
+
+.state-ok{
+    color:red;
+}
+
 label{
 	height: 100%;
 }
-
-
-
 
 #modal{
 	display: none;

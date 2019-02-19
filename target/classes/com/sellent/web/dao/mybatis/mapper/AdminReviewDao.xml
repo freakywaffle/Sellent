@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.sellent.web.dao.AdminReviewDao">
+	<select id="getReviewView" resultType="com.sellent.web.entity.ReviewView">
+		select * from reviewView
+		where product_no like '%%' 
+		<choose>
+			<when test="param1 == '' and param2 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param2}) 
+			</when>
+			<when test="param1 !='' and param2 == '' ">
+				and regdate <![CDATA[ > ]]> date(#{param1}) 
+			</when>
+			<when test="param1 != '' and param2 != ''">
+				and regdate between date(#{param1}) and date(#{param2})+1 
+			</when>
+		</choose>
+		<if test="param4 !='' ">
+			and ${param3} like CONCAT('%', #{param4}, '%')
+		</if>
+			limit #{param5.startCount}, 10
+	</select>
+	
+	<select id="getReviewCnt" resultType="int">
+		select count(*) from reviewView
+		where product_no like '%%' 
+		<choose>
+			<when test="param1 == '' and param2 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param2}) 
+			</when>
+			<when test="param1 !='' and param2 == '' ">
+				and regdate <![CDATA[ > ]]> date(#{param1}) 
+			</when>
+			<when test="param1 != '' and param2 != ''">
+				and regdate between date(#{param1}) and date(#{param2})+1 
+			</when>
+		</choose>
+		<if test="param4 !='' ">
+			and ${param3} like CONCAT('%', #{param4}, '%')
+		</if>
+	</select>
+	
+	<delete id="delete">
+		delete from review where no=#{param1}
+	</delete>
+</mapper>

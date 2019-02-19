@@ -85,7 +85,7 @@ window.addEventListener("load",function(){
      		var tr2 = tbody.querySelector(".tr2");
      		//var td = document.querySelectorAll(".td");
      		var td1 = tr2.querySelectorAll('td');
-     		alert(td1[0].innerText);
+     		//alert(td1[0].innerText);
      		
      		data[1][0]= arr[0][0];
      		data[1][1] = arr[0][1];

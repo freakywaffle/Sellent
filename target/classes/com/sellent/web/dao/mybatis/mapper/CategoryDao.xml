@@ -15,7 +15,7 @@
 		<if test="param3 != ''">
 			and sub_category like CONCAT('%', #{param3}, '%') 
 		</if>
-			limit #{param4.startCount}, #{param4.endCount};
+			limit #{param4.startCount}, 10;
 	</select>
 	
 	<select id="getParentList" resultType="com.sellent.web.entity.ParentCategory">

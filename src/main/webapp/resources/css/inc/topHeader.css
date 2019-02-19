@@ -32,8 +32,12 @@ a:hover {text-decoration: none !important;}
 	display: flex;
 	height: 50px;
 }
-
+.logo a{
+	color:#002060 !important;
+	
+}
 #header .logo {
+	color:#002060 !important;
 	width: 200px;
 	height: 50px;
 	font-family: 'Sunflower', sans-serif;

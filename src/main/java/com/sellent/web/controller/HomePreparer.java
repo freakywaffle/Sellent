@@ -1,18 +1,12 @@
 package com.sellent.web.controller;
 
-import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.apache.tiles.Attribute;
 import org.apache.tiles.AttributeContext;
 import org.apache.tiles.preparer.ViewPreparer;
 import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.sellent.web.dao.CategoryDao;
@@ -31,7 +25,6 @@ public class HomePreparer implements ViewPreparer {
     @Autowired
     private CategoryDao categoryDao;
 	
-	
    @Override
    public void execute(Request tilesRequest, 
       
@@ -39,11 +32,8 @@ public class HomePreparer implements ViewPreparer {
     
 	   List<QnaPaCategory> list = qnaService.getOftenQnaList();
 	   List<QnaSubCategory> subList = qnaService.getOftenQnaSubList();
+	   
 
-	  // Map<String, Object> model = tilesRequest.getContext("request");           
-      // model.put("list", list);
-      // model.put("subList", subList);
-       
        Attribute aa = new Attribute(list);
        Attribute bb = new Attribute(subList);
        attributeContext.putAttribute("list", aa, true);
@@ -60,6 +50,7 @@ public class HomePreparer implements ViewPreparer {
        
        
        attributeContext.putAttribute("CtList",new Attribute(CtList), true);
+       
        
        
    }
