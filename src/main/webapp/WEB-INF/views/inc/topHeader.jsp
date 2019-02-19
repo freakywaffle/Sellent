@@ -34,12 +34,11 @@
 		</div>
 	</div>
 	<div class="search-bar">
-		<div>
+		<form>
 			<input type="search" placeholder="검색"/>
 			<button type="submit">
 				<img src="/resources/images/search.png" />
 			</button>
-			
-		</div>
+		</form>
 	</div>
 </section>

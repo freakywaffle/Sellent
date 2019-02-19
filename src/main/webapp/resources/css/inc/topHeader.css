@@ -132,7 +132,7 @@ a:hover {text-decoration: none !important;}
 	line-height: 50px;
 }
 
-#header .search-bar>div {
+#header .search-bar>form {
 	display: flex;
 	position: absolute;
 	top: 6px;
@@ -188,7 +188,7 @@ a:hover {text-decoration: none !important;}
 		position: relative;
 		height: 55px;
 	}
-	#header .search-bar>div {
+	#header .search-bar>form {
 		width: 90%;
 		margin-left: 5%;
 		padding-left: 0px;

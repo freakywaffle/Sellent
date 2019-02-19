@@ -4,6 +4,20 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
+	<definition name="category.search" 
+		template="/WEB-INF/views/category/inc/layout/search.jsp" preparer="com.sellent.web.controller.HomePreparer">
+		<put-attribute name="title" value="Sellent" />
+		<put-attribute name="topHeader" value="/WEB-INF/views/inc/topHeader.jsp" />
+		<put-attribute name="bottomHeader" value="/WEB-INF/views/category/inc/bottomHeader.jsp" />
+		<put-attribute name="aside" value="/WEB-INF/views/category/inc/searchAside.jsp"/>
+		<put-attribute name="main" 
+			value="/WEB-INF/views/category/search.jsp" />
+		<put-attribute name="floatingBar" 
+			value="/WEB-INF/views/inc/floatingBar.jsp" />			
+		<put-attribute name="footer" 
+			value="/WEB-INF/views/inc/footer.jsp" />
+	</definition>
+
 	<definition name="admin.*.*"
 	template="/WEB-INF/views/admin/inc/layout.jsp"  preparer="com.sellent.web.controller.HomePreparer">
 	<put-attribute name="header"

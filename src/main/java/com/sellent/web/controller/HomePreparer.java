@@ -1,6 +1,8 @@
 package com.sellent.web.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +15,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.sellent.web.dao.CategoryDao;
+import com.sellent.web.entity.ParentCategory;
 import com.sellent.web.entity.QnaPaCategory;
 import com.sellent.web.entity.QnaSubCategory;
+import com.sellent.web.entity.SubCategory;
 import com.sellent.web.service.QnaService;
 
 @Component
@@ -23,7 +28,8 @@ public class HomePreparer implements ViewPreparer {
 
 	@Autowired
 	private QnaService qnaService;
-      
+    @Autowired
+    private CategoryDao categoryDao;
 	
 	
    @Override
@@ -42,6 +48,18 @@ public class HomePreparer implements ViewPreparer {
        Attribute bb = new Attribute(subList);
        attributeContext.putAttribute("list", aa, true);
        attributeContext.putAttribute("subList", bb, true);
+       
+       List<List<SubCategory>> CtList = new ArrayList<List<SubCategory>>(); 
+       
+       List<ParentCategory> parentCtList = categoryDao.getParentList();
+       for(ParentCategory pc: parentCtList) {
+    	   List<SubCategory> subCtList = categoryDao.getSubListByParent(pc.getName());
+    	   CtList.add(subCtList);
+       }
+       
+       
+       
+       attributeContext.putAttribute("CtList",new Attribute(CtList), true);
        
        
    }

@@ -83,5 +83,11 @@ public class MaBatisCategoryDao implements CategoryDao{
 		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
 		return categoryDao.updateProduct(subBefore, subAfter);
 	}
+
+	@Override
+	public List<SubCategory> getSubListByParent(String ParentName) {
+		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
+		return categoryDao.getSubListByParent(ParentName);
+	}
 	
 }
