@@ -162,7 +162,30 @@
 	</select>
 
 	
-	<select id="getLikeView" resultType="com.sellent.web.entity.ProductView">
+	<select id="getLikeView" resultType="com.sellent.web.entity.LikeView">
+			select 
+			no, 
+			title, 
+			thumbnail,
+            photo,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+		from (select p.*,m.photo  from productView AS p left join member AS m on p.writer_id = m.id) a where no=#{param1}
+	</select>
+	
+	<select id="getLikeView1" resultType="com.sellent.web.entity.ProductView">
 			select 
 			no, 
 			title, 
@@ -181,7 +204,7 @@
 			approval,
 			reviewCnt,
 			nickname
-		from productView where no=#{param1}
+		from productView where no=#{param1} and parent_category = #{param2}
 	</select>
 
 	<select id="getListByFilter" resultType="com.sellent.web.entity.ProductView">

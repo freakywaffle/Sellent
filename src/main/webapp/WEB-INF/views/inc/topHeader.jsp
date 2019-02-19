@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>  
+
 <link href="/resources/css/inc/topHeader.css" rel="stylesheet"/>
 
 <script src="/resources/js/inc/topHeader.js"></script>
@@ -19,7 +20,7 @@
 			<spring:authorize access="isAuthenticated()">
 				<div class="after-login">
 					<span class="mobile-hidden">${sessionScope.member.nickname}</span>
-					<img src='<spr:url value="/sellent/profile/"/>${sessionScope.member.id}/${sessionScope.member.photo}' />
+					<img src='<spr:url value="/sellent/profile/"/>${member.id}/${member.photo}' />
 					<div class="my-menu hidden">
 					<ul>
 						<li>1500P</li>

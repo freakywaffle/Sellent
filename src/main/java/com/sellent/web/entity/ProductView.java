@@ -71,6 +71,13 @@ public class ProductView extends Product{
 	}
 
 
+
+	@Override
+	public String toString() {
+		return "ProductView [reviewCnt=" + reviewCnt + ", nickname=" + nickname + "]";
+	}
+
+
 	
 	
 	
