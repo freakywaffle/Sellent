@@ -137,19 +137,20 @@ public class MyBatisProductDao implements ProductDao{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<ProductView> getLikeView1(int no, String category) {
 		// TODO Auto-generated method stub
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
 		return productDao.getLikeView1(no,category);
-=======
+	}
+
+	@Override
 	public List<ProductView> getListByFilter(String parent, String sub, int sellChk, int start, int cnt) {
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
 		return productDao.getListByFilter(parent, sub, sellChk, start, cnt);
 	}
-	
+	@Override
 	public List<ProductView> getList(int start, int cnt) {
 		
 		ProductDao productDao = session.getMapper(ProductDao.class);
@@ -166,7 +167,7 @@ public class MyBatisProductDao implements ProductDao{
 	public List<ProductView> getListBySearchAll(String keyword, List<ParentCategory> parentCategory, int sellChk) {
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		return productDao.getListBySearchAll(keyword, parentCategory, sellChk);
->>>>>>> refs/remotes/origin/master
+
 	}
 
 
