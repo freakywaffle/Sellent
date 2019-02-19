@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
@@ -203,14 +205,49 @@ public class CategoryController {
 	
 	@PostMapping("{category}/moreCategory")
 	@ResponseBody
-	public String moreCategory(@RequestParam int cnt, 
+	public String moreCategory(int cnt, 
 			@PathVariable("category") String parent,
-			@RequestParam(value="sub",defaultValue="") String sub,
+			String query,
+			String sellChk,
 			Principal principal){
+		
+		JsonParser parser = new JsonParser();
+		JsonElement jsonQuery = parser.parse(query);
+		JsonElement jsonSellChk = parser.parse(sellChk);
+		
+		String keyword = "";
+		String sub = "";
+		int yes = 0;
+		int no = 0;
+		
+		if(jsonQuery.getAsJsonObject().get("sub") != null) {
+			sub = jsonQuery.getAsJsonObject().get("sub").getAsString();
+		}
+		if(jsonQuery.getAsJsonObject().get("keyword") != null) {
+			keyword = jsonQuery.getAsJsonObject().get("keyword").getAsString();
+		}
+		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
+			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
+		}
+		if(jsonSellChk.getAsJsonObject().get("no") != null) {
+			no = jsonSellChk.getAsJsonObject().get("no").getAsInt();
+		}
+		
+		int sell_chk = -1;
+		
+		if(yes==0 && no==1) {
+			sell_chk = 0;
+		}else if(yes==1 && no==0) {
+			sell_chk = 1;
+		}
+		
+		
 		Gson gson = new Gson();
 		Map<String, Object> temp = new HashMap<>();
+		
 		System.out.println("parent"+parent);
 		System.out.println("sub"+sub);
+		
 		List<ProductView> morelist = productDao.getList(parent, sub, cnt, 7);
 		int allCnt = productDao.getAllCnt();
 		if(principal != null) {
@@ -235,13 +272,64 @@ public class CategoryController {
 	@ResponseBody
 	public String search(
 			@PathVariable("category") String parent,
-			String sub,
+			String query,
 			String sellChk,
-			String keyword) {
-		System.out.println(parent);
+			Principal principal) {
+		Map<String, Object> temp = new HashMap<>();
+		
+		if(principal != null) {
+			List<Like> llist = likeDao.getListById(principal.getName());
+			temp.put("llist", llist);
+		}
+		
+		JsonParser parser = new JsonParser();
+		JsonElement jsonQuery = parser.parse(query);
+		JsonElement jsonSellChk = parser.parse(sellChk);
+		
+		
+		String keyword = "";
+		String sub = "";
+		int yes = 0;
+		int no = 0;
+		
+		if(jsonQuery.getAsJsonObject().get("sub") != null) {
+			sub = jsonQuery.getAsJsonObject().get("sub").getAsString();
+		}
+		if(jsonQuery.getAsJsonObject().get("keyword") != null) {
+			keyword = jsonQuery.getAsJsonObject().get("keyword").getAsString();
+		}
+		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
+			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
+		}
+		if(jsonSellChk.getAsJsonObject().get("no") != null) {
+			no = jsonSellChk.getAsJsonObject().get("no").getAsInt();
+		}
+		
+		int sell_chk = -1;
+		
+		if(yes==0 && no==1) {
+			sell_chk = 0;
+		}else if(yes==1 && no==0) {
+			sell_chk = 1;
+		}
+		
 		System.out.println(sub);
-		System.out.println(sellChk);
 		System.out.println(keyword);
-		return "";
+		System.out.println(sell_chk);
+		
+		List<ProductView> plist = productDao.getListBySearch(parent, sub, sell_chk, 0, 7);
+		
+		temp.put("plist", plist);
+		
+		
+		int allCnt = productDao.getAllCnt();
+		temp.put("allCnt", allCnt);
+		
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(temp);
+		
+		
+		return json;
 	}
 }

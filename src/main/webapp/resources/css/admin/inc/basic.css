@@ -3,6 +3,10 @@
 @import url(footer.css);
 @import url(topContent.css);
 
+#datepicker, #datepicker2{
+	width:120px;
+}
+
 .ui-datepicker-trigger{
 	height: 30px;
 	width: 30px;
@@ -53,6 +57,17 @@ input[type="checkbox"]{
 	width:100px;
 }
 
+.w-150{
+	width:150px;
+}
+
+.w-200{
+	width:200px;
+}
+
+.w-250{
+	width:250px;
+}
 
 /*----클래스 세팅-------------------*/
 .flex{
@@ -212,6 +227,8 @@ input[type="checkbox"]{
 	border:1px solid #ccc;
 	margin-top:5px;
 	width:100%;
+	table-layout: fixed;
+	white-space: nowrap;
 }
 
 	.thead{
@@ -219,14 +236,16 @@ input[type="checkbox"]{
 		background:rgb(78, 75, 75);	
 	}
 
-	.tbody tr{
-		height: 38px;
+	.tbody td{
+		height: 38px!important;
 	}
 
 	.table-main td{
 		text-align: center;
 		border:1px solid #ccc;
 		padding:2px;
+		text-overflow: ellipsis;
+		overflow: hidden; 
 	}
 
 	.table-main td button{

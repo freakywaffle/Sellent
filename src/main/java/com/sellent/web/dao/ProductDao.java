@@ -31,4 +31,7 @@ public interface ProductDao {
 	int updateStarPointByNo(int no, double avgStarPoint);
 	int getAllCntById(String id, int selector);
 
+	
+	
+	List<ProductView> getListBySearch(String parent, String sub, int sellChk, int start, int cnt);
 }

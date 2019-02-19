@@ -132,6 +132,12 @@ public class MyBatisProductDao implements ProductDao{
 	}
 
 	@Override
+	public List<ProductView> getListBySearch(String parent, String sub, int sellChk, int start, int cnt) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getListBySearch(parent, sub, sellChk, start, cnt);
+	}
+	
 	public List<ProductView> getList(int start, int cnt) {
 		
 		ProductDao productDao = session.getMapper(ProductDao.class);
