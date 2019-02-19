@@ -91,4 +91,11 @@ public class MaBatisCategoryDao implements CategoryDao{
 		return categoryDao.getParentCntList(id);
 	}
 	
+	@Override
+	public List<SubCategory> getSubListByParent(String ParentName) {
+		CategoryDao categoryDao = session.getMapper(CategoryDao.class);
+		return categoryDao.getSubListByParent(ParentName);
+
+	}
+	
 }

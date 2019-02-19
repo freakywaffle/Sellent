@@ -77,7 +77,7 @@ public class ServiceContextConfig {
 		javaMailSender.setHost("smtp.naver.com");
 		javaMailSender.setPort(587);
 		javaMailSender.setUsername("sellent@naver.com");
-		javaMailSender.setPassword("Sellent0123!");
+		javaMailSender.setPassword("SELLENT0123!!");
 		
 		Properties javaMailProperties = new Properties();
 		javaMailProperties.put("mail.transport.protocol","smtp");

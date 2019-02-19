@@ -24,7 +24,12 @@
 			reviewCnt,
 			nickname
  		from productView
- 		limit #{param1}, #{param2} 
+ 		where parent_category = #{param1} 
+ 		<if test="param2 != ''">
+ 			and sub_category = #{param2}
+ 		</if>
+ 		order by regdate desc
+ 		limit #{param3}, #{param4} 
  		
 	</select>
 	<select id="get" parameterType="java.lang.Integer" resultType="com.sellent.web.entity.ProductView">
@@ -142,6 +147,18 @@
 	<select id="getAllCnt" resultType="int">
 		select count(*) from product
 	</select>
+	
+	<select id="getListToStatic" resultType="java.lang.Double">
+		select avg(avg_starpoint)
+	    from product 
+	    where date_format(regdate, '%m' ) = #{param3} and  
+	    date_format(regdate, '%Y' ) = #{param4} and
+		writer_id= #{param1} and 
+		sell_check=#{param2} and 
+		avg_starpoint is not null;
+		
+		
+	</select>
 
 	
 	<select id="getLikeView" resultType="com.sellent.web.entity.LikeView">
@@ -189,6 +206,102 @@
 		from productView where no=#{param1} and parent_category = #{param2}
 	</select>
 
+	<select id="getListByFilter" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
+ 		where parent_category = #{param1} 
+ 		<if test="param2 != ''">
+ 			and sub_category = #{param2}
+ 		</if>
+ 		<if test="param3 != -1">
+ 			and sell_check = #{param3}
+ 		</if>
+ 		order by regdate desc
+ 		limit #{param4}, #{param5} 
+	</select>
 
+	<select id="getListBySearch" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
+ 		where title like '%${param1}%'
+ 		<if test="@com.sellent.web.config.mybatis.MyBatisCheck@notEmpty(param2)">
+ 			and parent_category in 
+ 			<foreach collection="param2" item="ct" open="(" close=")" separator=",">
+	 			#{ct.name}
+ 			</foreach>
+ 		</if>
+ 		<if test="param3 != -1">
+ 			and sell_check = #{param3}
+ 		</if>
+ 		order by regdate desc
+ 		limit #{param4}, #{param5}
+	</select>
+	
+	<select id="getListBySearchAll" resultType="com.sellent.web.entity.ProductView">
+		select 
+			no, 
+			title, 
+			thumbnail,
+			parent_category parentCategory, 
+			sub_category subCategory, 
+			writer_id writerId, 
+			simple_content simpleContent, 
+			detail_content detailContent, 
+			price, 
+			sell_check sellCheck, 
+			duration, 
+			edit_cnt editCnt, 
+			avg_starpoint avgStarPoint, 
+			regdate, 
+			approval,
+			reviewCnt,
+			nickname
+ 		from productView
+ 		where title like '%${param1}%'
+ 		<if test="@com.sellent.web.config.mybatis.MyBatisCheck@notEmpty(param2)">
+ 			and parent_category in 
+ 			<foreach collection="param2" item="ct" open="(" close=")" separator=",">
+	 			#{ct.name}
+ 			</foreach>
+ 		</if>
+ 		<if test="param3 != -1">
+ 			and sell_check = #{param3}
+ 		</if>
+ 		order by regdate desc
+	</select>
 
 </mapper>

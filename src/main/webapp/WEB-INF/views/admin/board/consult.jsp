@@ -4,6 +4,10 @@
 	href="/resources/css/admin/board/consult.css" />
 <script src="/resources/js/admin/board/consult.js"></script>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <section class="aside">
 	<div class="aside-title">
 		게시판관리
@@ -29,110 +33,125 @@
 	<main id="main">
 	
 	    <section class="content-box">
-	
-	        <div class="condition-form">
-	            
-	            <label class="condition-title">처리상태</label>
-	            
-	            <div class="condition-content">
-	                <select>
-	                    <option>전체</option>
-	                    <option>대기</option>
-	                    <option>처리완료</option>
-	                </select>
-	            </div>
-	        </div>
-	
-	        <div class="condition-form" style="border-top:none">
-	            <label class="condition-title">등록일</label>
-	        
-	            <div class="condition-content">
-	                <input id="datepicker"type="text"/>
-	                <span class="mg-left-5">~</span>
-	                <input id="datepicker2" class="mg-left-5" type="text"/>
-	            </div>
-	        </div>
-	
-	        <div class="condition-form" style="border-top:none">
-	            <label class="condition-title">키워드검색</label>
-	    
-	            <div class="condition-content">
-	                <select>
-	                    <option>제목</option>
-	                    <option>내용</option>
-	                    <option>작성자</option>
-	                    <option>제목+내용</option>
-	                </select>
-	                <input class="mg-left-5" type="text">
-	            </div>
-	        </div>
-	
-	        <div class="search-form">
-	            <button type="button" class="btn btn-primary">검색하기</button>
-	        </div>
-	
+			<form action="consult">
+				<div class="condition-form">
+					
+					<label class="condition-title">처리상태</label>
+					
+					<div class="condition-content">
+						<select name="state">
+							<option value="">전체</option>
+							<option value="0">대기</option>
+							<option value="1">처리완료</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="condition-form" style="border-top:none">
+					<label class="condition-title">등록일</label>
+				
+					<div class="condition-content">
+						<input name="startDate" id="datepicker"type="text" readonly/>
+						<span class="mg-left-5">~</span>
+						<input name="endDate" id="datepicker2" class="mg-left-5" type="text" readonly/>
+					</div>
+				</div>
+		
+				<div class="condition-form" style="border-top:none">
+					<label class="condition-title">키워드검색</label>
+			
+					<div class="condition-content">
+						<select name="condition">
+							<option value="email">이메일</option>
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+						</select>
+						<input name="text" class="mg-left-5" type="text">
+					</div>
+				</div>
+		
+				<div class="search-form">
+					<button id="search-button" type="submit" class="btn btn-primary">검색하기</button>
+				</div>
+			</form>
 	
 	        <div class="table-top">
-	            <div>총 게시판수 : 441</div>
+	            <div>총 게시물수 : ${paging.totalCount }</div>
 	        </div>
 	
 	        <table class="table-main">
+				<colgroup>
+					<col width="60px">
+					<col width="100px">
+					<col width="300px">
+					<col width="300px">
+					<col width="100%">
+					<col width="150px">
+					<col width="100px">
+				</colgroup>
 	            <thead class="thead">
 	                <tr>
 	                    <td>
 	                        <input id="total-check" type="checkbox"/>
 	                    </td>
-	                    <td>번호</td>
+						<td>번호</td>
+						<td>이메일</td>
 	                    <td>제목</td>
-	                    <td>작성자</td>
+	                    <td>내용</td>
 	                    <td>등록일자</td>
 	                    <td>처리상태</td>
 	                </tr>
-	            </thead>
+				</thead>
 	            <tbody class="tbody">
-	                <tr>
+	            <c:forEach items="${list }" var="consult">
+	                <tr class="consult-obj">
 	                    <td>
-	                        <input type="checkbox"/>
+	                        <input class="check-box" type="checkbox"/>
 	                    </td>
-	                    <td>40</td>
-	                    <td>사이트 관련 질문드립니다</td>
-	                    <td>dkdkd000</td>
-	                    <td>2019.01.13</td>
-	                    <td>
-	                            <button type="button" class="btn btn-primary">대기</button>
+	                    <td class="consult-no">${consult.no }</td>
+	                    <td class="consult-email">${consult.email }</td>
+	                    <td class="consult-title">${consult.title }</td>
+	                    <td class="consult-content">${consult.content }</td>
+	                    <td class="consult-regdate">
+							<fmt:formatDate value="${consult.regdate}" pattern="yyyy-MM-dd"/>	
+						</td>
+	                    <td class="state-state">
+	 						<c:choose>
+								<c:when test="${consult.state eq 0}">
+									<button class="state-button btn btn-primary" type="button" >대기</button>
+								</c:when>
+								<c:when test="${consult.state eq 1}">
+									<span class="state-ok">처리완료</span>
+								</c:when>
+							</c:choose>
 	                    </td>
 	                </tr>
-	                <tr>
-	                    <td>
-	                        <input type="checkbox"/>
-	                    </td>
-	                    <td>40</td>
-	                    <td>거래 방법 문의드립니다</td>
-	                    <td>newnewlec</td>
-	                    <td>2019.01.09</td>
-	                    <td>처리완료</td>
-	                </tr>
+                </c:forEach>
 	            </tbody>
 	        </table>
-	
 	
 	        <div class="table-bottom">
 	            <button id="select-remove" type="button">선택삭제</button>
 	        </div>
 	
 	        <div class="paging">
-	            <div>
-	                <ul class="paging-number">
-	                    <li><a href=""> << </a></li>
-	                    <li><a href=""> < </a></li>
-	                    <li><a href=""> 1 </a></li>
-	                    <li><a href=""> 2 </a></li>
-	                    <li><a href=""> 3 </a></li>
-	                    <li><a href=""> > </a></li>
-	                    <li><a href=""> >> </a></li>
-	                </ul>
-	            </div>
-	        </div>
+				<div>
+					<ul class="paging-box">
+						<li class="paging-prev"><a href="${query}&page=${paging.prevPage}"> < </a></li>
+						
+						<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+							
+							<c:set var="cls" value="${i==paging.page?'strong':''}" />
+							
+							<li class="paging-number">
+								<a class="${cls}" href="${query}&page=${i}">${i }</a>
+							</li>
+
+						</c:forEach>
+						<li class="paging-next"><a href="${query}&page=${paging.nextPage}"> > </a></li>
+					</ul>
+				</div>
+			</div>
 	    </section>
 	
 	    <div id="modal">
@@ -147,29 +166,29 @@
 	            <section class="customer-info">
 	                <div>
 	                    <label>제목</label>
-	                    <span>평가글 시스템 질문드립니다.</span>
+	                    <span id="modal-title"></span>
 	                </div>
 	
 	                <div>
-	                    <label>작성자</label>
-	                    <span>newlec</span>
-	                </div>
-	
-	                <div class="border-bottom">
-	                    <label>이메일</label>
-	                    <span>newlec@naver.com</span>
-	                </div>
+						<label>이메일</label>
+	                    <span id="modal-email"></span>
+					</div>
+					
+					<div class="border-bottom">
+						<label>등록일</label>
+						<span id="modal-regdate"></span>
+					</div>
 	            </section>
 	
 	            <section class="customer-content">
 	                <div class="question">
 	                    <label style="display: block">질문내용</label>
-	                    <textarea style="width:100%" placeholder="내용~~" readonly></textarea>
+	                    <textarea id="modal-content" style="width:100%" readonly></textarea>
 	                </div>
-	
+					
 	                <div class="admin-answer">
 	                    <label>답변내용</label>
-	                    <textarea></textarea>
+	                    <textarea id="modal-answer"></textarea>
 	                </div>
 	            </section>
 	            <div class="reg-box">

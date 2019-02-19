@@ -15,7 +15,7 @@
 		<if test="param3 != ''">
 			and sub_category like CONCAT('%', #{param3}, '%') 
 		</if>
-			limit #{param4.startCount}, #{param4.endCount};
+			limit #{param4.startCount}, 10;
 	</select>
 	
 	<select id="getParentList" resultType="com.sellent.web.entity.ParentCategory">
@@ -33,6 +33,14 @@ from parent_category p left outer join (SELECT p.parent_category, count(p.parent
 			parent_name parentName,
 			name
 		from sub_category;
+	</select>
+	
+	<select id="getSubListByParent" resultType="com.sellent.web.entity.SubCategory">
+		select 
+			parent_name parentName,
+			name
+		from sub_category
+		where parent_name = #{param1};
 	</select>
 
 	<select id="getCategoryCnt" resultType="int">

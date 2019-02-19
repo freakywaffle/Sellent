@@ -324,6 +324,8 @@ $(function(){
 })
 
 
+
+// 수정하기
 $(function(){
 
     $(".edit-button").click(function(){
@@ -369,7 +371,7 @@ $(function(){
                         
                         var categoryRequest = $("<a class='tmp hidden' href=''></a>")
                         $("html").append(categoryRequest)
-
+                        
                         var tmp = document.querySelector(".tmp")
                         tmp.dispatchEvent(evt)
 

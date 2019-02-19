@@ -16,6 +16,8 @@ public interface CategoryDao {
 	
 	List<SubCategory> getSubList();
 	
+	List<SubCategory> getSubListByParent(String ParentName);
+	
 	int getCategoryCnt(String parentBefore,String subBefore);
 	int getProductCnt(String parent, String sub);
 	
