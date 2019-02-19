@@ -13,6 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.sellent.web.dao.MyPageDao;
+import com.sellent.web.entity.MyParentCategory;
+import com.sellent.web.entity.MySubCategory;
 import com.sellent.web.entity.QnaPaCategory;
 import com.sellent.web.entity.QnaSubCategory;
 import com.sellent.web.service.QnaService;
@@ -23,6 +26,9 @@ public class HomePreparer implements ViewPreparer {
 
 	@Autowired
 	private QnaService qnaService;
+	
+	@Autowired
+	private MyPageDao myPageDao;
       
 	
 	
@@ -33,15 +39,13 @@ public class HomePreparer implements ViewPreparer {
     
 	   List<QnaPaCategory> list = qnaService.getOftenQnaList();
 	   List<QnaSubCategory> subList = qnaService.getOftenQnaSubList();
+	   
 
-	  // Map<String, Object> model = tilesRequest.getContext("request");           
-      // model.put("list", list);
-      // model.put("subList", subList);
-       
        Attribute aa = new Attribute(list);
        Attribute bb = new Attribute(subList);
        attributeContext.putAttribute("list", aa, true);
        attributeContext.putAttribute("subList", bb, true);
+       
        
        
    }

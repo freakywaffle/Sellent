@@ -29,4 +29,38 @@
 	<select id="getAvgStarPointByProductNo" resultType="double">
 		select round(avg(starpoint),1) from review where product_no = #{param1}
 	</select>
+	
+	<select id="getListById" resultType="com.sellent.web.entity.ReviewView">
+		select 
+			regdate, 
+			content, 
+			starpoint
+	    from reviewView
+		where writer_id= #{param1} 
+		<if test="param3 == 1"> <!-- 1week -->
+			and regdate between curdate()-7  and curdate()+1
+		</if>
+		<if test="param3 == 2"><!-- 1month -->
+			and regdate >= date_add(now(), interval -1 month)
+		</if>
+		<if test="param3 == 3"><!-- 1year -->
+			 and regdate >= date_add(now(), interval -1 year)
+		</if>
+		order by regdate limit #{param2}, 7 ;
+	</select>
+	
+	<select id="getAllCntById" resultType="int">
+		select count(content) from reviewView 
+		where writer_id= #{param1}
+		<if test="param2 == 1"> <!-- 1week -->
+			 and regdate between curdate()-7  and curdate()+1
+		</if>
+		<if test="param2 == 2"><!-- 1month -->
+			and regdate >= date_add(now(), interval -1 month)
+		</if>
+		<if test="param2 == 3"><!-- 1year -->
+			 and regdate >= date_add(now(), interval -1 year)
+		</if>
+		;
+	</select> 
 </mapper>

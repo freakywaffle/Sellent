@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
@@ -36,6 +37,28 @@ public class MybatisReviewDao implements ReviewDao{
 		ReviewDao reviewDao = session.getMapper(ReviewDao.class);
 		
 		return reviewDao.getAvgStarPointByProductNo(productNo);
+	}
+
+	@Override
+	public List<ReviewView> getListById(String id, int page) {
+		// TODO Auto-generated method stub
+		return getListById(id, page, 0);
+	}
+
+	@Override
+	public List<ReviewView> getListById(String id, int page, int selector) {
+		ReviewDao reviewDao = session.getMapper(ReviewDao.class);
+		System.out.println("dao-id: "+id);
+		page = (page-1)*5;
+		System.out.println("dao-page: "+page);
+		System.out.println("dao-selector: "+selector);
+		return reviewDao.getListById(id,page,selector);
+	}
+
+	@Override
+	public int getAllCntById(String id, int selector) {
+		ReviewDao reviewDao = session.getMapper(ReviewDao.class);
+		return reviewDao.getAllCntById(id,selector);
 	}
 
 }
