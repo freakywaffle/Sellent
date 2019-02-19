@@ -381,39 +381,19 @@ public class MemberController {
 	@GetMapping("my_bookmarks")
 	public String bookmarks(Principal principal, Model model, String category) {
 		
-		/////////////////////////////////////////
 		String id = principal.getName();
 		List<Like> list = likeDao.select(id);
-		
 		List likeList = new ArrayList();
 		
 		for(Like li : list) {
 			List<LikeView> likeProduct = productDao.getLikeView(li.getProduct_no());
-			System.out.println(likeProduct.get(0).getReviewCnt());
-			//String title = likeProduct.get(0).getTitle().substring(0,5);
-			//likeProduct.get(0).setTitle(title);
-			System.out.println(likeProduct.get(0));
 			likeList.add(likeProduct.get(0));
 		}
 		
-		model.addAttribute("likeList",likeList);
-
-		
-		
 		List<ParentCategorySY> PC_list = categoryDao.getParentCntList(id);
-		System.out.println(PC_list);
+		
+		model.addAttribute("likeList",likeList);
 		model.addAttribute("PC_list",PC_list);
-		
-		
-		System.out.println(category);
-		
-		
-		
-		
-		
-		
-		/////////////////////////////////////////
-
 
 		return "member.bookmarks";
 	}
@@ -432,9 +412,6 @@ public class MemberController {
 		for(Like li : list) {
 			List<LikeView> likeProduct = productDao.getLikeView(li.getProduct_no());
 
-
-			//String title = likeProduct.get(0).getTitle().substring(0,5);
-			//likeProduct.get(0).setTitle(title);
 			if(category.equals("전체카테고리"))
 				likeList.add(likeProduct.get(0));
 			else if(!category.equals("전체카테고리"))
@@ -443,34 +420,32 @@ public class MemberController {
 
 		}
 		
-
-		
 		Gson gson = new Gson();
 		String json = gson.toJson(likeList);
-		System.out.println(json);
+		
 		return json;
 	}
 	
 	@GetMapping("{no}/like")
 	@ResponseBody
 	public String like(@PathVariable("no") Integer no, Principal principal) {
-		System.out.println("좋아연");
 		Like like = new Like();
 		like.setMember_id(principal.getName());
 		like.setProduct_no(no);
 		likeDao.insert(like);
-		return "";
+		
+		return "ok";
 	}
 	@GetMapping("{no}/delike")
 	@ResponseBody
 	public String delike(@PathVariable("no") Integer no, Principal principal) {
-		System.out.println("싫어연");
 		Like like = new Like();
 		like.setMember_id(principal.getName());
 		like.setProduct_no(no);
 		likeDao.delete(like);
-		return "";
-	}
+		
+		return "ok";
+	}	
 	
 	 
 	 @PostMapping("skill-send")
