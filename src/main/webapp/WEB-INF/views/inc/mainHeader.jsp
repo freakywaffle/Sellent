@@ -44,3 +44,11 @@
 	</div>
 	<jsp:include page="../inc/profile.jsp" />
 </header>
+
+
+<script>
+http://localhost/category/search?keyword=
+
+
+
+</script>

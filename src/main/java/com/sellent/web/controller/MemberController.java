@@ -386,7 +386,7 @@ public class MemberController {
 		List likeList = new ArrayList();
 		
 		for(Like li : list) {
-			List<LikeView> likeProduct = productDao.getLikeView(li.getProduct_no());
+			List<ProductView> likeProduct = productDao.getLikeView(li.getProduct_no());
 			likeList.add(likeProduct.get(0));
 		}
 		
@@ -410,7 +410,7 @@ public class MemberController {
 		List likeList = new ArrayList();
 		 
 		for(Like li : list) {
-			List<LikeView> likeProduct = productDao.getLikeView(li.getProduct_no());
+			List<ProductView> likeProduct = productDao.getLikeView(li.getProduct_no());
 
 			if(category.equals("전체카테고리"))
 				likeList.add(likeProduct.get(0));

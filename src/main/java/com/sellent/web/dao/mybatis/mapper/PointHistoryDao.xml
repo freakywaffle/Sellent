@@ -16,6 +16,10 @@
 		SELECT * FROM point_history where content = "가이드 조회" and member_id = #{param1}
 	</select>
 	
+	<update id="update_sy" parameterType="com.sellent.web.entity.Member">
+		update member set point = (point+#{param2}) where id = #{param1}
+	</update>
+	
 	<select id="getListById" resultType="com.sellent.web.entity.PointHistory">
 		select 
 			regdate, 
