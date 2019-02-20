@@ -74,16 +74,17 @@ public class ServiceContextConfig {
 	public JavaMailSender javaMailSender() {
 		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 		javaMailSender.setDefaultEncoding("UTF-8");
-		javaMailSender.setHost("smtp.naver.com");
-		javaMailSender.setPort(587);
-		javaMailSender.setUsername("sellent@naver.com");
-		javaMailSender.setPassword("SELLENT0123!!");
+		javaMailSender.setHost("smtp.gmail.com");
+		javaMailSender.setPort(465);
+		javaMailSender.setUsername("dkstnrbs@gmail.com");	// 이메일 형식으로
+		javaMailSender.setPassword("sellent!!");
 		
 		Properties javaMailProperties = new Properties();
-		javaMailProperties.put("mail.transport.protocol","smtp");
-		javaMailProperties.put("mail.smtp.auth", true);
+		javaMailProperties.put("mail.transport.protocol", "smtp");
+		javaMailProperties.put("mail.smtp.auth",true);
 		javaMailProperties.put("mail.smtp.tarttls.enable", true);
 		javaMailProperties.put("mail.debug",true);
+		javaMailProperties.put("mail.smtp.ssl.enable", true);
 		
 		javaMailSender.setJavaMailProperties(javaMailProperties);
 		
