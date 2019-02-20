@@ -76,7 +76,6 @@
                     <col width="150px">
                     <col width="150px">
                     <col width="140px">
-                    <col width="100%">
                 </colgroup>
 
                 <thead class="thead">
@@ -90,7 +89,6 @@
                         <td>평점</td>
                         <td>작성자</td>
                         <td>등록일자</td>
-                        <td>이미지</td>
                     </tr>
                 </thead>
                 
@@ -103,13 +101,15 @@
 	                        <td class="comment-no">${comment.no }</td>
 	                        <td>${comment.product_no }</td>
 	                        <td>${comment.content}</td>
-	                        <td>${comment.starpoint }</td>
+	                        <td>
+             	                <div class="star-ratings-css">
+								  <div class="star-ratings-css-top" style="width: ${comment.starpoint * 16}%"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+								  <div class="star-ratings-css-bottom"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+								</div>
+	                        </td>
 	                        <td>${comment.writer_id }</td>
 	                        <td>
 	                       		<fmt:formatDate value="${comment.regdate}" pattern="yyyy-MM-dd"/>
-                            </td>
-                            <td>
-                                <img src=""/>
                             </td>
 	                    </tr>
                     </c:forEach>
