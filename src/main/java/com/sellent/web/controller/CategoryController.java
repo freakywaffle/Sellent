@@ -205,7 +205,7 @@ public class CategoryController {
         if(!dir.isDirectory()){
             dir.mkdir();
         }
-
+        
 		for(MultipartFile file : files) {
 			
 			String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());

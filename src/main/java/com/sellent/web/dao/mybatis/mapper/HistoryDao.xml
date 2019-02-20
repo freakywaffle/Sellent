@@ -4,6 +4,37 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sellent.web.dao.HistoryDao">
+
+	<insert id="insert"
+		parameterType="com.sellent.web.entity.History">
+		insert into
+		history(seller_id, buyer_id, product_no)
+		values(#{seller_id},#{buyer_id},#{product_no})
+	</insert>
+	
+
+	<select id="getListById" resultType="com.sellent.web.entity.HistoryView">
+		select no, regdate , title, price, buyer_id,seller_id, state from
+		historyView where seller_id = #{param1};
+	</select>
+	
+	<select id="getListById2" resultType="com.sellent.web.entity.HistoryView">
+		select no, regdate , title, price, buyer_id,seller_id, state from
+		historyView where buyer_id = #{param1};
+	</select>
+	
+	<select id="getAllCntById" resultType="int">
+		select count(title) from historyView where seller_id = #{param1};
+	</select>
+	
+	<select id="getAllCntById2" resultType="int">
+		select count(title) from historyView where buyer_id = #{param1};
+	</select>
+	
+	<update id="chgState" parameterType="com.sellent.web.entity.History">
+		update history  set state= #{state} where seller_id=#{seller_id} and no=#{no};
+	</update>
+
 	
 	<insert id="insert" parameterType="com.sellent.web.entity.History" >
 		insert into history(seller_id, buyer_id, product_no) values(#{seller_id},#{buyer_id},#{product_no})
@@ -14,4 +45,5 @@
 	<delete id="delete" parameterType="com.sellent.web.entity.History" >
 		delete from history where buyer_id = #{buyer_id} and product_no = #{product_no} and state = '미확인'
 	</delete>
+
 </mapper>

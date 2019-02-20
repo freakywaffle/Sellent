@@ -2,5 +2,33 @@
 @import url("../inc/basic.css");
 
 
+.star-ratings-css {
+	left: 10px; unicode-bidi : bidi-override;
+	color: #c5c5c5;
+	font-size: 25px;
+	width: 200px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+	text-shadow: 0px 1px 0 #a2a2a2;
+	unicode-bidi: bidi-override;
+}
 
+.star-ratings-css-top {
+	color: #ffcc36;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: block;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.star-ratings-css-bottom {
+	padding: 0;
+	display: block;
+	z-index: 0;
+	text-align: left;
+}
 

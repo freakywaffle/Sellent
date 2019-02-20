@@ -99,6 +99,10 @@ public class ServletContextConfig implements WebMvcConfigurer{
 			.addResourceLocations("/resources/");
 		
 		registry
+			.addResourceHandler("/sellent/admin/**")
+			.addResourceLocations("file:///F:/sellent/admin/");
+		
+		registry
 			.addResourceHandler("/sellent/upload/**")
 			.addResourceLocations("file:///F:/sellent/upload/");
 

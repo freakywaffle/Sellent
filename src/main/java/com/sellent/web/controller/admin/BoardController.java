@@ -327,7 +327,7 @@ public class BoardController {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 		
-		helper.setFrom("sellent@naver.com");		// SMTP에 등록한 자신의 아이디
+		helper.setFrom("dkstnrbs@gmail.com");		// SMTP에 등록한 자신의 아이디
 		helper.setTo(email);
 		helper.setText(content);
 		helper.setSubject(title);
