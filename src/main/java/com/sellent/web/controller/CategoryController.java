@@ -224,7 +224,10 @@ public class CategoryController {
 			tempFiles.add(pf);
 		}
 		
-		return "ok";
+		
+		Gson gson = new Gson();
+		
+		return gson.toJson(tempFiles);
 	}
 	
 	@PostMapping("{category}/{no}/review")

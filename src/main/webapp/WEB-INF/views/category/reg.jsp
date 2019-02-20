@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <link href="/resources/css/category/content/reg.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/reg.js"></script>
 <section id="main">
@@ -157,7 +158,80 @@
 
 	
 	 		
-	 	
+	 	//이미지 업로드
+	 	var openBt = $('.openfolder');
+		var preview = $('.img-list ul');
+		
+		openBt.on('change', function() {
+			var fileList = openBt.prop('files');
+			
+			var thumbnail = $('input[name="thumbnail"]');
+			thumbnail.val(fileList[0].name);
+			
+			var formData = new FormData();
+			//업로드할 이미지 리스트화
+			for(var i=0;i<fileList.length;i++){
+				var li = $('<li><img/></li>');
+				/*var reader = new FileReader();
+				reader.readAsDataURL(fileList[i]);
+				reader.addEventListener('load',function(e){
+					
+					var file = e.target;
+					var img = new Image();
+					img.src = file.result;
+					img.onload = function(){
+						var canvas = $('<canvas></canvas>').get(0);
+						var canvasContext = canvas.getContext('2d');
+						
+						canvas.width = 150;
+						canvas.height = 150;
+						
+						canvasContext.drawImage(this, 0, 0, 150, 150);
+
+						var dataURI = canvas.toDataURL("image/jpeg");
+
+						img.src = dataURI;
+					};
+					
+					li.append(img);
+					preview.append(li);
+					console.log(i+'완료');
+					
+					
+				});*/
+				//이미지 업로드
+				formData.append('img', fileList[i]);
+				
+			}
+			
+			
+			$.ajax({
+		        url: 'imageUp',
+		        data: formData,
+		        processData: false,
+		        contentType: false, 
+		        type: 'POST',
+
+		        success: function (data) {
+		        	
+		        	var json = jQuery.parseJSON(data);
+		        	
+		        	for(var i = 0; i<json.length; i++){
+		        		var li = $('<li></li>');
+		        		var preImg = $('<img/>');
+		        		preImg.attr('src', '<spring:url value="/sellent/upload/"/>'+json[i].productNo+'/'+json[i].saveName);
+		        		console.log(preImg.attr('src'));
+		        		
+		        		li.append(preImg);
+		        		preview.append(li);
+		        	}
+		        	preview.find('img').eq(0).trigger('click');
+		        }
+		    });
+			
+			
+			
+		});
 		 
 	
 	
