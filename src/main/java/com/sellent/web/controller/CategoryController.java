@@ -232,6 +232,16 @@ public class CategoryController {
 	public String review(@PathVariable("no") Integer no, String json, Principal principal) {
 		productService.regReview(no, json, principal);
 		List<ReviewView> reviews = reviewDao.getListByProductNo(no, 10);
+		Map<String, Object> map = new HashMap<String, Object>();
+		ProductView product = productDao.get(no);
+		
+		map.put("reviews", reviews);
+		map.put("reviewCnt", product.getReviewCnt());
+		map.put("avgStarPoint", product.getAvgStarPoint());
+		
+		Gson gson = new Gson();
+		String reJson = gson.toJson(map);
+		
 		String jsonArr = "{\"reviews\":["; 
 		for(int i = 0; i<reviews.size();i++) {
 			jsonArr+=reviews.get(i).toString();
@@ -240,7 +250,6 @@ public class CategoryController {
 		}
 		jsonArr += "]";
 		
-		ProductView product = productDao.get(no);
 		
 		jsonArr += ", \"reviewCnt\":"+product.getReviewCnt();
 		jsonArr += ", \"avgStarPoint\":"+product.getAvgStarPoint()+"}";
@@ -249,14 +258,28 @@ public class CategoryController {
 		int update = pointHistoryDao.update_sy(product.getWriterId(),50);
 		
 		System.out.println(jsonArr);
-		return jsonArr;
+		return reJson;
 	}
 	
 	@GetMapping("{category}/{no}/moreReview")
 	@ResponseBody
 	public String moreReview(@PathVariable("no") Integer no, @RequestParam int cnt) {
 		List<ReviewView> reviews = reviewDao.getListByProductNo(no, cnt);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		ProductView product = productDao.get(no);
+		
+		map.put("reviews", reviews);
+		map.put("reviewCnt", product.getReviewCnt());
+		
+		Gson gson = new Gson();
+		String reJson = gson.toJson(map);
+		
+		
 		String jsonArr = "{\"reviews\":["; 
+		
+		
 		for(int i = 0; i<reviews.size();i++) {
 			jsonArr+=reviews.get(i).toString();
 			if(i != reviews.size()-1)
@@ -265,7 +288,7 @@ public class CategoryController {
 		jsonArr += "]";
 		
 		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
-		return jsonArr;
+		return reJson;
 	}
 	
 	@GetMapping("{category}/{no}/like")

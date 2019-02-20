@@ -314,6 +314,7 @@
 }
 
 .review{
+	width: 100%;
 	border: 0.5px solid gray;
 	display: flex;
 	padding: 10px;
@@ -322,18 +323,31 @@
 	
 }
 
+.review pre{
+	width: 480px;
+	white-space: pre-wrap; /* CSS3*/
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-all; /* Internet Explorer 5.5+ */ 
+}
+
+
+
 .review .review-profile-photo{
 	overflow: hidden;
+	width: 80px
 }
 
 .review img{
 	border-radius: 50%;
-	height: 80px;
-	width: 80px;
+	height: 65px;
+	width: 65px;
 }
 
 .rv-content{
 	margin-left: 20px;
+	width: 100%;
 }
 .rv-content p{
 	margin-top: 0px;
