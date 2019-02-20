@@ -113,12 +113,7 @@ $(document).ready(function(){
 	
 	
 	
-	$('.ct-sell-chk').find('input').each(function(){
-		if($(this).attr('checked'))
-			sellChk[$(this).attr('name')] = 1;
-		else
-			sellChk[$(this).attr('name')] = 0;
-	});
+	
 	var query = getJsonFromUrl();
 	
 	var mainContent = $('#main-content');
@@ -126,6 +121,13 @@ $(document).ready(function(){
 	more.on('click',function(){
 	
 		var url = $(location).attr('pathname');
+		
+		$('.ct-sell-chk').find('input').each(function(){
+			if($(this).attr('checked'))
+				sellChk[$(this).attr('name')] = 1;
+			else
+				sellChk[$(this).attr('name')] = 0;
+		});
 		
 		console.log(sub);
 		var cnt = $('.contents').length;
@@ -247,7 +249,7 @@ $(document).ready(function(){
 		var mainContent = $('#main-content');
 		
 		$.ajax({
-			url: $(location).attr('pathname')+'/search',
+			url: $(location).attr('pathname')+'/filter',
 			type: 'POST',
 			dataType: 'json',
 			data: {'query': JSON.stringify(query), 'sellChk':JSON.stringify(sellChk)},
@@ -321,9 +323,7 @@ $(document).ready(function(){
 		});
 		
 		
-		
 	});
-	
 	
 });
 

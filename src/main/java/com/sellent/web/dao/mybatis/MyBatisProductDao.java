@@ -1,6 +1,7 @@
 package com.sellent.web.dao.mybatis;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sellent.web.dao.ProductDao;
+
+import com.sellent.web.entity.LikeView;
+
+import com.sellent.web.entity.ParentCategory;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductView;
 
@@ -71,8 +76,9 @@ public class MyBatisProductDao implements ProductDao{
 
 	@Override
 	public int delete(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.delete(no);
 	}
 
 	@Override
@@ -132,16 +138,37 @@ public class MyBatisProductDao implements ProductDao{
 	}
 
 	@Override
-	public List<ProductView> getListBySearch(String parent, String sub, int sellChk, int start, int cnt) {
+	public List<ProductView> getLikeView1(int no, String category) {
+		// TODO Auto-generated method stub
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		
-		return productDao.getListBySearch(parent, sub, sellChk, start, cnt);
+		return productDao.getLikeView1(no,category);
 	}
-	
+
+	@Override
+	public List<ProductView> getListByFilter(String parent, String sub, int sellChk, int start, int cnt) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.getListByFilter(parent, sub, sellChk, start, cnt);
+	}
+	@Override
 	public List<ProductView> getList(int start, int cnt) {
 		
 		ProductDao productDao = session.getMapper(ProductDao.class);
 		return productDao.getList(start,cnt);
+	}
+
+	@Override
+	public List<ProductView> getListBySearch(String keyword, List<ParentCategory> parentCategory, int sellChk, int start, int cnt) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		return productDao.getListBySearch(keyword, parentCategory, sellChk, start, cnt);
+	}
+
+	@Override
+	public List<ProductView> getListBySearchAll(String keyword, List<ParentCategory> parentCategory, int sellChk) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		return productDao.getListBySearchAll(keyword, parentCategory, sellChk);
+
 	}
 
 

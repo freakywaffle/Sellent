@@ -142,7 +142,7 @@ a:hover{text-decoration: none; color:gray;}
 			outline: none !important;
 	}
 	.profile{
-		background-color: pink;
+		/*background-color: pink;*/
 	}
       @media(max-width:480px){
 	      #header-wrap{

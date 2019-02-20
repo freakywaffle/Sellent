@@ -41,7 +41,10 @@
 	border-top: none;
 }
 .header-sub-category>div{
-	width: 50%;
+	width: 100%;
+}
+.header-sub-category>div a{
+	display: block;
 }
 
 

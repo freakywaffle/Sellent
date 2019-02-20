@@ -21,4 +21,10 @@ public class SubCategory {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "SubCategory [parentName=" + parentName + ", name=" + name + "]";
+	}
+	
+	
 }

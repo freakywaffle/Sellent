@@ -8,5 +8,14 @@ $('window').ready(function(){
 	});
 	
 	
+	//검색
+	var searchInput = $('input[type="search"]');
+	var submitBt = $('.search-bar button');
+	submitBt.click(function(e){
+		event.preventDefault();
+		var url = '/category/search?keyword='+searchInput.val();
+		$(location).attr('href', url);
+	});
+	
 	
 });

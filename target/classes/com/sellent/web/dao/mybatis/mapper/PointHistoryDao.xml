@@ -7,13 +7,66 @@
 	<insert id="insert" parameterType="com.sellent.web.entity.PointHistory">
 		insert into point_history(member_id, content, point) values(#{member_id}, #{content}, #{point})
 	</insert>
+	
 	<insert id="insert_sy" parameterType="com.sellent.web.entity.PointHistory">
 		insert into point_history(member_id, content, point) values(#{param1}, "가이드 조회", #{param2})
 	</insert>
-	<select id="select_sy" resultType="com.sellent.web.entity.PointHistory">
-
-		SELECT * FROM point_history where content = "가이드 조회" and member_id = #{param1}
 	
-
+	<select id="select_sy" resultType="com.sellent.web.entity.PointHistory">
+		SELECT * FROM point_history where content = "가이드 조회" and member_id = #{param1}
 	</select>
+	
+	<update id="update_sy" parameterType="com.sellent.web.entity.Member">
+		update member set point = (point+#{param2}) where id = #{param1}
+	</update>
+	
+	<select id="getListById" resultType="com.sellent.web.entity.PointHistory">
+		select 
+			regdate, 
+			content, 
+			point
+	    from point_history
+		where member_id= #{param1} 
+		<if test="param3 == 1"> <!-- 1week -->
+			and regdate between curdate()-7  and curdate()+1
+		</if>
+		<if test="param3 == 2"><!-- 1month -->
+			and regdate >= date_add(now(), interval -1 month)
+		</if>
+		<if test="param3 == 3"><!-- 1year -->
+			 and regdate >= date_add(now(), interval -1 year)
+		</if>
+		order by regdate desc limit #{param2}, 7 ;
+	</select>
+	
+	<select id="getAllCntById" resultType="int">
+		select count(content) from point_history 
+		where member_id= #{param1}
+		<if test="param2 == 1"> <!-- 1week -->
+			 and regdate between curdate()-7  and curdate()+1
+		</if>
+		<if test="param2 == 2"><!-- 1month -->
+			and regdate >= date_add(now(), interval -1 month)
+		</if>
+		<if test="param2 == 3"><!-- 1year -->
+			 and regdate >= date_add(now(), interval -1 year)
+		</if>
+		;
+	</select> 
+	
+	<select id="getAllSumById" resultType="int">
+		select sum(point) from point_history 
+		where member_id= #{param1}
+		<if test="param2 == 1"> <!-- 1week -->
+			 and regdate between curdate()-7  and curdate()+1
+		</if>
+		<if test="param2 == 2"><!-- 1month -->
+			and regdate >= date_add(now(), interval -1 month)
+		</if>
+		<if test="param2 == 3"><!-- 1year -->
+			 and regdate >= date_add(now(), interval -1 year)
+		</if>
+		;
+	</select> 
+	
 </mapper>

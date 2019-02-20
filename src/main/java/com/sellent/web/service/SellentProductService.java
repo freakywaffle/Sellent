@@ -8,9 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.sellent.web.dao.LikeDao;
 import com.sellent.web.dao.MemberDao;
@@ -18,7 +16,6 @@ import com.sellent.web.dao.PointHistoryDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
-import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.PointHistory;
 import com.sellent.web.entity.Product;
@@ -60,6 +57,8 @@ public class SellentProductService implements ProductService{
 			
 			productFileDao.insert(pf);				
 		}
+		
+		int update = pointHistoryDao.update_sy(product.getWriterId(),-100);
 		
 		return 0;
 	}

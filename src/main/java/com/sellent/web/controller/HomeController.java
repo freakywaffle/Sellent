@@ -3,6 +3,7 @@ package com.sellent.web.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
@@ -12,11 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,19 +40,26 @@ public class HomeController {
 	
 	@Autowired
 	private JavaMailSender javaMailSender;
+
+
 	
 	@GetMapping("index")
 	public String index() {
 		
+	
 		return "index";
 	}
+	
 	
 	@GetMapping("login")
 	public String login(HttpServletRequest request) {
 		
 		String prevPage = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", prevPage);
+		System.out.println("???");
 		System.out.println(prevPage);
+		System.out.println("?");
+		
 		return "member.login";
 	}
 	

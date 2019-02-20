@@ -15,78 +15,7 @@
   
   
   
-  window.addEventListener("load",function(){
  
-	  var a = $(".tab");
-	  var b = $(".tab1");
-	  var c = $(".dd");
-	 
-  
-  for(var i = 0; i < a.length; i++) 
-	  a.eq(i).click(moveToFirst);
- 
-
-	
-  for(var i = 0; i < b.length; i++)
-	  	b.eq(i).click(moveToSecond);	  
-  
-	
-	function moveToFirst() {
-		
-	  $("#slide").attr('class', 'move-to-first');
-	  $(".tab").attr('class', 'tab');
-	  $("#tab1").attr('class', 'tab selected');
-	}
-	
-	function moveToSecond() {
-		//alert($(this).text())
-		var title = $(this).text();
-		var contentTitle = $("#contentTitle")
-		contentTitle.text(title);
-		
-		$.ajax({
-				    method      : 'POST',
-				    url         : '/Qna/ajax',
-				    data        : { "title" : title },
-				    success     : function(json) {
-				    	
-				    	var a = JSON.parse(json)
-				    	
-				    	var content = $(".qna_content")
-				    	content.remove();
-				    	contentTitle.text(title)
-				    	var contentBox = $(".qna_contentBox")
-				    	
-				    	var contentList = new Array( a[0].content1,a[0].content2, a[0].content3, a[0].content4, a[0].content5 );
-				    	
-				    	for(var i=0; i<contentList.length; i++){
-				    		if(contentList[i]!=null) {
-				    			var a = $("<div class='qna_content'></div><br class='qna_content'>").text(contentList[i]);   // Create with jQuery		    		
-				    			contentBox.append(a);
-				    		}
-				    	}
-				    	
-
-  
-				    	
-				    },
-				    error       : function(request, status, error) {
-				    	var content = $(".qna_content")
-				    	content.remove();
-				    	contentTitle.text(title)
-				    }	
-					
-				 	   
-		});
-		
-		
-		$("#slide").attr('class', 'move-to-second');
-		$(".tab").attr('class', 'tab');
-		$("#tab2").attr('class', 'tab selected');
-	}
-	
-  });
-	
  
 
   
@@ -326,6 +255,7 @@
 			});
 			
 			
+
 			   
 			  	
 		};
@@ -336,8 +266,156 @@
 
 		
 	
+window.addEventListener('load',function(){
+	$(document).on('change paste keydown', '.search-bar', function(key){
+
+		var search = $("#search").val()
+			if (key.keyCode == 13) {
+
+			if(!$("#search").val() == ""){
+				$(".panel-group").addClass("hidden")
+				$.ajax({
+					url: '/Qna/search',
+					method: 'POST',
+					data        : {
+				        'search' : search
+				    },
+					success: function(json){
+						
+						var list = JSON.parse(json)
+						
+						
+						
+						for(var i = 0; i < list.length; i++) {
+							
+							var title = list[i].title
+							var content1 = list[i].content1
+							var content2 = list[i].content2
+							var content3 = list[i].content3
+							var content4 = list[i].content4
+							var content5 = list[i].content5
+							var box = $(".center-block")
+							
+							var contentBox = $("<div class='tab3' style='border:1px solid #ddd; height: auto; padding: 10px'></div>")
+							var contentTitle = $("<div class='tab2' style='font-size: 16px; font-weight: bold; white-space: initial;s'>"+title+"</div>")
+							var contentContent1 = $("<div class='' style='font-size: 12px; margin-top: 9px; white-space: initial;' >"+content1+"</div>")
+							
+							contentBox.append(contentTitle)
+							contentBox.append(contentContent1)
+							box.append(contentBox)
+							
+						}
+						 var d = $(".tab2");
+						 for(var i = 0; i < b.length; i++) {
+							  
+							  	d.eq(i).click(moveToSecond);	  
+							  	  
+							  		
+						  }
+					},
+				    error: function(){
+				    	alert("실패")
+				    }
+					
+				});	
+			}
+			else if ($("#search").val() == ""){
+				if($(".panel-group").hasClass("hidden"))
+					$(".panel-group").removeClass("hidden")
+			}
+
+		}
+
+
+		});
+		
+		
+		
+		
+		
+		
+		/////////////////////////////////////
+		
+		
+			 
+			  var a = $(".tab");
+			  var b = $(".tab1");
+			 
+			  var c = $(".dd");
+			 
+		  
+		  for(var i = 0; i < a.length; i++) 
+			  a.eq(i).click(moveToFirst);
+		 
+
+			
+		  for(var i = 0; i < b.length; i++) {
+			  
+			  	b.eq(i).click(moveToSecond);	  
+			  	  
+			  		
+		  }
+		  
+
+			
+			function moveToFirst() {
+				
+			  $("#slide").attr('class', 'move-to-first');
+			  $(".tab").attr('class', 'tab');
+			  $("#tab1").attr('class', 'tab selected');
+			}
+			
+			function moveToSecond() {
+				var title = $(this).text();
+				var contentTitle = $("#contentTitle")
+				contentTitle.text(title);
+				
+				$.ajax({
+						    method      : 'POST',
+						    url         : '/Qna/ajax',
+						    data        : { "title" : title },
+						    success     : function(json) {
+						    	
+						    	var a = JSON.parse(json)
+						    	
+						    	var content = $(".qna_content")
+						    	content.remove();
+						    	contentTitle.text(title)
+						    	var contentBox = $(".qna_contentBox")
+						    	
+						    	var contentList = new Array( a[0].content1,a[0].content2, a[0].content3, a[0].content4, a[0].content5 );
+						    	
+						    	for(var i=0; i<contentList.length; i++){
+						    		if(contentList[i]!=null) {
+						    			var a = $("<div class='qna_content'></div><br class='qna_content'>").text(contentList[i]);   // Create with jQuery		    		
+						    			contentBox.append(a);
+						    		}
+						    	}
+						    	
+
+		  
+						    	
+						    },
+						    error       : function(request, status, error) {
+						    	var content = $(".qna_content")
+						    	content.remove();
+						    	contentTitle.text(title)
+						    }	
+							
+						 	   
+				});
+				
+				
+				$("#slide").attr('class', 'move-to-second');
+				$(".tab").attr('class', 'tab');
+				$("#tab2").attr('class', 'tab selected');
+			}
+			
+		  
+			
 	
-	
+	});
+
 	
 	
 	
@@ -354,6 +432,9 @@
 		$(".search-bar").bind("change paste keyup", function() {
 			if($(this).val() == "") {
 				$("#del").addClass("hidden")
+				if($(".panel-group").hasClass("hidden"))
+					$(".panel-group").removeClass("hidden")
+				$(".tab3").remove();
 			}
 			else if ($(this).val() != "") {
 				$("#del").removeClass("hidden")
@@ -364,6 +445,10 @@
 		del.onclick = function() {
 			search.value = "";
 			$("#del").addClass("hidden")
+			if($(".panel-group").hasClass("hidden"))
+				$(".panel-group").removeClass("hidden")
+				
+			$(".tab3").remove();
 		}
 	});
 	//searchBar del=======================================================================

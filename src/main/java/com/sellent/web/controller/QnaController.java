@@ -25,11 +25,13 @@ import com.google.gson.Gson;
 import com.sellent.web.dao.PointHistoryDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.QnaDao;
+import com.sellent.web.dao.SearchDao;
 import com.sellent.web.entity.PointHistory;
 import com.sellent.web.entity.QnaContent;
 import com.sellent.web.entity.QnaFile;
 import com.sellent.web.entity.QnaPaCategory;
 import com.sellent.web.entity.QnaSubCategory;
+import com.sellent.web.entity.SearchQna;
 import com.sellent.web.service.QnaService;
 
 @Controller
@@ -45,8 +47,9 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
-	
 
+	@Autowired
+	private SearchDao searchDao;
 	
 	private ArrayList<QnaFile> tempFiles; 
 
@@ -76,6 +79,22 @@ public class QnaController {
 
 		Gson gson = new Gson();
 		String json = gson.toJson(content);
+		System.out.println(json);
+		return json;
+	}
+	
+	@RequestMapping("search")
+	@ResponseBody
+	public String search(String search) {
+			
+		System.out.println(search);
+		
+		List<SearchQna> searchQna = searchDao.getViewList(search);
+		System.out.println(searchQna);
+
+		Gson gson = new Gson();
+		String json = gson.toJson(searchQna);
+		System.out.println(json);
 		return json;
 	}
 	
@@ -158,7 +177,7 @@ public class QnaController {
 			if(list.isEmpty()) {
 				System.out.println("비었!!");
 				int a = pointHistoryDao.insert_sy(principal.getName(),point);
-				
+				int update = pointHistoryDao.update_sy(principal.getName(),point);
 			}
 			else if(!list.isEmpty())
 				System.out.println("안비었!!");

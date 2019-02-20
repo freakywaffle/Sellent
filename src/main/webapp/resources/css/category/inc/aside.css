@@ -2,7 +2,7 @@
 
 .show{
 	left: 0%!important;
-	z-index: 15;
+	z-index: 15!important;
 	transition: 0.5s;
 }
 
@@ -99,10 +99,11 @@
 		top: 0px;
 		height: 100%;
 		display: flex;
+		
 	}
 	
 	.aside-close{
-		left: -100%!important;
+		left: -100%;
 		transition: 0.5s;
 		z-index: 10;
 	}

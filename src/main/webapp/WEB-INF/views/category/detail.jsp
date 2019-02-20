@@ -6,7 +6,14 @@
 <script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
 	<div class="main-content">
-		
+		<c:if test="${sessionScope.member.id == map.product.writerId}">
+		<div class="user-bt-group">
+			<div>
+				<input type="button" value="수정" class="editBt"/>
+				<input type="button" value="삭제" class="delBt"/>
+			</div>
+		</div>
+		</c:if>
 		<div class="breadcrumb">홈>메인카테고리>서브카테고리</div>
 		<div class="top-content">
 			<div>
@@ -46,14 +53,13 @@
 				</div>
 			</div>
 			<div class="simple-content">
+				<input type="hidden" value="${map.product.writerId }">				
 				<div class="sc-title">
 					${map.product.title}
 				</div>
 				<div class="sc-content">
 					<h2>${map.product.nickname }</h2>
-					<div class="text">
-						${map.product.simpleContent }
-					</div>
+					<pre class="text" >${map.product.simpleContent }</pre>
 					<ul>
 						<li>
 							<img src="/resources/images/price-tag.png"/>
@@ -76,8 +82,19 @@
 							수정횟수: ${map.product.editCnt } 
 						</li>
 					</ul>
+					<div class="priceTag">
+						가격: ${map.product.price }
+					</div>
+					
 					<div>
-						<button class="buy-bt" type="button">${map.product.price }</button>
+						<button class="buy-bt" type="button">
+							<c:if test="${empty buyed }">
+								구매신청
+							</c:if>
+							<c:if test="${!empty buyed }">
+								신청취소
+							</c:if>
+						</button>
 						<button class="like-bt" type="button">
 							<c:choose>
 								<c:when test="${empty map.like }">
@@ -97,7 +114,7 @@
 		<div class="bottom-content">
 			<div class="profile-info">
 				<div class="profile-photo" >
-					<img src="/resources/images/joboa.png"/>
+					<img src='<spring:url value="/sellent/profile/"/>${map.product.writerId}/${map.product.photo}'/>
 				</div>
 				<div class="profile-name">
 					<span>${map.product.nickname }</span>
@@ -124,9 +141,7 @@
 				<div class="contents">
 					<div class="detail-content" >
 						<h2>상세설명</h2>
-						<div>
-							${map.product.detailContent }
-						</div>
+						<pre>${map.product.detailContent }</pre>
 					</div>
 					<div class="review-list">
 						<h2>사용자평가(<span>${map.product.reviewCnt }</span>)</h2>
@@ -178,8 +193,12 @@
 						reviewBt.on('click',function(){
 							
 							if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
-								alert('로그인해주세요');
-								$(location).attr('pathname', '/login');
+								swal({
+									title:'로그인해주세요',
+									icon: "warning",
+								}).then(function(willDelete){
+									$(location).attr('pathname', '/member/login');
+								});
 								return;
 							}
 							var starpoint = reviewForm.find('input[type="hidden"]').val()
@@ -304,3 +323,4 @@
 		</div>
 	</div>
 </section>
+

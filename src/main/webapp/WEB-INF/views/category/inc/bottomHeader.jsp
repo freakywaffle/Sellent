@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
+<tiles:importAttribute name="CtList"/>
 <link href="/resources/css/category/inc/bottomHeader.css" rel="stylesheet"/>
 <script src="/resources/js/category/inc/bottomHeader.js"></script>
 <section class="bottom-header">
@@ -7,134 +10,18 @@
 		<li class="arrow visual-hidden">&lt;</li>
 		<li class="ct-menu">
 			<ul>
+				<c:forEach var="ct" items="${CtList }">
 				<li class="ct-name">
-					<div>카테고리1</div>
+					<div>${ct[0].parentName}</div>
 					<div class="header-sub-category hidden">
 						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
+							<c:forEach var="sc" items="${ct }">
+								<a href="/category/${ct[0].parentName }?sub=${sc.name }">${sc.name }</a>
+							</c:forEach>
 						</div>
 					</div>
 				</li>
-				<li class="ct-name">
-					<div>카테고리2</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
-				<li class="ct-name">
-					<div>카테고리3</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
-				<li class="mobile-hidden ct-name">
-					<div>카테고리4</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
-				<li class="mobile-hidden ct-name">
-					<div>카테고리5</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
-				<li class="mobile-hidden ct-name">
-					<div>카테고리6</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
-				<li class="mobile-hidden ct-name">
-					<div>카테고리7</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
-				<li class="mobile-hidden ct-name">
-					<div>카테고리8</div>
-					<div class="header-sub-category hidden">
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-						<div>
-							<div>서브</div>
-							<div>서브</div>
-							<div>서브</div>
-						</div>
-					</div>
-				</li>
+				</c:forEach>
 			</ul>
 		</li>
 		<li class="arrow visual-hidden">&gt;</li>

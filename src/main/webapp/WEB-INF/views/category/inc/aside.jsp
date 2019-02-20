@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
+<tiles:importAttribute name="CtList"/>
 <link href="/resources/css/category/inc/aside.css" rel="stylesheet"/>
 <script src="/resources/js/category/inc/aside.js"></script>
 <section class="aside aside-close">
 	<h1 class="hidden">사이드 메뉴</h1>	
 	<div class="ct-wrapper">	
-		<h2>카테고리 제목</h2>
+		<h2></h2>
 		<div class="ct-price hidden">
 			<h3>가격</h3>
 			<ul>
@@ -39,10 +42,9 @@
 		<div class="ct-sub-category">
 			<h3>카테고리</h3>
 			<ul>
-				<li><a href="?sub=데이터베이스">데이터베이스</a></li>
-				<li><a href="?sub=서버">서버</a></li>
-				<li><a href="?sub=웹개발">웹개발</a></li>
-				<li><a href="?sub=앱개발">앱개발</a></li>
+				<c:forEach var="sc" items="${subCtList }">
+					<li><a href="${sc.parentName }?sub=${sc.name }">${sc.name }</a></li>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>
