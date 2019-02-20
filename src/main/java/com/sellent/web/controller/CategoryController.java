@@ -30,6 +30,7 @@ import com.google.gson.JsonParser;
 import com.sellent.web.dao.CategoryDao;
 import com.sellent.web.dao.HistoryDao;
 import com.sellent.web.dao.LikeDao;
+import com.sellent.web.dao.PointHistoryDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
@@ -63,6 +64,10 @@ public class CategoryController {
 	
 	@Autowired
 	private HistoryDao historyDao;
+	
+	@Autowired
+	private PointHistoryDao pointHistoryDao;
+	
 	
 	@GetMapping("{category}")
 	public String list(@PathVariable("category") String category, 
@@ -158,7 +163,17 @@ public class CategoryController {
 		System.out.println(product);
 		productService.insert(product, tempFiles);
 		
-		return "redirect:list";
+		return "redirect:"+product.getParentCategory();
+	}
+	
+	
+	@GetMapping("{category}/{no}/delete")
+	@ResponseBody
+	public String delete(@PathVariable("no") Integer no) {
+		
+		productDao.delete(no);
+		
+		return "";
 	}
 	
 	@PostMapping("imageUp")
@@ -212,6 +227,8 @@ public class CategoryController {
 		jsonArr += ", \"reviewCnt\":"+product.getReviewCnt();
 		jsonArr += ", \"avgStarPoint\":"+product.getAvgStarPoint()+"}";
 		
+		
+		int update = pointHistoryDao.update_sy(product.getWriterId(),50);
 		
 		System.out.println(jsonArr);
 		return jsonArr;

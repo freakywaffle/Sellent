@@ -304,5 +304,4 @@
  		</if>
  		order by regdate desc
 	</select>
-
 </mapper>

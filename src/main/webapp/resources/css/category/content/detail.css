@@ -14,13 +14,17 @@
 
 .main-content .user-bt-group{
 	position: relative;
-	height: 30px;
+	height: 35px;
+	margin-bottom: 10px;
 }
 .main-content .user-bt-group>div{
 	float: right;
 }
 .main-content .user-bt-group>div input{
 	border: 1px solid black;
+	background-color: white;
+	width: 80px;
+	height: 35px;
 }
 
 

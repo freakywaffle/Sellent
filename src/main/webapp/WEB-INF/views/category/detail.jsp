@@ -6,12 +6,14 @@
 <script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
 	<div class="main-content">
+		<c:if test="${sessionScope.member.id == map.product.writerId}">
 		<div class="user-bt-group">
 			<div>
-				<input type="button" value="삭제"/>
-				<input type="button" value="수정"/>
+				<input type="button" value="수정" class="editBt"/>
+				<input type="button" value="삭제" class="delBt"/>
 			</div>
 		</div>
+		</c:if>
 		<div class="breadcrumb">홈>메인카테고리>서브카테고리</div>
 		<div class="top-content">
 			<div>

@@ -177,4 +177,39 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	
+	//삭제버튼
+	var delBt = $('.delBt');
+	delBt.click(function(){
+		swal({
+			  title: "삭제하시겠습니까?",
+			  icon: "warning",
+			  buttons: true,
+		}).then((willDelete) => {
+			  if (willDelete) {
+					  $.ajax({
+							url: $(location).attr('pathname')+'/delete',
+							type: 'get',
+							success: function(data){
+								swal("삭제했습니다.", {
+								  icon: "success",
+								}).then((willDelete) => {
+									var arr = $(location).attr('pathname').split('/');
+									
+									var path = arr[arr.length-2];
+									
+									$(location).attr('pathname', '/category/'+path);
+									
+								});
+								
+							}
+							
+						});
+			    
+			  } else {
+			    swal("취소했습니다");
+			  }
+		});
+	});
 });

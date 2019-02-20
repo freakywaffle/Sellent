@@ -76,8 +76,9 @@ public class MyBatisProductDao implements ProductDao{
 
 	@Override
 	public int delete(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.delete(no);
 	}
 
 	@Override

@@ -18,8 +18,8 @@
 			</div>
 			<div class="login">
 				<ul>
-					<li><a href="../member/login">로그인</a></li>
-					<li><a href="../member/join">회원가입</a></li>
+					<li><a href="/login">로그인</a></li>
+					<li><a href="/join">회원가입</a></li>
 				</ul>
 			</div>
 		</spring:authorize>
@@ -30,7 +30,7 @@
 				<div class="my-menu hidden">
 					<ul>
 						<li>${sessionScope.member.point}P</li>
-						<li><a href="../member/project">마이페이지</a></li>
+						<li><a href="/member/project">마이페이지</a></li>
 						<li class="prof">프로필</li>
 						<li><a href="/member/logout">로그아웃</a></li>
 					</ul>
