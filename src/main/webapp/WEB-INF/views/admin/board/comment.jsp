@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/admin/board/comment.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="/resources/js/admin/board/comment.js"></script>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
