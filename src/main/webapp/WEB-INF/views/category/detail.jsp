@@ -154,9 +154,7 @@
 									</div>
 									<div class="rv-content">
 										<p>${review.nickname }</p>
-										<div>
-											${review.content }
-										</div>
+										<pre>${review.content }</pre>
 									</div>
 								</div>
 							</c:forEach>
@@ -217,13 +215,12 @@
 							$.ajax({
 								url: $(location).attr('pathname')+'/review',
 								type:'POST',
-								data: "json="+JSON.stringify(json),
+								dataType: 'json',
+								data: {"json":JSON.stringify(json)},
 								success: function(data){
 									
-									
-									
 									var reviewsCnt = $('.review-list').find('span');
-									var jsonData = jQuery.parseJSON(data);
+									var jsonData = data;
 								
 									var reviews = jsonData.reviews;
 									var totalCnt = jsonData.reviewCnt;

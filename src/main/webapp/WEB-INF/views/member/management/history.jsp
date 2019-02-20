@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link href="/resources/css/member/history.css" rel="stylesheet" />
+<script src="/resources/js/management/history.js"></script>
+
 <section class="content">
 	<div id="top-content">
 
 		<div class="select">
-			<select>
-				<option>평가</option>
-				<option>판매</option>
-				<option>구매</option>
+			<select id="options">
+				<option name="sell" value=0 class="selec">판매</option>
+				<option name="buy"  value=1 class="selec">구매</option>
 			</select>
 		</div>
-
 	</div>
 	<div id="history">
 		<table class="table">
@@ -22,41 +24,53 @@
 					<th>금액</th>
 					<th class="table-id">아이디</th>
 					<th>상태</th>
+					<th>처리</th>
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach var="n" items="${product}">
 				<tr>
-					<td>19.01.01</td>
-					<td class="title">고난이도 홈페이지 개발 해드립니다.</td>
-					<td>1000 W</td>
-					<td class="table-id">lhj9510</td>
-					<td>미확인</td>
+					<input name='num' type="hidden" value="${n.no }"/>
+					<td>${n.regdate }</td>
+					<td class="title">${n.title }</td>
+					<td>${n.price} W</td>				
+					<td class="table-id">
+						<c:if test="${showPart == '판매' }">
+							${n.buyer_id }
+						</c:if>
+						<c:if test="${showPart == '구매' }">
+							${n.seller_id }
+						</c:if>
+						
+	
+					
+					</td>
+					<td class="state" name="state">
+						${n.state}
+						
+					</td>
+					<td class="td">
+						<input name="accep" class="accep btn1" type="button" value="수락"/>
+						<input name="deny" class="deny btn1" type="button" value="거절 "/>
+						<input name="complete" class="complete" type="button" value="작업완료"/>
+					</td>
 				</tr>
-				<tr>
-					<td>19.01.01</td>
-					<td class="title">고난이도 홈페이지 개발 해드립니다.</td>
-					<td>1000 W</td>
-					<td class="table-id">lhj9510</td>
-					<td>미확인</td>
-				</tr>
-				<tr>
-					<td>19.01.01</td>
-					<td class="title">홈페이지를 원하시는 디자인으로 개발해드립니다 맞.</td>
-					<td>1000 W</td>
-					<td class="table-id">haejeong1005</td>
-					<td>처리완료</td>
-				</tr>
-				
-
+			</c:forEach>	
 			</tbody>
 		</table>
 		<div id="page">
-			<ul>
-				<li><img alt="이전" src="/resources/images/prev.png"></li>
-				<li>1</li>
-				<li><img alt="다음" src="/resources/images/next.png"></li>
-			</ul>
-		</div>
+		<ul>
+			<c:if test="${prev}">
+				<li><a href="?p=${startpage }"><img alt="이전" src="/resources/images/prev.png"></a></li>
+			</c:if>
+			<c:forEach var="n" begin="${startpage+1}" end="${endpage }">	
+				<li><a href="?p=${n }">${n }</a></li>
+			</c:forEach>
+			<c:if test="${next && endpage >0 }">
+				<li><a href="?p=${endpage+1} "><img alt="다음" src="/resources/images/next.png"></a></li>
+			</c:if>
+		</ul>
+	</div>
 	</div>
 
 </section>

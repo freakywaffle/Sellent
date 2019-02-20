@@ -32,7 +32,7 @@ public class SellentMemberService implements MemberService {
 	@Override
 	public int insertMember(Member member, String skill, MultipartFile filedata) {
 		// TODO Auto-generated method stub
-		
+		member.setPhoto(filedata.getOriginalFilename());
 		memberDao.insertMember(member);
 		String [] skills = skill.split(",");
 		for(String s: skills) {
