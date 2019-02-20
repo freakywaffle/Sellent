@@ -227,11 +227,40 @@ html, body {
     z-index: 0;
   }
 
+.flexa {
+	display: flex;
+}
+
+
+
+/*pikachu*/
+.loading {
+    animation: linear;
+  animation-duration: 5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 140%;
+    width: 100%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
 
 
 /*하트*/
 @media All and (max-width: 360px) {
-	
+	.loading {
+		display: none;
+	}
+	.flexa {
+		display: grid;
+	}
 	.main-container {
 		width: 100%; 
 	}
@@ -275,7 +304,7 @@ html, body {
 		display: inline-block;
 	}
 	.content {
-		width: 100%;
+		width: 98.47%;
 		height: auto;
 		margin: 0px;
 		padding: 10px;
@@ -292,3 +321,7 @@ html, body {
 	}
 }
 
+
+#center {
+	margin-bottom: 111px;
+}

@@ -5,27 +5,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
      
 <!DOCTYPE html>
-<style>
-
-.loading {
-    animation: linear;
-  animation-duration: 5s;
-  animation-name: slidein;
-}
-
-@keyframes slidein {
-  from {
-    margin-left: 107%;
-    width: 100%
-  }
-
-  to {
-    margin-left: 0%;
-    width: 100%;
-  }
-}
-
-</style>
 
 <head>
 	<meta charset="UTF-8">
@@ -50,7 +29,7 @@
 <body>
 
         <div class="loading">
-            <img style="width: 200px; top:550px; position: absolute;"src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
+            <img style="width: 200px; top:650px; position: fixed;"src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
         </div>
         <div class="mouse original"></div>
 
@@ -71,7 +50,7 @@
 						
 					</ul>
 					<ul>
-						<li><a href="#" class="a-color"><i class="fa fa-caret-right"></i>포트폴리오 (0)</a></li>
+						<li><a href="#" class="a-color"><i class="fa fa-caret-right"></i>포트폴리오</a></li>
 					</ul>
 				</div>
 			</div>
@@ -82,7 +61,7 @@
 				
 				<c:if test="${index.count%4 eq 1}">
 				
-					<div class="content-box flex">
+					<div class="content-box flexa">
 				</c:if>
 				
 				<div class="content bbb" style="">
@@ -156,7 +135,7 @@
  				for(var j=0; j<qq; j++) {
  					
 	 				
- 					var cv = $("<div class='content-box flex'>"); 	
+ 					var cv = $("<div class='content-box flexa'>"); 	
 	 				
  					if(ff<4)
  						size=ff;
