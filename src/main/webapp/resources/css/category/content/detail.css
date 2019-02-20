@@ -101,15 +101,24 @@
 .sc-content{
 	padding: 40px;
 	box-sizing:border-box;
-	height: 520px;
+	height: auto;
 	border: 1px solid black;
+	margin-bottom: 50px;
 }
 
 .sc-content div{
 	margin-top: 20px;
 }
 .sc-content .text{
+	background-color: white;
 	height: 150px;
+	width: 100%;
+	height: auto;
+	white-space: pre-wrap; /* CSS3*/
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-all; /* Internet Explorer 5.5+ */ 
 }
 
 .sc-content ul{
@@ -199,7 +208,6 @@
 	height: 430px;
 	margin-left: 80px;
 	position: relative;
-	top: -80px;
 	text-align: center;
 	border: 1px solid black;
 	box-sizing: border-box;
@@ -286,6 +294,14 @@
 .detail-content{
 	height: auto;
 }
+.detail-content pre{
+	background-color: white;
+	resize: none;
+	width: 100%;
+	height: auto;
+}
+
+
 
 
 .review-list{

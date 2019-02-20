@@ -59,9 +59,7 @@
 				</div>
 				<div class="sc-content">
 					<h2>${map.product.nickname }</h2>
-					<div class="text">
-						${map.product.simpleContent }
-					</div>
+					<pre class="text" >${map.product.simpleContent }</pre>
 					<ul>
 						<li>
 							<img src="/resources/images/price-tag.png"/>
@@ -143,9 +141,7 @@
 				<div class="contents">
 					<div class="detail-content" >
 						<h2>상세설명</h2>
-						<div>
-							${map.product.detailContent }
-						</div>
+						<pre>${map.product.detailContent }</pre>
 					</div>
 					<div class="review-list">
 						<h2>사용자평가(<span>${map.product.reviewCnt }</span>)</h2>

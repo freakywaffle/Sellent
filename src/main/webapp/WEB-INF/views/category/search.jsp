@@ -48,10 +48,10 @@
 		<input type="button" value=">" />
 	</div>
 	<div class="search-result">
+		<label>${keyword }</label>
 		<div>
 			<span class="allCnt">${allCnt}</span>개의 검색결과
 		</div>
-		<label>${keyword }</label>
 	</div>
 	
 	
