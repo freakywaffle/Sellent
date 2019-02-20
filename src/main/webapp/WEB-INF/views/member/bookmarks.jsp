@@ -5,6 +5,27 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
      
 <!DOCTYPE html>
+<style>
+
+.loading {
+    animation: linear;
+  animation-duration: 5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 107%;
+    width: 100%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+</style>
 
 <head>
 	<meta charset="UTF-8">
@@ -27,6 +48,12 @@
 </head>
 
 <body>
+
+        <div class="loading">
+            <img style="width: 200px; top:550px; position: absolute;"src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
+        </div>
+        <div class="mouse original"></div>
+
 	<div class="main-container h-100">
 		<div class="main-head">
 			<h1>찜한 서비스</h1>
