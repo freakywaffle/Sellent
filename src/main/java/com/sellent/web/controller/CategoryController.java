@@ -40,6 +40,7 @@ import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.ReviewView;
+import com.sellent.web.entity.SubCategory;
 import com.sellent.web.service.ProductService;
 
 @Controller
@@ -145,7 +146,24 @@ public class CategoryController {
 	
 	
 	@GetMapping("reg")
-	public String reg() {
+	public String reg(Model model) {
+		
+		List<ParentCategory> p_Category = categoryDao.getParentList();
+		List<SubCategory> s_Category = categoryDao.getSubList();
+		
+		List parentCategory = new ArrayList();
+		List subCategory = new ArrayList();
+		
+		for(int i=0; i<p_Category.size(); i++) {
+			parentCategory.add(p_Category.get(i));
+		}
+		for(int i=0; i<s_Category.size(); i++) {
+			subCategory.add(s_Category.get(i));
+		}
+		System.out.println(parentCategory);
+		System.out.println(subCategory);
+		model.addAttribute("parentCategory", parentCategory);
+		model.addAttribute("subCategory", subCategory);
 		return "category.reg";
 	}
 	

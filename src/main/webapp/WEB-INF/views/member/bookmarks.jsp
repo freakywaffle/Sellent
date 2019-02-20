@@ -79,7 +79,11 @@
 											</div>
 										</div>
 									</div>
-								<div class="star"> ★★★★★${a.avgStarPoint} (${a.reviewCnt})</div>
+								<div class="star flex"> <div class="star-ratings-css">
+  <div class="star-ratings-css-top" style="width: ${a.avgStarPoint*5}%"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+  <div class="star-ratings-css-bottom"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+</div>
+ (${a.reviewCnt})</div>
 							</div>
 						</div>
 					</div>
