@@ -30,6 +30,7 @@ public class MyBatisHistoryDao implements HistoryDao{
 
 
 
+
 	@Override
 	public List<HistoryView> getListById(String id, int page) {
 		HistoryDao historyDao = session.getMapper(HistoryDao.class);
@@ -78,5 +79,20 @@ public class MyBatisHistoryDao implements HistoryDao{
 		
 		return historyDao.getAllCntById2(id, selector);
 	}
+
+	@Override
+	public int delete(History history) {
+		HistoryDao historyDao = session.getMapper(HistoryDao.class);
+		
+		return historyDao.delete(history);
+	}
+
+	@Override
+	public int hasBuy(String id, int ProductNo) {
+		HistoryDao historyDao = session.getMapper(HistoryDao.class);
+		
+		return historyDao.hasBuy(id, ProductNo);
+	}
+
 
 }

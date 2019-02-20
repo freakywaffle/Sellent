@@ -30,6 +30,14 @@ public class MyBatisPointHistoryDao implements PointHistoryDao{
 		
 		return pointHistoryDao.insert_sy(name, point);
 	}
+	
+	@Override
+	public int update_sy(String name, int point) {
+		// TODO Auto-generated method stub
+		PointHistoryDao pointHistoryDao = session.getMapper(PointHistoryDao.class);
+		
+		return pointHistoryDao.update_sy(name, point);
+	}
 
 	@Override
 	public List<PointHistory> select_sy(String  member_id) {

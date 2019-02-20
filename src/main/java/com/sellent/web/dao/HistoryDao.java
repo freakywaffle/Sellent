@@ -8,6 +8,7 @@ import com.sellent.web.entity.HistoryView;
 public interface HistoryDao {
 	int insert(History history);
 
+
 	List<HistoryView> getListById(String id, int page);
 
 
@@ -18,4 +19,8 @@ public interface HistoryDao {
 
 	int getAllCntById(String id, int selector);
 	int getAllCntById2(String id, int selector);
+
+	int delete(History history);
+	int hasBuy(String id, int ProductNo);
+
 }

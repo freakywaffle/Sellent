@@ -64,28 +64,68 @@ $(document).ready(function(){
 	//구매버튼
 	var buyBt = $('.buy-bt');
 	buyBt.click(function(){
-		swal({
-			  title: "구매하시겠습니까?",
-			  icon: "warning",
-			  buttons: true,
-			})
-			.then((willDelete) => {
-			  if (willDelete) {
-				$.ajax({
-					url: $(location).attr('pathname')+'/buy',
-					type: 'get',
-					success: function(data){
-						swal("신청했습니다.", {
-						  icon: "success",
-						});
-					}
-					
-				});
-			    
-			  } else {
-			    swal("취소했습니다");
-			  }
+		
+		if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
+			swal({
+				title:'로그인해주세요',
+				icon: "warning",
+			}).then((willDelete)=>{
+				$(location).attr('pathname', '/member/login');
 			});
+			return;
+		}
+		
+		
+		 if(buyBt.text().trim() == '구매신청'){
+			swal({
+				  title: "구매하시겠습니까?",
+				  icon: "warning",
+				  buttons: true,
+			}).then((willDelete) => {
+				  if (willDelete) {
+					  
+						  $.ajax({
+								url: $(location).attr('pathname')+'/buy?seller='+$('input[type="hidden"]').val(),
+								type: 'get',
+								success: function(data){
+									swal("신청했습니다.", {
+									  icon: "success",
+									});
+									buyBt.text('신청취소');
+								}
+								
+							});
+				    
+				  } else {
+				    swal("취소했습니다");
+				  }
+			});
+		
+		
+		 }else if(buyBt.text().trim() == '신청취소'){
+			 swal({
+				  title: "취소하시겠습니까?",
+				  icon: "warning",
+				  buttons: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					  
+						  $.ajax({
+								url: $(location).attr('pathname')+'/cancelBuy?seller='+$('input[type="hidden"]').val(),
+								type: 'get',
+								success: function(data){
+									swal("구매신청을 취소했습니다.", {
+									  icon: "success",
+									});
+									buyBt.text('구매신청');
+								}
+								
+							});
+				    
+				  }
+				});
+		  }
 	});
 	
 	
@@ -95,8 +135,12 @@ $(document).ready(function(){
 	likeBt.on('click',function(){
 		
 		if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
-			alert('로그인해주세요');
-			$(location).attr('pathname', '/member/login');
+			swal({
+				title:'로그인해주세요',
+				icon: "warning",
+			}).then((willDelete)=>{
+				$(location).attr('pathname', '/member/login');
+			});
 			return;
 		}
 		
@@ -132,5 +176,40 @@ $(document).ready(function(){
 			});
 		}
 		
+	});
+	
+	
+	//삭제버튼
+	var delBt = $('.delBt');
+	delBt.click(function(){
+		swal({
+			  title: "삭제하시겠습니까?",
+			  icon: "warning",
+			  buttons: true,
+		}).then((willDelete) => {
+			  if (willDelete) {
+					  $.ajax({
+							url: $(location).attr('pathname')+'/delete',
+							type: 'get',
+							success: function(data){
+								swal("삭제했습니다.", {
+								  icon: "success",
+								}).then((willDelete) => {
+									var arr = $(location).attr('pathname').split('/');
+									
+									var path = arr[arr.length-2];
+									
+									$(location).attr('pathname', '/category/'+path);
+									
+								});
+								
+							}
+							
+						});
+			    
+			  } else {
+			    swal("취소했습니다");
+			  }
+		});
 	});
 });

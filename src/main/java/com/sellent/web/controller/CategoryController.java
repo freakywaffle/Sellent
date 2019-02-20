@@ -30,6 +30,7 @@ import com.google.gson.JsonParser;
 import com.sellent.web.dao.CategoryDao;
 import com.sellent.web.dao.HistoryDao;
 import com.sellent.web.dao.LikeDao;
+import com.sellent.web.dao.PointHistoryDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ProductFileDao;
 import com.sellent.web.dao.ReviewDao;
@@ -40,6 +41,7 @@ import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.ReviewView;
+import com.sellent.web.entity.SubCategory;
 import com.sellent.web.service.ProductService;
 
 @Controller
@@ -63,6 +65,10 @@ public class CategoryController {
 	
 	@Autowired
 	private HistoryDao historyDao;
+	
+	@Autowired
+	private PointHistoryDao pointHistoryDao;
+	
 	
 	@GetMapping("{category}")
 	public String list(@PathVariable("category") String category, 
@@ -130,7 +136,11 @@ public class CategoryController {
 			int affected = likeDao.hasLike(like);
 			if(affected != 0)
 				product.put("like", true);
-		}
+			
+			int affected2 = historyDao.hasBuy(principal.getName(), no);
+			if(affected2 != 0)
+				model.addAttribute("buyed", "true");
+		}	
 		
 		model.addAttribute("map", product);
 		if(reviews.size()!=0)
@@ -141,7 +151,24 @@ public class CategoryController {
 	
 	
 	@GetMapping("reg")
-	public String reg() {
+	public String reg(Model model) {
+		
+		List<ParentCategory> p_Category = categoryDao.getParentList();
+		List<SubCategory> s_Category = categoryDao.getSubList();
+		
+		List parentCategory = new ArrayList();
+		List subCategory = new ArrayList();
+		
+		for(int i=0; i<p_Category.size(); i++) {
+			parentCategory.add(p_Category.get(i));
+		}
+		for(int i=0; i<s_Category.size(); i++) {
+			subCategory.add(s_Category.get(i));
+		}
+		System.out.println(parentCategory);
+		System.out.println(subCategory);
+		model.addAttribute("parentCategory", parentCategory);
+		model.addAttribute("subCategory", subCategory);
 		return "category.reg";
 	}
 	
@@ -154,7 +181,17 @@ public class CategoryController {
 		System.out.println(product);
 		productService.insert(product, tempFiles);
 		
-		return "redirect:list";
+		return "redirect:"+product.getParentCategory();
+	}
+	
+	
+	@GetMapping("{category}/{no}/delete")
+	@ResponseBody
+	public String delete(@PathVariable("no") Integer no) {
+		
+		productDao.delete(no);
+		
+		return "";
 	}
 	
 	@PostMapping("imageUp")
@@ -168,7 +205,7 @@ public class CategoryController {
         if(!dir.isDirectory()){
             dir.mkdir();
         }
-
+        
 		for(MultipartFile file : files) {
 			
 			String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
@@ -208,6 +245,8 @@ public class CategoryController {
 		jsonArr += ", \"reviewCnt\":"+product.getReviewCnt();
 		jsonArr += ", \"avgStarPoint\":"+product.getAvgStarPoint()+"}";
 		
+		
+		int update = pointHistoryDao.update_sy(product.getWriterId(),50);
 		
 		System.out.println(jsonArr);
 		return jsonArr;
@@ -250,14 +289,29 @@ public class CategoryController {
 	
 	@GetMapping("{category}/{no}/buy")
 	@ResponseBody
-	public String buy(@PathVariable("no") Integer no, Principal principal) {
+	public String buy(@PathVariable("no") Integer no, Principal principal, String seller) {
 		String id = principal.getName();
 		
 		History history = new History();
 		history.setBuyer_id(id);
+		history.setSeller_id(seller);
 		history.setProduct_no(no);
 		
 		historyDao.insert(history);
+		
+		return "";
+	}
+	@GetMapping("{category}/{no}/cancelBuy")
+	@ResponseBody
+	public String cancelBuy(@PathVariable("no") Integer no, Principal principal, String seller) {
+		String id = principal.getName();
+		System.out.println(id);
+		System.out.println(no);
+		History history = new History();
+		history.setBuyer_id(id);
+		history.setProduct_no(no);
+		
+		historyDao.delete(history);
 		
 		return "";
 	}

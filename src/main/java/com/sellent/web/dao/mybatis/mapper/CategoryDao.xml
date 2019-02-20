@@ -22,6 +22,12 @@
 		select * from parent_category;
 	</select>
 	
+	<select id="getParentCntList" resultType="com.sellent.web.entity.ParentCategorySY">
+		select p.name parent_category, b.cnt
+from parent_category p left outer join (SELECT p.parent_category, count(p.parent_category) AS cnt FROM `like` AS l LEFT JOIN product AS p ON l.product_no = p.no where member_id=#{param1} group by parent_category) b on p.name = b.parent_category
+
+	</select>
+	
 	<select id="getSubList" resultType="com.sellent.web.entity.SubCategory">
 		select 
 			parent_name parentName,

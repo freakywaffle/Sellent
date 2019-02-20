@@ -41,7 +41,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import com.google.gson.Gson;
+
 import com.sellent.web.dao.HistoryDao;
+
+import com.sellent.web.dao.CategoryDao;
+
 import com.sellent.web.dao.LikeDao;
 
 import com.sellent.web.dao.MemberDao;
@@ -52,12 +56,22 @@ import com.sellent.web.dao.SkillDao;
 import com.sellent.web.entity.History;
 import com.sellent.web.entity.HistoryView;
 import com.sellent.web.entity.Like;
+import com.sellent.web.entity.LikeView;
 import com.sellent.web.entity.Member;
+
+import com.sellent.web.entity.ParentCategory;
+import com.sellent.web.entity.ParentCategorySY;
+
 import com.sellent.web.entity.PointHistory;
+
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductView;
+
+import com.sellent.web.entity.QnaContent;
+
 import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
+
 import com.sellent.web.entity.Skill;
 import com.sellent.web.service.MemberService;
 
@@ -78,6 +92,11 @@ public class MemberController {
 	
 	@Autowired
 	private ProductDao productDao;
+
+
+	@Autowired
+	private CategoryDao categoryDao;
+
 	
 	@Autowired
 	private ReviewDao reviewDao;
@@ -87,6 +106,7 @@ public class MemberController {
 
 	@Autowired
 	private HistoryDao historyDao;
+
 
 	
 	@GetMapping("project")
@@ -458,26 +478,73 @@ public class MemberController {
 
 	
 	@GetMapping("my_bookmarks")
-	public String bookmarks(Principal principal, Model model) {
+	public String bookmarks(Principal principal, Model model, String category) {
 		
-		/////////////////////////////////////////
 		String id = principal.getName();
 		List<Like> list = likeDao.select(id);
-		
 		List likeList = new ArrayList();
 		
 		for(Like li : list) {
 			List<ProductView> likeProduct = productDao.getLikeView(li.getProduct_no());
-			System.out.println(likeProduct.get(0).getReviewCnt());
-			String title = likeProduct.get(0).getTitle().substring(0,5);
-			likeProduct.get(0).setTitle(title);
 			likeList.add(likeProduct.get(0));
 		}
 		
+		List<ParentCategorySY> PC_list = categoryDao.getParentCntList(id);
+		
 		model.addAttribute("likeList",likeList);
+		model.addAttribute("PC_list",PC_list);
 
 		return "member.bookmarks";
 	}
+	
+	
+	@RequestMapping("my_bookmarks_ajax")
+	@ResponseBody
+	public String subQna(Principal principal, String category) {
+		
+		System.out.println("Dad");
+		String id = principal.getName();
+		List<Like> list = likeDao.select(id);
+		
+		List likeList = new ArrayList();
+		 
+		for(Like li : list) {
+			List<ProductView> likeProduct = productDao.getLikeView(li.getProduct_no());
+
+			if(category.equals("전체카테고리"))
+				likeList.add(likeProduct.get(0));
+			else if(!category.equals("전체카테고리"))
+				if(likeProduct.get(0).getParentCategory().equals(category))
+					likeList.add(likeProduct.get(0));
+
+		}
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(likeList);
+		
+		return json;
+	}
+	
+	@GetMapping("{no}/like")
+	@ResponseBody
+	public String like(@PathVariable("no") Integer no, Principal principal) {
+		Like like = new Like();
+		like.setMember_id(principal.getName());
+		like.setProduct_no(no);
+		likeDao.insert(like);
+		
+		return "ok";
+	}
+	@GetMapping("{no}/delike")
+	@ResponseBody
+	public String delike(@PathVariable("no") Integer no, Principal principal) {
+		Like like = new Like();
+		like.setMember_id(principal.getName());
+		like.setProduct_no(no);
+		likeDao.delete(like);
+		
+		return "ok";
+	}	
 	
 	 
 	 @PostMapping("skill-send")

@@ -34,4 +34,16 @@
 	<update id="chgState" parameterType="com.sellent.web.entity.History">
 		update history  set state= #{state} where seller_id=#{seller_id} and no=#{no};
 	</update>
+
+	
+	<insert id="insert" parameterType="com.sellent.web.entity.History" >
+		insert into history(seller_id, buyer_id, product_no) values(#{seller_id},#{buyer_id},#{product_no})
+	</insert>
+	<select id="hasBuy" resultType="int">
+		select count(*) from history where buyer_id = #{param1} and product_no = #{param2} and state in ('처리중','미확인')
+	</select>
+	<delete id="delete" parameterType="com.sellent.web.entity.History" >
+		delete from history where buyer_id = #{buyer_id} and product_no = #{product_no} and state = '미확인'
+	</delete>
+
 </mapper>

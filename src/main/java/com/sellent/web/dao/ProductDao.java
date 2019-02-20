@@ -4,13 +4,17 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sellent.web.entity.LikeView;
+
 import com.sellent.web.entity.ParentCategory;
+
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductView;
 
 public interface ProductDao {
 
 	List<ProductView> getLikeView(int no);
+	List<ProductView> getLikeView1(int no, String category);
 	
 	List<ProductView> getList();
 

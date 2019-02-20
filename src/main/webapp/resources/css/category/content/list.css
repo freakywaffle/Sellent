@@ -157,6 +157,7 @@ select:focus {
 	font-weight:bold; 
 	margin-left:15px; 
 	width:450px;
+	height: 50px;
 }
 
 .detail-data{
@@ -164,7 +165,7 @@ select:focus {
 	width:auto;
 	margin-left:15px;
 	display:flex;
-	margin-top:35px;
+	margin-top:20px;
 	color:gray;
 	 
 }

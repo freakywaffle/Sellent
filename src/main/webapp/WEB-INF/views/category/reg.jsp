@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link href="/resources/css/category/content/reg.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/reg.js"></script>
 <section id="main">
@@ -39,22 +40,20 @@
 				<h3>카테고리</h3>
 				<div class="parent-category">
 					<label>상위카테고리</label>
-					<select name="parentCategory">
+					<select id="parentCategory" name="parentCategory">
 						<option>선택해주세요</option>
-						<option>IT개발</option>
-						<option>상위2</option>
-						<option>상위3</option>
-						<option>상위4</option>
+						<c:forEach var="c" items="${parentCategory}">
+							<option class="parentCategory">${c.name}</option>
+						</c:forEach>
 					</select>
 				</div>
 				<div class="sub-category">
 					<label>하위카테고리</label>
 					<select name="subCategory">
-						<option>선택해주세요</option>
-						<option>웹개발</option>
-						<option>앱개발</option>
-						<option>서버</option>
-						<option>데이터베이스</option>
+						<option>선택해주세요</option>						
+						<c:forEach var="s" items="${subCategory}">
+								<option class="${s.parentName} hidden aa">${s.name}</option>
+						</c:forEach>
 					</select>
 				</div>
 			</div>
@@ -145,5 +144,23 @@
 			<input class="submit hidden" type="submit" value="완료"/>				
 		</div>
 	</form>
+	
+	<script>
+
+	 	$("#parentCategory").change(function() {
+	 		var parentName = "."+$(this).val()
+	 		for(var i=0; i<$(".aa").length; i++)
+		 		if(!$(".aa").eq(i).hasClass("hidden"))
+		 			$(".aa").eq(i).addClass("hidden")
+	 		$(parentName).removeClass("hidden");
+	 		});	
+
+	
+	 		
+	 	
+		 
+	
+	
+	</script>
 	
 </section>

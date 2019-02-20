@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
 <link href="/resources/css/category/content/list.css" rel="stylesheet"/>
+<link href="/resources/css/category/content/search.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/search.js"></script>
 <template id="tmpl">
 	<div class="contents">
@@ -46,11 +47,11 @@
 	<div class="menu-button mobile-block">
 		<input type="button" value=">" />
 	</div>
-	<div>
+	<div class="search-result">
+		<label>${keyword }</label>
 		<div>
-			<span class="allCnt">${allCnt}</span>의 검색결과
+			<span class="allCnt">${allCnt}</span>개의 검색결과
 		</div>
-		<input type="search" value="${keyword }">
 	</div>
 	
 	
