@@ -41,7 +41,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import com.google.gson.Gson;
-
+import com.sellent.web.dao.HistoryDao;
 import com.sellent.web.dao.LikeDao;
 
 import com.sellent.web.dao.MemberDao;
@@ -49,6 +49,8 @@ import com.sellent.web.dao.PointHistoryDao;
 import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.dao.SkillDao;
+import com.sellent.web.entity.History;
+import com.sellent.web.entity.HistoryView;
 import com.sellent.web.entity.Like;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.PointHistory;
@@ -83,40 +85,43 @@ public class MemberController {
 	@Autowired
 	private PointHistoryDao pointHistoryDao;
 
+	@Autowired
+	private HistoryDao historyDao;
+
 	
 	@GetMapping("project")
 	public String project(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") int page, @RequestParam(value="optionValue", defaultValue="0")Integer selector, Product product) {
 		//System.out.println("selectornum: " + selector);
 		List<ProductView> showPage = productDao.getListById(principal.getName(),page, selector);		
 		int allCnt = productDao.getAllCntById(principal.getName(),selector);
-		//System.out.println("now Page: " + page);
-		//System.out.println("total page: " +allCnt );
+		System.out.println("now Page: " + page);
+		System.out.println("total page: " +allCnt );
 		int num=5; //화면에 보여질 페이지 번호의 갯수
 		//끝 페이지 번호
 		int endpage;
 		endpage = (int)(Math.ceil((double)page/(double)num)*(double)num);
-		//System.out.println("endpage: " +endpage);
+		System.out.println("endpage: " +endpage);
 		
 		//시작페이지번호
 				int startpage= (endpage-num);
-				//System.out.println("startpage: "+startpage);
+				System.out.println("startpage: "+startpage);
 				
 		//마지막 페이지 번호
 		int tempendpage = (int)(Math.ceil((double)allCnt/(double)num));
-		//System.out.println("tempendpage: " +tempendpage);
+		System.out.println("tempendpage: " +tempendpage);
 		if (endpage > tempendpage) {
 			endpage = tempendpage;
-			//System.out.println("endpage2:" + endpage);
+			System.out.println("endpage2:" + endpage);
 		}
 		
 		String pageTitle = "관리";
 		
 		//이전버튼 생성 여부
 		boolean prev = startpage == 0 ? false:true;
-		//System.out.println("prevbutton 여부: " + prev);
+		System.out.println("prevbutton 여부: " + prev);
 		//다음버튼 생성 여부
 		boolean next = endpage * 5 >= allCnt ? false:true;
-		//System.out.println("nextbutton 여부: " + next);
+		System.out.println("nextbutton 여부: " + next);
 		
 		model.addAttribute("product",showPage);
 		model.addAttribute("startpage",startpage);
@@ -132,11 +137,103 @@ public class MemberController {
 
 	
 	@GetMapping("history")
-	public String history(Model model) {
+	public String history(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") int page, @RequestParam(value="optionValue", defaultValue="0")Integer selector, History history) {
+		System.out.println("selectornum: " + selector);
 		
-		String pageTitle = "관리";
-		model.addAttribute("pageTitle",pageTitle);
-
+		if(selector == 0) {
+			List<HistoryView> showPage = historyDao.getListById(principal.getName(),page);
+			int allCnt = historyDao.getAllCntById(principal.getName(),selector);
+			String pageTitle = "관리";
+			String showPart = "판매";
+			System.out.println("now Page: " + page);
+			System.out.println("total page: " +allCnt );
+			int num=5; //화면에 보여질 페이지 번호의 갯수
+			//끝 페이지 번호
+			int endpage;
+			endpage = (int)(Math.ceil((double)page/(double)num)*(double)num);
+			System.out.println("endpage: " +endpage);
+			
+			//시작페이지번호
+					int startpage= (endpage-num);
+					System.out.println("startpage: "+startpage);
+					
+			//마지막 페이지 번호
+			int tempendpage = (int)(Math.ceil((double)allCnt/(double)num));
+			System.out.println("2tempendpage: " +tempendpage);
+			if (endpage > tempendpage) {
+				endpage = tempendpage;
+				System.out.println("endpage:" + endpage);
+				System.out.println("---------------------------------");
+			}
+			
+			
+			
+			//이전버튼 생성 여부
+			boolean prev = startpage == 0 ? false:true;
+			System.out.println("prevbutton 여부: " + prev);
+			//다음버튼 생성 여부
+			boolean next = endpage * 5 >= allCnt ? false:true;
+			System.out.println("nextbutton 여부: " + next);
+			
+			model.addAttribute("pageTitle",pageTitle);
+			model.addAttribute("showPart",showPart);
+			model.addAttribute("selector",selector);
+			model.addAttribute("product",showPage);
+			model.addAttribute("startpage",startpage);
+			model.addAttribute("endpage",endpage);
+			model.addAttribute("tempendpage",tempendpage);
+			model.addAttribute("page",page);
+			model.addAttribute("allCnt",allCnt);
+			model.addAttribute("prev",prev);
+			model.addAttribute("next",next);
+		}
+		else {
+			List<HistoryView> showPage2 = historyDao.getListById2(principal.getName(),page);
+			int allCnt2 = historyDao.getAllCntById2(principal.getName(),selector);
+			String pageTitle = "관리";
+			String showPart = "구매";
+			System.out.println("2now Page: " + page);
+			System.out.println("2total page: " +allCnt2 );
+			int num=5; //화면에 보여질 페이지 번호의 갯수
+			//끝 페이지 번호
+			int endpage;
+			endpage = (int)(Math.ceil((double)page/(double)num)*(double)num);
+			System.out.println("2endpage: " +endpage);
+			
+			//시작페이지번호
+					int startpage= (endpage-num);
+					System.out.println("2startpage: "+startpage);
+					
+			//마지막 페이지 번호
+			int tempendpage = (int)(Math.ceil((double)allCnt2/(double)num));
+			System.out.println("2tempendpage: " +tempendpage);
+			if (endpage > tempendpage) {
+				endpage = tempendpage;
+				System.out.println("2endpage2:" + endpage);
+			}
+			
+			
+			
+			//이전버튼 생성 여부
+			boolean prev = startpage == 0 ? false:true;
+			System.out.println("2prevbutton 여부: " + prev);
+			//다음버튼 생성 여부
+			boolean next = endpage * 5 >= allCnt2 ? false:true;
+			System.out.println("2nextbutton 여부: " + next);
+			
+			model.addAttribute("pageTitle",pageTitle);
+			model.addAttribute("showPart",showPart);
+			model.addAttribute("selector",selector);
+			model.addAttribute("product",showPage2);
+			model.addAttribute("startpage",startpage);
+			model.addAttribute("endpage",endpage);
+			model.addAttribute("tempendpage",tempendpage);
+			model.addAttribute("page",page);
+			model.addAttribute("allCnt",allCnt2);
+			model.addAttribute("prev",prev);
+			model.addAttribute("next",next);
+		}
+		
 		return "member.management.history";
 	}
 	@GetMapping("statics")
@@ -144,7 +241,7 @@ public class MemberController {
 
 		String pageTitle = "관리";
 		model.addAttribute("pageTitle",pageTitle);
-
+		
 		return "member.management.static";
 	}
 	
@@ -404,6 +501,19 @@ public class MemberController {
 		 
 		 int skillDel = skillDao.skillDele(skill);
 		 return deltech;
+	 }
+	 
+	 @PostMapping("chgState")
+	 @ResponseBody
+	 public String chgState(Principal principal, String chgState, History history, int num) {
+		 history.setSeller_id(principal.getName());
+		 System.out.println(principal.getName());
+		 System.out.println("chgState: " + history.getSeller_id());
+		 history.setState(chgState);
+		 history.setNo(num);
+		 System.out.println(history.getNo());
+		 int changeState = historyDao.chgState(history);
+		 return chgState;
 	 }
 
 }

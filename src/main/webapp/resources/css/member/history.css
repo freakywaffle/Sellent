@@ -53,8 +53,14 @@ thead th:first-child, tbody td:first-child{
 	
 	width:80px;
 }
+th:last-child{
+
+}
+td:last-child{
+	/*text-align:left !important;*/
+}
 .title{
-	width:390px;
+	width:300px;
 	}
 .table-id{width:130px;}
 .table th{
@@ -79,8 +85,30 @@ thead th:first-child, tbody td:first-child{
 #page li:last-child{
 	margin-right:0px;
 }
-
-
+.btn1{
+	
+	display: none;
+	border-radius: 8px;
+	border:none;
+	width:50px;
+	color:white;
+	font-weight: bold;
+}
+.accep, .complete{
+	margin-left: 15px;
+	background-color: #ffd632;
+}
+.deny{
+	bakcground-color:gray;
+}
+.complete{
+	display: none;
+	border-radius: 8px;
+	border:none;
+	width:70px;
+	color:white;
+	font-weight: bold;
+}
 @media ( max-width :480px) {
 	.content{width:100%;}
 

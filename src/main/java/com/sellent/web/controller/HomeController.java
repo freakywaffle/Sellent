@@ -60,6 +60,7 @@ public class HomeController {
 	@PostMapping("join")
 	public String join(Member member, String skill, @RequestParam("profile") MultipartFile filedata) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		member.setPhoto(filedata.getOriginalFilename());
 		String pwd = encoder.encode(member.getPassword());
 		System.out.println(pwd);
 		member.setPassword(pwd);
