@@ -128,7 +128,7 @@
 							<td class="approval-state">
 								<c:choose>
 									<c:when test="${product.approval eq 0}">
-										<button class="approval-button btn btn-primary" type="button" >대기</button>
+										<button class="approval-button btn btn-info" type="button" >대기</button>
 									</c:when>
 									<c:when test="${product.approval eq 1}">
 										<span class="approval-ok">처리완료</span>
