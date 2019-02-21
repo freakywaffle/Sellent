@@ -151,6 +151,8 @@ a:hover {text-decoration: none !important;}
 #header .search-bar input {
 	width: 340px;
 	color: gray;
+	padding-left:10px;
+	border-radius:8px !important;
 	font-weight: bold;
 	height: 35px;
 	border: none;
@@ -163,6 +165,7 @@ a:hover {text-decoration: none !important;}
 	height: 33px;
 	background-color: rgb(255, 214, 51);
 	border: none;
+	margin-right:10px;
 	position: relative;
 	top: 1px;
 	vertical-align: middle;
@@ -178,6 +181,11 @@ a:hover {text-decoration: none !important;}
 }
 
 @media ( max-width :480px) {
+	.logo{
+		margin-top:10px !important;
+		
+	}
+
 	#header {
 		padding-top: 0px;
 		height: 140px;
@@ -192,13 +200,23 @@ a:hover {text-decoration: none !important;}
 		position: relative;
 		height: 55px;
 	}
+	.mynickname{
+		display: none !important;
+			 
+	}
+	.after-login img{
+		margin-top: 10px !important;
+		margin-right: 10px;
+	}
 	#header .search-bar>form {
 		width: 90%;
+		margin-top:10px !important;
 		margin-left: 5%;
 		padding-left: 0px;
 		left: 0px;
 	}
 	#header .search-bar>div input {
+		
 		width: 80%;
 		margin-left: 5%;
 		padding-left: 0px;
@@ -216,8 +234,27 @@ a:hover {text-decoration: none !important;}
 		right: 0px;
 	}
 	.my-menu {
+		margin-left:10px;
 		top: 60px;
 		z-index: 11;
 		right: 100%;
 	}
+	.after-login .my-menu {
+	position: absolute;
+	right: 0px;
+}
+
+
+.after-login .my-menu ul:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	transform: translateY(-55%) translateX(-50%) rotate(45deg);
+}
 }

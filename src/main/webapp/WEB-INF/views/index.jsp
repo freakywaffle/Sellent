@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
+  
 <link href="/resources/css/main/mainMain.css" rel="stylesheet"/>
 <link href="/resources/css/common.css" rel="stylesheet"/>
 <script src="/resources/js/main/mainMain.js"></script>
 <main id="main">
       <div class="banner">
-		<img alt="" src="/resources/images/img1.png" class="myslides"/>
-		<img alt="" src="/resources/images/img2.png" class="myslides"/>
-		<img alt="" src="/resources/images/img3.png" class="myslides"/>
+		<img class="mySlides" alt="" src="/resources/images/img1.png" class="myslides"/>
+		<img class="mySlides" alt="" src="/resources/images/img2.png" class="myslides"/>
+		<img class="mySlides" alt="" src="/resources/images/img3.png" class="myslides"/>
+   
       </div>
       <div class="main-icones">
         <div class="top-icon">
@@ -59,12 +63,14 @@
          <div class="hotsellent-title">Hot Sellent</div>
          <div class="hotsellent-image">
             <ul class="hotsellent-image-top">
-               <li><img src="" alt=""/></li>
-               <li><img src="" alt=""/></li>
+	            <c:forEach var="sc" items="${topSellent }">
+	               <li><img src='<spring:url value="/sellent/profile/"/>${sc.id}/${sc.photo}'alt=""/></li>
+	             </c:forEach>
             </ul>
             <ul class="hotsellent-image-bottom">
-                  <li><img src="" alt=""/></li>
-                  <li><img src="" alt=""/></li>
+                 <c:forEach var="sc" items="${topSellent2 }">
+	               <li><img src='<spring:url value="/sellent/profile/"/>${sc.id}/${sc.photo}'alt=""/></li>
+            	 </c:forEach>
             </ul>
          </div>
       </div>

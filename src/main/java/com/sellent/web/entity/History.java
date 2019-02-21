@@ -9,6 +9,8 @@ public class History {
 	private int product_no;
 	private Date regdate;
 	private String state;
+	private String date;
+	
 	
 	public History() {
 		// TODO Auto-generated constructor stub
@@ -70,4 +72,14 @@ public class History {
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+
 }

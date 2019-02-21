@@ -25,7 +25,7 @@ import com.sellent.web.service.QnaService;
 public class HomePreparer implements ViewPreparer {
 
 	@Autowired
-	private MemberDao  memberdao;	
+	private MemberDao  memberDao;	
 	@Autowired
 	private QnaService qnaService;
     @Autowired
@@ -58,9 +58,7 @@ public class HomePreparer implements ViewPreparer {
        }
        attributeContext.putAttribute("CtList",new Attribute(CtList), true);
        
-       //
-   
-		
+      
 			
 			
 		

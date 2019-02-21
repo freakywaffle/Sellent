@@ -9,7 +9,7 @@ window.addEventListener("load",function(){
 
 	skillPut.addEventListener("click",function(){
 		var techname = document.querySelector(".techname");
-		alert(skillInput.value);
+		//alert(skillInput.value);
 	   var xml = new XMLHttpRequest();   	  
    	   xml.open('POST','skill-send');
    	   xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -54,7 +54,7 @@ window.addEventListener("load",function(){
 		{
 			e.target.parentNode.style.display="none";
 			var deltech =e.target.parentNode.children[0].innerText;
-			alert(deltech);
+			//alert(deltech);
 			var xml = new XMLHttpRequest();   	  
 		    xml.open('POST','delete-tech');
 		    xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

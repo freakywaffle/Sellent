@@ -1,10 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+.menu-button {
+	position: fixed;
+	top: 300px;
+	left: 0%;
+	height: auto;
+	display: none;
+	z-index: 10;
+}
 
+.menu-button input {
+	background-color: orange;
+	border: none;
+	height: 60px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+	
+}
 .profile-box{
 	width:800px;
 	height:280px;
 	margin-top:70px;
-	background-color:pink;
 	border-top:2px solid #686565;
 	border-bottom: 1px solid #d3d3d3;
 	padding-top:15px;
@@ -97,16 +113,18 @@
 	margin-top:10px;
 }
 @media ( max-width :480px) {
+	.mobile-block{display: block;}
 	.title{direction: ltr; width: auto; margin-left:5%;}
 	.nickname, .new-pwd, .new-pwdchk, .email{display: unset !important;}
 	.content{width: 100%;}
 	.profile{width: 100%;}
-	.profile img{margin-left:20%;} .profilebtn{margin-left:24%;}
+	/* .profile img{margin-left:20%;} .profilebtn{margin-left:24%;} */
 	.edit-info{width:100%; margin-left:0px;}
 	.complete{width: 100%}
 	.complete input{width:90%; margin-left:5%; margin-right: 5%; }
 	.email div:last-child input:first-child{ width: 250px; }
 	.email div:last-child input:last-child{ height: 32px; }
-	
-	
+	.profile-box img{margin-left:25%;}
+	.profilebtn{margin-left:28%;}
+	.profile-box{width: 100%;}
 }

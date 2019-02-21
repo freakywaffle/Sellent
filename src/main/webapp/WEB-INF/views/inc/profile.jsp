@@ -6,9 +6,9 @@
 <link href="/resources/css/inc/profile.css" rel="stylesheet" />
 <div class="modal">
    <div class="modal-content">
-    <span class="close-button">&times;</span>
+    <span class="close-button2">&times;</span>
     <div class="head">
-        <img alt="프로필 사진" src='<spring:url value="/sellent/profile/"/>${sessionScope.member.id }/${sessionScope.member.photo}' name="photo" class="profile">
+        <img alt="프로필 사진" src='<spring:url value="/sellent/profile/"/>${member.id}/${member.photo}' name="photo" class="profile">
         <div class="nameTalk">
             <a name="nickname">${sessionScope.member.nickname }</a>
             <img alt="message" src="/resources/images/speech-bubble.png">
