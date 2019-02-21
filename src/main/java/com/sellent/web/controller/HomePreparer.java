@@ -43,10 +43,8 @@ public class HomePreparer implements ViewPreparer {
 	   List<QnaPaCategory> list = qnaService.getOftenQnaList();
 	   List<QnaSubCategory> subList = qnaService.getOftenQnaSubList();
 
-       Attribute aa = new Attribute(list);
-       Attribute bb = new Attribute(subList);
-       attributeContext.putAttribute("list", aa, true);
-       attributeContext.putAttribute("subList", bb, true);
+       attributeContext.putAttribute("list", new Attribute(list), true);
+       attributeContext.putAttribute("subList", new Attribute(subList), true);
        
        //categoryHeader
        List<List<SubCategory>> CtList = new ArrayList<List<SubCategory>>(); 
@@ -58,7 +56,30 @@ public class HomePreparer implements ViewPreparer {
        }
        attributeContext.putAttribute("CtList",new Attribute(CtList), true);
        
-      
+       
+       
+       
+       
+       List<Member> mem = new ArrayList<>();
+       HomeController h = new HomeController();
+       System.out.println(h.id);
+       int point = 0;
+       if(h.id.isEmpty()) {
+    	   System.out.println("preparer:아이디 없음");
+       }
+       else if(!h.id.isEmpty()) {
+    	   System.out.println(h.id.get(0));
+    	   String id = h.id.get(0);
+    	   Member member = memberDao.getMember(id);
+    	   point = member.getPoint();
+    	   System.out.println(point);
+       }
+       
+       attributeContext.putAttribute("point",new Attribute(point), true);
+     //  String id = h.id.get(0);
+      // System.out.println("preparer");
+      // System.out.println(id);
+      // }
 			
 			
 		

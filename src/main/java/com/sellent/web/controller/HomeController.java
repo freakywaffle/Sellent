@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.apache.tiles.Attribute;
 import org.apache.tiles.AttributeContext;
 import org.apache.tiles.preparer.ViewPreparer;
@@ -46,8 +48,20 @@ public class HomeController {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
+	static List<String> id = new ArrayList<>();
+	
 	@GetMapping("index")
-	public String index(Model model) {
+	public String index(Model model,  Principal principal) {
+
+		Object principal2 = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(!principal2.equals("anonymousUser")) {
+			id.clear();
+			System.out.println(principal.getName());
+			id.add(principal.getName());
+			System.out.println(id);
+			System.out.println("컨트롤 ");
+			
+		}
 		
 		//Best5 sellent
 	       List<Member> topSellent = memberDao.getTopSellent();
@@ -62,7 +76,7 @@ public class HomeController {
 	
 	@GetMapping("login")
 	public String login(HttpServletRequest request) {
-		
+
 		String prevPage = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", prevPage);
 		System.out.println("???");
@@ -71,6 +85,8 @@ public class HomeController {
 		
 		return "member.login";
 	}
+	
+
 	
 	@GetMapping("join")
 	public String join() {

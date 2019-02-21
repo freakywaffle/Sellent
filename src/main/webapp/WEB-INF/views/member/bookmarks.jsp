@@ -87,7 +87,7 @@
 									</div>
 								<div class="star flex" > <div class="star-ratings-css">
   <div class="star-ratings-css-top" style="width: ${a.avgStarPoint*25}%"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
-  <div class="star-ratings-css-bottom"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+  <div class="star-ratings-css-bottom"><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span></div>
 </div>
  (${a.reviewCnt})</div>
 							</div>
@@ -163,7 +163,7 @@
 		 			
 		 			var flex = $("<div class='flex'></div>")
 					var product = $("<div class='product'></div>")
-					var star = $("<div class='star flexa'>"+"<div class='star-ratings-css'> <div class='star-ratings-css-top' style='width: "+b[t].avgStarPoint*25+"%'><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div><div class='star-ratings-css-bottom'><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div></div>"+"("+b[t].reviewCnt+")"+"</div>")
+					var star = $("<div class='star flexa'>"+"<div class='star-ratings-css'> <div class='star-ratings-css-top' style='width: "+b[t].avgStarPoint*25+"%'><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div><div class='star-ratings-css-bottom'><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span></div></div>"+"("+b[t].reviewCnt+")"+"</div>")
 					
 					var fornt = $("<div class='fornt'></div>")
 					var imgWrap = $("<div class='img-wrap'></div>")

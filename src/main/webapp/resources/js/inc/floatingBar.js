@@ -302,8 +302,8 @@ window.addEventListener('load',function(){
 							var box = $(".center-block")
 							
 							var contentBox = $("<div class='tab3' style='border:1px solid #ddd; height: auto; padding: 10px'></div>")
-							var contentTitle = $("<div class='tab2' style='font-size: 16px; font-weight: bold; white-space: initial;s'>"+title+"</div>")
-							var contentContent1 = $("<div class='' style='font-size: 12px; margin-top: 9px; white-space: initial;' >"+content1+"</div>")
+							var contentTitle = $("<div class='tab2' style='font-size: 18px; font-weight: bold; white-space: initial;'>"+title+"</div>")
+							var contentContent1 = $("<div class='' style='font-size: 15px; margin-top: 9px; white-space: initial;' >"+content1+"</div>")
 							
 							contentBox.append(contentTitle)
 							contentBox.append(contentContent1)

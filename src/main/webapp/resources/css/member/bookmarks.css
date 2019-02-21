@@ -206,14 +206,19 @@ html, body {
 /*star*/
 .star-ratings-css {
   unicode-bidi: bidi-override;
+/*  
   color: #c5c5c5;
+*/
+  color: black;
   font-size: 18px;
   height: 25px;
-  width: 120px;
+  width: 110px;
   margin: 0 auto;
   position: relative;
   padding: 0;
+  /*
   text-shadow: 0px 1px 0 #a2a2a2;
+  	*/
 }
  .star-ratings-css-top {
       color: #ffcc36;
@@ -224,13 +229,17 @@ html, body {
     top: 0;
     left: 0;
     overflow: hidden;
-    height: 20px;
+    height: 25px;
+    font-size: 21px;
   }
   .star-ratings-css-bottom {
     padding: 0;
     display: block;
     z-index: 0;
   }
+.fa-fw {
+	width: 21px!important;
+}
 
 .flexa {
 	display: flex;
