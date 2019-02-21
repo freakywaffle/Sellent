@@ -157,8 +157,13 @@ $(document).ready(function(){
 	var imgList = $('.img-list');
 	
 	imgList.on('click', function(e){
-		var imgTag = new Image();
+		var imgTag = $('<img/>');
+		var src = $(e.target).attr('src');
+		
+		imgTag.attr('src', src);
 		upImages.addClass('back-none');
+		
+		/*var imgTag = new Image();
 		imgTag.src = $(e.target).attr('src');
 		imgTag.onload = function(){
 			var canvas = $('<canvas></canvas>').get(0);
@@ -172,7 +177,7 @@ $(document).ready(function(){
 			var dataURI = canvas.toDataURL("image/jpeg");
 			
 			imgTag.src = dataURI;
-		}
+		}*/
 		
 		if(upImages.children().length==0)	
 			upImages.append(imgTag);
@@ -181,68 +186,7 @@ $(document).ready(function(){
 	});
 	
 	
-	//이미지 업로드
-	var preview = $('.img-list ul');
 	
-	openBt.on('change', function() {
-		var fileList = openBt.prop('files');
-		
-		var thumbnail = $('input[name="thumbnail"]');
-		thumbnail.val(fileList[0].name);
-		
-		var formData = new FormData();
-		//업로드할 이미지 리스트화
-		for(var i=0;i<fileList.length;i++){
-			var reader = new FileReader();
-			reader.readAsDataURL(fileList[i]);
-			reader.addEventListener('load',function(e){
-				var li = $('<li></li>');
-				
-				var file = e.target;
-				var img = new Image();
-				img.src = file.result;
-				img.onload = function(){
-					var canvas = $('<canvas></canvas>').get(0);
-					var canvasContext = canvas.getContext('2d');
-					
-					canvas.width = 150;
-					canvas.height = 150;
-					
-					canvasContext.drawImage(this, 0, 0, 150, 150);
-
-					var dataURI = canvas.toDataURL("image/jpeg");
-
-					img.src = dataURI;
-				};
-				
-				li.append(img);
-				preview.append(li);
-				console.log(i+'완료');
-				
-				
-			});
-			//이미지 업로드
-			formData.append('img', fileList[i]);
-			
-		}
-		
-		
-		$.ajax({
-	        url: 'imageUp',
-	        data: formData,
-	        processData: false,
-	        contentType: false, 
-	        type: 'POST',
-
-	        success: function (data) {
-	        	
-	        	preview.find('img').eq(0).trigger('click');
-	        }
-	    });
-		
-		
-		
-	});
 	
 	
 	

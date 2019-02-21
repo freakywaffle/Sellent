@@ -19,8 +19,8 @@
     
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="../../resources/css/guide2.css">
-	<script src="../../resources/js/inc/floatingBar.js"></script>
+	<link rel="stylesheet" href="/resources/css/guide2.css">
+	<script src="/resources/js/inc/floatingBar.js"></script>
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
@@ -205,41 +205,25 @@
 				<h3 class="hidden">Headline 3</h3>
 		      	<div style="width: 100%">
 		      		<ul>
-		      			<li style="padding: 20px; height: 100px; border: 1px solid #cdcdcd; margin-bottom: 10px;">
+		      		<c:if test="${not empty sessionScope.member.id}">
+		      			<li class="scal" style="padding: 20px; height: 100px; border: 1px solid #cdcdcd; margin-bottom: 10px;">
 		      				<div class="flex" style="height: 100%;">
 		      					<div style="height: 100%; width: 20%;">
-		      						<img style="height: 100%; border-radius: 500px;" src="../../resources/css/aaaa.png" />
+		      						<img style="height: 100%; border-radius: 500px;" src="/resources/images/${sessionScope.member.photo}" />
 		      					</div>
 		      					<div style="height: 100%; width: 80%;">
 		      						<div style="height: 50%;">
 										<h1 style="color: #ee3b27">Sellent
-											<span style="float: right; font-size: 13px; color: #999">4일전</span>	
+											<span class="hidden" style="float: right; font-size: 13px; color: #999">4일전</span>	
 										</h1>				
 		      						</div>
 		      						<div style="height: 50%;">
-		      							(회원아이디)님, Sellent에 오신 것을 환영합니다.
+		      							${sessionScope.member.id}님, Sellent에 오신 것을 환영합니다.
 		      						</div>
 		      					</div>
 		      				</div>
 		      			</li>
-		      			
-		      			<li style="padding: 20px; height: 100px; border: 1px solid #cdcdcd; margin-bottom: 10px;">
-		      				<div class="flex" style="height: 100%;">
-		      					<div style="height: 100%; width: 20%;">
-		      						<img style="height: 100%; border-radius: 500px;" src="../../resources/css/aaaa.png" />
-		      					</div>
-		      					<div style="height: 100%; width: 80%;">
-		      						<div style="height: 50%;">
-										<h1 style="color: #ee3b27">Sellent
-											<span style="float: right; font-size: 13px; color: #999">4일전</span>	
-										</h1>				
-		      						</div>
-		      						<div style="height: 50%;">
-		      							(회원아이디)님, Sellent에 오신 것을 환영합니다.
-		      						</div>
-		      					</div>
-		      				</div>
-		      			</li>		
+		      		</c:if>
 		      		</ul>
 		      	</div>
 			</section>		

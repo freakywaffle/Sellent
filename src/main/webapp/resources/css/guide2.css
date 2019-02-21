@@ -748,3 +748,23 @@ transform: rotate(135deg);
 	color: black;
 }
 
+.scal:hover {
+	cursor: pointer;
+	box-shadow: 0 0 10px 0 #ccc;
+	transition: 0.25s;
+	transform: scale(1.009);
+}
+
+
+@media All and (max-width: 360px) {
+		
+		.inner-fabs {
+			display: none;
+		}
+
+		.fab {
+			display: none;
+		}
+	
+	
+	}
