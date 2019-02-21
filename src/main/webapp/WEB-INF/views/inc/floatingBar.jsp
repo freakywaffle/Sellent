@@ -182,7 +182,7 @@
 						</div>
 						
 						<div>
-							<ul style="padding: 10px 0px 0px 20px; list-style: initial!important;">
+							<ul style="padding: 10px 0px 0px 20px; list-style: initial!important; font-size: 17px;">
 								<li>주말·공휴일은 답변이 늦어질 수 있습니다.</li>
 								<li>파일 첨부는 최대 4개까지 가능합니다.</li>							
 							</ul>
@@ -214,11 +214,11 @@
 				      					</div>
 				      					<div style="height: 100%; width: 80%;">
 				      						<div style="height: 50%;">
-												<h1 style="color: #ee3b27">Sellent
+												<h1 style="color: #ee3b27; margin-top: 6px!important;">Sellent
 													<span class="hidden" style="float: right; font-size: 13px; color: #999">4일전</span>	
 												</h1>				
 				      						</div>
-				      						<div style="height: 50%;">
+				      						<div style="height: 50%; font-size: 18px;">
 				      							${sessionScope.member.id}님, Sellent에 오신 것을 환영합니다.
 				      						</div>
 				      					</div>

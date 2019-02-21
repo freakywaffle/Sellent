@@ -61,6 +61,7 @@ html, body {
 #guide .search-bar,
 #guide .e-mail-bar,
 #guide .title-bar {
+	font-size: 16px;
 	width: 100%;
 	padding: 11px 14px 11px 30px; 
 }
@@ -97,7 +98,7 @@ html, body {
 	font-weight: 550;
 }
 #guide h5 {
-	font-size: 13px; 
+	font-size: 16px; 
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
@@ -229,7 +230,7 @@ html, body {
 	display:block;
 	padding:15px;
   color:#555;
-  font-size:16px;
+  font-size:17px;
   font-weight:bold;
 	text-transform:uppercase;
 	letter-spacing:1px;
@@ -241,6 +242,7 @@ html, body {
    content: "\e114";
    float: right;
    transition: all 0.5s;
+   color: #ffd400;
 }
 #guide .panel-heading.active a:before {
 	-webkit-transform: rotate(180deg);
@@ -260,6 +262,7 @@ html, body {
 	padding: 15px 40px;
 	border-top: 1px solid #ddd;
 	border-bottom: 0px;
+	font-size: 15px;
 }
 
 #guide .dd li > a:visited,
@@ -295,6 +298,7 @@ html, body {
 	height: auto;
 	padding: 11px 30px;
 	border: 0px;
+	font-size: 16px;
 }
 #guide .question,
 #guide .question-box {
@@ -302,6 +306,7 @@ html, body {
 }
 #guide .question-box h6 {
 	margin: 10px 0px;
+	font-size: 18px;
 }
 #guide .question-box .area{
 	height: 204px;
