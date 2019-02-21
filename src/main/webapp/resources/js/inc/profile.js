@@ -1,6 +1,6 @@
 window.addEventListener("load",function(){
 	var modal = document.querySelector(".modal");
-	var closebtn = document.querySelector(".close-button");
+	var closebtn = document.querySelector(".close-button2");
 	var profile = document.querySelector(".prof");
     function toggleModal() {
 	    modal.classList.toggle("show-modal");

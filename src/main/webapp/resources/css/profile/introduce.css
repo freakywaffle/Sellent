@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+.menu-button {
+	position: fixed;
+	top: 300px;
+	left: 0%;
+	height: auto;
+	display: none;
+	z-index: 10;
+}
 
+.menu-button input {
+	background-color: orange;
+	border: none;
+	height: 60px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+	
+}
 .main{
 	width:800px;
 }
@@ -78,7 +95,7 @@
 	width: 450px;
 	min-height:200px;
 }
-.technic{
+.introtechnic{
 	height: 30px !important;
 	position: relative;
 	cursor:default;
@@ -107,16 +124,18 @@
 	height:200px;
 }
 @media ( max-width :480px) {
+	.mobile-block{display: block;} 
 	.content, .main, .introduce{width: 100%; margin-top: 30px;}
 	.title, .content, .tech{display: unset !important; width: 100%;}
 	.title-title{margin-left: 0px !important;}
-	.introduce input{width:90%;}
+	.introduce div{display:inline-block;}
+	.introduce input{width:320px;}
 	.title, .content, .tech, .tech-add{width:100%;}
 	.tech{display:block;}
 	.techroom{width:90% !important;}
 	.tech-add div:first-child{margin-left:0px !important;}
 	.tech-add div:first-child input {margin-left:0px !important;padding-left: 0px !important; width: 300px;}
-	.title-content textarea{width: 90%;}
+	.title-content textarea{width:320px;}
 	.complete{width: 100%;}
 	.complete input{margin-left: 0px; width: 90%; margin-left: 5%; margin-right: 5%;}
 }

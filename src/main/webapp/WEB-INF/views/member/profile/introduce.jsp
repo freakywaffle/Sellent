@@ -4,7 +4,12 @@
 
 <link href="/resources/css/profile/introduce.css" rel="stylesheet" />
 <script src="/resources/js/member/introduce.js"></script>
+<script src="/resources/js/member/inc/aside.js"></script>
+
 <section class="content">
+<div class="menu-button mobile-block">
+		<input type="button" value=">" />
+</div>
 <form id="wrap" action="introduce" method="post">
 <div class="main">
 	<div class="introduce">
@@ -22,7 +27,7 @@
 			<div class="title-title" dir="rtl">보유기술</div>
 			<div class="techroom">
 			<c:forEach var="result" items="${skill }">
-				<div class="technic">
+				<div class="introtechnic">
 				 <a class="techname" name="name">${result.name }</a>
 				 <span class="close-button">&times;</span>
 				</div>

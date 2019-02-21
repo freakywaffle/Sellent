@@ -4,8 +4,13 @@
 
    <link href="/resources/css/profile/editinfo.css" rel="stylesheet" />
    <script src="/resources/js/member/editInfo.js"></script>
+   <script src="/resources/js/member/inc/aside.js"></script>
+   
 <section class="content">
 <form id="wrap" action="editInfo" method="post">
+	<div class="menu-button mobile-block">
+		<input type="button" value=">" />
+	</div>
 	<div class="profile-box">
 		<img alt="프로필" id='blah' src='<spring:url value="/sellent/profile/"/>${member.id}/${member.photo}'>
 		<div class=profilebtn>

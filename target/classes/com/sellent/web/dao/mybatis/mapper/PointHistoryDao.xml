@@ -22,7 +22,7 @@
 	
 	<select id="getListById" resultType="com.sellent.web.entity.PointHistory">
 		select 
-			regdate, 
+			date_format(regdate,'%y-%m-%d') date, 
 			content, 
 			point
 	    from point_history
@@ -55,7 +55,7 @@
 	</select> 
 	
 	<select id="getAllSumById" resultType="int">
-		select sum(point) from point_history 
+		select  IFNULL(sum(point),0) from point_history 
 		where member_id= #{param1}
 		<if test="param2 == 1"> <!-- 1week -->
 			 and regdate between curdate()-7  and curdate()+1

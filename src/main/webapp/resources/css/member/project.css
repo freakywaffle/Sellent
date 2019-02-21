@@ -1,4 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+.menu-button {
+	position: fixed;
+	top: 300px;
+	left: 0%;
+	height: auto;
+	display: none;
+	z-index: 10;
+}
+
+.menu-button input {
+	background-color: orange;
+	border: none;
+	height: 60px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+	
+}
 #top-content{
 	display:flex;
 	width:900px;
@@ -80,15 +98,15 @@ select:focus {
 	margin-right:0px;
 }
 
-.like{
+.prolike{
 	
 	padding-left:450px;
 	padding-top:15px;
 	padding-bottom:10px;
 	
 }
-.like img{ heihgt:20px; width:20px;}
-.title{font-size:18px; font-weight:bold; margin-left:15px; width:450px;}
+.prolike img{ heihgt:20px; width:20px;}
+.protitle{font-size:18px; font-weight:bold; margin-left:15px; width:450px;}
 .detail-data{
 	position:relative;
 	width:auto;
@@ -98,16 +116,23 @@ select:focus {
 	color:gray;
 	 
 }
-.edit, .make, .won, .won-star, .star-point{display:flex; }
-.edit{margin-right:15px;}
-.edit-img, .make-img, .won-img{margin-right:7px;}
-.name{position:absolute; right:-8px;}
-.edit div:last-child, .make div:last-child{margin-left:10px;}
+.proedit, .promake, .won, .won-star, .star-point{display:flex; }
+.proedit{margin-right:15px;}
+.proedit-img, .promake-img, .won-img{margin-right:7px;}
+.proname{position:absolute; right:10px;}
+.proedit div:last-child, .promake div:last-child{margin-left:10px;}
 .won{padding-left:10px;  margin-top:5px; position:relative; margin-right:270px;}
 .won-star{ margin-top:10px;}
 
 
 @media ( max-width :480px) {
+	.select{
+		margin-right: 10px;
+	}
+	.mobile-block{
+		display: block;
+		
+	}
 	.content{width:100%;}
 
 	#top-content{
@@ -156,12 +181,12 @@ select:focus {
 		position: static;
 	}
 	
-	.like{
+	.prolike{
 		padding-left: 0px;
 		position: absolute;
 		right: 5%;
 	}
-	.title{
+	.protitle{
 		margin-top:50px;
 		width: 90%;
 		margin-left: 5%;

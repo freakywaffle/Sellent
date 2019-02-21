@@ -4,12 +4,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tiles.Attribute;
+import org.apache.tiles.AttributeContext;
+import org.apache.tiles.preparer.ViewPreparer;
+import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -41,12 +46,16 @@ public class HomeController {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-
-	
 	@GetMapping("index")
-	public String index() {
+	public String index(Model model) {
 		
-	
+		//Best5 sellent
+	       List<Member> topSellent = memberDao.getTopSellent();
+	       System.out.println(topSellent.size());
+	       List<Member> topSellent2 = memberDao.getTopSellent2();
+	       System.out.println(topSellent2.size());
+	       model.addAttribute("topSellent",topSellent);
+	       model.addAttribute("topSellent2",topSellent2);
 		return "index";
 	}
 	
@@ -185,4 +194,8 @@ public class HomeController {
 			else result=1; //바뀌었을때
 		 return String.valueOf(result);
 	 }
+
+		 
+			
+	
 }

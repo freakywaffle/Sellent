@@ -1,5 +1,7 @@
 package com.sellent.web.dao;
 
+import java.util.List;
+
 import com.sellent.web.entity.Member;
 
 
@@ -19,4 +21,6 @@ public interface MemberDao {
 	int updateIntro(Member member);
 
 	int addPoint(String id, int point);
+	List<Member> getTopSellent();
+	List<Member> getTopSellent2();
 }
