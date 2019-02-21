@@ -4,12 +4,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.javassist.expr.NewArray;
+import org.apache.tiles.Attribute;
+import org.apache.tiles.AttributeContext;
+import org.apache.tiles.preparer.ViewPreparer;
+import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -41,19 +48,35 @@ public class HomeController {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-
+	static List<String> id = new ArrayList<>();
 	
 	@GetMapping("index")
-	public String index() {
+	public String index(Model model,  Principal principal) {
+
+		Object principal2 = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(!principal2.equals("anonymousUser")) {
+			id.clear();
+			System.out.println(principal.getName());
+			id.add(principal.getName());
+			System.out.println(id);
+			System.out.println("컨트롤 ");
+			
+		}
 		
-	
+		//Best5 sellent
+	       List<Member> topSellent = memberDao.getTopSellent();
+	       System.out.println(topSellent.size());
+	       List<Member> topSellent2 = memberDao.getTopSellent2();
+	       System.out.println(topSellent2.size());
+	       model.addAttribute("topSellent",topSellent);
+	       model.addAttribute("topSellent2",topSellent2);
 		return "index";
 	}
 	
 	
 	@GetMapping("login")
 	public String login(HttpServletRequest request) {
-		
+
 		String prevPage = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", prevPage);
 		System.out.println("???");
@@ -62,6 +85,8 @@ public class HomeController {
 		
 		return "member.login";
 	}
+	
+
 	
 	@GetMapping("join")
 	public String join() {
@@ -185,4 +210,8 @@ public class HomeController {
 			else result=1; //바뀌었을때
 		 return String.valueOf(result);
 	 }
+
+		 
+			
+	
 }

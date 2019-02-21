@@ -4,6 +4,8 @@
 <link href="/resources/css/member/static.css" rel="stylesheet" />
 <script src="//www.google.com/jsapi"></script>
 <script src="/resources/js/member/management/static.js"></script>
+<script src="/resources/js/member/inc/aside.js"></script>
+
 
 <section class="content">
 	<div id="top-content">

@@ -182,7 +182,7 @@
 						</div>
 						
 						<div>
-							<ul style="padding: 10px 0px 0px 20px; list-style: initial!important;">
+							<ul style="padding: 10px 0px 0px 20px; list-style: initial!important; font-size: 17px;">
 								<li>주말·공휴일은 답변이 늦어질 수 있습니다.</li>
 								<li>파일 첨부는 최대 4개까지 가능합니다.</li>							
 							</ul>
@@ -203,28 +203,60 @@
 
 			<section id="content3" class="tab-content">
 				<h3 class="hidden">Headline 3</h3>
-		      	<div style="width: 100%">
-		      		<ul>
-		      		<c:if test="${not empty sessionScope.member.id}">
-		      			<li class="scal" style="padding: 20px; height: 100px; border: 1px solid #cdcdcd; margin-bottom: 10px;">
-		      				<div class="flex" style="height: 100%;">
-		      					<div style="height: 100%; width: 20%;">
-		      						<img style="height: 100%; border-radius: 500px;" src="/resources/images/${sessionScope.member.photo}" />
-		      					</div>
-		      					<div style="height: 100%; width: 80%;">
-		      						<div style="height: 50%;">
-										<h1 style="color: #ee3b27">Sellent
-											<span class="hidden" style="float: right; font-size: 13px; color: #999">4일전</span>	
-										</h1>				
-		      						</div>
-		      						<div style="height: 50%;">
-		      							${sessionScope.member.id}님, Sellent에 오신 것을 환영합니다.
-		      						</div>
-		      					</div>
-		      				</div>
-		      			</li>
-		      		</c:if>
-		      		</ul>
+		      	<div class="flex" style="position:absolute; width: 100%; height: 100%; overflow: hidden">
+		      		<div id="tab1st" style="position:absolute; width: 100%">
+			      		<ul>
+				      		<c:if test="${not empty sessionScope.member.id}">
+				      			<li class="scal" style="padding: 20px; height: 100px; border: 1px solid #cdcdcd; margin-bottom: 10px;">
+				      				<div class="flex" style="height: 100%;">
+				      					<div style="height: 100%; width: 20%;">
+				      						<img style="height: 100%; border-radius: 500px;" src="/resources/images/${sessionScope.member.photo}" />
+				      					</div>
+				      					<div style="height: 100%; width: 80%;">
+				      						<div style="height: 50%;">
+												<h1 style="color: #ee3b27; margin-top: 6px!important;">Sellent
+													<span class="hidden" style="float: right; font-size: 13px; color: #999">4일전</span>	
+												</h1>				
+				      						</div>
+				      						<div style="height: 50%; font-size: 18px;">
+				      							${sessionScope.member.id}님, Sellent에 오신 것을 환영합니다.
+				      						</div>
+				      					</div>
+				      				</div>
+				      			</li>
+				      		</c:if>
+			      		</ul>
+		      		</div>
+		      		
+		      		<div id="tab2nd" style="color: #999s; position:absolute; width: 100%; left:100%; height: 20px; padding: 15px;">
+		      		
+		      			<div style="cursor: pointer; font-size: 18px; font-weight: bold; width: 100px">
+			      			<i class="fa fa-arrow-left color-gray-d1" aria-hidden="true"></i>돌아가기
+		      			</div>
+		      			<br/>
+		      			<br/>
+		      			<div>2019-01-25 16:20:30</div>
+		      			<div>반갑습니다! 크몽과 함께 즐겁게 일할 준비 되셨나요? </div>
+		      			<div>거래를 시작하시기 전에 크몽의 거래매너 가이드를 꼭 읽어주세요.</div>
+		      			<br/>
+		      			<div>내 일을 해결해줄 전문가에게 매너를 보여주세요 :)</div>
+		      			<br/>
+		      			<div>· 문의하기 전 서비스설명을 꼼꼼히 읽어주세요.</div>
+						<div>· 전문가가 연락가능한 시간에 문의하면 좀 더 빠른 답변이 가능해요.</div>
+						<div>· 작업이 완료되면 전문가에게 후기를 남겨주세요. 여러분의 작은 한마디가</div>
+		      			<br/>
+		      			<br/>
+						<div>건강한 거래문화는 의뢰인 - 전문가 모두가 함께 만들어가는 것입니다.</div>
+		      			<br/>
+		      			<br/>
+						<div>· 사람 대 사람간의 거래입니다. 어떠한 상황에서도 악의적인 비방, 욕설은 삼가주세요!</div>
+						<div>· 서비스에 명시된 금액, 혹은 서로 합의된 가격으로 거래를 진행해주세요.</div>
+						<div>· 결제 전 개인 연락처 요청 및 외부 거래유도는 서로에게 피해를 발생시킬 수 있어요.</div>
+						<div>(결제 후 연락처 공유는 가능하지만, 결제 전 연락처 공유시 패널티가 부과됩니다.) </div>
+		      			
+		      			<div>· 거래가 끝까지 잘 마무리 될 수 있도록 성실히 임해주세요 :)</div>
+		      		
+		      		</div>
 		      	</div>
 			</section>		
 			
@@ -249,8 +281,8 @@
 
 	<div class="inner-fabs" id="aaaaaa">
 		<div class="fab" id="fab5" data-tooltip="FAQ"><a href="#"><i class="material-icons">help</i></a></div>
-		<div class="fab" id="fab4" data-tooltip="구매 가이드"><a href="#"><i class="material-icons">account_circle</i></a></div>
-		<div class="fab" id="fab3" data-tooltip="Bookmark"><a href="/member/my_bookmarks"><i class="material-icons">computer</i></a></div>	  
+		<div class="fab" id="fab4" data-tooltip="구매 가이드"><a href="#"><i class="material-icons">library_books</i></a></div>
+		<div class="fab" id="fab3" data-tooltip="Bookmark"><a href="/member/my_bookmarks"><i class="material-icons">favorite</i></a></div>	  
 	</div>
 	<div class="fab" id="fab1"><i class="material-icons" id="fabIcon">add</i></div>
 

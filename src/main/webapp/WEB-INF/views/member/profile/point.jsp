@@ -4,8 +4,12 @@
 
 <link href="/resources/css/profile/point.css" rel="stylesheet" />
 <script src="/resources/js/member/profile/point.js"></script>
+<script src="/resources/js/member/inc/aside.js"></script>
 
 <section class="content">
+	<div class="menu-button mobile-block">
+		<input type="button" value=">" />
+	</div>
 	<div id="top-content">
 
 		<div class="select">
@@ -19,7 +23,11 @@
 
 
 	</div>
-	<div class="total-point" dir="rtl">Total:<a>&nbsp;${allSum }</a>P</div>
+	<div class="total-point" dir="rtl">
+		<span>
+			Total:<a>&nbsp;${allSum }</a>P
+		</span>
+	</div>
 	
 	<div id="point">
 		<table class="table">
@@ -33,7 +41,7 @@
 			<tbody>
 			<c:forEach var="n" items="${pointHistory}">
 				<tr>
-					<td>${n.regdate}</td>
+					<td>${n.date}</td>
 					<td>${n.content}</td>
 					<td>${n.point}P</td>
 				</tr>

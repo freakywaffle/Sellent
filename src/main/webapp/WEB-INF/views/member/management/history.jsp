@@ -4,8 +4,11 @@
 
 <link href="/resources/css/member/history.css" rel="stylesheet" />
 <script src="/resources/js/management/history.js"></script>
-
+<script src="/resources/js/member/inc/aside.js"></script>
 <section class="content">
+	<div class="menu-button mobile-block">
+		<input type="button" value=">" />
+	</div>
 	<div id="top-content">
 
 		<div class="select">
@@ -19,20 +22,20 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>날짜</th>
-					<th>프로젝트 제목</th>
-					<th>금액</th>
-					<th class="table-id">아이디</th>
-					<th>상태</th>
-					<th>처리</th>
+					<th class="pdate">날짜</th>
+					<th class="ptitle">프로젝트 제목</th>
+					<th class="pprice">금액</th>
+					<th class="pid">아이디</th>
+					<th class="pstate">상태</th>
+					<th class="pstate2">처리</th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach var="n" items="${product}">
 				<tr>
 					<input name='num' type="hidden" value="${n.no }"/>
-					<td>${n.regdate }</td>
-					<td class="title">${n.title }</td>
+					<td>${n.date }</td>
+					<td>${n.title }</td>
 					<td>${n.price} W</td>				
 					<td class="table-id">
 						<c:if test="${showPart == '판매' }">

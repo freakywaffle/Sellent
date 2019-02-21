@@ -162,6 +162,14 @@ public class Member{
 	public void setStar_point(int star_point) {
 		this.star_point = star_point;
 	}
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", password=" + password + ", nickname=" + nickname + ", photo=" + photo
+				+ ", simple_introduction=" + simple_introduction + ", detail_introduction=" + detail_introduction
+				+ ", email=" + email + ", regdate=" + regdate + ", point=" + point + ", account=" + account
+				+ ", enabled=" + enabled + ", sell_count=" + sell_count + ", product_count=" + product_count
+				+ ", star_point=" + star_point + "]";
+	}
 	
 	
 	
