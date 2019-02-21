@@ -1,9 +1,12 @@
 @import url("reset.css");
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+
  
 html, body {
 	height: 100%;
-
+	font-family: "Do Hyeon"!important;
 }
 .hidden {
 	display: none;
@@ -22,7 +25,6 @@ html, body {
 	height: 100%;
 	width: 440px;
 	right: 0px;
-	font-family: "NotoSansKR Regular" !important;
 	border: 1px solid #cdcdcd;
 	z-index: 999;
 }
@@ -423,6 +425,14 @@ html, body {
     -webkit-transition: -webkit-transform 1s ease-in-out 0s;
     height: 100%;
 }
+
+#guide #tab1st,
+#guide #tab2nd {
+	
+    transition: transform 1s ease-in-out 0s;
+	
+}
+
 
 #guide .move-to-second {
     transform: translateX(-100%);

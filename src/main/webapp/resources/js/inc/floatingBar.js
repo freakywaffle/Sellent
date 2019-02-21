@@ -201,6 +201,11 @@
 				a -= files.length;
 				alert("파일첨부는 4개까지 가능합니다.")
 			}
+			
+		
+				alert(formData.getAll('img'))
+				alert(formData.getAll('img').length)
+				
 			$.ajax({
 			    method      : 'POST',
 			    url         : '/Qna/Attachments',
@@ -208,7 +213,6 @@
 		        contentType: false,
 			    data        : formData,
 			    success     : function(data) {
-			        
 			    },
 			    error       : function(request, status, error) {
 			        alert("이미지 전송 실패");
@@ -216,6 +220,7 @@
 				
 			 	   
 			});
+			
 			
 			
 		}
@@ -417,9 +422,32 @@ window.addEventListener('load',function(){
 	});
 
 	
+
+
+
+window.addEventListener('load',function(){
+	var tab1st = $("#tab1st")
+	var tab2nd = $("#tab2nd")
 	
+	tab1st.click(moveTo1st)
+	tab2nd.click(moveTo2nd)
+
+	function moveTo1st() {
+	  tab1st.addClass('move-to-second')
+	  tab2nd.addClass('move-to-second')
+	  tab1st.removeClass('move-to-first')
+	  tab2nd.removeClass('move-to-first')
+	}
 	
+	function moveTo2nd() {
+
+	  tab1st.addClass('move-to-first')
+	  tab2nd.addClass('move-to-first')
+	  tab1st.removeClass('move-to-second')
+	  tab2nd.removeClass('move-to-second')
+	}
 	
+});
 		 
 		 
 

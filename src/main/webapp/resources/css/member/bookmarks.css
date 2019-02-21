@@ -1,4 +1,5 @@
 @import url("reset.css");
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
 
 
 .h-100 {
@@ -24,6 +25,7 @@ a:active {
 html, body {
 	width: 100%;
 	min-height: 600px;
+	font-family: "Do Hyeon"!important;
 }
 
 .main-container {
@@ -126,12 +128,12 @@ html, body {
 }
 .content .writer-id,
 .content .title {
-	margin-top: 5px;
+	margin-top: 5px!important;
 }
 .content .price {
-	margin: 15px 0px;
-	padding-right: 20px;
-	text-align: right;
+	margin: 15px 0px!important;
+	padding-right: 20px!important;
+	text-align: right!important;
 }
 
 .text .heart {
@@ -139,6 +141,9 @@ html, body {
 }
 .text .star {
 	margin-left: auto;
+	color: #ccc;
+	line-height: 26px;
+	
 }
 
 /*하트*/
