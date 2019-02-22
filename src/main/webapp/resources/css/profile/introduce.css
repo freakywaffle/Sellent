@@ -90,17 +90,26 @@
 	
 }
 .techroom{
+	display:block;
+	margin-left:18px;
+	position:relative;
 	border-radius: 8px;
 	border:1px solid #7f7f7f;
 	width: 450px;
 	min-height:200px;
+	position:static;
+	clear: both;
+
 }
 .introtechnic{
+	line-height:30px;
+	float:left;
 	height: 30px !important;
 	position: relative;
 	cursor:default;
 }
-.close-button{
+.introclose-button{
+	position:absolute;
 	border-radius: 100%;
 	cursor:pointer;
 	width:20px;
@@ -112,10 +121,11 @@
 	line-height:22px;
 	position: absolute;
 	top:-10px;
-	left:45px;
+	right: 0px;
 }
 .techname{
-	min-width: 50px;
+	display:inline-block;
+	min-width:80px;
 	text-align:center;
 	border:1px solid black;
 	border-radius: 8px;
@@ -126,13 +136,13 @@
 @media ( max-width :480px) {
 	.mobile-block{display: block;} 
 	.content, .main, .introduce{width: 100%; margin-top: 30px;}
-	.title, .content, .tech{display: unset !important; width: 100%;}
-	.title-title{margin-left: 0px !important;}
-	.introduce div{display:inline-block;}
+	.techtech{display: block !important;}
+	.title, .content{display: unset !important; width: 100%;}
+	.title-title{margin-left: 20px !important; direction: ltr;}
+	.techtech{display:inline !important;}
+	.techroom{width: 90%; margin-top: 10px; padding-top: 10px;}
 	.introduce input{width:320px;}
 	.title, .content, .tech, .tech-add{width:100%;}
-	.tech{display:block;}
-	.techroom{width:90% !important;}
 	.tech-add div:first-child{margin-left:0px !important;}
 	.tech-add div:first-child input {margin-left:0px !important;padding-left: 0px !important; width: 300px;}
 	.title-content textarea{width:320px;}

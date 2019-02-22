@@ -7,7 +7,7 @@ window.addEventListener("load",function(){
 		var option = document.getElementById("options").options[document.getElementById("options").selectedIndex];
 		var a = option.value
 		var optionValue = parseInt(a);
-		//alert(option.text)
+		alert(option.text)
 		/*option.addEventListener("click",function(e){
 			alert(e.target.text);
 		});*/

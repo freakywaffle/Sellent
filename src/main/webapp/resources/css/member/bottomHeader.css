@@ -15,6 +15,7 @@ a:hover {text-decoration: none !important;}
 	width: 1200px;
 	/* background-color: pink; */
 	height: 55px;
+	margin-top:10px;
 	margin-left: auto;
 	margin-right: auto;
 	
@@ -37,9 +38,9 @@ a:hover {text-decoration: none !important;}
 .bottom-header li:hover{
 	background-color: #ffd632;
 	border-radius:20px;
-	line-height:50px;	
+
 	color:white;
-	font-size:25px;
+	font-size:23px;
 }
 
 .bottom-header .arrow{

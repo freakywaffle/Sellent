@@ -26,7 +26,7 @@
 		<spring:authorize access="isAuthenticated()">
 			<div class="after-login">
 				<span class="mobile-hidden" name="id"><%-- ${pageContext.request.userPrincipal.name} --%>${sessionScope.member.nickname}</span>
-				<img src="/resources/images/${sessionScope.member.photo}" />
+				<img src="/resources/images/${sessionScope.member.photo} onerror="this.src='/resources/images/profile.png'" />
 				<div class="my-menu hidden">
 					<ul>
 						<li>${sessionScope.member.point}P</li>
