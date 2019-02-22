@@ -509,7 +509,7 @@ public class MemberController {
 	@RequestMapping("my_bookmarks_ajax")
 	@ResponseBody
 	public String subQna(Principal principal, String category) {
-		
+		System.out.println("sadadas");
 		String id = principal.getName();
 		List<Like> list = likeDao.select(id);
 		
@@ -524,6 +524,7 @@ public class MemberController {
 				if(likeProduct.get(0).getParentCategory().equals(category))
 					likeList.add(likeProduct.get(0));
 
+			System.out.println(likeProduct.get(0));
 		}
 		
 		Gson gson = new Gson();
