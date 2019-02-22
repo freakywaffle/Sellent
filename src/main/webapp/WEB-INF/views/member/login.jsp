@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <link href="/resources/css/member/login.css" rel="stylesheet"/>
 
    <main id="main">
-   <form id="wrap" method="post">
+   <form id="wrap" action="" method="post">
      <div class="idPw">
          <div><input type="text" placeholder="ID" name="username"/></div>
          <div><input type="password" placeholder="PASSWORD" name="password"/></div>

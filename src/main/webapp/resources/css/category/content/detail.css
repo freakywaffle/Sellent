@@ -1,9 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
 .main-content{
 	margin-top: 30px;
+	font-family: Do Hyeon!important;
 }
 
-.main-content .breadcrumb{
+.main-content pre{
+	font-family: Do Hyeon!important;
+	font-size: 20px;	
+}
+
+
+.main-content .custom-breadcrumb{
+	height: 25px;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-family: 'Do Hyeon', sans-serif;
 	font-size: 15px;
+	color: #a5a1a1;
 }
 
 .main-content .top-content{
@@ -31,6 +45,10 @@
 .top-content .post-img{
 	width: 650px;
 	height: 620px;
+}
+
+.top-content h2{
+	margin-top: 5px!important;
 }
 
 .top-content .post-img div:first-child{
@@ -120,10 +138,10 @@
 	white-space: -o-pre-wrap; /* Opera 7 */
 	word-wrap: break-all; /* Internet Explorer 5.5+ */ 
 }
-
 .sc-content ul{
 	margin-top: 20px;
 	margin-left: 20px;
+	font-size: 17px;
 }
 
 .sc-content li{
@@ -200,6 +218,7 @@
 }
 .bottom-content .detail h2{
 	margin-bottom: 20px;
+	
 }
 
 
@@ -213,6 +232,11 @@
 	box-sizing: border-box;
 }
 
+.bottom-content .profile-info p{
+	margin-bottom: 5px;
+	margin-top: 5px;	
+}
+
 .profile-photo img{
 	width: 150px;
 	height: 150px;
@@ -224,6 +248,7 @@
 .profile-name{
 	display: inline-block;
 	margin-top: 20px;
+	font-size: 30px;
 }
 
 .profile-table{
@@ -299,6 +324,11 @@
 	resize: none;
 	width: 100%;
 	height: auto;
+	white-space: pre-wrap; /* CSS3*/
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-all; /* Internet Explorer 5.5+ */ 
 }
 
 
@@ -324,7 +354,7 @@
 }
 
 .review pre{
-	width: 480px;
+	width: 95%;
 	white-space: pre-wrap; /* CSS3*/
 	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -336,7 +366,15 @@
 
 .review .review-profile-photo{
 	overflow: hidden;
-	width: 80px
+	width: 13%;
+}
+
+.review .close-bt{
+	width: 3%;
+	text-align: center;
+}
+.review .close-bt img{
+	width: 100%;
 }
 
 .review img{
@@ -346,9 +384,18 @@
 }
 
 .rv-content{
-	margin-left: 20px;
-	width: 100%;
+	width: 84%;
 }
+
+
+.rv-content .review-star{
+	margin-left: 10px;
+}
+.rv-content .review-star img{
+	width: 10px;
+	height: 10px;
+}
+
 .rv-content p{
 	margin-top: 0px;
 }

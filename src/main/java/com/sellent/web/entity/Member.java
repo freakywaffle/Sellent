@@ -16,7 +16,7 @@ public class Member{
 	private int enabled;
 	private int sell_count;
 	private int product_count;
-	private int star_point;
+	private double star_point;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
@@ -62,7 +62,7 @@ public class Member{
 
 	public Member(String id, String password, String nickname, String photo, String simple_introduction,
 			String detail_introduction, String email, Date regdate, int point, String account, int enabled,
-			int sell_count, int product_count, int star_point) {
+			int sell_count, int product_count, double star_point) {
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -156,10 +156,10 @@ public class Member{
 	public void setProduct_count(int product_count) {
 		this.product_count = product_count;
 	}
-	public int getStar_point() {
+	public double getStar_point() {
 		return star_point;
 	}
-	public void setStar_point(int star_point) {
+	public void setStar_point(double star_point) {
 		this.star_point = star_point;
 	}
 	

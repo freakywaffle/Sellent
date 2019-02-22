@@ -4,6 +4,10 @@
 href="/resources/css/admin/trade/person.css" />
 <script src="/resources/js/admin/trade/person.js"></script>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <section class="aside">
 	<div class="aside-title">
 		거래관리
@@ -26,127 +30,141 @@ href="/resources/css/admin/trade/person.css" />
 	
 	    <section class="content-box">
 	
-	        <div class="condition-form">
-	    
-	            <label class="condition-title">조건</label>
-	            
-	            <div class="condition-content">
-	                <select>
-	                    <option>전체</option>
-	                    <option>구매</option>
-	                    <option>판매</option>
-	                </select>
-	                <select class="mg-left-5">
-	                    <option>전체</option>
-	                    <option>거래중</option>
-	                    <option>거래완료</option>
-	                </select>
-	            </div>
-	        </div>
-	
-	        <div class="condition-form" style="border-top:none">
-	            <label class="condition-title">거래일자</label>
-	            
-	            <div class="condition-content">
-	                <input id="datepicker"type="text"/>
-	                <span class="mg-left-5">~</span>
-	                <input id="datepicker2" class="mg-left-5" type="text"/>
-	            </div>
-	        </div>
-	
-	        <div class="condition-form" style="border-top:none">
-	            <label class="condition-title">키워드검색</label>
-	    
-	            <div class="condition-content">
-	                <select>
-	                    <option>아이디</option>
-	                    <option>글번호</option>
-	                </select>
-	                <input class="mg-left-5" type="text">
-	            </div>
-	        </div>
-	
-	        <div class="search-form">
-	            <button type="button" class="btn btn-primary">검색하기</button>
-	        </div>
-	
+			<form action="">
+		        <div class="condition-form">
+		    
+		            <label class="condition-title">조건</label>
+		            
+		            <div class="condition-content">
+		                <select name="type">
+		                	<option value="">전체</option>
+		                    <option value="구매">구매</option>
+		                    <option value="판매">판매</option>
+		                </select>
+		                <select name="state" class="mg-left-5">
+		                    <option value="">전체</option>
+		                    <option value="미확인">미확인</option>
+		                    <option value="거절됨">거절됨</option> 
+		                    <option value="작업중">작업중</option>
+		                    <option value="작업완료">작업완료</option>
+		                </select>
+		            </div>
+		        </div>
+		
+		        <div class="condition-form" style="border-top:none">
+		            <label class="condition-title">거래일자</label>
+		            
+		            <div class="condition-content">
+		                <input name="startDate" id="datepicker"type="text"/>
+		                <span class="mg-left-5">~</span>
+		                <input name="endDate" id="datepicker2" class="mg-left-5" type="text"/>
+		            </div>
+		        </div>
+
+		        <div class="condition-form" style="border-top:none">
+		            <label class="condition-title">키워드검색</label>
+		    
+		            <div class="condition-content">
+		                <select name="condition">
+		                    <option value="id">아이디</option>
+		                    <option value="no">글번호</option>
+		                </select>
+		                <input name="text" class="mg-left-5" type="text">
+		            </div>
+		        </div>
+
+		        <div class="search-form">
+		            <button type="submit" class="btn btn-primary">검색하기</button>
+		        </div>
+			</form>
 	
 	        <div class="table-top">
-	            <div>총 회원수 : 51</div>
+	            <div>총 거래수 : ${paging.totalCount }</div>
 	        </div>
 	
 	        <table class="table-main">
+      		<colgroup>
+				<col width="100px">
+			</colgroup>
 	            <thead class="thead">
 	                <tr>
-	                    <td>
-	                        <input id="total-check" type="checkbox"/>
-	                    </td>
 	                    <td>번호</td>
 	                    <td>아이디</td>
 	                    <td>종류</td>
-	                    <td>거래일자</td>
 	                    <td>거래금액</td>
-	                    <td>입금액</td>
-	                    <td>수령액</td>
+	                    <td>거래일자</td>
 	                    <td>거래상태</td>
 	                </tr>
 	            </thead>
 	            <tbody class="tbody">
-	                <tr>
+	            <c:set var="gSum" value="0"/>
+	            <c:set var="pSum" value="0" />
+	            <c:forEach items="${list }" var="person">
+	            <c:choose>
+	            	<c:when test="${person.type eq '구매' }">
+	            		<c:set var="gSum" value="${gSum+person.price }" />	
+	            	</c:when>
+	            	<c:when test="${person.type eq '판매' }">
+	            		<c:set var="pSum" value="${pSum+person.price }" />	
+	            	</c:when>
+	            </c:choose>
+	                <tr class="person-obj">
+	                    <td class="check-no">${person.no }</td>
+	                    <td>${person.id }</td>
+	                    <td>${person.type }</td>
 	                    <td>
-	                        <input type="checkbox"/>
+	                    	<fmt:formatNumber value="${person.price}" pattern="#,###원"/>
 	                    </td>
-	                    <td>4</td>
-	                    <td>sadkkas02</td>
-	                    <td>구매</td>
-	                    <td>2019.01.10</td>
-	                    <td>150,000</td>
-	                    <td>150,000</td>
-	                    <td>-</td>
-	                    <td>거래중</td>
-	                </tr>
-	                <tr>
 	                    <td>
-	                        <input type="checkbox"/>
+	                    	<fmt:formatDate value="${person.regdate}" pattern="yyyy-MM-dd"/>
 	                    </td>
-	                    <td>3</td>
-	                    <td>sasdd993</td>
-	                    <td>판매</td>
-	                    <td>2019.01.07</td>
-	                    <td>220,000</td>
-	                    <td>-</td>
-	                    <td>220,000</td>
-	                    <td>거래완료</td>
+	                    <c:choose>
+	                        <c:when test="${person.state == '거절됨'}">
+	                    		<td style="font-weight: bold;">${person.state }</td>
+	                    	</c:when>
+	                    	<c:when test="${person.state == '작업중'}">
+	                    		<td style="font-weight: bold; color:coral">${person.state }</td>
+	                    	</c:when>
+         
+	                    	<c:when test="${person.state == '미확인'}">
+	                    		<td style="font-weight: bold; color:blue">${person.state }</td>
+	                    	</c:when>
+	                    	
+	                    	<c:when test="${person.state == '작업완료'}">
+	                    		<td style="font-weight: bold; color:red">${person.state }</td>
+	                    	</c:when>
+	                    </c:choose>
 	                </tr>
+                </c:forEach>
 	            </tbody>
 	        </table>
 	
 	        <div class="result-box">
 	            <span>합계  </span>
-	            <span>거래건수 : 4</span>
-	            <span>입금액 : 150,000</span>
-	            <span>수령액 : 50,000</span>
-	            <span>손익 : 100,000</span>
+	            <span>거래건수 : ${paging.totalCount }</span>
+	            <span>구매액 : <fmt:formatNumber value="${gSum }" pattern="#,###원"/></span>
+	            <span>판매액 : <fmt:formatNumber value="${pSum }" pattern="#,###원"/></span>
+	            <span>손익 : <fmt:formatNumber value="${pSum - gSum}" pattern="#,###원"/></span>
 	        </div>
-	
-			<div class="table-bottom">
-	            <button id="select-remove" type="button">선택삭제</button>
-	        </div>
-	
+
 	        <div class="paging">
-	            
-	            <div>
-	                <ul class="paging-number">
-	                    <li><a href=""> << </a></li>
-	                    <li><a href=""> < </a></li>
-	                    <li><a href=""> 1 </a></li>
-	                    <li><a href=""> 2 </a></li>
-	                    <li><a href=""> 3 </a></li>
-	                    <li><a href=""> > </a></li>
-	                    <li><a href=""> >> </a></li>
-	                </ul>
-	            </div>
-	        </div>
+                <div>
+                    <ul class="paging-box">
+                        <li class="paging-prev"><a href="${query}&page=${paging.prevPage}"> < </a></li>
+                        
+                        <c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+                            
+                            <c:set var="cls" value="${i==paging.page?'strong':''}" />
+                            
+                            <li class="paging-number">
+                                <a class="${cls}" href="${query}&page=${i}">${i }</a>
+                            </li>
+
+                        </c:forEach>
+                        <li class="paging-next"><a href="${query}&page=${paging.nextPage}"> > </a></li>
+                    </ul>
+                </div>
+            </div>
 	    </section>
 		<div id="modal2">
 			<div class="modal2-content">

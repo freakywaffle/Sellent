@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
 #header {
-
+	width: 100%;
       position: relative;
       background-color: #ffd632;
       height: 250px;
@@ -128,6 +128,12 @@ a:hover{text-decoration: none; color:gray;}
       /* background-color: pink; */
       
    }
+   
+   .after-login img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
 
    #main {
       position: relative;

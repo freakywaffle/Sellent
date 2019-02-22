@@ -1,0 +1,13 @@
+
+.bts .cancel{
+	
+	background-color: white!important;
+	border: 1px solid black!important;
+	margin-left: 70%!important;
+	
+}
+
+.bts .submit{
+	position: static!important;
+	margin-left: 10px!important;
+}

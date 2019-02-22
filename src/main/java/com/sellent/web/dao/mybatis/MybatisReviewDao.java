@@ -61,4 +61,17 @@ public class MybatisReviewDao implements ReviewDao{
 		return reviewDao.getAllCntById(id,selector);
 	}
 
+	@Override
+	public int update(Review review) {
+		// TODO Auto-generated method stub
+		ReviewDao reviewDao = session.getMapper(ReviewDao.class);
+		return reviewDao.update(review);
+	}
+
+	@Override
+	public int delete(int no) {
+		ReviewDao reviewDao = session.getMapper(ReviewDao.class);
+		return reviewDao.delete(no);
+	}
+
 }

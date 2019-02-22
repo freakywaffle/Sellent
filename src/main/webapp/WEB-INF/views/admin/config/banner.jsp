@@ -28,7 +28,7 @@
 	<main id="main">
 	    <section class="content-box">
 	        <div class="table-top">
-	            <div>총 배너수 : 4</div>
+	            <div>총 배너수 : ${paging.totalCount }</div>
 	            <button id="reg-button" type="button" class="btn btn-success">배너등록</button>
 	        </div>
 	
@@ -47,11 +47,11 @@
 	                </tr>
 	            </thead>
 	            <tbody class="tbody">
-	                <tr>
+	                <tr class="banner-obj">
 	                    <td>
 	                        <input type="checkbox"/>
 	                    </td>
-	                    <td>2</td>
+	                    <td class="banner-id">2</td>
 	                    <td class="text-align">
 	                        <div class="img-box">
 	
@@ -60,7 +60,7 @@
 	                    <td>제목</td>
 	                    <td>
 	                        <label class="switch">
-	                            <input type="checkbox">
+	                            <input class="banner-toggle" type="checkbox">
 	                            <span class="slider round"></span>
 	                        </label>
 	                        <p>ON</p><p style="display:none;">OFF</p>
@@ -105,20 +105,25 @@
 	            <button id="save-button" type="button" class="btn btn-warning">저장</button>
 			</div>
 	
-	        <div class="paging">
-	            
-	            <div>
-	                <ul class="paging-number">
-	                    <li><a href=""> << </a></li>
-	                    <li><a href=""> < </a></li>
-	                    <li><a href=""> 1 </a></li>
-	                    <li><a href=""> 2 </a></li>
-	                    <li><a href=""> 3 </a></li>
-	                    <li><a href=""> > </a></li>
-	                    <li><a href=""> >> </a></li>
-	                </ul>
-	            </div>
-	        </div>
+			<div class="paging">
+				<div>
+					<ul class="paging-box">
+						<li class="paging-prev"><a href="${query}&page=${paging.prevPage}"> < </a></li>
+						
+						<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+							
+							<c:set var="cls" value="${i==paging.page?'strong':''}" />
+							
+							<li class="paging-number">
+								<a class="${cls}" href="${query}&page=${i}">${i }</a>
+							</li>
+
+						</c:forEach>
+						
+						<li class="paging-next"><a href="${query}&page=${paging.nextPage}"> > </a></li>
+					</ul>
+				</div>
+			</div>
 	    </section>
 	
 		<div id="modal">
@@ -129,49 +134,52 @@
 	
 	            <h1>배너등록하기</h1>
 	
-	            <div>
-	                <div class="col-25">
-	                    <label>제목</label>
-	                </div>
-	                <div>
-	                    <input class="height-30" type="text">
-	                </div>
-	            </div>
-	            <div>
-	                <div class="col-25">
-	                    <label>기간</label>
-	                </div>
-	                <div class="end-date">
-	                    <span class="mg-left-5">종료일 : </span>
-	                    <input id="datepicker2" class="mg-left-5" type="text" style="width:150px"/>
-	                </div>
-	            </div>
-	            <div>
-	                <div class="col-25">
-	                    <label>이미지</label>
-	                </div>
-	
-	                <div class="modal-img-box">
-	                    <img id="modal-img"/>
-	                </div>
-	
-	                <div>
-	                    <input id="modal-file" type="file" multiple="multiple"/>
-	                    <button id="modal-img-button" class="img-upload" type="button">이미지첨부</button>
-	                </div>
-	            </div>
-	            <div>
-	                <div class="col-25">
-	                    <label>내용</label>
-	                </div>
-	                <div>
-	                    <textarea placeholder="내용을 입력하세요."></textarea>
-	                </div>
-	            </div>
-	
-	            <div class="reg-box">
-	                <button id="modal-check" type="button" class="btn btn-success">확인</button>
-				</div>
+				<form action="bannerInsert" method="POST" enctype="multipart/form-data">
+					<div>
+						<div class="col-25">
+							<label>제목</label>
+						</div>
+						<div>
+							<input name="title" id="modal-title" class="height-30" type="text">
+						</div>
+					</div>
+					<div>
+						<div class="col-25">
+							<label>기간</label>
+						</div>
+						<div class="end-date">
+							<span class="mg-left-5">종료일 : </span>
+							<input name="endDate" id="datepicker2" class="mg-left-5" type="text" style="width:150px"/>
+						</div>
+					</div>
+					<div>
+						<div class="col-25">
+							<label>이미지</label>
+						</div>
+		
+						<div class="modal-img-box">
+							<img id="modal-img"/>
+						</div>
+		
+						<div>
+							<!-- <input id="modal-file" class="form-control" type="file" name="files" multiple> -->
+							<input name="image" id="modal-file" type="file" multiple value="이미지첨부"/>
+							<button id="modal-img-button" class="img-upload" type="button">이미지첨부</button>
+						</div>
+					</div>
+					<div>
+						<div class="col-25">
+							<label>내용</label>
+						</div>
+						<div>
+							<textarea name="content" id="modal-content" placeholder="내용을 입력하세요."></textarea>
+						</div>
+					</div>
+		
+					<div class="reg-box">
+						<button id="modal-check" type="submit" class="btn btn-success">확인</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="modal2">

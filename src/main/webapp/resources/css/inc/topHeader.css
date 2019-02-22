@@ -18,6 +18,8 @@ a:hover {text-decoration: none !important;}
 	z-index: 10;
 	border-bottom: 2px solid rgb(255, 214, 51);
 	box-sizing: border-box;
+	font-family: Do Hyeon;
+	
 }
 
 #header .top-header {
@@ -151,9 +153,9 @@ a:hover {text-decoration: none !important;}
 #header .search-bar input {
 	width: 340px;
 	color: gray;
+	font-weight: 400;
 	padding-left:10px;
 	border-radius:8px !important;
-	font-weight: bold;
 	height: 35px;
 	border: none;
 	background-color: rgb(255, 214, 51);

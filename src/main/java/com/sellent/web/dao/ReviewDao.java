@@ -14,4 +14,7 @@ public interface ReviewDao {
 	List<ReviewView> getListById(String id, int page);
 	List<ReviewView> getListById(String id, int page, int selector);
 	int getAllCntById(String id, int selector);
+	
+	int update(Review review);
+	int delete(int no);
 }

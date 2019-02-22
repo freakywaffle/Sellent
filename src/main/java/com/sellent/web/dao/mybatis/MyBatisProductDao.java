@@ -70,8 +70,9 @@ public class MyBatisProductDao implements ProductDao{
 
 	@Override
 	public int update(Product product) {
-		// TODO Auto-generated method stub
-		return 0;
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		
+		return productDao.update(product);
 	}
 
 	@Override

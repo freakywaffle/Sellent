@@ -236,6 +236,10 @@ input[type="checkbox"]{
 		background:rgb(78, 75, 75);	
 	}
 
+	.thead tr{
+		height: 35px;
+	}
+
 	.tbody td{
 		height: 38px!important;
 	}

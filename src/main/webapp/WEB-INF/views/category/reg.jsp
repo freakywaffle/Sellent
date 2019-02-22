@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <link href="/resources/css/category/content/reg.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/reg.js"></script>
 <section id="main">
@@ -32,7 +33,7 @@
 				<h3>제목</h3>
 				<div>
 					<textarea rows="5" cols="30" name="title"></textarea>
-					<div class="txt-cnt">
+					<div class="txt-cnt hidden">
 						<span>0</span>/100byte
 					</div>
 				</div>
@@ -75,37 +76,17 @@
 						<div class="row">
 							<label>가격</label>
 							<div class="price">
-								<label>\</label> 
+								<label>￦</label> 
 								<input type="number" name="price" placeholder="가격을 입력하세요"/>
 							</div>
 							<label>수정횟수</label>
 							<div class="edit-cnt select">
-								<select>
-									<option>선택</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>직접입력</option>
-								</select>
-								<input type="number" min="0" placeholder="직접입력"/>
-								<input type="hidden" name="editCnt"/>
+								<input type="number" name="editCnt" min="0" placeholder="직접입력"/>
 								<label>회</label>
 							</div>
 							<label>작업기간</label>
 							<div class="term select">
-								<select>
-									<option>선택</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>직접입력</option>
-								</select>
-								<input type="number" min="0" placeholder="직접입력"/>
-								<input type="hidden" name="duration"/>
+								<input type="number" name="duration" min="0" placeholder="직접입력"/>
 								<label>일</label>
 							</div>
 						</div>
@@ -119,7 +100,7 @@
 				<h3>서비스 설명</h3>
 				<div class="editor">
 					<textarea rows="5" cols="10" name="detailContent"></textarea>
-					<div class="txt-cnt">
+					<div class="txt-cnt hidden">
 						<span>0</span>/500byte
 					</div>
 				</div>
@@ -157,7 +138,6 @@
 	 		});	
 
 	
-	 		
 	 	//이미지 업로드
 	 	var openBt = $('.openfolder');
 		var preview = $('.img-list ul');
@@ -172,38 +152,11 @@
 			//업로드할 이미지 리스트화
 			for(var i=0;i<fileList.length;i++){
 				var li = $('<li><img/></li>');
-				/*var reader = new FileReader();
-				reader.readAsDataURL(fileList[i]);
-				reader.addEventListener('load',function(e){
-					
-					var file = e.target;
-					var img = new Image();
-					img.src = file.result;
-					img.onload = function(){
-						var canvas = $('<canvas></canvas>').get(0);
-						var canvasContext = canvas.getContext('2d');
-						
-						canvas.width = 150;
-						canvas.height = 150;
-						
-						canvasContext.drawImage(this, 0, 0, 150, 150);
 
-						var dataURI = canvas.toDataURL("image/jpeg");
-
-						img.src = dataURI;
-					};
-					
-					li.append(img);
-					preview.append(li);
-					console.log(i+'완료');
-					
-					
-				});*/
 				//이미지 업로드
 				formData.append('img', fileList[i]);
 				
 			}
-			
 			
 			$.ajax({
 		        url: 'imageUp',
@@ -229,12 +182,8 @@
 		        }
 		    });
 			
-			
-			
 		});
 		 
-	
-	
 	</script>
 	
 </section>

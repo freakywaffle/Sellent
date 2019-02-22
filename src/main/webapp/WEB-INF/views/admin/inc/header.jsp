@@ -6,7 +6,7 @@
 		<section class="top-header">
 			<div class="logo-bar">
 				<div class="logo">
-					<span class="main-title"><a href="/admin">ADMINISTRATOR</a></span>
+					<span class="main-title"><a href="/admin/board/category">ADMINISTRATOR</a></span>
 					<span class="sub-title">(관리자페이지)</span>
 				</div>
 				<div class="member-menu">

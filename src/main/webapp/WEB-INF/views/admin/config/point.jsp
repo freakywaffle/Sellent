@@ -5,6 +5,10 @@
 	href="/resources/css/admin/config/point.css" />
 <script src="/resources/js/admin/config/point.js"></script>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <section class="aside">
 	<div class="aside-title">
 		환경설정
@@ -26,6 +30,7 @@
 	
 	<main id="main">
 	
+			<form action="">
 			<section class="content-box">
 				<table class="table-main">
 					<thead class="thead">
@@ -36,62 +41,38 @@
 						</tr>
 					</thead>
 					<tbody class="tbody">
-						<tr>
-							<td>첫로그인</td>
+					
+					<c:set var="i" value="0" />
+					<c:forEach items="${list }" var="pointConf">
+				
+						<tr class="pointConf-obj">
+							<td class="pointConf-content">${pointConf.content }</td>
 							<td class="td-text">
-								<input type="text" />
+								<input class="pointConf-point" name="text" type="text" value="${pointConf.point }"/>
 							</td>
 							<td class="td-radio">
-								<div class="div-radio">
-									<input type="radio"/>
-									<span>사용</span>
-									<input type="radio"/>
-									<span>사용안함</span>
+								<div class="div-radio pointConf-use">
+								<c:choose>
+									<c:when test="${pointConf.use eq 1}">
+										<input name="use${i}" type="radio" checked="checked" value="1"/>
+										<span>사용</span>
+										<input name="use${i}" type="radio" value="0"/>
+										<span>사용안함</span>
+									</c:when>
+								
+									<c:when test="${pointConf.use eq 0}">
+										<input name="use${i}" type="radio" value="1"/>
+										<span>사용</span>
+										<input name="use${i}" type="radio" checked="checked" value="0"/>
+										<span>사용안함</span>
+									</c:when>
+								</c:choose>
 								</div>
 							</td>
 						</tr>
-						<tr>
-							<td>게시글작성</td>
-							<td class="td-text">
-								<input type="text" />
-							</td>
-							<td class="td-radio">
-								<div class="div-radio">
-									<input type="radio"/>
-									<span>사용</span>
-									<input type="radio"/>
-									<span>사용안함</span>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>댓글작성</td>
-							<td class="td-text">
-								<input type="text" />
-							</td>
-							<td class="td-radio">
-								<div class="div-radio">
-									<input type="radio"/>
-									<span>사용</span>
-									<input type="radio"/>
-									<span>사용안함</span>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>거래완료</td>
-							<td class="td-text">
-								<input type="text" />
-							</td>
-							<td class="td-radio">
-								<div class="div-radio">
-									<input type="radio"/>
-									<span>사용</span>
-									<input type="radio"/>
-									<span>사용안함</span>
-								</div>
-							</td>
-						</tr>
+						
+						<c:set var="i" value="${i + 1 }"/>
+					</c:forEach>
 					</tbody>
 				</table>
 	
@@ -99,6 +80,7 @@
 					<button id="save-button" type="button" class="btn btn-success">저장</button>
 				</div>
 			</section>
+			</form>
 		
 	</main>
 </section>
