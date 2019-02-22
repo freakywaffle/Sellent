@@ -28,127 +28,241 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    $("#datepicker").val("");
+    $("#datepicker2").val("");  
 });
 
+// 선택삭제
+$(function(){
+    $("#total-check").click(function(){
+        if($(this).is(":checked") == true){
+            $(".check-box").prop("checked",true)
+        }else{
+            $(".check-box").prop("checked", false)
+        }
+    })
 
-/*선택삭제 */
-window.addEventListener("load",function(){
+    $("#select-remove").click(function(){
+        $("#modal2").css("display","blocK")
+    })
+
+    $("#modal2-close-button").click(function(){
+        $("#modal2").css("display","none")
+    })
     
-    var totalCheck = document.querySelector("#total-check");
-    var checkBox = document.querySelectorAll("input[type='checkbox']");
-    var modal2 = document.querySelector("#modal2");
-    var selectRemove = document.querySelector("#select-remove");
+    $("#modal2-cancel").click(function(){
+        $("#modal2").css("display","none")
+    })
     
-    totalCheck.onchange = function(){
-        var check = totalCheck.checked;
+    $("#modal2-check").click(function(){
+        $("#modal2").css("display","none")
         
-        for(var i=0; i<checkBox.length;i++){
-            checkBox[i].checked = check;
+        var arr = new Array()    // ajax를 배열로 전송하는 경우 스프링에서는 ArrayList로 받는다
+
+        $(".check-box").each(function(){
+            if($(this).is(":checked")==true){
+
+                var no = $(this).parents(".member-obj").children(".member-id").text()
+                arr.push(no)
+            }
+        })
+
+        jQuery.ajaxSettings.traditional = true; // 배열을 전송할떄 끝 []를 없애줌
+
+        $.ajax({
+
+            method:'POST',
+            url:'memberRemove',
+            data:{"arr":arr},
+            success:function(){
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+            },
+            error:function(){
+                alert("에러")
+            }
+        })
+    })
+})
+
+
+
+//모달3
+$(function(){
+    $(".member-mail").click(function(){
+        $("#modal3").css("display","block")
+
+        var index = $(".member-mail").index(this)
+        
+        $("#modal3-id").val($(".member-id").eq(index).text())
+        $("#modal3-mail").val($(".member-email").eq(index).text())
+        
+    })
+    $("#modal3-close-button").click(function(){
+        
+        $("#modal3-title").val("")
+        $("#modal3-content").val("")
+        $("#modal3-mail").val("")
+
+        $("#modal3").css("display","none")
+    })
+    $("#modal3-check").click(function(){
+    
+        var title = $("#modal3-title").val()
+        var content = $("#modal3-content").val()
+        var email = $("#modal3-mail").val()
+
+        if(title =="" || content == "" || email ==""){
+            alert("입력하지 않은 값이있습니다")
+        }else{
+            
+            $.ajax({
+
+                method:'POST',
+                url:'/email-send',
+                data:{"title":title, "email":email, "content":content},
+                success:function(){
+                    alert("전송완료")
+
+                    $("#modal3-title").val("")
+                    $("#modal3-content").val("")
+                    $("#modal3-mail").val("")
+
+                    $("#modal3").css("display","none")
+                },
+                error:function(){
+                    
+                }
+                
+            })
         }
-    }
-
-    selectRemove.onclick =function(){
-        modal2.style.display = "block";
-    }
-    
-})
-
-/*모달2-삭제 확인 */
-window.addEventListener("load", function(){
-    
-    var modal2 = document.querySelector("#modal2");
-    var closeBtn = document.querySelector("#modal2-close-button");
-    var cancelBtn = document.querySelector("#modal2-cancel");
-    var checkBtn = document.querySelector("#modal2-check");
-
-    closeBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
+    })
 
 })
 
-/*modal1- 회원등록 */
-window.addEventListener("load",function(){
+//모달1
+$(function(){
+    //모달
+    $("#member-reg").click(function(){
+        $("#modal").css("display","block")
+
+    })
+    $("#modal-close-button").click(function(){
+        $("#modal").css("display","none")
+        $(".pwd-message").css("display","none")
+        
+        $("#modal-id").val("")
+        $("#Modal-nickname").val("")
+        $("#modal-pwd").val("")
+        $("#modal-pwd2").val("")
+        $("#modal-mail").val("")
+        $("#modal-simple").val("")
+        $("#modal-simple").val("")
+        $("#modal-skill").val("")
+    })
     
-    var modal = document.querySelector("#modal");
-    var memberReg = document.querySelector("#member-reg");
-    var closeBtn = document.querySelector("#modal-close-button");
-    var checkBtn = document.querySelector("#modal-check");
+    $("#modal-check").click(function(){
 
-    memberReg.onclick = function(){
-        modal.style.display = "block";
-    }
+        var id = $("#modal-id").val()
+        var nickname = $("#modal-nickname").val()
+        var pwd = $("#modal-pwd").val()
+        var pwd2 = $("#modal-pwd2").val()
+        var mail = $("#modal-mail").val()
+        var simple = $("#modal-simple").val()
+        var detail = $("#modal-simple").val()
+        var skill = $("#modal-skill").val()
 
-    closeBtn.onclick = function(){
-        modal.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal.style.display = "none";
-    }
-})
-
-/*modal3- 메일전송 */
-window.addEventListener("load", function(){
-
-    var modal3 = document.querySelector("#modal3");
-    var mailBtn = document.querySelectorAll(".mail-button");
-    var closeBtn = document.querySelector("#modal3-close-button");
-    var checkBtn = document.querySelector("#modal3-check");
-
-
-    for(var i=0;i<mailBtn.length;i++){
-        mailBtn[i].onclick = function(){
-            modal3.style.display = "block";
+        var memberInfo = {
+            "id":id, "nickname":nickname, "pwd":pwd, "mail":mail,
+            "simple":simple, "detail":detail, "skill":skill
         }
-    }
 
-    closeBtn.onclick = function(){
-        modal3.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal3.style.display = "none";
-    }
-
-})
-
-
-/*modal4-회원정보보기 */
-window.addEventListener("load",function(){
+        var memberJson = JSON.stringify(memberInfo)
+        
+        if(pwd!=pwd2){
+            $(".pwd-message").css("display","block")
+        }else if(id == "" || pwd =="" || mail=="" || simple=="" || detail==""|| skill==""){
+            alert("입력하지 않은 값이 있습니다")
+        }else{
+            $(".pwd-message").css("display","none")
+            
+            $.ajax({
+                method:'POST',
+                url:'memberInsert',
+                data: {"memberJson" : memberJson},
+                success:function(){
+                    alert("성공")
+                    $("#modal").css("display","none")
+                    var mouse = new MouseEvent("click")
+                    var request = $("<a class='tmp hidden' href=''></a>")
+                    $("html").append(request)
     
-    var modal4 = document.querySelector("#modal4");
-    var infoBtn = document.querySelectorAll(".member-info");
-    var closeBtn = document.querySelector("#modal4-close-button");
-    var checkBtn = document.querySelector("#modal4-check");
-
-    for(var i=0;i<infoBtn.length;i++){
-        infoBtn[i].onclick = function(){
-            modal4.style.display = "block";
+                    var tmp = document.querySelector(".tmp")
+                    tmp.dispatchEvent(mouse)
+                },
+                error:function(){
+                    alert("에러")
+                }
+            })
         }
-    }
-
-    closeBtn.onclick = function(){
-        modal4.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal4.style.display = "none";
-    }
+    })    
 })
 
 
+//모달4
+$(function(){
 
+    $(".member-info").click(function(){
 
+        $("#modal4").css("display","block")
 
+        var index = $(".member-info").index(this)
 
+        $("#modal4-photo").val($(".member-photo").eq(index).text())
+        $("#modal4-simple").val($(".member-simple").eq(index).text())
+        $("#modal4-detail").val($(".member-detail").eq(index).text())
+        
+        var id = $(".member-id").eq(index).text()
+        var path = '/sellent/profile/'+id+'/'
+        var file = $(".member-photo").eq(index).text()
+        path += file
 
+        if(file==''){
+            $(".photo-alert").removeClass("hidden")
+            $("#modal4-photo").addClass("hidden")
+        }else{
+            $(".photo-alert").addClass("hidden")
+
+            $("#modal4-photo").attr("src", path) 
+            $("#modal4-photo").removeClass("hidden")
+        }
+
+        var memberId = $(".member-id").eq(index).text()
+
+        $.ajax({
+
+            method:'POST',
+            url:'memberSkill',
+            data:{"memberId":memberId},
+            success:function(skill){
+                var skillList = JSON.parse(skill);
+                
+                $("#modal4-skill").val(skillList)
+            }
+
+        })
+
+    })
+    $("#modal4-close-button").click(function(){
+        $("#modal4").css("display","none")
+    })
+    $("#modal4-check").click(function(){
+        $("#modal4").css("display","none")
+    })
+    
+})
 

@@ -1,4 +1,4 @@
-package com.sellent.web.entity;
+package com.sellent.web.entity; 
 
 public class MemberRole {
 

@@ -99,110 +99,6 @@ window.addEventListener("load",function(){
 })
 
 
-/*수정사항 저장 */
-window.addEventListener("load",function(){
-    var saveBtn = document.querySelector("#save-button");
-
-    saveBtn.onclick = function(){
-        
-    }
-})
-
-/*modal-배너등록 */
-window.addEventListener("load",function(){
-
-    var modal = document.querySelector("#modal");
-    var regBtn = document.querySelector("#reg-button");
-    var closeBtn = document.querySelector("#modal-close-button");
-    var checkBtn = document.querySelector("#modal-check");
-
-    regBtn.onclick = function(){
-        modal.style.display = "block";
-    }
-   
-    closeBtn.onclick = function(){
-        modal.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal.style.display = "none";
-    }
-
-})
-
-/*modal3-배너수정*/
-window.addEventListener("load",function(){
-
-    var modal3 = document.querySelector("#modal3");
-    var editBtn = document.querySelectorAll(".edit-button");
-    var closeBtn = document.querySelector("#modal3-close-button");
-    var checkBtn = document.querySelector("#modal3-check");
-
-
-    for(var i=0;i<editBtn.length;i++){
-        editBtn[i].onclick = function(){
-            modal3.style.display = "block";
-        }
-    }
-    closeBtn.onclick = function(){
-        modal3.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal3.style.display = "none";
-    }
-})
-
-/*선택삭제 */
-window.addEventListener("load",function(){
-    
-    var totalCheck = document.querySelector("#total-check");
-    var checkBox = document.querySelectorAll("td>input[type='checkbox']");
-    var modal2 = document.querySelector("#modal2");
-    var selectRemove = document.querySelector("#select-remove");
-    
-    totalCheck.onchange = function(){
-        var check = totalCheck.checked;
-        
-        for(var i=0; i<checkBox.length;i++){
-            checkBox[i].checked = check;
-        }
-    }
-
-    selectRemove.onclick =function(){
-        modal2.style.display = "block";
-    }
-    
-})
-
-/*확인취소창 modal2*/
-window.addEventListener("load", function(){
-    
-    var modal2 = document.querySelector("#modal2");
-    var closeBtn = document.querySelector("#modal2-close-button");
-    var cancelBtn = document.querySelector("#modal2-cancel");
-    var removeBtn = document.querySelectorAll(".remove-button");
-    var checkBtn = document.querySelector("#modal2-check");
-
-    closeBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    for(var i = 0; i<removeBtn.length; i++){
-        removeBtn[i].onclick = function(){
-            modal2.style.display = "block";
-        }
-    }
-})
-
 
 
 /*달력 */
@@ -234,6 +130,8 @@ $(function() {
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     $('#datepicker3').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    $("#datepicker").val("");
+    $("#datepicker2").val("");
 });
 
 
@@ -248,3 +146,37 @@ $( function() {
 } );
 
 
+
+$(function(){
+
+    $("#reg-button").click(function(){
+
+        $("#modal").css("display","block")
+        
+    })
+
+    $
+    $("#modal-close-button").click(function(){
+
+        $("#modal").css("display","none")
+        
+    })
+
+    
+    $("#modal-check-button").click(function(){
+
+        $("#modal").css("display","none")
+        
+        var title = $("#modal-title").val()
+        var endDate = $("#datepicker2").val()
+        var image = $("#modal-file").val()
+        var content = $("#modal-content").val()
+
+        alert(title)
+        alert(endDate)
+        alert(image)
+        alert(content)
+
+    })
+
+})

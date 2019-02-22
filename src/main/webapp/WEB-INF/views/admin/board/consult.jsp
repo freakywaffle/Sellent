@@ -76,7 +76,7 @@
 			</form>
 	
 	        <div class="table-top">
-	            <div>총 게시물수 : ${paging.totalCount }</div>
+	            <div>총 상담글수 : ${paging.totalCount }</div>
 	        </div>
 	
 	        <table class="table-main">
@@ -135,23 +135,24 @@
 	        </div>
 	
 	        <div class="paging">
-				<div>
-					<ul class="paging-box">
-						<li class="paging-prev"><a href="${query}&page=${paging.prevPage}"> < </a></li>
-						
-						<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+					<div>
+						<ul class="paging-box">
+							<li class="paging-prev"><a href="${query}&page=${paging.prevPage}"> < </a></li>
 							
-							<c:set var="cls" value="${i==paging.page?'strong':''}" />
+							<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+								
+								<c:set var="cls" value="${i==paging.page?'strong':''}" />
+								
+								<li class="paging-number">
+									<a class="${cls}" href="${query}&page=${i}">${i }</a>
+								</li>
+	
+							</c:forEach>
 							
-							<li class="paging-number">
-								<a class="${cls}" href="${query}&page=${i}">${i }</a>
-							</li>
-
-						</c:forEach>
-						<li class="paging-next"><a href="${query}&page=${paging.nextPage}"> > </a></li>
-					</ul>
+							<li class="paging-next"><a href="${query}&page=${paging.nextPage}"> > </a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
 	    </section>
 	
 	    <div id="modal">

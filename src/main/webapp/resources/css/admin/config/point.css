@@ -1,6 +1,10 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
 
+input[type='text']{
+	text-align: center;
+}
+
 .content-box{
     width:1000px;
     min-width:auto;

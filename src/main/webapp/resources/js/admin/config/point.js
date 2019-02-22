@@ -1,17 +1,42 @@
-window.addEventListener("load",function(){
-    
-    var saveBtn = document.querySelector("#save-button");
-    var radio1 = document.querySelectorAll(".div-radio input:nth-of-type(1)");
-    var radio2 = document.querySelectorAll(".div-radio input:nth-of-type(2)");
+$(function(){
 
-    saveBtn.onclick = function(){
-        
-    }
+    $("#save-button").click(function(){
 
-    for(var i=0; i<radio1.length;i++){
+        var arr = new Array()
 
-         radio1[i].setAttribute('name', 'use'+i);
-         radio2[i].setAttribute('name', 'use'+i);
-              
-    }
+        $(".pointConf-obj").each(function(index, obj){
+
+            var content = $(".pointConf-obj").eq(index).children(".pointConf-content").text()
+            var point = $(".pointConf-point").eq(index).val()
+            var use = $(".pointConf-use").eq(index).children("input:checked").val()
+
+            var aa = {
+                "content":content, "point":point, "use":use
+            }
+
+            arr.push(aa)
+        })
+
+        $.ajax({
+            method:'POST',
+            url:'pointUpdate',
+            data:JSON.stringify(arr),
+            contentType : "application/json; charset=UTF-8",
+            success:function(){
+            	alert("저장완료")
+            },
+            error:function(){
+            	alert("실패")
+            }
+
+        })
+
+
+    })
+
+
+
+
+
+
 })

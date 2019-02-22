@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<mapper namespace="com.sellent.web.dao.AdminBannerDao">
+		
+	<select id="getBannerList" resultType="com.sellent.web.entity.Banner">
+		select * from banner limit #{startCount}, 10
+	</select>
+				
+	<select id="getBannerCnt" resultType="int">
+		select count(*) from banner
+	</select>
+		
+	<insert id="insert">
+		insert into banner(id, order, image, title, content, end_date, use)
+		values (#{id}, #{order}, #{image}, #{title}, #{content}, #{end_date}, #{use})
+	</insert>
+		
+	<update id="update">
+		update banner set order, image, title, content, end_date, use where id=#{id} 
+	</update>
+								
+	<delete id="delete">
+		delete banner where id=#{param1} 
+	</delete>
+</mapper>

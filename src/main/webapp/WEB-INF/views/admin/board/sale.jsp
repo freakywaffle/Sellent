@@ -44,7 +44,7 @@
 						<select name="approval">
 							<option value="">전체</option>
 							<option value="0">대기</option>
-							<option value="1">승인</option>
+							<option value="1">처리완료</option>
 						</select>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 			</form>
 	
 	        <div class="table-top">
-	            <div>총 게시물수 : ${paging.totalCount }</div>
+	            <div>총 판매요청수 : ${paging.totalCount }</div>
 	        </div>
 	
 	        <table class="table-main">

@@ -59,9 +59,11 @@ public class BoardController {
 
 	// list
 	@GetMapping("category")
-	public String category(@RequestParam(name = "parent", defaultValue = "") String parent,
+	public String category(
+			@RequestParam(name = "parent", defaultValue = "") String parent,
 			@RequestParam(name = "sub", defaultValue = "") String sub,
-			@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+			@RequestParam(name = "page", defaultValue = "1") int page, 
+			Model model) {
 
 		int cnt = categoryService.getCategoryCnt(parent, sub);
 		AdminPaging paging = new AdminPaging();
@@ -321,13 +323,14 @@ public class BoardController {
 			String title,
 			String email,
 			String content) throws MessagingException {
+		
 		String checkId = UUID.randomUUID().toString();
 		
 		//메시지 타입 설정(문자 이외에 이미지,동영상 가능)
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 		
-		helper.setFrom("dkstnrbs@gmail.com");		// SMTP에 등록한 자신의 아이디
+		helper.setFrom("asg0828@naver.com");		// SMTP에 등록한 자신의 아이디
 		helper.setTo(email);
 		helper.setText(content);
 		helper.setSubject(title);
