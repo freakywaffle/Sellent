@@ -212,4 +212,11 @@ $(document).ready(function(){
 			  }
 		});
 	});
+	
+	//수정버튼
+	var editBt = $('.editBt');
+	editBt.click(function(){
+		var url = $(location).attr('pathname')+'/edit';
+		$(location).attr('pathname', url);
+	});
 });

@@ -1,18 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
 .search-result{
 	height: 50px;
 	display: flex;
+	font-family: Do Hyeon;
+	font-weight: 400;
 }
 
 
 .search-result label{
 	border-bottom: 1px solid;
 	font-size: 30px;
+	font-weight: 400;
 	position: relative;
 	left: 0px;
 	top: 0px;
 }
 
 .search-result div{
+	font-size: 20px;
 	margin-left: 10px;
 	vertical-align: bottom;
 }

@@ -38,9 +38,10 @@
 	margin-top: 20px;
 }
 
-.content .breadcrumb{
+.content .custom-breadcrumb{
 	height: 25px;
 	margin-left: 20px;
+	margin-top: 10px;
 	font-family: 'Do Hyeon', sans-serif;
 	font-size: 15px;
 	color: #a5a1a1;
@@ -63,7 +64,7 @@
 
 .content .top-content {
 	display: flex;
-	padding-top: 30px;
+	padding-top: 20px;
 	height: 60px;
 	border-bottom: 1px gray solid;
 	box-sizing: border-box;
@@ -71,12 +72,13 @@
 
 .top-content input{
 	font-family: 'Do Hyeon', sans-serif;
-	font-size:13px;
+	font-size: 15px;
 	border: 1px solid gray;
 	background-color: white;
-	 height:25px;
-	 border-radius:8px;
-	 vertical-align: middle;
+	height: 30px;
+	border-radius: 8px;
+	width: 70px;
+	vertical-align: middle;
 	line-height: 25px;
 }
 
@@ -107,6 +109,7 @@ select:focus {
 .contents{
 	display:flex;
 	margin-bottom:20px;
+	font-family: Do hyeon;
 }
 
 .title-img{
@@ -154,7 +157,6 @@ select:focus {
 
 .title{
 	font-size:18px; 
-	font-weight:bold; 
 	margin-left:15px; 
 	width:450px;
 	height: 50px;
@@ -195,10 +197,12 @@ select:focus {
 	margin-left:10px;
 }
 .won{
-	padding-left:10px;  
+	padding-left:13px;  
 	margin-top:5px; 
 	position:relative; 
-	margin-right:270px;
+	margin-right:200px;
+	width: 150px;
+	font-size: 20px;
 }
 .won-star{ 
 	margin-top:10px;

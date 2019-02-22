@@ -63,4 +63,10 @@
 		</if>
 		;
 	</select> 
+	<update id="update" parameterType="com.sellent.web.entity.Review">
+		update review set content = #{content}, starpoint = #{starpoint} where no = #{no}
+	</update>
+	<delete id="delete">
+		delete from review where no = #{param1}
+	</delete>
 </mapper>

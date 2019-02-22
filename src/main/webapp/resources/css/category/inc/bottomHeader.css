@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
 #header .bottom-header {
-	
+	font-size: 23px;
+	font-family: Do Hyeon;
 	width: 1200px;
 	background-color: white;
 	height: 53px;
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: border-box;
+	padding-bottom: 10px;
 }
 
 .bottom-header ul{
@@ -26,7 +30,7 @@
 }
 
 .bottom-header .ct-menu ul>li>div:first-child{
-	margin-top: 16px;
+	margin-top: 5px;
 	margin-bottom: 16px;
 }
 
@@ -39,12 +43,17 @@
 	background-color: white;
 	border: 2px solid rgb(255, 214, 51);
 	border-top: none;
+	font-size: 15px;
+	
 }
 .header-sub-category>div{
 	width: 100%;
 }
 .header-sub-category>div a{
 	display: block;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	
 }
 
 
