@@ -27,7 +27,7 @@
 	
 	<select id="getAdminConfigCnt" resultType="int">
 		select count(*) from AdminConfigView 
-		where role like CONCAT('%', #{param1}, '%')
+		where `role` like CONCAT('%', #{param1}, '%')
 		<choose>
 			<when test="param2 == '' and param3 != ''">
 				and regdate <![CDATA[ < ]]> date(#{param3}) 

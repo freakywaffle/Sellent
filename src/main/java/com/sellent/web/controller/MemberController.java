@@ -116,6 +116,7 @@ public class MemberController {
 		int allCnt = productDao.getAllCntById(principal.getName(),selector);
 		System.out.println("now Page: " + page);
 		System.out.println("total page: " +allCnt );
+
 		int num=5; //화면에 보여질 페이지 번호의 갯수
 		//끝 페이지 번호
 		int endpage;
@@ -509,7 +510,7 @@ public class MemberController {
 	@RequestMapping("my_bookmarks_ajax")
 	@ResponseBody
 	public String subQna(Principal principal, String category) {
-		
+		System.out.println("sadadas");
 		String id = principal.getName();
 		List<Like> list = likeDao.select(id);
 		
@@ -524,6 +525,7 @@ public class MemberController {
 				if(likeProduct.get(0).getParentCategory().equals(category))
 					likeList.add(likeProduct.get(0));
 
+			System.out.println(likeProduct.get(0));
 		}
 		
 		Gson gson = new Gson();

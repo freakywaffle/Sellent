@@ -1,6 +1,6 @@
 window.addEventListener("load",function(){
   
-	var closeBtn = document.querySelectorAll(".close-button");
+	var closeBtn = document.querySelectorAll(".introclose-button");
 	var technic = document.querySelectorAll(".technic");
 	var skillPut = document.querySelector("input[name='skillPut']");
 	var skillInput = document.querySelector("input[name='name']");
@@ -18,13 +18,13 @@ window.addEventListener("load",function(){
    			   var techroom = document.querySelector(".techroom");
    			   
    			   var technic = document.createElement("div");
-   			   technic.className="technic";
+   			   technic.className="introtechnic";
    			   
    			   var techname = document.createElement("a");
    			   techname.className="techname";
    			   
    			   var closeBtn = document.createElement("span");
-   			   closeBtn.className="close-button";
+   			   closeBtn.className="introclose-button";
    			   
    			   closeBtn.innerHTML = "&times;";
    			   
@@ -50,7 +50,7 @@ window.addEventListener("load",function(){
 		
 		}*/
 	
-		if(e.target.classList.contains("close-button"))
+		if(e.target.classList.contains("introclose-button"))
 		{
 			e.target.parentNode.style.display="none";
 			var deltech =e.target.parentNode.children[0].innerText;

@@ -31,7 +31,9 @@
 		<spring:authorize access="isAuthenticated()">
 			<div class="after-login">
 				<span class="mobile-hidden" name="id"><%-- ${pageContext.request.userPrincipal.name} --%>${sessionScope.member.nickname}</span>
+
 				<img src="<spr:url value="/sellent/profile"/>/${sessionScope.member.id}/${sessionScope.member.photo}" />
+
 				<div class="my-menu hidden">
 						<ul>
 							<li>${point}P</li>

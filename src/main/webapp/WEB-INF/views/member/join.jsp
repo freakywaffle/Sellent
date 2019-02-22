@@ -28,11 +28,11 @@
 			
 			<div class="twobind">
 				<div class="sub-title">비밀번호</div>
-				<input type="text" name="password"/>
+				<input type="password" name="password"/>
 			</div>
 			<div class="twobind pwch">
 				<div class="sub-title">비밀번호 재확인</div>
-				<input type="text" name="pwdchk"/>
+				<input type="password" name="pwdchk"/>
 				<span id="warning"></span>
 			</div>
 			

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
 <tiles:importAttribute name="list"/>
 <tiles:importAttribute name="subList"/>
@@ -210,7 +211,7 @@
 				      			<li class="scal" style="padding: 20px; height: 100px; border: 1px solid #cdcdcd; margin-bottom: 10px;">
 				      				<div class="flex" style="height: 100%;">
 				      					<div style="height: 100%; width: 20%;">
-				      						<img style="height: 100%; border-radius: 500px;" src="/resources/images/${sessionScope.member.photo}" />
+				      						<img style="height: 100%; border-radius: 500px;" src="<spr:url value="/sellent/profile"/>/${sessionScope.member.id}/${sessionScope.member.photo}" />
 				      					</div>
 				      					<div style="height: 100%; width: 80%;">
 				      						<div style="height: 50%;">
