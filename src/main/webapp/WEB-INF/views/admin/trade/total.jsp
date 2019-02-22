@@ -38,9 +38,9 @@
 		            <div class="condition-content">
 		                <select name="state">
 		                    <option value="">전체</option>
-		                    <option value="거절됨">거절됨<option>
-		                    <option value="작업중">작업중</option>
 		                    <option value="미확인">미확인</option>
+		                    <option value="거절됨">거절됨</option>
+		                    <option value="작업중">작업중</option>
 		                    <option value="작업완료">작업완료</option>
 		                </select>
 		            </div>

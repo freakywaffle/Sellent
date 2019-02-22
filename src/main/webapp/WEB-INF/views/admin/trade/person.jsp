@@ -43,9 +43,9 @@ href="/resources/css/admin/trade/person.css" />
 		                </select>
 		                <select name="state" class="mg-left-5">
 		                    <option value="">전체</option>
-		                    <option value="거절됨">거절됨<option>
-		                    <option value="작업중">작업중</option>
 		                    <option value="미확인">미확인</option>
+		                    <option value="거절됨">거절됨</option> 
+		                    <option value="작업중">작업중</option>
 		                    <option value="작업완료">작업완료</option>
 		                </select>
 		            </div>
