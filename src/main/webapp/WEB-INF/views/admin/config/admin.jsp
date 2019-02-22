@@ -59,9 +59,9 @@
 		            <label class="condition-title">키워드검색</label>
 		    
 		            <div class="condition-content">
-		                <select class="condition">
-		                    <option class="id">아이디</option>
-		                    <option class="nickname">닉네임</option>
+		                <select name="condition">
+		                    <option value="id">아이디</option>
+		                    <option value="nickname">닉네임</option>
 		                </select>
 		                <input name="text" class="mg-left-5" type="text">
 		            </div>
