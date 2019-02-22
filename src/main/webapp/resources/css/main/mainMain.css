@@ -142,3 +142,9 @@
      .hotsellent-image-top li:first-child,.hotsellent-image-bottom li:first-child{margin-left:0px !important;}
      
         }
+        
+@media(max-width:480px){
+	.main-icones{
+		width: 100%;
+	}
+}

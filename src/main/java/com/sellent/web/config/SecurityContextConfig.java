@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
 @ComponentScan(basePackages="com.sellent.web.config")
@@ -41,7 +42,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
             .and()
          .logout()
             .logoutUrl("/member/logout")
-            .logoutSuccessUrl("/index" )
+            .logoutSuccessUrl("/index")
             .invalidateHttpSession(true)
             .and()
          .csrf()

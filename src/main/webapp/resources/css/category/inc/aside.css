@@ -32,6 +32,13 @@
 	padding-top: 20px;
 	min-width: 300px;
 	position: relative;
+	font-family: Do Hyeon;
+	font-size: 20px;
+}
+
+.aside a{
+	
+	color: black;
 }
 
 .aside .ct-wrapper{
@@ -73,8 +80,8 @@
 
 
 .aside h2{
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 30px;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 35px;
 	padding-right: 30px;
 	padding-bottom: 20px;
 	border-bottom: 2px solid rgb(255, 214, 51);
@@ -88,7 +95,7 @@
 }
 
 .aside h3{
-	font-size: 18px;
+	font-size: 30px;
 	
 }
 
