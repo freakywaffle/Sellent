@@ -9,9 +9,9 @@
 		where 
 			parentCategory like CONCAT('%', #{param1}, '%') and
 			subCategory like CONCAT('%', #{param2}, '%') 
-		<if test="param3 != 2">
+		
 			and sellCheck like CONCAT('%', #{param3}, '%')
-		</if>
+		
 		<choose>
 			<when test="param4 == '' and param5 != ''">
 				and regdate <![CDATA[ < ]]> date(#{param5}) 

@@ -10,6 +10,10 @@ public class Review {
 	private double starpoint;
 	private Date regdate;
 	private String date;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refs/remotes/origin/master
 	
 	
 	public Review() {
@@ -84,6 +88,16 @@ public class Review {
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 

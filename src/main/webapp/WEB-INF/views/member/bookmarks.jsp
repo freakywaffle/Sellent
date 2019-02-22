@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>
      
 <!DOCTYPE html>
 
@@ -30,15 +31,14 @@
 
         <div class="loading">
             <img style="width: 170px; top:620px; position: fixed;"src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
-        </div>
-        <div class="mouse original"></div>
+       
 
-	<div class="main-container h-100">
+	<div class="main-container h-100" alt="loading">
 		<div class="main-head">
 			<h1>찜한 서비스</h1>
 		</div>
 		<div class="m-felx flex h-cal">
-			<div class="aside flex 	h-100">
+			<div class="aside flex" style="height: 70px!important">
 				<div class="main-list">
 					<ul>
 						<li><a href="#" class="a-color p-catrgory"><i class="fa fa-caret-right"></i>전체카테고리</a></li>
@@ -48,9 +48,6 @@
 						<li><a href="#" class="a-color p-catrgory">${p.parent_category} (${p.cnt})</a></li>
 						</c:forEach>
 						
-					</ul>
-					<ul>
-						<li><a href="#" class="a-color"><i class="fa fa-caret-right"></i>포트폴리오</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,8 +64,8 @@
 				<div class="content bbb" style="">
 						<a href="/category/${a.parentCategory}/${a.no}">
 							<div class="img-box bbb">
-								<div class="img"><img src="/resources/images/${a.thumbnail}"/></div>
-								<div class="profile"><img style="height: 45px;" src="/resources/images/${a.photo}"/></div>
+								<div class="img"><img style="width: 100%; height: 100%" src="<spr:url value="/sellent/upload/"/>${a.no}/${a.thumbnail}"  onerror="this.src='/sellent/default/기본.gif'"/></div>
+								<div class="profile"><img style="height: 45px;" src="<spr:url value="/sellent/profile"/>/${sessionScope.member.id}/${sessionScope.member.photo}"/></div>
 							</div>
 						</a>
 						<div class="text">
@@ -145,20 +142,25 @@
 	 				var price = aaaa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 					
 								
-				
+					var title = b[t].title
+					
+					 
+	 				if(title.length >=27)
+					 title = title.substring(0,27)+"..."
+	 					
 	 				
-	 				
-						
+	 				var c = "<spr:url value='/sellent/upload/'/>"+b[t].no+"/"+b[t].thumbnail
+					var profile = "<spr:url value='/sellent/profile'/>/" + b[t].writerId + b[t].photo
 						
  					var q = $("<div class='content bbb'></div>"); 	
 					
-		 			var cc = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'><div class='img-box bbb'><div class='img'><img src='/resources/images/"+b[t].thumbnail+"'/></div><div class='profile'><img style='height: 45px;' src='/resources/images/"+b[t].photo+"'/></div></div></a>")
+		 			var cc = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'><div class='img-box bbb'><div class='img'><img style='width: 100%; height: 100%' src='"+c+"'/></div><div class='profile'><img style='height: 45px;' src='"+ profile +"'/></div></div></a>")
 				
 		 			
 		 			var dd = $("<div class='text'></div>")
 		 			var qqq = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'></a>")
 		 			var www = $("<div class='writer-id'>"+b[t].writerId+"</div>")
-		 			var eee = $("<div class='title' style='height: 40px'>"+b[t].title+"</div>")
+		 			var eee = $("<div class='title' style='height: 40px'>"+title+"</div>")
 		 			var rrr = $("<div class='price'>"+"￦"+price+"</div>")
 		 			
 		 			var flex = $("<div class='flex'></div>")
@@ -239,4 +241,5 @@
 	
 	
 	</script>
+	 </div>
 </body>

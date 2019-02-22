@@ -60,7 +60,6 @@ public class PointHistory {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-
 	
 	public String getDate() {
 		return date;
@@ -69,6 +68,7 @@ public class PointHistory {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 
 	@Override
 	public String toString() {
