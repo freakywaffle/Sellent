@@ -12,7 +12,7 @@ import com.sellent.web.entity.Member;
 import com.sellent.web.entity.Skill;
  
 @Repository
-public class MaBatisAdminMemberDao implements AdminMemberDao{
+public class MyBatisAdminMemberDao implements AdminMemberDao{
 
 	@Autowired
 	private SqlSessionTemplate session;
