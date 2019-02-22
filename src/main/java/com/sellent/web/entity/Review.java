@@ -10,11 +10,7 @@ public class Review {
 	private double starpoint;
 	private Date regdate;
 	private String date;
-<<<<<<< HEAD
-=======
-	
->>>>>>> refs/remotes/origin/master
-	
+
 	
 	public Review() {
 		// TODO Auto-generated constructor stub
@@ -90,16 +86,6 @@ public class Review {
 		this.regdate = regdate;
 	}
 	
-
-	public String getDate() {
-		return date;
-	}
-
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 
 	public String getDate() {
 		return date;
