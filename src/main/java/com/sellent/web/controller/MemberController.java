@@ -1,6 +1,6 @@
 package com.sellent.web.controller;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
@@ -116,6 +116,7 @@ public class MemberController {
 		int allCnt = productDao.getAllCntById(principal.getName(),selector);
 		System.out.println("now Page: " + page);
 		System.out.println("total page: " +allCnt );
+
 		int num=5; //화면에 보여질 페이지 번호의 갯수
 		//끝 페이지 번호
 		int endpage;

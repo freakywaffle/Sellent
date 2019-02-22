@@ -6,7 +6,7 @@
     left: 0; 
     top: 0; 
     z-index: 100;
-    width: 100%; 
+    width: inherit; 
     height: 100%; 
     background-color: rgba(0, 0, 0, 0.5); 
     opacity: 0; 
@@ -95,7 +95,7 @@
 	border:1px solid black;
 	margin-right: 5px;
 }
-.introduce1, .technic{
+.introduce1, .protechnic{
     width: 95%;
     min-height: 150px;
     border:1px solid gray;

@@ -20,10 +20,10 @@
 			<spring:authorize access="isAuthenticated()">
 				<div class="after-login">
 					<span class="mobile-hidden mynickname">${sessionScope.member.nickname}</span>
-					<img src='<spr:url value="/sellent/profile/"/>${member.id}/${member.photo}' />
+					<img src='<spr:url value="/sellent/profile/"/>${member.id}/${member.photo}' onerror="this.src='/resources/images/profile.png'">
 					<div class="my-menu hidden">
 					<ul>
-						<li>1500P</li>
+						<li>${sessionScope.member.point }P</li>
 						<li><a href="/member/project">마이페이지</a></li>
 						<li class="prof">프로필</li>
 						<li><a href="/member/logout">로그아웃</a></li>

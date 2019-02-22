@@ -28,57 +28,65 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+
+    $("#datepicker").val("");
+    $("#datepicker2").val("");
 });
 
 
-/*선택삭제 */
-window.addEventListener("load",function(){
+//선택삭제
+$(function(){
+    $("#total-check").click(function(){
+        if($(this).is(":checked") == true){
+            $(".check-box").prop("checked",true)
+        }else{
+            $(".check-box").prop("checked", false)
+        }
+    })
+
+    $("#select-remove").click(function(){
+        $("#modal2").css("display","blocK")
+    })
+
+    $("#modal2-close-button").click(function(){
+        $("#modal2").css("display","none")
+    })
     
-    var totalCheck = document.querySelector("#total-check");
-    var checkBox = document.querySelectorAll("input[type='checkbox']");
-    var modal2 = document.querySelector("#modal2");
-    var selectRemove = document.querySelector("#select-remove");
+    $("#modal2-cancel").click(function(){
+        $("#modal2").css("display","none")
+    })
     
-    totalCheck.onchange = function(){
-        var check = totalCheck.checked;
+    $("#modal2-check").click(function(){
+        $("#modal2").css("display","none")
         
-        for(var i=0; i<checkBox.length;i++){
-            checkBox[i].checked = check;
-        }
-    }
+        var arr = new Array()    // ajax를 배열로 전송하는 경우 스프링에서는 ArrayList로 받는다
 
-    selectRemove.onclick =function(){
-        modal2.style.display = "block";
-    }
-    
+        $(".check-box").each(function(){
+            if($(this).is(":checked")==true){
+
+                var no = $(this).parents(".total-obj").children(".total-no").text()
+                arr.push(no)
+            }
+        })
+
+        jQuery.ajaxSettings.traditional = true; // 배열을 전송할떄 끝 []를 없애줌
+
+        $.ajax({
+
+            method:'POST',
+            url:'totalRemove',
+            data:{"arr":arr},
+            success:function(){
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+            },
+            error:function(){
+                alert("에러")
+            }
+        })
+    })
 })
-
-/*모달2-삭제 확인 */
-window.addEventListener("load", function(){
-    
-    var modal2 = document.querySelector("#modal2");
-    var closeBtn = document.querySelector("#modal2-close-button");
-    var cancelBtn = document.querySelector("#modal2-cancel");
-    var removeBtn = document.querySelectorAll(".remove-button");
-    var checkBtn = document.querySelector("#modal2-check");
-
-    closeBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    for(var i = 0; i<removeBtn.length; i++){
-        removeBtn[i].onclick = function(){
-            modal2.style.display = "block";
-        }
-    }
-})
-
-

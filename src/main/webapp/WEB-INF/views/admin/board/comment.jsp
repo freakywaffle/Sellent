@@ -65,7 +65,7 @@
             </form>
     
             <div class="table-top">
-                <div>총 게시물수 : ${paging.totalCount }</div>
+                <div>총 후기수 : ${paging.totalCount }</div>
             </div>
     
             <table class="table-main">
@@ -116,7 +116,6 @@
                     </c:forEach>
                 </tbody>
             </table>
-    
     
             <div class="table-bottom">
                 <button id="select-remove" type="button">선택삭제</button>

@@ -1,7 +1,8 @@
-
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
 
 #main{
 	width: 1200px;
+	font-family: Do Hyeon;
 }
 
 #main select:focus{
@@ -9,23 +10,29 @@
 }
 
 #main .navi{
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-top: 20px;
 	display: flex;
-	border-bottom: 1px solid black;
+	border-bottom: 2px solid rgb(255, 214, 51);
 	height: 60px;
+	font-size: 20px;
 }
 
 #main .navi li{
-	width: 25%;
+	width: 20%;
 	height: 50px;
 	text-align: center;
 	vertical-align: middle;
 	line-height: 50px;
 	position: relative;
+	top: -5px;
 	
 }
 
 #main .navi li .during{
-	border: 1px solid rgb(255, 214, 51);
+	border: 5px solid rgb(255, 214, 51);
+	border-radius: 25px;
 	padding: 10px;
 }
 
@@ -35,7 +42,7 @@
 	left: 46%;
 	opacity: 1;
 	margin: 0;
-	bottom: -10px;
+	bottom: -15px;
 	border: 10px solid transparent;
 	border-bottom-color: rgb(255, 214, 51);
 }
@@ -54,6 +61,7 @@
 	text-align: right;
 	margin-top: 0px;
 	margin-bottom: 0px;
+	font-size: 25px;
 }
 
 
@@ -69,7 +77,8 @@
 
 #main .reg-form>div>div{
 	padding-left: 20px;
-	margin-top: 40px;
+	margin-top: 30px;
+	
 	display: flex;
 }
 
@@ -83,6 +92,8 @@
 	padding-top: 20px;
 	margin-top: 0px!important;
 	display: flex;
+	font-size: 17px;
+	
 }
 
 #main .sell-toggle-form .sell-radio{
@@ -94,6 +105,7 @@
 	margin-left: 10px;
 	width: 50px;
 	text-align: left;
+	font-weight: 400!important;
 }
 
 #main .sell-toggle-form label,h3{
@@ -199,6 +211,12 @@
 	
 }
 
+.category label{
+	text-align: left;
+	font-weight: 400;
+	font-size: 20px!important;
+}
+
 #main .category .sub-category{
 	margin-left: 80px;
 }
@@ -218,6 +236,7 @@
 	width: 250px;
 	height: 50px;
 	font-size: 20px;
+	background-color: white;
 }
 
 #main .bts{
@@ -238,6 +257,7 @@
 	margin-left: auto;
 	border: none;
 	background-color: rgb(255, 214, 51);
+	font-size: 20px;
 }
 
 #main .prev{
@@ -280,6 +300,8 @@
 	text-align: left;
 	position: relative;
 	top: 10px;
+	font-weight: 400;
+	font-size: 20px;
 }
 
 #main .row{
@@ -300,6 +322,7 @@
 	resize: none;
 	height: 200px;
 	width: 600px;
+	font-size: 17px;
 }
 
 
@@ -314,8 +337,16 @@
 }
 
 #main .option label{
-	width: 70px;
-	
+	width: 92px;
+	height: 50px;
+	padding-left: 0px;
+	font-size: 15px;
+	text-align: center;
+	top: 0px;
+	box-sizing: border-box;
+	margin-bottom: 0px;
+	vertical-align: middle;
+	line-height: 50px;
 }
 
 
@@ -326,14 +357,16 @@
 	height: 50px;
 	width: 200px;
 	display: flex;
+	
 }
 
 #main .price label{
 	width: 25px;
-	height: 35px;
-	padding-left: 0px;
-	padding-top: 5px;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 50px;
 	text-align: right;
+	font-family: Do Hyeon;
 }
 
 #main .price input{
@@ -357,7 +390,7 @@
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 	height: 50px;
-	width: 130px;
+	width: 110px;
 	position: relative;
 }
 
@@ -406,8 +439,7 @@
 
 #main .edit-cnt label:last-child{
 	position: absolute;
-	left: 100px;
-	top: 20px;
+	left: 80px;
 	width: 20px;
 	font-size: 12px;	
 }
@@ -422,7 +454,7 @@
 	border-left: 1px solid black;
 	border-right: none;
 	height: 50px;
-	width: 130px;
+	width: 110px;
 	position: relative;
 }
 
@@ -471,13 +503,13 @@
 
 #main .term label:last-child{
 	position: absolute;
-	left: 100px;
-	top: 20px;
+	left: 80px;
 	width: 20px;
 	font-size: 12px;	
 }
 
 #main .step3>div:first-child{
+	padding-bottom: 30px;
 	border-bottom: 1px dashed black;
 }
 
@@ -492,6 +524,7 @@
 	width: 700px;
 	height: 400px;
 	box-sizing: border-box;
+	font-size: 17px;
 }
 
 #main .editor .txt-cnt{
@@ -554,9 +587,6 @@
 	background-color: white;
 	height: 35px;
 }
-#main h3 {
-	font-size: 20px!important;
-	}
 @media(max-width :480px) {
 	
 	#main .sell-radio{
@@ -608,6 +638,7 @@
 	
 	#main .step2 .basic{
 		height: auto!important;
+		
 	}
 	
 	#main .step2>div{
@@ -669,7 +700,6 @@
 	#main .step2 .option .select label{
 		margin-top: 30px;
 	}
-	
 	
 	#main .step3>div{
 		display: block!important;

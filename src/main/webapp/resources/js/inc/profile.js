@@ -8,7 +8,7 @@ window.addEventListener("load",function(){
 	
 	profile.addEventListener("click",function(){
 		toggleModal();
-		alert('hi');
+		//alert('hi');
 		//var user = document.querySelector(".mobile-hidden").innerText;
 	});
 	closebtn.addEventListener("click", toggleModal);

@@ -4,6 +4,11 @@
 	href="/resources/css/admin/member/member.css" />
 <script src="/resources/js/admin/member/member.js"></script>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
+
 <section class="aside">
 	<div class="aside-title">
 		회원관리
@@ -26,93 +31,91 @@
 	
 		<section class="content-box">
 	
-			<div class="condition-form">
-				<label class="condition-title">등록일</label>
-			
-				<div class="condition-content">
-					<input id="datepicker"type="text"/>
-	                <span class="mg-left-5">~</span>
-	                <input id="datepicker2" class="mg-left-5" type="text"/>
+			<form action="member">
+				<div class="condition-form">
+					<label class="condition-title">가입일</label>
+				
+					<div class="condition-content">
+						<input name="startDate" id="datepicker"type="text"/>
+						<span class="mg-left-5">~</span>
+						<input name="endDate" id="datepicker2" class="mg-left-5" type="text"/>
+					</div>
 				</div>
-			</div>
-	
-			<div class="condition-form" style="border-top:none">
-				<label class="condition-title">키워드검색</label>
 		
-				<div class="condition-content">
-					<select>
-						<option>아이디</option>
-						<option>이름</option>
-					</select>
-					<input class="mg-left-5" type="text">
+				<div class="condition-form" style="border-top:none">
+					<label class="condition-title">키워드검색</label>
+			
+					<div class="condition-content">
+						<select name="condition">
+							<option value="id">아이디</option>
+							<option value="nickname">닉네임</option>
+						</select>
+						<input name="text" class="mg-left-5" type="text">
+					</div>
 				</div>
-			</div>
-	
-			<div class="search-form">
-				<button type="button" class="btn btn-primary">검색하기</button>
-			</div>
+		
+				<div class="search-form">
+					<button id="search-button" type="submit" class="btn btn-primary">검색하기</button>
+				</div>
+			</form>
 	
 	
 			<div class="table-top">
-				<div>총 회원수 : 51</div>
+				<div>총 회원수 : ${paging.totalCount }</div>
 				<button id="member-reg" type="button" class="btn btn-success">회원등록</button>
 			</div>
 	
 			<table class="table-main">
+				<colgroup>
+					<col width="60px">
+					<col width="150px">
+					<col width="150px">
+					<col width="250px">
+					<col width="100px">
+					<col width="150px">
+					<col width="150px">
+				</colgroup>
 				<thead class="thead">
 					<tr>
 						<td>
 							<input id="total-check" type="checkbox"/>
 						</td>
-						<td>번호</td>
-						<td>이름</td>
 						<td>아이디</td>
+						<td>닉네임</td>
 						<td>이메일</td>
-						<td>회원등급(수정)</td>
+						<td>포인트</td>
 						<td>가입일</td>
-						<td>정보보기</td>
+						<td>관리</td>
 					</tr>
 				</thead>
 				<tbody class="tbody">
-					<tr>
+				<c:forEach items="${list }" var="member">
+					<tr class="member-obj">
 						<td>
-							<input type="checkbox"/>
+							<input class="check-box" type="checkbox"/>
 						</td>
-						<td>4</td>
-						<td>뉴렉</td>
-						<td>newlec</td>
-						<td>asldasdl@naver.com</td>
-						<td>일반회원</td>
-						<td>2018.10.09</td>
+						<td class="member-id">${member.id }</td>
+						<td>${member.nickname }</td>
+						<td class="member-email">${member.email }</td>
+						<td>${member.point}</td>
+						<td>
+							<fmt:formatDate value="${member.regdate}" pattern="yyyy-MM-dd"/>
+						</td>
 						<td>
 							<button type="button" class="btn btn-danger member-info">정보
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>
 							
-							<button type="button" class="btn btn-info mail-button">메일
+							<button type="button" class="btn btn-info member-mail">메일
 								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 							</button>
 						</td>
+
+						<td class="member-simple hidden">${member.simple_introduction}</td>
+						<td class="member-detail hidden">${member.detail_introduction}</td>
+						<td class="member-photo hidden">${member.photo}</td>
 					</tr>
-					<tr>
-						<td>
-							<input type="checkbox"/>
-						</td>
-						<td>2</td>
-						<td>김두식</td>
-						<td>kingdusik</td>
-						<td>asdasd@daum.net</td>
-						<td>일반회원</td>
-						<td>2019.01.19</td>
-						<td>
-							<button type="button" class="btn btn-danger member-info">정보
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>
-							<button type="button" class="btn btn-info mail-button">메일
-								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 	
@@ -121,16 +124,21 @@
 			</div>
 	
 			<div class="paging">
-				
 				<div>
-					<ul class="paging-number">
-						<li><a href=""> << </a></li>
-						<li><a href=""> < </a></li>
-						<li><a href=""> 1 </a></li>
-						<li><a href=""> 2 </a></li>
-						<li><a href=""> 3 </a></li>
-						<li><a href=""> > </a></li>
-						<li><a href=""> >> </a></li>
+					<ul class="paging-box">
+						<li class="paging-prev"><a href="${query}&page=${paging.prevPage}"> < </a></li>
+						
+						<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+							
+							<c:set var="cls" value="${i==paging.page?'strong':''}" />
+							
+							<li class="paging-number">
+								<a class="${cls}" href="${query}&page=${i}">${i }</a>
+							</li>
+
+						</c:forEach>
+						
+						<li class="paging-next"><a href="${query}&page=${paging.nextPage}"> > </a></li>
 					</ul>
 				</div>
 			</div>
@@ -142,22 +150,22 @@
 					<span id="modal-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 				</div>
 	
-				<h1>기본정보</h1>
+				<h1>회원등록</h1>
 	
-				<div>
-					<div class="col-25">
-						<label>이름</label>
-					</div>
-					<div>
-						<input class="height-30" type="text" placeholder="이름 입력">
-					</div>
-				</div>
 				<div>
 					<div class="col-25">
 						<label>아이디</label>
 					</div>
 					<div>
-						<input class="height-30" type="text" placeholder="아이디 입력">
+						<input id="modal-id" class="height-30" type="text" placeholder="아이디 입력">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label>닉네임</label>
+					</div>
+					<div>
+						<input id="modal-nickname" class="height-30" type="text" placeholder="닉네임 입력">
 					</div>
 				</div>
 				<div>
@@ -165,15 +173,16 @@
 						<label>비밀번호</label>
 					</div>
 					<div>
-						<input class="height-30" type="text" placeholder="비밀번호를 입력">
+						<input id="modal-pwd" class="height-30" type="text" placeholder="비밀번호를 입력">
 					</div>
 				</div>
 				<div>
 					<div class="col-25">
 						<label>비밀번호 재확인</label>
+						<span class="pwd-message">비밀번호가 일치하지 않습니다</span>
 					</div>
 					<div>
-						<input class="height-30" type="text" placeholder="비밀번호 확인">
+						<input id="modal-pwd2" class="height-30" type="text" placeholder="비밀번호 확인">
 					</div>
 				</div>
 				<div>
@@ -181,25 +190,24 @@
 						<label>이메일</label>
 					</div>
 					<div>
-						<input class="height-30" type="text" placeholder="이메일 입력">
+						<input id="modal-mail" class="height-30" type="text" placeholder="이메일 입력">
 					</div>
 				</div>
-	
 				<h1 style="margin-top:30px">자기소개</h1>
 				<div>
 					<div class="col-25">	
-						<label>제목</label>
+						<label>간단소개</label>
 					</div>
 					<div>
-						<input class="height-30" type="text" placeholder="제목 입력">
+						<input id="modal-simple" class="height-30" type="text" placeholder="제목 입력">
 					</div>
 				</div>
 				<div>
 					<div class="col-25">
-						<label>내용</label>
+						<label>상세소개</label>
 					</div>
 					<div>
-						<textarea placeholder="내용을 입력하세요.."></textarea>
+						<textarea id="modal-detail" placeholder="내용을 입력하세요.."></textarea>
 					</div>
 				</div>
 				<div>
@@ -207,7 +215,7 @@
 						<label>보유기술</label>
 					</div>
 					<div>
-						<input class="height-30" type="text" placeholder="보유기술 입력">
+						<input id="modal-skill" class="height-30" type="text" placeholder="보유기술 입력">
 					</div>
 				</div>
 				<div class="reg-box">
@@ -242,15 +250,7 @@
 						<label for="fname">아이디</label>
 					</div>
 					<div>
-						<input class="height-30 readonly" type="text" readonly>
-					</div>
-				</div>
-				<div>
-					<div class="col-25">
-						<label for="lname">이름</label>
-					</div>
-					<div>
-						<input class="height-30 readonly" type="text" readonly>
+						<input id="modal3-id" class="height-30 readonly" type="text" readonly>
 					</div>
 				</div>
 				<div>
@@ -258,15 +258,23 @@
 						<label for="lname">이메일</label>
 					</div>
 					<div>
-						<input class="height-30 readonly" type="text" readonly>
+						<input id="modal3-mail"class="height-30 readonly" type="text" readonly>
 					</div>
 				</div>
 				<div>
 					<div class="col-25">
-						<label for="subject">내용</label>
+						<label for="lname">제목</label>
 					</div>
 					<div>
-						<textarea placeholder="내용을 입력하세요.."></textarea>
+						<input id="modal3-title" class="height-30" type="text">
+					</div>
+				</div>
+				<div>
+					<div class="col-25">
+						<label>내용</label>
+					</div>
+					<div>
+						<textarea id="modal3-content" placeholder="내용을 입력하세요.."></textarea>
 					</div>
 				</div>
 				<div class="reg-box">
@@ -286,68 +294,37 @@
 	
 					<div>
 						<div class="col-25">
-							<label for="fname">이름</label>
+							<label for="fname">프로필 사진</label>
 						</div>
-						<div>
-							<input class="height-30" type="text" readonly>
-						</div>
-					</div>
-					<div>
-						<div class="col-25">
-							<label for="lname">아이디</label>
-						</div>
-						<div>
-							<input class="height-30" type="text" readonly>
-						</div>
-					</div>
-					<div>
-						<div class="col-25">
-							<label for="country">비밀번호</label>
-						</div>
-						<div>
-							<input class="height-30" type="text" readonly>
-						</div>
-					</div>
-					<div>
-						<div class="col-25">
-							<label for="country">비밀번호 재확인</label>
-						</div>
-						<div>
-							<input class="height-30" type="text" readonly>
-						</div>
-					</div>
-					<div>
-						<div class="col-25">	
-							<label for="country">이메일</label>
-						</div>
-						<div>
-							<input class="height-30" type="text" readonly>
+						<div class="profile-photo">
+							<div class="photo-alert">등록된 사진이 없습니다.</div>
+							<img id="modal4-photo" class="hidden" src="<spring:url value=''/>"/>
 						</div>
 					</div>
 	
 					<h1 style="margin-top:30px">자기소개</h1>
 					<div>
 						<div class="col-25">	
-							<label for="country">제목</label>
+							<label>간단소개</label>
 						</div>
 						<div>
-							<input class="height-30" type="text" readonly>
+							<input id="modal4-simple" class="height-30" type="text" readonly>
 						</div>
 					</div>
 					<div>
 						<div class="col-25">
-							<label for="subject">내용</label>
+							<label>상세소개</label>
 						</div>
 						<div>
-							<textarea readonly></textarea>
+							<textarea id="modal4-detail" readonly></textarea>
 						</div>
 					</div>
 					<div>
 						<div class="col-25">	
-							<label for="country">보유기술</label>
+							<label>보유기술</label>
 						</div>
 						<div>
-							<input class="height-30" type="text" readonly>
+							<input id="modal4-skill" class="height-30" type="text" readonly>
 						</div>
 					</div>
 					<div class="reg-box">

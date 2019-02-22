@@ -28,37 +28,95 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    $("#datepicker").val("");
+    $("#datepicker2").val("");  
 });
 
-$( function() {
+// 회원등급 토글
+$(function() {
     $( ".spinner" ).spinner({
         min:0,
         max:1
     });
-
-
 });
 
-window.addEventListener("load",function(){
 
-    var checkBtn = document.querySelectorAll(".check-button");
-    var spinner = document.querySelectorAll(".spinner");
+// 등급 업데이트
+$(function(){
 
+    $(".role-button").click(function(){
 
+        var index = $(".role-button").index(this)
+      
+        var id = $(".adminConf-id").eq(index).text()
+        var roleNum = $(".role-change").eq(index).val()
 
-    // for(var i=0;i<checkBtn.length;i++){
-        
-    //     if(spinner[i].onchange){
-    //         checkBtn[i].onclick = function(){
-                
-    //         }
-    //     }
-    // }
+        $.ajax({
+            method:'POST',
+            url:'adminUpdate',
+            data:{"id":id, "roleNum":roleNum},
+            success:function(){
 
-    
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+
+            },
+            error:function(){
+                alert("실패")
+            }
+        })
+    })
+
 })
 
+// 한번에 다 저장
 
+$(function(){
+
+    $("#save-button").click(function(){
+
+        var arr = new Array()
+        
+        
+        $(".adminConf-obj").each(function(index, obj){
+            
+            var id = $(".adminConf-id").eq(index).text()
+            var roleNum = $(".role-change").eq(index).val()
+            
+            var aa = {
+                "id":id, "roleNum":roleNum
+            }
+            
+            arr.push(aa)
+        })
+
+        $.ajax({
+
+            method:'POST',
+            url:'adminTotalUpdate',
+            data:JSON.stringify(arr),
+            contentType : "application/json; charset=UTF-8",
+            success:function(){
+
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+                
+            },
+            error:function(){
+            	alert("실패")
+            }
+        })
+    })
+
+})
 
 
 

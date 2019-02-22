@@ -8,9 +8,9 @@
 <script src="/resources/js/main/mainMain.js"></script>
 <main id="main">
       <div class="banner">
-		<img class="mySlides" alt="" src="/resources/images/img1.png" class="myslides"/>
-		<img class="mySlides" alt="" src="/resources/images/img2.png" class="myslides"/>
-		<img class="mySlides" alt="" src="/resources/images/img3.png" class="myslides"/>
+		<a href="../join"><img class="mySlides" alt="" src="/resources/images/image11.jpg" class="myslides"/></a>
+		<img class="mySlides" alt="" src="/resources/images/image2.jpg" class="myslides"/>
+		<img class="mySlides" alt="" src="/resources/images/image3_1.jpg" class="myslides"/>
    
       </div>
       <div class="main-icones">

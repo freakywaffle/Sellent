@@ -117,5 +117,20 @@ public class SellentProductService implements ProductService{
 		
 		return 0;
 	}
+
+
+	@Override
+	public int update(Product product, List<ProductFile> files) {
+		
+		if(files != null) {
+			
+		}
+		
+		
+		productDao.update(product);
+		
+		
+		return 0;
+	}
 	
 }

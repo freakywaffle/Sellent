@@ -28,57 +28,8 @@ $(function() {
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
     $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+
+    $("#datepicker").val("");
+    $("#datepicker2").val("");
 });
-
-
-/*선택삭제 */
-window.addEventListener("load",function(){
-    
-    var totalCheck = document.querySelector("#total-check");
-    var checkBox = document.querySelectorAll("input[type='checkbox']");
-    var modal2 = document.querySelector("#modal2");
-    var selectRemove = document.querySelector("#select-remove");
-    
-    totalCheck.onchange = function(){
-        var check = totalCheck.checked;
-        
-        for(var i=0; i<checkBox.length;i++){
-            checkBox[i].checked = check;
-        }
-    }
-
-    selectRemove.onclick =function(){
-        modal2.style.display = "block";
-    }
-    
-})
-
-/*모달2-삭제 확인 */
-window.addEventListener("load", function(){
-    
-    var modal2 = document.querySelector("#modal2");
-    var closeBtn = document.querySelector("#modal2-close-button");
-    var cancelBtn = document.querySelector("#modal2-cancel");
-    var removeBtn = document.querySelectorAll(".remove-button");
-    var checkBtn = document.querySelector("#modal2-check");
-
-    closeBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    checkBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    cancelBtn.onclick = function(){
-        modal2.style.display = "none";
-    }
-
-    for(var i = 0; i<removeBtn.length; i++){
-        removeBtn[i].onclick = function(){
-            modal2.style.display = "block";
-        }
-    }
-})
-
 

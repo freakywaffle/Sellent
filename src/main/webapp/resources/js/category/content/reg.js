@@ -163,32 +163,11 @@ $(document).ready(function(){
 		imgTag.attr('src', src);
 		upImages.addClass('back-none');
 		
-		/*var imgTag = new Image();
-		imgTag.src = $(e.target).attr('src');
-		imgTag.onload = function(){
-			var canvas = $('<canvas></canvas>').get(0);
-			var canvasContext = canvas.getContext('2d');
-			
-			canvas.width = 650;
-			canvas.height = 400;
-			
-			canvasContext.drawImage(this, 0, 0, 650, 400);
-	
-			var dataURI = canvas.toDataURL("image/jpeg");
-			
-			imgTag.src = dataURI;
-		}*/
-		
 		if(upImages.children().length==0)	
 			upImages.append(imgTag);
 		else
 			upImages.find('img').replaceWith(imgTag);
 	});
-	
-	
-	
-	
-	
 	
 	
 });

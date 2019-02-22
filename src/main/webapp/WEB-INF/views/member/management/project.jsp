@@ -26,11 +26,12 @@
 			<div class="contents">
 				<div class="title-img">
 					<img alt="타이틀 이미지"
-						src="/resources/images/260_200/post_img3_260_200 .jpg" />
+					src='<spring:url value="/sellent/upload/"/>${n.no}/${n.thumbnail}' onerror="this.src='/sellent/default/기본.gif'"/>
 				</div>
 				<div class="detail">
 					<div class="prolike">
-						<img alt="좋아요" src="/resources/images/bin-heart.png">
+						<input type="hidden" name="pno" value="${n.no }"/>
+						<i class="fas fa-heart ${fav }"></i>
 					</div>
 					<div class="protitle">${n.title }</div>
 					<div class="detail-data">
@@ -52,7 +53,7 @@
 								<a>${n.duration }</a>일
 							</div>
 						</div>
-						<div class="proname">${n.writerId }</div>
+						<div class="proname"><span>${n.writerId }</span></div>
 					</div>
 					<div class="won-star">
 						<div class="won">
@@ -62,21 +63,12 @@
 							<div class="money">${n.price }</div>
 						</div>
 						<div class="star-point">
-							<div>
-								<img alt="별점" src="/resources/images/small-fullstar.png" />
-							</div>
-							<div>
-								<img alt="별점" src="/resources/images/small-fullstar.png" />
-							</div>
-							<div>
-								<img alt="별점" src="/resources/images/small-halfstar.png" />
-							</div>
-							<div>
-								<img alt="별점" src="/resources/images/small-binstar.png" />
-							</div>
-							<div>
-								<img alt="별점" src="/resources/images/small-binstar.png" />
-							</div>
+							<c:forEach begin="1" end="${n.avgStarPoint-(n.avgStarPoint%1) }">
+								<div><img alt="별점" src="/resources/images/small-fullstar.png"/></div>
+							</c:forEach>
+							<c:forEach begin="${n.avgStarPoint-(n.avgStarPoint%1)+1}" end="5">
+								<div><img alt="별점" src="/resources/images/small-binstar.png"/></div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

@@ -14,4 +14,6 @@ public interface ProductService {
 	int insert(Product product, List<ProductFile> files);
 	Map<String, Object> getProductByNo(int no);
 	int regReview(Integer no, String json, Principal principal);
+	
+	int update(Product product, List<ProductFile> files);
 }

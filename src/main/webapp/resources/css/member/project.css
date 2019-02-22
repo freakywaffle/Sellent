@@ -72,7 +72,13 @@ select:focus {
 	margin-left:60px;
 	width:260px;
 	height:200px;
+	box-sizing: border-box;
+	overflow: hidden
 /* 	margin-left:10px; */
+}
+.title-img img{
+	width: 100%;
+	height: 100%;
 }
 .detail{
 	margin-left:10px;
@@ -99,14 +105,24 @@ select:focus {
 }
 
 .prolike{
-	
+	visibility:hidden;
 	padding-left:450px;
-	padding-top:15px;
-	padding-bottom:10px;
+	padding-top:10px;
+/* 	padding-bottom:10px; */
 	
 }
 .prolike img{ heihgt:20px; width:20px;}
-.protitle{font-size:18px; font-weight:bold; margin-left:15px; width:450px;}
+.prolike .fa-heart{
+	color: #CCCCCC;
+	font-size: 30px;
+}
+.prolike .fav{
+	color:#fe7676;
+}
+.protitle{
+	font-size:18px; font-weight:bold; margin-left:15px; width:450px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+	}
 .detail-data{
 	position:relative;
 	width:auto;
@@ -119,10 +135,11 @@ select:focus {
 .proedit, .promake, .won, .won-star, .star-point{display:flex; }
 .proedit{margin-right:15px;}
 .proedit-img, .promake-img, .won-img{margin-right:7px;}
-.proname{position:absolute; right:10px;}
+.proname{position:relative; right:10px;}
+.proname{position: absolute;}
 .proedit div:last-child, .promake div:last-child{margin-left:10px;}
 .won{padding-left:10px;  margin-top:5px; position:relative; margin-right:270px;}
-.won-star{ margin-top:10px;}
+.won-star{ margin-top:20px;}
 
 
 @media ( max-width :480px) {
@@ -160,11 +177,7 @@ select:focus {
 		margin-left: 5%;
 		box-sizing: border-box;
 	}
-	.title-img img{
-		width: 100%;
-		height: 100%;
-	}
-	
+
 	
 	
 	.detail{
@@ -175,10 +188,12 @@ select:focus {
 		background-color: white;
 		z-index: 5;
 		position: relative;
+		font-size: 18px;
 	}
 	
 	.detail-data{
 		position: static;
+		display: inline-block;
 	}
 	
 	.prolike{
@@ -192,16 +207,20 @@ select:focus {
 		margin-left: 5%;
 	}
 	
-	.name{
-		top: 15px;
+	.proname{
+	
 		left: 5%;
+		text-align: right;
+		margin-bottom: 10px;
 	}
 	
 	.won{
 		margin-right: 0px;
 	}
 	
-	
+	.won-star{
+		margin-top: 25px;
+	}
 	.star-point{
 		margin-left: auto;
 		margin-right: 5%;

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="com.sellent.web.dao.AdminPersonDao">
+	
+	<select id="getPersonViewList" resultType="com.sellent.web.entity.AdminPersonView">
+		select * from AdminPersonView
+		where type like CONCAT('%', #{param1}, '%') and state like CONCAT('%', #{param2}, '%')
+		<choose>
+			<when test="param3 == '' and param4 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param4}) 
+			</when>
+			<when test="param3 !='' and param4 == '' ">
+				and regdate <![CDATA[ > ]]> date(#{param3}) 
+			</when>
+			<when test="param3 != '' and param4 != ''">
+				and regdate between date(#{param3}) and date(#{param4})+1 
+			</when>
+		</choose>
+		<if test="param6 !='' ">
+			and ${param5} like CONCAT('%', #{param6}, '%')
+		</if>
+		limit #{param7.startCount}, 10
+	</select>
+	
+	<select id="getPersonViewCnt" resultType="int">
+		select count(*) from AdminPersonView
+		where type like CONCAT('%', #{param1}, '%') and state like CONCAT('%', #{param1}, '%')
+		<choose>
+			<when test="param3 == '' and param4 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param4}) 
+			</when>
+			<when test="param3 !='' and param4 == '' ">
+				and regdate <![CDATA[ > ]]> date(#{param3}) 
+			</when>
+			<when test="param3 != '' and param4 != ''">
+				and regdate between date(#{param3}) and date(#{param4})+1 
+			</when>
+		</choose>
+		<if test="param6 !='' ">
+			and ${param5} like CONCAT('%', #{param6}, '%')
+		</if>
+	</select>
+
+</mapper>

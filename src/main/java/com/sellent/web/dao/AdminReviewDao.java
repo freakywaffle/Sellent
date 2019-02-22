@@ -5,7 +5,7 @@ import java.util.List;
 import com.sellent.web.entity.AdminPaging;
 import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
-
+ 
 public interface AdminReviewDao {
 	
 	List<ReviewView> getReviewView(

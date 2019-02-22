@@ -79,9 +79,7 @@ public class HomeController {
 
 		String prevPage = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", prevPage);
-		System.out.println("???");
 		System.out.println(prevPage);
-		System.out.println("?");
 		
 		return "member.login";
 	}

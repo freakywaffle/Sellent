@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sellent.web.dao.AdminTotalDao">
+	<select id="getTotalViewList" resultType="com.sellent.web.entity.AdminTotalView">
+		select * from AdminTotalView
+		where state like CONCAT('%', #{param1}, '%') 
+		<choose>
+			<when test="param2 == '' and param3 != ''">
+				and regdate <![CDATA[ < ]]> date(#{param3}) 
+			</when>
+			<when test="param2 !='' and param3 == '' ">
+				and regdate <![CDATA[ > ]]> date(#{param2}) 
+			</when>
+			<when test="param2 != '' and param3 != ''">
+				and regdate between date(#{param2}) and date(#{param3})+1 
+			</when>
+		</choose>
+		and buyer_id like CONCAT('%', #{param4}, '%') 
+		and seller_id like CONCAT('%', #{param5}, '%')
+		limit #{param6.startCount}, 10
+	</select>
+	<select id="getTotalViewCnt" resultType="int">
+		select count(*) from AdminTotalView
+		where state like CONCAT('%', #{param1}, '%') 
+	</select>
+	
+	<delete id="delete">
+		delete from history where no=#{param1}
+	</delete>
+</mapper>

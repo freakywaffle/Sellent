@@ -1,8 +1,10 @@
 package com.sellent.web.controller;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ import com.sellent.web.entity.ParentCategory;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
+import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
 import com.sellent.web.entity.SubCategory;
 import com.sellent.web.service.ProductService;
@@ -156,8 +159,8 @@ public class CategoryController {
 		List<ParentCategory> p_Category = categoryDao.getParentList();
 		List<SubCategory> s_Category = categoryDao.getSubList();
 		
-		List parentCategory = new ArrayList();
-		List subCategory = new ArrayList();
+		List<ParentCategory> parentCategory = new ArrayList<ParentCategory>();
+		List<SubCategory> subCategory = new ArrayList<SubCategory>();
 		
 		for(int i=0; i<p_Category.size(); i++) {
 			parentCategory.add(p_Category.get(i));
@@ -175,13 +178,51 @@ public class CategoryController {
 	private ArrayList<ProductFile> tempFiles;
 	
 	@PostMapping("reg")
-	public String reg(Product product, Principal principal) {
+	public String reg(Product product, Principal principal) throws UnsupportedEncodingException {
 		
 		product.setWriterId(principal.getName());
 		System.out.println(product);
 		productService.insert(product, tempFiles);
+		return "redirect:"+URLEncoder.encode(product.getParentCategory(), "UTF-8");
+	}
+	
+	
+	@GetMapping("{category}/{no}/edit")
+	public String edit(@PathVariable("no") Integer no, Model model) {
 		
-		return "redirect:"+product.getParentCategory();
+		Map<String, Object> product = productService.getProductByNo(no);
+		
+		model.addAttribute("map", product);
+		
+		List<ParentCategory> p_Category = categoryDao.getParentList();
+		List<SubCategory> s_Category = categoryDao.getSubList();
+		
+		List<ParentCategory> parentCategory = new ArrayList<ParentCategory>();
+		List<SubCategory> subCategory = new ArrayList<SubCategory>();
+		
+		for(int i=0; i<p_Category.size(); i++) {
+			parentCategory.add(p_Category.get(i));
+		}
+		for(int i=0; i<s_Category.size(); i++) {
+			subCategory.add(s_Category.get(i));
+		}
+		System.out.println(parentCategory);
+		System.out.println(subCategory);
+		model.addAttribute("parentCategory", parentCategory);
+		model.addAttribute("subCategory", subCategory);
+		return "category.edit";
+	}
+	
+	@PostMapping("{category}/{no}/edit")
+	public String edit(@PathVariable("no") Integer no,
+			@PathVariable("category") String category,
+			Product product, 
+			Principal principal) {
+		product.setNo(no);
+		product.setWriterId(principal.getName());
+		productService.update(product, tempFiles);
+		
+		return "redirect:/category/"+category+"/"+no;
 	}
 	
 	
@@ -294,6 +335,30 @@ public class CategoryController {
 		return reJson;
 	}
 	
+	@PostMapping("{category}/{no}/editReview")
+	@ResponseBody
+	public String editReview(int no, String content, int starPoint) {
+		Review review = new Review();
+		review.setNo(no);
+		review.setContent(content);
+		review.setStarpoint(starPoint);
+		
+		reviewDao.update(review);
+		
+		
+		return "{\"ok\":\"ok\"}";
+	}
+	
+	@PostMapping("{category}/{no}/delReview")
+	@ResponseBody
+	public String delReview(int no, String content) {
+		reviewDao.delete(no);
+		
+		
+		return "{\"ok\":\"ok\"}";
+	}
+	
+	
 	@GetMapping("{category}/{no}/like")
 	@ResponseBody
 	public String like(@PathVariable("no") Integer no, Principal principal) {
@@ -351,16 +416,22 @@ public class CategoryController {
 			String sellChk,
 			Principal principal){
 		
-		JsonParser parser = new JsonParser();
-		JsonElement jsonQuery = parser.parse(query);
+		System.out.println("cnt" + cnt);
+		System.out.println("query" + query);
+		System.out.println("sellChk" + sellChk);
+		JsonParser parser = new JsonParser();		
 		JsonElement jsonSellChk = parser.parse(sellChk);
 		
 		String sub = "";
 		int yes = 0;
 		int no = 0;
 		
-		if(jsonQuery.getAsJsonObject().get("sub") != null) {
-			sub = jsonQuery.getAsJsonObject().get("sub").getAsString();
+		
+		if(query != null) {
+			JsonElement jsonQuery = parser.parse(query);
+			if(jsonQuery.getAsJsonObject().get("sub") != null) {
+				sub = jsonQuery.getAsJsonObject().get("sub").getAsString();
+			}
 		}
 		if(jsonSellChk.getAsJsonObject().get("yes") != null) {
 			yes = jsonSellChk.getAsJsonObject().get("yes").getAsInt();
@@ -508,9 +579,8 @@ public class CategoryController {
 		
 		
 		List<ParentCategory> parentList = new ArrayList<ParentCategory>();
-		
-		
-		if(jsonParents!=null) {
+		String json = "{\"data\":\"empty\"}";
+		if(jsonParents!=null && jsonParents.getAsJsonArray().size() != 0) {
 			JsonArray parentArr = jsonParents.getAsJsonArray();
 			for(int i=0;i<parentArr.size();i++) {
 				System.out.println(i+"번쨰: "+parentArr.get(i));
@@ -521,22 +591,22 @@ public class CategoryController {
 					
 				}
 			}
+		
+		
+		
+			List<ProductView> plist = productDao.getListBySearch(keyword, parentList, sell_chk, 0, 7);
+			List<ProductView> pAll = productDao.getListBySearchAll(keyword, parentList, sell_chk);
+			temp.put("plist", plist);
+			
+			
+			System.out.println(keyword);
+			System.out.println(sell_chk);
+			System.out.println(pAll.size());
+			temp.put("allCnt", pAll.size());
+			
+			Gson gson = new Gson();
+			json = gson.toJson(temp);
 		}
-		
-		
-		List<ProductView> plist = productDao.getListBySearch(keyword, parentList, sell_chk, 0, 7);
-		List<ProductView> pAll = productDao.getListBySearchAll(keyword, parentList, sell_chk);
-		temp.put("plist", plist);
-		
-		
-		System.out.println(keyword);
-		System.out.println(sell_chk);
-		
-		temp.put("allCnt", pAll.size());
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(temp);
-		
 		
 		return json;
 	}
@@ -578,8 +648,8 @@ public class CategoryController {
 		}
 		
 		List<ParentCategory> parentList = new ArrayList<ParentCategory>();
-		
-		if(jsonParents!=null) {
+		String json = "{\"data\":\"empty\"}";
+		if(jsonParents!=null && jsonParents.getAsJsonArray().size() != 0) {
 			JsonArray parentArr = jsonParents.getAsJsonArray();
 			for(int i=0;i<parentArr.size();i++) {
 				System.out.println(i+"번쨰: "+parentArr.get(i));
@@ -590,19 +660,19 @@ public class CategoryController {
 					
 				}
 			}
+	
+			List<ProductView> plist = productDao.getListBySearch(keyword, parentList, sell_chk, cnt, 7);
+			List<ProductView> pAll = productDao.getListBySearchAll(keyword, parentList, sell_chk);
+			temp.put("plist", plist);
+			
+			System.out.println(keyword);
+			System.out.println(sell_chk);
+			
+			temp.put("allCnt", pAll.size());
+			
+			Gson gson = new Gson();
+			json = gson.toJson(temp);
 		}
-		List<ProductView> plist = productDao.getListBySearch(keyword, parentList, sell_chk, cnt, 7);
-		List<ProductView> pAll = productDao.getListBySearchAll(keyword, parentList, sell_chk);
-		temp.put("plist", plist);
-		
-		System.out.println(keyword);
-		System.out.println(sell_chk);
-		
-		temp.put("allCnt", pAll.size());
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(temp);
-		
 		
 		return json;
 	}

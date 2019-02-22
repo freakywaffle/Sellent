@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <link href="/resources/css/category/content/detail.css" rel="stylesheet"/>
 <script src="/resources/js/category/content/detail.js"></script>
 <section class="content">
@@ -14,7 +15,7 @@
 			</div>
 		</div>
 		</c:if>
-		<div class="breadcrumb">홈>메인카테고리>서브카테고리</div>
+		<div class="custom-breadcrumb">홈 > 메인카테고리 > 서브카테고리</div>
 		<div class="top-content">
 			<div>
 				<div class="post-img">
@@ -83,7 +84,7 @@
 						</li>
 					</ul>
 					<div class="priceTag">
-						가격: ${map.product.price }
+						<fmt:formatNumber value="${map.product.price }" type="currency" currencySymbol="￦"/>
 					</div>
 					
 					<div>
@@ -121,9 +122,9 @@
 				</div>
 				<div class="profile-table">
 					<ul>
-						<li><p>${map.member.sell_count }</p><p>판매건수</p></li>
-						<li><p>${map.member.product_count }</p><p>작업개수</p></li>
-						<li><p>${map.member.star_point }</p><p>평점</p></li>
+						<li><p>판매건수</p><p>${map.member.sell_count }</p></li>
+						<li><p>작업개수</p><p>${map.member.product_count }</p></li>
+						<li><p>평점</p><p>${map.member.star_point }</p></li>
 					</ul>
 				</div>
 				<div class="chat-bt">
@@ -149,13 +150,28 @@
 							<spring:url var="springroot" value="/sellent/profile/"/>
 							<c:forEach var="review" items="${reviews }">
 								<div class="review">
+									<input type="hidden" value="${review.no }">
 									<div class="review-profile-photo">
 										<img src='${springroot}${review.writer_id }/${review.photo}'/>
 									</div>
 									<div class="rv-content">
-										<p>${review.nickname }</p>
+										<span>${review.nickname }</span>
+										<span class="review-star">
+											<c:forEach begin="1" end="${review.starpoint}">
+												<img class="full" src="/resources/images/big-fullstar.png"/>
+											</c:forEach>
+											<c:forEach begin="${review.starpoint+1}" end="5">
+												<img class="bin" src="/resources/images/big-binstar.png"/>
+											</c:forEach>
+										</span>
 										<pre>${review.content }</pre>
 									</div>
+									<c:if test="${review.writer_id == sessionScope.member.id }">
+										<div class="close-bt">
+											<p><i class="fas fa-times"></i></p>
+											<p><i class="fas fa-pen-square"></i></p>
+										</div>
+									</c:if>
 								</div>
 							</c:forEach>
 						</div>
@@ -179,15 +195,22 @@
 									<option value="1">★☆☆☆☆</option>
 								</select>
 								<input type="hidden" name="starpoint"/>
-								<input type="button" value="작성" />
+								<input class="write-bt" type="button" value="작성" />
+								<input class="edit-bt hidden"  type="button" value="수정" />
 							</div>
 						</div>
 					</div>
 					<script>
 					$(document).ready(function(){
+						
+						bindDel();
+						bindEdit();
+						
+						
+						
 						//review 등록
 						var reviewForm = $('.review-reg-form');
-						var reviewBt = reviewForm.find('input[type="button"]');
+						var reviewBt = reviewForm.find('.write-bt');
 						reviewBt.on('click',function(){
 							
 							if($('.member-menu').children().eq(0).prop('nodeName') == 'UL'){
@@ -230,18 +253,50 @@
 									var reviewListDiv = $('.review-list').children().eq(1);
 									reviewListDiv.empty();
 									for(var i=0;i<reviews.length;i++){
-										var p =$('<p></p>').text(reviews[i].nickname);
-										var contentDiv = $('<div></div>').text(reviews[i].content);
+										var span =$('<span></span>').text(reviews[i].nickname);
+										var reviewStar = $('<span class="review-star"></span>');
+										
+										
+										for(var j=0;j<reviews[i].starpoint;j++){
+											var fullStar = $('<img class="full" src="/resources/images/big-fullstar.png"/>');
+											reviewStar.append(fullStar);
+											reviewStar.append('&nbsp;');
+										}
+										for(var j=reviews[i].starpoint;j<5;j++){
+											var binStar = $('<img class="bin" src="/resources/images/big-binstar.png"/>');
+											reviewStar.append(binStar);
+											reviewStar.append('&nbsp;');
+										}
+										
+										
+										var contentDiv = $('<pre></pre>').text(reviews[i].content);
 										var rvContent = $('<div></div>').addClass('rv-content');
-										rvContent.append(p);
+										rvContent.append(span);
+										rvContent.append(reviewStar);
 										rvContent.append(contentDiv);
 										
 										var springurl = '${springroot}';
 										
 										var profilePhoto = $('<img />').attr('src', springurl+reviews[i].writer_id+'/'+reviews[i].photo);
+										var reviewProfilePhoto = $('<div></div>');
+										reviewProfilePhoto.addClass('review-profile-photo');
+										reviewProfilePhoto.append(profilePhoto);
+										
 										var reviewDiv = $('<div></div>').addClass('review');
-										reviewDiv.append(profilePhoto);
+										reviewDiv.append(reviewProfilePhoto);
 										reviewDiv.append(rvContent);
+										
+										var loginId = '${sessionScope.member.id}';
+
+										if(loginId == reviews[i].writer_id){
+											var btDiv = $('<div class="close-bt"></div>');
+											var iconP = $('<p><i class="fas fa-times"></i></p>');
+											var iconP2 = $('<p><i class="fas fa-pen-square"></i></p>');
+											btDiv.append(iconP);
+											btDiv.append(iconP2);
+											reviewDiv.append(btDiv);
+										}
+										
 										
 										reviewListDiv.append(reviewDiv);
 									}
@@ -262,6 +317,12 @@
 										
 									$('.avgStarPoint').text(avgStarPoint);
 									$('.star-point').find('.reviewCnt').text('('+totalCnt+'명의 평가)');
+									
+									
+									
+
+									bindDel();
+									bindEdit();
 								}
 							
 							});
@@ -289,18 +350,51 @@
 									var reviewListDiv = $('.review-list').children().eq(1);
 									reviewListDiv.empty();
 									for(var i=0;i<reviews.length;i++){
-										var p =$('<p></p>').text(reviews[i].nickname);
-										var contentDiv = $('<div></div>').text(reviews[i].content);
+										var span =$('<span></span>').text(reviews[i].nickname);
+										var reviewStar = $('<span class="review-star"></span>');
+										
+										
+										for(var j=0;j<reviews[i].starpoint;j++){
+											var fullStar = $('<img class="full" src="/resources/images/big-fullstar.png"/>');
+											reviewStar.append(fullStar);
+											reviewStar.append('&nbsp;');
+										}
+										for(var j=reviews[i].starpoint;j<5;j++){
+											var binStar = $('<img class="bin" src="/resources/images/big-binstar.png"/>');
+											reviewStar.append(binStar);
+											reviewStar.append('&nbsp;');
+										}
+										
+										
+										
+										var contentDiv = $('<pre></pre>').text(reviews[i].content);
 										var rvContent = $('<div></div>').addClass('rv-content');
-										rvContent.append(p);
+										rvContent.append(span);
+										rvContent.append(reviewStar);
 										rvContent.append(contentDiv);
 										
 										var springurl = '${springroot}';
 										
 										var profilePhoto = $('<img />').attr('src', springurl+reviews[i].writer_id+'/'+reviews[i].photo);
+										var reviewProfilePhoto = $('<div></div>');
+										reviewProfilePhoto.addClass('review-profile-photo');
+										reviewProfilePhoto.append(profilePhoto);
+										
 										var reviewDiv = $('<div></div>').addClass('review');
-										reviewDiv.append(profilePhoto);
+										reviewDiv.append(reviewProfilePhoto);
 										reviewDiv.append(rvContent);
+										
+										var loginId = '${sessionScope.member.id}';
+
+										if(loginId == reviews[i].writer_id){
+											var btDiv = $('<div class="close-bt"></div>');
+											var iconP = $('<p><i class="fas fa-times"></i></p>');
+											var iconP2 = $('<p><i class="fas fa-pen-square"></i></p>');
+											btDiv.append(iconP);
+											btDiv.append(iconP2);
+											reviewDiv.append(btDiv);
+										}
+										
 										reviewListDiv.append(reviewDiv);
 									}
 									
@@ -309,10 +403,111 @@
 										more.addClass('hidden');
 									else
 										more.removeClass('hidden');
+									
+									
+									
+
+									bindDel();
+									bindEdit();
 								}
 							
 							});
 						});
+						
+						//review 수정
+						
+						function bindEdit(){
+							
+							var reviewClose = $('.review .fa-pen-square');
+							reviewClose.click(function(e){
+								var editBt = $('.edit-bt');
+								
+								var thisReview = $(this).parent().parent().parent();
+								
+								var currentPre = thisReview.find('pre');
+								var currentContent = currentPre.text();
+								var currentStar = thisReview.find('.review-star .full').length;
+								
+								console.log(currentStar);
+								
+								reviewBt.addClass('hidden');
+								editBt.removeClass('hidden');
+								
+								$('.review-reg-form').find('textarea').text(currentContent);
+								var options = $('.review-reg-form').find('option');
+								for(var i=0;i<options.length;i++){
+									if(options.eq(i).val() == currentStar){
+										options.eq(i).attr('selected','selected');
+										break;									
+									}
+									
+								}
+								
+								var thisNo = thisReview.find('input[type="hidden"]').val();
+								
+								editBt.click(function(){
+									var newData = $('.review-reg-form').find('textarea').val();
+									var newStarPoint = $('.review-reg-form').find('select').val();
+									alert(newData);
+									$.ajax({
+										url: $(location).attr('pathname')+'/editReview',
+										type: 'POST',
+										dataType: 'json',
+										data: {'content': newData, 'no':thisNo, 'starPoint':newStarPoint},
+										success: function(data){
+											currentPre.text(newData);
+											var currentReviewStar = thisReview.find('.review-star');
+											
+											currentReviewStar.empty();
+											for(var j=0;j<newStarPoint;j++){
+												var fullStar = $('<img class="full" src="/resources/images/big-fullstar.png"/>');
+												currentReviewStar.append(fullStar);
+												currentReviewStar.append('&nbsp;');
+											}
+											for(var j=newStarPoint;j<5;j++){
+												var binStar = $('<img class="bin" src="/resources/images/big-binstar.png"/>');
+												currentReviewStar.append(binStar);
+												currentReviewStar.append('&nbsp;');
+											}
+											
+											
+											$('.review-reg-form').find('textarea').val('');
+											$('.review-reg-form').find('option').eq(0).attr('selected','selected');
+										}
+										
+									});
+									
+								});
+							});
+						}
+						
+						//review 삭제
+						
+						function bindDel(){
+						
+							var reviewDel = $('.review .fa-times');
+							reviewDel.click(function(e){
+								var thisReview = $(this).parent().parent().parent();
+								var thisNo = thisReview.find('input[type="hidden"]').val();
+								$.ajax({
+									url: $(location).attr('pathname')+'/delReview',
+									type:'POST',
+									dataType:'json',
+									data:{'no':thisNo},
+									success: function(data){
+										thisReview.remove();
+										
+										var cntSpan = $('.review-list h2 span');
+										
+										
+										cntSpan.text(cntSpan.text()-1);
+									}
+									
+									
+								});
+							});
+						}
+						
 					});
 					</script>
 				</div>

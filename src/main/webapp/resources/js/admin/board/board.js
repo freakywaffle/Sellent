@@ -82,7 +82,7 @@ $(function(){
         $(".check-box").each(function(){
             if($(this).is(":checked")==true){
 
-                var no = $(this).parents(".comment-obj").children(".comment-no").text()
+                var no = $(this).parents(".board-obj").children(".board-no").text()
                 arr.push(no)
             }
         })
@@ -92,7 +92,7 @@ $(function(){
         $.ajax({
 
             method:'POST',
-            url:'commentRemove',
+            url:'boardRemove',
             data:{"arr":arr},
             success:function(){
                 var mouse = new MouseEvent("click")
