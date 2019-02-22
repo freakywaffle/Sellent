@@ -8,6 +8,7 @@ public class PointHistory {
 	private String content;
 	private Date regdate;
 	private int point;
+	private String date;
 	
 	public PointHistory() {
 	}
@@ -59,6 +60,15 @@ public class PointHistory {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 
 	@Override
 	public String toString() {

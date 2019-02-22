@@ -377,6 +377,7 @@ public class MemberController {
 		List<PointHistory> showPage = pointHistoryDao.getListById(principal.getName(),page, selector);		
 		int allCnt = pointHistoryDao.getAllCntById(principal.getName(),selector);
 		int allSum = pointHistoryDao.getAllSumById(principal.getName(),selector);
+		Member member = memberDao.getMember(principal.getName());
 		//System.out.println("now Page: " + page);
 		//System.out.println("total page: " +allCnt );
 				int num=5; //화면에 보여질 페이지 번호의 갯수
@@ -407,6 +408,9 @@ public class MemberController {
 				//System.out.println("nextbutton 여부: " + next);
 				String pageTitle = "계정";
 				
+				System.out.println("1:"+showPage);
+				System.out.println("2:"+allSum);
+				
 				model.addAttribute("pageTitle",pageTitle);
 				model.addAttribute("pointHistory",showPage);
 				model.addAttribute("startpage",startpage);
@@ -417,6 +421,7 @@ public class MemberController {
 				model.addAttribute("allSum",allSum);
 				model.addAttribute("prev",prev);
 				model.addAttribute("next",next);
+				model.addAttribute("point1",member.getPoint());
 		return "member.profile.point";
 	}
 	
