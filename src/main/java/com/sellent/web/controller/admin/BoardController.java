@@ -166,7 +166,7 @@ public class BoardController {
 		AdminPaging paging = new AdminPaging();
 		paging.setTotalCount(cnt);
 		paging.setPage(page);
-
+		System.out.println(sale);
 		List<AdminProductView> list = adminProductService.getBoard(parent, sub, sale, startDate, endDate, condition,
 				text, paging);
 		List<ParentCategory> parentList = categoryService.getParentList();
