@@ -1,4 +1,5 @@
 @import url("reset.css");
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
 
 
 .h-100 {
@@ -24,6 +25,7 @@ a:active {
 html, body {
 	width: 100%;
 	min-height: 600px;
+	font-family: "Do Hyeon"!important;
 }
 
 .main-container {
@@ -126,12 +128,12 @@ html, body {
 }
 .content .writer-id,
 .content .title {
-	margin-top: 5px;
+	margin-top: 5px!important;
 }
 .content .price {
-	margin: 15px 0px;
-	padding-right: 20px;
-	text-align: right;
+	margin: 15px 0px!important;
+	padding-right: 20px!important;
+	text-align: right!important;
 }
 
 .text .heart {
@@ -139,6 +141,9 @@ html, body {
 }
 .text .star {
 	margin-left: auto;
+	color: #ccc;
+	line-height: 26px;
+	
 }
 
 /*하트*/
@@ -201,14 +206,19 @@ html, body {
 /*star*/
 .star-ratings-css {
   unicode-bidi: bidi-override;
+/*  
   color: #c5c5c5;
+*/
+  color: black;
   font-size: 18px;
   height: 25px;
-  width: 120px;
+  width: 110px;
   margin: 0 auto;
   position: relative;
   padding: 0;
+  /*
   text-shadow: 0px 1px 0 #a2a2a2;
+  	*/
 }
  .star-ratings-css-top {
       color: #ffcc36;
@@ -219,19 +229,52 @@ html, body {
     top: 0;
     left: 0;
     overflow: hidden;
-    height: 20px;
+    height: 25px;
+    font-size: 21px;
   }
   .star-ratings-css-bottom {
     padding: 0;
     display: block;
     z-index: 0;
   }
+.fa-fw {
+	width: 21px!important;
+}
 
+.flexa {
+	display: flex;
+}
+
+
+
+/*pikachu*/
+.loading {
+    animation: linear;
+  animation-duration: 5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 140%;
+    width: 100%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
 
 
 /*하트*/
 @media All and (max-width: 360px) {
-	
+	.loading {
+		display: none;
+	}
+	.flexa {
+		display: grid;
+	}
 	.main-container {
 		width: 100%; 
 	}
@@ -275,7 +318,7 @@ html, body {
 		display: inline-block;
 	}
 	.content {
-		width: 100%;
+		width: 98.47%;
 		height: auto;
 		margin: 0px;
 		padding: 10px;
@@ -292,3 +335,7 @@ html, body {
 	}
 }
 
+
+#center {
+	margin-bottom: 111px;
+}

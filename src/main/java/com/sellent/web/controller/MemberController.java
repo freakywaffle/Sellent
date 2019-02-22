@@ -486,6 +486,14 @@ public class MemberController {
 		
 		for(Like li : list) {
 			List<ProductView> likeProduct = productDao.getLikeView(li.getProduct_no());
+
+			if(likeProduct.get(0).getTitle().length() >= 27) {
+				ProductView pv = new ProductView();
+				String title = likeProduct.get(0).getTitle().substring(0,27)+"...";
+				likeProduct.get(0).setTitle(title);
+	
+			}
+			
 			likeList.add(likeProduct.get(0));
 		}
 		
@@ -502,7 +510,6 @@ public class MemberController {
 	@ResponseBody
 	public String subQna(Principal principal, String category) {
 		
-		System.out.println("Dad");
 		String id = principal.getName();
 		List<Like> list = likeDao.select(id);
 		

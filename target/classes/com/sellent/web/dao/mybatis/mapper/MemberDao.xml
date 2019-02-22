@@ -61,5 +61,13 @@
 	<insert id="addPoint">
 		update member set point = point + #{param2} where id = #{param1}
 	</insert>
+	
+	<select id="getTopSellent" resultType="com.sellent.web.entity.Member">
+		select id,photo,star_point,regdate from member order by star_point desc , regdate desc limit 0,2;
+	</select>
+	
+	<select id="getTopSellent2" resultType="com.sellent.web.entity.Member">
+		select id,photo,star_point,regdate from member order by star_point desc , regdate desc limit 2,2;
+	</select>
 
 </mapper>

@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <link href="/resources/css/member/aside.css" rel="stylesheet"/>
-<section class="aside">
+<section class="aside aside-close">
 	<h1 class="hidden">사이드 메뉴</h1>	
 	<div class="ct-wrapper">	
 		<h2>${pageTitle }</h2>
@@ -14,7 +14,7 @@
 			<ul>
 				<li><a href="../member/project"><div>ㅡ</div><div>프로젝트</div></a></li>
 				<li><a href="../member/history"><div>ㅡ</div><div>HISTORY</div></a></li>
-				<li><a href="../member/static"><div>ㅡ</div><div>통계</div></a></li>
+				<li><a href="../member/statics"><div>ㅡ</div><div>통계</div></a></li>
 				
 			</ul>
 		</div>
@@ -50,5 +50,8 @@
 		</div>
 		</c:if>
 		
+	</div>
+	<div class="close-button">
+		<input type="button" value="&lt;">
 	</div>
 </section>

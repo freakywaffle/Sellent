@@ -1,106 +1,147 @@
-@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+@import
+	url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean')
+	;
 
-#top-content{
-	display:flex;
-	width:800px;
-	height:60px;
-	margin-top:20px;
+.menu-button {
+	position: fixed;
+	top: 300px;
+	left: 0%;
+	height: auto;
+	display: none;
+	z-index: 10;
+}
+
+.menu-button input {
+	background-color: orange;
+	border: none;
+	height: 60px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+}
+
+#top-content {
+	display: flex;
+	width: 800px;
+	height: 60px;
+	margin-top: 20px;
 	/* background-color:pink; */
 	border-bottom: 1px solid #686565;
 }
-.select{
-	margin-top:25px;
-	margin-left:80%;
-	
-}
-.select select{
 
-	margin-left:100%;
-	width:70px;
-	height:25px;
-	border:1px solid gray;
-	font-family: 'Do Hyeon', sans-serif;
-	font-size:13px;
-	padding-left:5px;
-	padding-top:2px;
-	border-radius:8px;
+.select {
+	margin-top: 25px;
+	margin-left: 80%;
 }
+
+.select select {
+	margin-left: 100%;
+	width: 70px;
+	height: 25px;
+	border: 1px solid gray;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 13px;
+	padding-left: 5px;
+	padding-top: 2px;
+	border-radius: 8px;
+}
+
 select:focus {
- outline: none !important;
+	outline: none !important;
 }
 
 #point {
-	width:800px;
-	height:800px;
-	
+	width: 800px;
+	height: 800px;
 }
-.table{
 
-	width: 800px;	
-	border-collapse:collapse;
-	border-bottom:2px solid #8f939d;
+.table {
+	font-size:18px;
+	width: 800px;
+	border-collapse: collapse;
+	border-bottom: 2px solid #8f939d;
 }
-.table thead{
+
+.table thead {
 	border-bottom: 1px solid #d3d3d3;
-	height:100px;
-	
-	
-}
-.table td{
-	height:50px;
-	text-align:center;
-}
-thead th:first-child, tbody td:first-child{
-	
-	width:180px;
+	height: 100px;
 }
 
-.table th{
-	height:50px;
+.table td {
+	height: 50px;
+	text-align: center;
+}
+
+thead th:first-child, tbody td:first-child {
+	width: 180px;
+}
+
+.table th {
+	height: 50px;
 	text-align: center;
 	border-bottom: 1px solid #d3d3d3;
-	border-top:2px solid #8f939d;	
+	border-top: 2px solid #8f939d;
 }
-.total-point{
-	height:30px;
+
+.total-point {
+	height: 30px;
 	font-family: 'Do Hyeon', sans-serif;
-	font-size:25px;
-	margin-right:10px;
-	margin-top:60px;
-	margin-bottom:10px;
-	color:#002060;
-	
+	font-size: 25px;
+	position:relative;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	color: #002060;
 }
-#page{
+.total-point span{
+	position: absolute;
+	right: 10px;
+}
+
+#page {
 	/* background-color:pink; */
-	margin-top:55px;
+	margin-top: 55px;
 	text-align: center;
-	
 }
-#page ul{
-	display:inline-flex;
+
+#page ul {
+	display: inline-flex;
 }
-#page li{
-	margin-right:10px;
-	font-size:20px;
+
+#page li {
+	margin-right: 10px;
+	font-size: 20px;
 }
-#page li:last-child{
-	margin-right:0px;
+
+#page li:last-child {
+	margin-right: 0px;
 }
 
 @media ( max-width :480px) {
-	.content{width:100%;}
-	.point{width: 100%;}
-	#top-content,#point, .table {
-		width:100%;
-		font-size:10px;
+	.content {
+		width: 100%;
 	}
-	.title, .table-id{
-		width:75%;
+	.point {
+		width: 100%;
 	}
-	thead th:first-child, tbody td:first-child{width: auto;}
-	
-	.select{width:100%;}
-	.select select{ margin-left: 0px !important; }
+	.mobile-block {
+		display: block;
+	}
+	#top-content, #point, .table {
+		width: 100%;
+	}
+	.title, .table-id {
+		width: 75%;
+	}
+	thead th:first-child, tbody td:first-child {
+		width: auto;
+	}
+	.select {
+		width: 100%;
+	}
+	.select select {
+		margin-left: 0px !important;
+	}
+	.total-point {
+		padding-right: 10px;
+	}
 }
-

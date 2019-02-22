@@ -201,6 +201,11 @@
 				a -= files.length;
 				alert("파일첨부는 4개까지 가능합니다.")
 			}
+			
+		
+				alert(formData.getAll('img'))
+				alert(formData.getAll('img').length)
+				
 			$.ajax({
 			    method      : 'POST',
 			    url         : '/Qna/Attachments',
@@ -208,7 +213,6 @@
 		        contentType: false,
 			    data        : formData,
 			    success     : function(data) {
-			        
 			    },
 			    error       : function(request, status, error) {
 			        alert("이미지 전송 실패");
@@ -216,6 +220,7 @@
 				
 			 	   
 			});
+			
 			
 			
 		}
@@ -297,8 +302,8 @@ window.addEventListener('load',function(){
 							var box = $(".center-block")
 							
 							var contentBox = $("<div class='tab3' style='border:1px solid #ddd; height: auto; padding: 10px'></div>")
-							var contentTitle = $("<div class='tab2' style='font-size: 16px; font-weight: bold; white-space: initial;s'>"+title+"</div>")
-							var contentContent1 = $("<div class='' style='font-size: 12px; margin-top: 9px; white-space: initial;' >"+content1+"</div>")
+							var contentTitle = $("<div class='tab2' style='font-size: 18px; font-weight: bold; white-space: initial;'>"+title+"</div>")
+							var contentContent1 = $("<div class='' style='font-size: 15px; margin-top: 9px; white-space: initial;' >"+content1+"</div>")
 							
 							contentBox.append(contentTitle)
 							contentBox.append(contentContent1)
@@ -417,9 +422,32 @@ window.addEventListener('load',function(){
 	});
 
 	
+
+
+
+window.addEventListener('load',function(){
+	var tab1st = $("#tab1st")
+	var tab2nd = $("#tab2nd")
 	
+	tab1st.click(moveTo1st)
+	tab2nd.click(moveTo2nd)
+
+	function moveTo1st() {
+	  tab1st.addClass('move-to-second')
+	  tab2nd.addClass('move-to-second')
+	  tab1st.removeClass('move-to-first')
+	  tab2nd.removeClass('move-to-first')
+	}
 	
+	function moveTo2nd() {
+
+	  tab1st.addClass('move-to-first')
+	  tab2nd.addClass('move-to-first')
+	  tab1st.removeClass('move-to-second')
+	  tab2nd.removeClass('move-to-second')
+	}
 	
+});
 		 
 		 
 

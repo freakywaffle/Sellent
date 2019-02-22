@@ -1,9 +1,12 @@
 @import url("reset.css");
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean');
+
+
  
 html, body {
 	height: 100%;
-
+	font-family: "Do Hyeon"!important;
 }
 .hidden {
 	display: none;
@@ -22,7 +25,6 @@ html, body {
 	height: 100%;
 	width: 440px;
 	right: 0px;
-	font-family: "NotoSansKR Regular" !important;
 	border: 1px solid #cdcdcd;
 	z-index: 999;
 }
@@ -59,6 +61,7 @@ html, body {
 #guide .search-bar,
 #guide .e-mail-bar,
 #guide .title-bar {
+	font-size: 16px;
 	width: 100%;
 	padding: 11px 14px 11px 30px; 
 }
@@ -95,7 +98,7 @@ html, body {
 	font-weight: 550;
 }
 #guide h5 {
-	font-size: 13px; 
+	font-size: 16px; 
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
@@ -227,7 +230,7 @@ html, body {
 	display:block;
 	padding:15px;
   color:#555;
-  font-size:16px;
+  font-size:17px;
   font-weight:bold;
 	text-transform:uppercase;
 	letter-spacing:1px;
@@ -239,6 +242,7 @@ html, body {
    content: "\e114";
    float: right;
    transition: all 0.5s;
+   color: #ffd400;
 }
 #guide .panel-heading.active a:before {
 	-webkit-transform: rotate(180deg);
@@ -258,6 +262,7 @@ html, body {
 	padding: 15px 40px;
 	border-top: 1px solid #ddd;
 	border-bottom: 0px;
+	font-size: 15px;
 }
 
 #guide .dd li > a:visited,
@@ -293,6 +298,7 @@ html, body {
 	height: auto;
 	padding: 11px 30px;
 	border: 0px;
+	font-size: 16px;
 }
 #guide .question,
 #guide .question-box {
@@ -300,6 +306,7 @@ html, body {
 }
 #guide .question-box h6 {
 	margin: 10px 0px;
+	font-size: 18px;
 }
 #guide .question-box .area{
 	height: 204px;
@@ -423,6 +430,14 @@ html, body {
     -webkit-transition: -webkit-transform 1s ease-in-out 0s;
     height: 100%;
 }
+
+#guide #tab1st,
+#guide #tab2nd {
+	
+    transition: transform 1s ease-in-out 0s;
+	
+}
+
 
 #guide .move-to-second {
     transform: translateX(-100%);
@@ -748,3 +763,23 @@ transform: rotate(135deg);
 	color: black;
 }
 
+.scal:hover {
+	cursor: pointer;
+	box-shadow: 0 0 10px 0 #ccc;
+	transition: 0.25s;
+	transform: scale(1.009);
+}
+
+
+@media All and (max-width: 360px) {
+		
+		.inner-fabs {
+			display: none;
+		}
+
+		.fab {
+			display: none;
+		}
+	
+	
+	}

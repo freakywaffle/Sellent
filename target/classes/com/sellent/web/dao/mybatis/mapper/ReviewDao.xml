@@ -32,7 +32,7 @@
 	
 	<select id="getListById" resultType="com.sellent.web.entity.ReviewView">
 		select 
-			regdate, 
+			date_format(regdate,'%y-%m-%d') date, 
 			content, 
 			starpoint
 	    from reviewView

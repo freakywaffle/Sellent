@@ -99,4 +99,17 @@ public class MybatisMemberDao implements MemberDao{
 		return memberDao.addPoint(id, point);
 	}
 
+	@Override
+	public List<Member> getTopSellent() {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.getTopSellent();
+	}
+
+	@Override
+	public List<Member> getTopSellent2() {
+		// TODO Auto-generated method stub
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.getTopSellent2();
+	}
+
 }

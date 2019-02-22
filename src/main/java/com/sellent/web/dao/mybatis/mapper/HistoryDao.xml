@@ -14,12 +14,12 @@
 	
 
 	<select id="getListById" resultType="com.sellent.web.entity.HistoryView">
-		select no, regdate , title, price, buyer_id,seller_id, state from
+		select no, date_format(regdate,'%y-%m-%d') date , title, price, buyer_id,seller_id, state from
 		historyView where seller_id = #{param1};
 	</select>
 	
 	<select id="getListById2" resultType="com.sellent.web.entity.HistoryView">
-		select no, regdate , title, price, buyer_id,seller_id, state from
+		select no, date_format(regdate,'%y-%m-%d') date , title, price, buyer_id,seller_id, state from
 		historyView where buyer_id = #{param1};
 	</select>
 	

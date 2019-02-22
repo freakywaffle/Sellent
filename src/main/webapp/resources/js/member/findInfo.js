@@ -4,11 +4,11 @@ window.addEventListener("load",function(){
   var findId = document.querySelector(".findId");
   var idBtn = idFind.querySelector("input[type='button']")
   var pwdBtn = pwdFind.querySelector("input[type='button']")
-  var modal = document.querySelector(".modal");
-  var closebtn = document.querySelector(".close-button");
+  var modalFind = document.querySelector(".modalFind");
+  var closebtn = modalFind.querySelector(".close-button");
 
   function toggleModal() {
-	    modal.classList.toggle("show-modal");
+	  modalFind.classList.toggle("show-modal");
 	  }
   closebtn.addEventListener("click", toggleModal);
   idBtn.addEventListener("click",function(){
@@ -30,7 +30,7 @@ window.addEventListener("load",function(){
 	  var emailInput = findPwd.querySelector("input[name='email']").value;
 	  
 	  var xml = new XMLHttpRequest();   	  
-	  xml.open('POST','/member/pwdFind');
+	  xml.open('POST','/pwdFind');
 	  xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	  xml.onload = function(){
 			if(xml.responseText == 1){
@@ -55,7 +55,7 @@ window.addEventListener("load",function(){
 					    				 location.href='../member/login';
 					    			 }
 					    			 else{
-					    				 alert("??");
+					    				 //alert("??");
 					    			 }
 					    		 };
 					    		 request.send("id="+idInput+"&newPwd="+newpwdChkInput);

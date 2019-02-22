@@ -4,8 +4,12 @@
 
 <link href="/resources/css/review/review.css" rel="stylesheet" />
 <script src="/resources/js/review/comment.js"></script>
+<script src="/resources/js/member/inc/aside.js"></script>
 
 <section class="content">
+	<div class="menu-button mobile-block">
+		<input type="button" value=">" />
+	</div>
 	<div id="top-content">
 
 		<div class="select">
@@ -32,7 +36,7 @@
 			<tbody>
 			<c:forEach var="n" items="${review}">
 				<tr>
-					<td>${n.regdate}</td>
+					<td>${n.date}</td>
 					<td class="title-content">${n.content}</td>
 					<td>${n.starpoint}</td>
 				</tr>

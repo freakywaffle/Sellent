@@ -150,7 +150,7 @@
 	</select>
 	
 	<select id="getListToStatic" resultType="java.lang.Double">
-		select avg(avg_starpoint)
+		select IFNULL(avg(avg_starpoint),0) 
 	    from product 
 	    where date_format(regdate, '%m' ) = #{param3} and  
 	    date_format(regdate, '%Y' ) = #{param4} and

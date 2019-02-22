@@ -5,27 +5,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
      
 <!DOCTYPE html>
-<style>
-
-.loading {
-    animation: linear;
-  animation-duration: 5s;
-  animation-name: slidein;
-}
-
-@keyframes slidein {
-  from {
-    margin-left: 107%;
-    width: 100%
-  }
-
-  to {
-    margin-left: 0%;
-    width: 100%;
-  }
-}
-
-</style>
 
 <head>
 	<meta charset="UTF-8">
@@ -50,7 +29,7 @@
 <body>
 
         <div class="loading">
-            <img style="width: 200px; top:550px; position: absolute;"src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
+            <img style="width: 170px; top:620px; position: fixed;"src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
         </div>
         <div class="mouse original"></div>
 
@@ -71,7 +50,7 @@
 						
 					</ul>
 					<ul>
-						<li><a href="#" class="a-color"><i class="fa fa-caret-right"></i>포트폴리오 (0)</a></li>
+						<li><a href="#" class="a-color"><i class="fa fa-caret-right"></i>포트폴리오</a></li>
 					</ul>
 				</div>
 			</div>
@@ -82,21 +61,21 @@
 				
 				<c:if test="${index.count%4 eq 1}">
 				
-					<div class="content-box flex">
+					<div class="content-box flexa">
 				</c:if>
 				
 				<div class="content bbb" style="">
 						<a href="/category/${a.parentCategory}/${a.no}">
 							<div class="img-box bbb">
-								<div class="img">${a.thumbnail}</div>
-								<div class="profile">${a.photo}</div>
+								<div class="img"><img src="/resources/images/${a.thumbnail}"/></div>
+								<div class="profile"><img style="height: 45px;" src="/resources/images/${a.photo}"/></div>
 							</div>
 						</a>
 						<div class="text">
-							<a href="#">
+							<a href="/category/${a.parentCategory}/${a.no}">
 								<div class="writer-id">${a.writerId}</div>
-								<div class="title" style="height: 40px">${a.parentCategory}  ${a.title}</div>
-								<div class="price"><fmt:formatNumber value="${a.price}" type="number"/>원 ~</div>
+								<div class="title" style="height: 40px">${a.title}</div>
+								<div class="price"><fmt:formatNumber value="${a.price}" type="currency" currencySymbol="￦"/></div>
 							</a>
 							<div class="flex">
 								<div class="product">
@@ -106,9 +85,9 @@
 											</div>
 										</div>
 									</div>
-								<div class="star flex"> <div class="star-ratings-css">
-  <div class="star-ratings-css-top" style="width: ${a.avgStarPoint*5}%"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
-  <div class="star-ratings-css-bottom"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+								<div class="star flex" > <div class="star-ratings-css">
+  <div class="star-ratings-css-top" style="width: ${a.avgStarPoint*25}%"><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div>
+  <div class="star-ratings-css-bottom"><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span></div>
 </div>
  (${a.reviewCnt})</div>
 							</div>
@@ -131,7 +110,6 @@
 	</div>
 	
 	<script>
-
 
 	$('.p-catrgory').click(function () {
 
@@ -156,7 +134,7 @@
  				for(var j=0; j<qq; j++) {
  					
 	 				
- 					var cv = $("<div class='content-box flex'>"); 	
+ 					var cv = $("<div class='content-box flexa'>"); 	
 	 				
  					if(ff<4)
  						size=ff;
@@ -174,18 +152,18 @@
 						
  					var q = $("<div class='content bbb'></div>"); 	
 					
-		 			var cc = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'><div class='img-box bbb'><div class='img'></div><div class='profile'></div></div></a>")
+		 			var cc = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'><div class='img-box bbb'><div class='img'><img src='/resources/images/"+b[t].thumbnail+"'/></div><div class='profile'><img style='height: 45px;' src='/resources/images/"+b[t].photo+"'/></div></div></a>")
 				
 		 			
 		 			var dd = $("<div class='text'></div>")
-		 			var qqq = $("<a href='#'></a>")
+		 			var qqq = $("<a href='/category/"+b[t].parentCategory + "/" + b[t].no+"'></a>")
 		 			var www = $("<div class='writer-id'>"+b[t].writerId+"</div>")
 		 			var eee = $("<div class='title' style='height: 40px'>"+b[t].title+"</div>")
-		 			var rrr = $("<div class='price'>"+price+"원~"+"</div>")
+		 			var rrr = $("<div class='price'>"+"￦"+price+"</div>")
 		 			
 		 			var flex = $("<div class='flex'></div>")
 					var product = $("<div class='product'></div>")
-					var star = $("<div class='star'>"+"("+b[t].reviewCnt+")"+"</div>")
+					var star = $("<div class='star flexa'>"+"<div class='star-ratings-css'> <div class='star-ratings-css-top' style='width: "+b[t].avgStarPoint*25+"%'><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span><span><i class='fa fa-star fa-fw'></i></span></div><div class='star-ratings-css-bottom'><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span><span><i class='far fa-star fa-fw'></i></span></div></div>"+"("+b[t].reviewCnt+")"+"</div>")
 					
 					var fornt = $("<div class='fornt'></div>")
 					var imgWrap = $("<div class='img-wrap'></div>")
@@ -255,7 +233,6 @@
 
 	
 	
-
 		
 	
 	
