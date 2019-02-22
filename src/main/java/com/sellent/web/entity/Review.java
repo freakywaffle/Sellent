@@ -9,8 +9,8 @@ public class Review {
 	private String content;
 	private double starpoint;
 	private Date regdate;
-	
-	
+	private String date;
+
 	
 	public Review() {
 		// TODO Auto-generated constructor stub
@@ -84,6 +84,16 @@ public class Review {
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 

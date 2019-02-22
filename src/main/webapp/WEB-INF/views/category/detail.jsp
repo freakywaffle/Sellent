@@ -282,7 +282,12 @@
 										reviewProfilePhoto.addClass('review-profile-photo');
 										reviewProfilePhoto.append(profilePhoto);
 										
+										
+										var inputHidden = $('<input type="hidden" />');
+										inputHidden.val(reviews[i].no);
+										
 										var reviewDiv = $('<div></div>').addClass('review');
+										reviewDiv.append(inputHidden);
 										reviewDiv.append(reviewProfilePhoto);
 										reviewDiv.append(rvContent);
 										
@@ -489,6 +494,7 @@
 							reviewDel.click(function(e){
 								var thisReview = $(this).parent().parent().parent();
 								var thisNo = thisReview.find('input[type="hidden"]').val();
+								console.log(thisNo);
 								$.ajax({
 									url: $(location).attr('pathname')+'/delReview',
 									type:'POST',

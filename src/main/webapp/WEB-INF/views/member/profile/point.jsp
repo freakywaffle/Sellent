@@ -25,7 +25,7 @@
 	</div>
 	<div class="total-point" dir="rtl">
 		<span>
-			Total:<a>&nbsp;${allSum }</a>P
+			Total:<a>&nbsp;${point1 }</a>P
 		</span>
 	</div>
 	
