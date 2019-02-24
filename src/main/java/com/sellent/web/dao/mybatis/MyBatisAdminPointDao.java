@@ -12,7 +12,7 @@ import com.sellent.web.entity.PointConfig;
 import com.sellent.web.entity.PointHistory;
 
 @Repository
-public class MaBatisAdminPointDao implements AdminPointDao{
+public class MyBatisAdminPointDao implements AdminPointDao{
 
 	@Autowired
 	private SqlSessionTemplate session;

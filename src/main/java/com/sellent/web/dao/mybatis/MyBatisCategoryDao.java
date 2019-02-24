@@ -15,7 +15,7 @@ import com.sellent.web.entity.SubCategory;
 
 
 @Repository
-public class MaBatisCategoryDao implements CategoryDao{
+public class MyBatisCategoryDao implements CategoryDao{
 
 	@Autowired
 	private SqlSessionTemplate session;

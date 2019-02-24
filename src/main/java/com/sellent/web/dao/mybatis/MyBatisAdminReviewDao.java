@@ -12,7 +12,7 @@ import com.sellent.web.entity.Review;
 import com.sellent.web.entity.ReviewView;
 
 @Repository
-public class MaBatisAdminReviewDao implements AdminReviewDao{
+public class MyBatisAdminReviewDao implements AdminReviewDao{
 	
 	@Autowired
 	private SqlSessionTemplate session;

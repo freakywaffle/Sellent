@@ -10,8 +10,7 @@ public class Review {
 	private double starpoint;
 	private Date regdate;
 	private String date;
-	
-	
+
 	
 	public Review() {
 		// TODO Auto-generated constructor stub

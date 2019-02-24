@@ -69,6 +69,7 @@ public class PointHistory {
 		this.date = date;
 	}
 
+
 	@Override
 	public String toString() {
 		return "PointHistory [no=" + no + ", member_id=" + member_id + ", content=" + content + ", regdate=" + regdate

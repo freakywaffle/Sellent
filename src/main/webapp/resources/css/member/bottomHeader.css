@@ -3,11 +3,12 @@
 	url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:100,300,400,500,700,900|Sunflower:300,500,700&subset=korean')
 	;
 a{
-	color:black;
+	color:black !important;
+	font-weight: none !important;
 }
-a:link {text-decoration: none;}
+a:link {text-decoration: none !important;}
 
-a:visited {text-decoration: none;}
+a:visited {text-decoration: none !important;}
 
 a:hover {text-decoration: none !important;}
 .bottom-header {

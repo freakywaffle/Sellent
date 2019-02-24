@@ -150,7 +150,7 @@
 	 					
 	 				
 	 				var c = "<spr:url value='/sellent/upload/'/>"+b[t].no+"/"+b[t].thumbnail
-					var profile = "<spr:url value='/sellent/profile'/>/" + b[t].writerId + b[t].photo
+					var profile = "<spr:url value='/sellent/profile'/>/" + b[t].writerId +"/"+ b[t].photo
 						
  					var q = $("<div class='content bbb'></div>"); 	
 					

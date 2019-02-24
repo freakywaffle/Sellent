@@ -11,7 +11,7 @@ import com.sellent.web.entity.AdminPaging;
 import com.sellent.web.entity.AdminTotalView;
 
 @Repository
-public class MaBatisAdminTotalDao implements AdminTotalDao{
+public class MyBatisAdminTotalDao implements AdminTotalDao{
 	
 	@Autowired
 	SqlSessionTemplate session;
