@@ -54,7 +54,7 @@ public class SellentProductService implements ProductService{
 		productDao.insert(product);
 		
 		for(ProductFile pf : files) {
-			
+			System.out.println("등록번호:"+pf.getProductNo());
 			productFileDao.insert(pf);				
 		}
 		
