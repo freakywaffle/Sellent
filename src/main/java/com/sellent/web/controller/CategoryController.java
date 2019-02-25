@@ -364,11 +364,17 @@ public class CategoryController {
 	
 	@PostMapping("{category}/{no}/delReview")
 	@ResponseBody
-	public String delReview(int no, String content) {
+	public String delReview(@PathVariable("no")int pno, int no, String content) {
 		reviewDao.delete(no);
 		
-		
-		return "{\"ok\":\"ok\"}";
+		double avgStarPoint = reviewDao.getAvgStarPointByProductNo(no);
+		System.out.println(avgStarPoint);
+		productDao.updateStarPointByNo(pno, avgStarPoint);
+		ProductView product = productDao.get(pno);
+		int cnt = product.getReviewCnt();
+		String json = "{\"cnt\":"+cnt+",\"avg\":"+avgStarPoint+"}";
+		System.out.println(json);
+		return json;
 	}
 	
 	

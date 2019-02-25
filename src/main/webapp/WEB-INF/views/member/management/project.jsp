@@ -24,7 +24,7 @@
 	</div>
 	<div id="main-content">
 		<c:forEach var="n" items="${product }">
-			<div class="contents">
+			<div class="contents" onclick="">
 				<div class="title-img">
 					<img alt="타이틀 이미지"
 					src='<spring:url value="/sellent/upload/"/>${n.no}/${n.thumbnail}' onerror="this.src='/sellent/default/기본.gif'"/>

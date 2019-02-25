@@ -311,18 +311,17 @@
 									textarea.val('');
 									var avgStarPoint = jsonData.avgStarPoint.toFixed(1);
 									var star = $('.star');
-									
+									star.empty();
 									for(var i=1; i<= avgStarPoint;i++){
-										star += '<img src="/resources/images/big-fullstar.png"/>';
+										star.append($('<img src="/resources/images/big-fullstar.png"/>'));
 									}
 									
 									for(var i=avgStarPoint-avgStarPoint%1+1; i<=5;i++){
-										star += '<img src="/resources/images/big-binstar.png"/>';
+										star.append($('<img src="/resources/images/big-binstar.png"/>')) ;
 									}
 										
 									$('.avgStarPoint').text(avgStarPoint);
 									$('.star-point').find('.reviewCnt').text('('+totalCnt+'명의 평가)');
-									
 									
 									
 
@@ -506,7 +505,22 @@
 										var cntSpan = $('.review-list h2 span');
 										
 										
-										cntSpan.text(cntSpan.text()-1);
+										cntSpan.text(data.cnt);
+										var avgStarPoint = data.avg.toFixed(1);
+										var star = $('.star');
+										star.empty();
+										for(var i=1; i<= avgStarPoint;i++){
+											star.append($('<img src="/resources/images/big-fullstar.png"/>'));
+										}
+										
+										for(var i=avgStarPoint-avgStarPoint%1+1; i<=5;i++){
+											star.append($('<img src="/resources/images/big-binstar.png"/>')) ;
+										}
+											
+										$('.avgStarPoint').text(data.avg);
+										$('.star-point').find('.reviewCnt').text('('+data.cnt+'명의 평가)');
+										
+										
 									}
 									
 									
