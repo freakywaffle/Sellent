@@ -10,7 +10,7 @@
 					<span class="sub-title">(관리자페이지)</span>
 				</div>
 				<div class="member-menu">
-					로그아웃
+					<a href="/member/logout">로그아웃</a>
 				</div>
 			</div>
 			

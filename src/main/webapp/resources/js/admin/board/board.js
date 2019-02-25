@@ -113,7 +113,17 @@ $(function(){
 
 $(function(){
 	
+	$(".board-obj").click(function(){
 	
+		var no = $(this).children(".board-no").text()
+		var parent = $(this).children(".board-parent").text()
+		
+		var url = "/category"+"/"+parent+"/"+no
+		
+		
+		
+		window.open(url,"게시물", "width=900, height=600, left=300, top=100")
+	})
 	
 	
 })

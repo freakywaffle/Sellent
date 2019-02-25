@@ -5,8 +5,8 @@
 
 <mapper namespace="com.sellent.web.dao.LikeDao">
 	<insert id="insert" parameterType="com.sellent.web.entity.Like">
-		insert into `like` values(#{member_id}, #{product_no})
-	</insert>
+		insert into `like`(member_id, product_no) values(#{member_id}, #{product_no})
+	</insert>	
 	
 	<delete id="delete" parameterType="com.sellent.web.entity.Like">
 		delete from `like` where (member_id = #{member_id}) and (product_no = #{product_no})
@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="select" resultType="com.sellent.web.entity.Like">
-		select product_no from `like` where member_id=#{param1}
+		select product_no from `like` where member_id=#{param1} order by regdate desc
 	</select>
 	
 	<select id="getListById" resultType="com.sellent.web.entity.Like">

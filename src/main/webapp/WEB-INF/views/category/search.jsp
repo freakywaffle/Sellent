@@ -33,7 +33,6 @@
 			</div>
 			<div class="won-star">
 				<div class="won">
-					<div class="won-img"><img alt="돈" src="/resources/images/save-money.png"></div>
 					<div class="money"></div>
 				</div>
 				<div class="star-point">
@@ -261,7 +260,13 @@
 						editCnt.text(product.editCnt);
 						duration.text(product.duration);
 						name.text(product.nickname);
-						money.text(product.price);
+						
+						
+						
+						var price = product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+			            var rrr = $("<div class='price'>"+"￦"+price+"</div>")
+						
+						money.append("￦"+price);
 						
 						console.log(starpoint);
 						
@@ -361,7 +366,11 @@
 							editCnt.text(product.editCnt);
 							duration.text(product.duration);
 							name.text(product.nickname);
-							money.text(product.price);
+
+							var price = product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+				            var rrr = $("<div class='price'>"+"￦"+price+"</div>")
+							
+							money.append("￦"+price);
 							
 							console.log(starpoint);
 							
@@ -482,7 +491,11 @@
 							editCnt.text(product.editCnt);
 							duration.text(product.duration);
 							name.text(product.nickname);
-							money.text(product.price);
+							
+							var price = product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+				            var rrr = $("<div class='price'>"+"￦"+price+"</div>")
+							
+							money.append("￦"+price);
 							
 							console.log(starpoint);
 							
