@@ -65,7 +65,7 @@
 						<a href="/category/${a.parentCategory}/${a.no}">
 							<div class="img-box bbb">
 								<div class="img"><img style="width: 100%; height: 100%" src="<spr:url value="/sellent/upload/"/>${a.no}/${a.thumbnail}"  onerror="this.src='/sellent/default/기본.gif'"/></div>
-								<div class="profile"><img style="height: 45px;" src="<spr:url value="/sellent/profile"/>/${sessionScope.member.id}/${sessionScope.member.photo}"/></div>
+								<div class="profile"><img style="height: 45px; border-radius: 500px"  src="<spr:url value="/sellent/profile"/>/${a.writerId}/${a.photo}"/></div>
 							</div>
 						</a>
 						<div class="text">
@@ -193,7 +193,6 @@
  				}
 		    },
 		    error       : function(request, status, error) {
- 				alert("실패")
 		    }	
 			
 		 	   

@@ -69,7 +69,9 @@ public class HomePreparer implements ViewPreparer {
        }
        else if(!h.id.isEmpty()) {
     	   System.out.println(h.id.get(0));
-    	   String id = h.id.get(0);
+    	   System.out.println("size"+h.id.size());
+    	   //String id = h.id.get(0);
+    	   String id = h.id.get(h.id.size()-1);
     	   Member member = memberDao.getMember(id);
     	   point = member.getPoint();
     	   System.out.println(point);
