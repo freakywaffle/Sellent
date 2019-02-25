@@ -22,10 +22,11 @@ public class AdminPaging {
 		
 		return page;
 	}
+	
 	public void setPage(int page) {
-		this.page = page;
-		startPage = ((page-1) / 10) * countPage +1;
-		endPage = startPage + countPage - 1;
+		this.page = page; 
+		this.startPage = ((page-1) / countPage) * countPage +1;
+		this.endPage = startPage + countPage - 1;
 		
 		// 마지막 페이지가 총 페이지를 넘지 않도록 보정
 		if(endPage > totalPage) {
@@ -37,7 +38,7 @@ public class AdminPaging {
 		this.endCount = page * countList;
 		
 		this.prevPage = (this.page-1) < 1 ? 1 : (this.page-1);
-		this.nextPage = (this.page+1) > endPage ? endPage : (this.page+1);
+		this.nextPage = (this.page+1) > totalPage ? totalPage : (this.page+1);
 		
 	}
 	public int getTotalCount() {

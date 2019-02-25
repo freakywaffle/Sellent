@@ -3,6 +3,12 @@
 @import url(footer.css);
 @import url(topContent.css);
 
+.loding-bar{
+	bottom: 400px;
+	margin-left: 50%;
+	z-index:10;
+}
+
 #datepicker, #datepicker2{
 	width:120px;
 }

@@ -11,7 +11,7 @@ import com.sellent.web.entity.AdminConfigView;
 import com.sellent.web.entity.AdminPaging;
 
 @Repository
-public class MaBatisAdminConfigDao implements AdminConfigDao{
+public class MyBatisAdminConfigDao implements AdminConfigDao{
 	
 	@Autowired
 	SqlSessionTemplate session;

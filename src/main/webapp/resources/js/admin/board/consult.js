@@ -74,6 +74,8 @@ $(function(){
 
             $("#modal").css("display","none")
             
+           $(".loding-bar").removeClass("hidden")
+            
             $.ajax({
                 method:'POST',
                 url:'email-send',
@@ -85,7 +87,8 @@ $(function(){
                         url:'consultState',
                         data:{"state":state, "no":no},
                         success:function(){
-                            
+                        	$(".loding-bar").addClass("hidden")
+                        	
                             var state = consultObj.children(".state-state")
                         
                             state.empty()
@@ -95,11 +98,15 @@ $(function(){
         
                         },
                         error:function(){
+                        	
+                        	$(".loding-bar").addClass("hidden")
+                        	
                             alert("실패")
                         }
                     })
                 },
                 error:function(){
+                	$(".loding-bar").addClass("hidden")
                     alert("잘못된 이메일 형식")
                 }
             })
