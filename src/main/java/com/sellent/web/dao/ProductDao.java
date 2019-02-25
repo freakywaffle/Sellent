@@ -42,4 +42,5 @@ public interface ProductDao {
 	List<ProductView> getListByFilter(String parent, String sub, int sellChk, int start, int cnt);
 	List<ProductView> getListBySearch(String keyword, List<ParentCategory> parentCategory, int sellChk, int start, int cnt);
 	List<ProductView> getListBySearchAll(String keyword, List<ParentCategory> parentCategory, int sellChk);
+	List<ProductView> getPhoto(String id);
 }

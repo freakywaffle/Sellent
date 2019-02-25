@@ -6,7 +6,7 @@
 	<form id="wrap" action="join" method="post" enctype="multipart/form-data">
 		<div class="basic">
 			<div class="head-title">기본정보</div>
-			<div class="profile">
+			<div class="profile ">
 				
 				<div><img  id="blah"  alt="" src="/resources/images/profile.png"></div>
 				<div class="plus">+</div>

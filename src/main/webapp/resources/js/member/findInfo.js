@@ -15,7 +15,7 @@ window.addEventListener("load",function(){
 	  var nameInput = findId.querySelector("input[name='nickname']").value;
 	  var emailInput = findId.querySelector("input[name='email']").value;
 	  var xml = new XMLHttpRequest();   	  
-	  xml.open('POST','/member/idFind');
+	  xml.open('POST','/idFind');
 	  xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	  xml.onload = function(){
 			alert(xml.responseText);

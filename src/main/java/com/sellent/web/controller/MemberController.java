@@ -116,7 +116,6 @@ public class MemberController {
 		int allCnt = productDao.getAllCntById(principal.getName(),selector);
 		System.out.println("now Page: " + page);
 		System.out.println("total page: " +allCnt );
-
 		int num=5; //화면에 보여질 페이지 번호의 갯수
 		//끝 페이지 번호
 		int endpage;
@@ -153,6 +152,7 @@ public class MemberController {
 		model.addAttribute("prev",prev);
 		model.addAttribute("next",next);
 		model.addAttribute("pageTitle",pageTitle);
+		model.addAttribute("selector",selector);
 		return "member.management.project";
 	}
 
@@ -360,12 +360,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("introduce")
-	public String introduce(Principal principal, Member member) {
+	public String introduce(Principal principal, Member member, HttpServletRequest req, ProductView productView) {
+		//List<ProductView> photo = productDao.getPhoto(principal.getName());
 		member.setId(principal.getName());
 		member.setSimple_introduction(member.getSimple_introduction());
 		System.out.println("'simple_intro:' " + member.getSimple_introduction());
 		member.setDetail_introduction(member.getDetail_introduction());
 		System.out.println("'detail_intro:' " + member.getDetail_introduction());
+		//req.getSession().setAttribute("photo",photo);
 		int updateIntro = memberDao.updateIntro(member);
 		//smemberService.insertMember(member, skill);
 		return "redirect:login";
