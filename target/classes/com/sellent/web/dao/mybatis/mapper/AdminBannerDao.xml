@@ -6,7 +6,7 @@
  
 <mapper namespace="com.sellent.web.dao.AdminBannerDao">
 		
-	<select id="getBannerList" resultType="com.sellent.web.entity.Banner">
+	<select id="getBannerList" resultType="com.sellent.web.enti	ty.Banner">
 		select * from banner limit #{startCount}, 10
 	</select>
 				

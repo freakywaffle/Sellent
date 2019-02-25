@@ -247,26 +247,26 @@ $(function(){
 })
 
 
-
-$("#modal4").css("display","block")
-
-        var index = $(".member-info").index(this)
-
-        $("#modal4-photo").val($(".member-photo").eq(index).text())
-        $("#modal4-simple").val($(".member-simple").eq(index).text())
-        $("#modal4-detail").val($(".member-detail").eq(index).text())
-        
-        var id = $(".member-id").eq(index).text()
-        var path = '/sellent/profile/'+id+'/'
-        var file = $(".member-photo").eq(index).text()
-        path += file
-
-        if(file==''){
-            $(".photo-alert").removeClass("hidden")
-            $("#modal4-photo").addClass("hidden")
-        }else{
-            $(".photo-alert").addClass("hidden")
-
-            $("#modal4-photo").attr("src", path) 
-            $("#modal4-photo").removeClass("hidden")
-        }
+//
+//$("#modal4").css("display","block")
+//
+//        var index = $(".member-info").index(this)
+//
+//        $("#modal4-photo").val($(".member-photo").eq(index).text())
+//        $("#modal4-simple").val($(".member-simple").eq(index).text())
+//        $("#modal4-detail").val($(".member-detail").eq(index).text())
+//        
+//        var id = $(".member-id").eq(index).text()
+//        var path = '/sellent/profile/'+id+'/'
+//        var file = $(".member-photo").eq(index).text()
+//        path += file
+//
+//        if(file==''){
+//            $(".photo-alert").removeClass("hidden")
+//            $("#modal4-photo").addClass("hidden")
+//        }else{
+//            $(".photo-alert").addClass("hidden")
+//
+//            $("#modal4-photo").attr("src", path) 
+//            $("#modal4-photo").removeClass("hidden")
+//        }
