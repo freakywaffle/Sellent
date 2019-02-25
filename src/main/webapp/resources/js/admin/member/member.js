@@ -124,7 +124,7 @@ $(function(){
             $.ajax({
 
                 method:'POST',
-                url:'/email-send',
+                url:'/admin/board/email-send',
                 data:{"title":title, "email":email, "content":content},
                 success:function(){
                     alert("전송완료")
