@@ -201,10 +201,7 @@
 				a -= files.length;
 				alert("파일첨부는 4개까지 가능합니다.")
 			}
-			
-		
-				alert(formData.getAll('img'))
-				alert(formData.getAll('img').length)
+
 				
 			$.ajax({
 			    method      : 'POST',
@@ -215,7 +212,6 @@
 			    success     : function(data) {
 			    },
 			    error       : function(request, status, error) {
-			        alert("이미지 전송 실패");
 			    }	
 				
 			 	   
@@ -234,6 +230,18 @@
 			
 
 			
+			
+		
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			$.ajax({
 			    method      : 'POST',
 			    url         : '/Qna/question',
@@ -242,7 +250,13 @@
 			        'main' : arr
 			    },
 			    success     : function(data) {
-			    	
+
+					swal({
+						  title: "문의가 접수되었습니다",
+						  text: "빠른 시일 내에 답변해 드리도록 하겠습니다.",
+						  icon: "success"
+					})
+					
 			      email.value = "";
 			 	  title.value = "";
 			 	  content.value = "";
@@ -253,7 +267,11 @@
 			 	  a = 0;
 			    },
 			    error       : function(request, status, error) {
-			        alert("문의 전송 실패");
+			    	swal({
+						  title: "문의접수가 실패되었습니다.",
+						  icon: "error"
+					})
+					
 			    }	
 				
 			 	   
@@ -319,7 +337,6 @@ window.addEventListener('load',function(){
 						  }
 					},
 				    error: function(){
-				    	alert("실패")
 				    }
 					
 				});	
