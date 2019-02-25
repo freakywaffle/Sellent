@@ -35,12 +35,16 @@ $(function() {
 
 // 판매요청 승인
 $(function(){
-    $(".approval-button").click(function(){
+    $(".approval-button").click(function(e){
+    	
         var saleObj = $(this).parents(".sale-obj")
         var no = $(saleObj).children(".sale-no").text()
         
         var approval = 1
-
+        
+        e.preventDefault();
+		e.stopPropagation();
+		
         $.ajax({
             method:'POST',
             url:'saleApproval',
@@ -120,4 +124,17 @@ $(function(){
     })
 })
 
-
+$(function(){
+	
+	$(".sale-obj").click(function(){
+	
+		var no = $(this).children(".sale-no").text()
+		var parent = $(this).children(".sale-parent").text()
+		
+		var url = "/category"+"/"+parent+"/"+no
+		
+		window.open(url,"게시물", "width=900, height=600, left=300, top=100")
+	})
+	
+	
+})
