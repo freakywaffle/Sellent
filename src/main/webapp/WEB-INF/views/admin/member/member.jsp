@@ -118,7 +118,9 @@
 				</c:forEach>
 				</tbody>
 			</table>
-	
+	      	<div class="whirly-loader loding-bar hidden">
+           		Loading...
+       		</div>
 			<div class="table-bottom">
 				<button id="select-remove" type="button">선택삭제</button>
 			</div>
