@@ -96,7 +96,7 @@
 	            </thead>
 	            <tbody class="tbody">
 	            <c:forEach items="${list }" var="total"> 
-	                <tr class="total-obj">
+	                <tr class="total-obj tr-hover">
 	                    <td>
 	                        <input class="check-box" type="checkbox"/>
 	                    </td>

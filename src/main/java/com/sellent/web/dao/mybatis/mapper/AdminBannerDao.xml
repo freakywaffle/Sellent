@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-
+ 
 <mapper namespace="com.sellent.web.dao.AdminBannerDao">
 		
 	<select id="getBannerList" resultType="com.sellent.web.entity.Banner">
@@ -15,8 +15,8 @@
 	</select>
 		
 	<insert id="insert">
-		insert into banner(id, order, image, title, content, end_date, use)
-		values (#{id}, #{order}, #{image}, #{title}, #{content}, #{end_date}, #{use})
+		insert into banner(`order`, `image`, `title`, `content`, `end_date`)
+		values (#{order}, #{image}, #{title}, #{content}, #{end_date})
 	</insert>
 		
 	<update id="update">
@@ -24,6 +24,6 @@
 	</update>
 								
 	<delete id="delete">
-		delete banner where id=#{param1} 
+		delete from banner where id=#{param1} 
 	</delete>
 </mapper>

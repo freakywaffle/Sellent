@@ -111,12 +111,16 @@ html, body {
 }
 .img-box .profile{
 	position: absolute;
-	width: 45px;
-	height: 45px;
 	top: 83%;
 	left: 70%;
 	border-radius: 500px;
 	border: 3px solid white;
+}
+
+.img-box .profile img{
+	width: 45px;
+	height: 45px;
+	border-radius: 500px
 }
 
 .content .text {

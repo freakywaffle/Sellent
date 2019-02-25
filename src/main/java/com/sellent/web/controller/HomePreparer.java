@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.sellent.web.dao.CategoryDao;
 import com.sellent.web.dao.MemberDao;
+import com.sellent.web.dao.SkillDao;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.ParentCategory;
 import com.sellent.web.entity.QnaPaCategory;
 import com.sellent.web.entity.QnaSubCategory;
+import com.sellent.web.entity.Skill;
 import com.sellent.web.entity.SubCategory;
 import com.sellent.web.service.QnaService;
 
@@ -30,6 +32,8 @@ public class HomePreparer implements ViewPreparer {
 	private QnaService qnaService;
     @Autowired
     private CategoryDao categoryDao;
+    @Autowired
+    private SkillDao Skilldao;
 	
     
 
@@ -62,20 +66,28 @@ public class HomePreparer implements ViewPreparer {
        
        List<Member> mem = new ArrayList<>();
        HomeController h = new HomeController();
+       List<Skill> skill = new ArrayList<>();
        System.out.println(h.id);
        int point = 0;
+       Member member = memberDao.getMember("khh111");
        if(h.id.isEmpty()) {
     	   System.out.println("preparer:아이디 없음");
        }
        else if(!h.id.isEmpty()) {
     	   System.out.println(h.id.get(0));
-    	   String id = h.id.get(0);
-    	   Member member = memberDao.getMember(id);
+    	   System.out.println("size"+h.id.size());
+    	   //String id = h.id.get(0);
+    	   String id = h.id.get(h.id.size()-1);
+    	   member = memberDao.getMember(id);
+    	   skill = Skilldao.select(id);
+    	   System.out.println(skill);
     	   point = member.getPoint();
     	   System.out.println(point);
        }
        
-       attributeContext.putAttribute("point",new Attribute(point), true);
+       attributeContext.putAttribute("sypoint",new Attribute(point), true);
+       attributeContext.putAttribute("syskill",new Attribute(skill), true);
+       attributeContext.putAttribute("symember",new Attribute(member), true);
      //  String id = h.id.get(0);
       // System.out.println("preparer");
       // System.out.println(id);

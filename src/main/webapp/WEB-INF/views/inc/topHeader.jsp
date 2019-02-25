@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
-<tiles:importAttribute name="point"/>
+<tiles:importAttribute name="sypoint"/>
 
 <link href="/resources/css/inc/topHeader.css" rel="stylesheet"/>
 

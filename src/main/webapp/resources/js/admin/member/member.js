@@ -119,15 +119,18 @@ $(function(){
         if(title =="" || content == "" || email ==""){
             alert("입력하지 않은 값이있습니다")
         }else{
-            
+        	$(".loding-bar").removeClass("hidden")
+        	
             $.ajax({
 
                 method:'POST',
-                url:'/email-send',
+                url:'/admin/board/email-send',
                 data:{"title":title, "email":email, "content":content},
                 success:function(){
                     alert("전송완료")
 
+                    $(".loding-bar").addClass("hidden")
+                    
                     $("#modal3-title").val("")
                     $("#modal3-content").val("")
                     $("#modal3-mail").val("")
@@ -135,7 +138,7 @@ $(function(){
                     $("#modal3").css("display","none")
                 },
                 error:function(){
-                    
+                	$(".loding-bar").addClass("hidden")
                 }
                 
             })

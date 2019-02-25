@@ -281,7 +281,9 @@ html, body {
 
 
 
-
+.material-icons {
+	line-height: 2	;
+}
 
 
 
@@ -296,7 +298,7 @@ html, body {
 	resize: none;
 	width: 100%;
 	height: auto;
-	padding: 11px 30px;
+	padding: 11px 30px 0px 30px;
 	border: 0px;
 	font-size: 16px;
 }
@@ -309,7 +311,7 @@ html, body {
 	font-size: 18px;
 }
 #guide .question-box .area{
-	height: 204px;
+	height: 210px;
 	width: 100%;
 	border: 1px solid #e6e6e6;
 	border-bottom: 0px;
@@ -494,7 +496,7 @@ html, body {
 }
 
 .fab a {
-  color: white;
+  color: white!important;
 }
 
 .fab i {

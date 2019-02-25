@@ -33,5 +33,12 @@ public class Skill{
 		this.memberId = memberId;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Skill [name=" + name + ", memberId=" + memberId + "]";
+	}
+
 	
 }

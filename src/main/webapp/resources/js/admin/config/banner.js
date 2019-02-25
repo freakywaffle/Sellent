@@ -146,6 +146,65 @@ $( function() {
 } );
 
 
+// 선택삭제
+$(function(){
+    $("#total-check").click(function(){
+        if($(this).is(":checked") == true){
+            $(".check-box").prop("checked",true)
+        }else{
+            $(".check-box").prop("checked", false)
+        }
+    })
+
+    $("#select-remove").click(function(){
+        $("#modal2").css("display","blocK")
+    })
+
+    $("#modal2-close-button").click(function(){
+        $("#modal2").css("display","none")
+    })
+    
+    $("#modal2-cancel").click(function(){
+        $("#modal2").css("display","none")
+    })
+    
+    $("#modal2-check").click(function(){
+        $("#modal2").css("display","none")
+        
+        var arr = new Array()    // ajax를 배열로 전송하는 경우 스프링에서는 ArrayList로 받는다
+
+        $(".check-box").each(function(){
+            if($(this).is(":checked")==true){
+
+                var no = $(this).parents(".banner-obj").children(".banner-id").text()
+                arr.push(no)
+            }
+        })
+
+        jQuery.ajaxSettings.traditional = true; // 배열을 전송할떄 끝 []를 없애줌
+
+        $.ajax({
+
+            method:'POST',
+            url:'bannerRemove',
+            data:{"arr":arr},
+            success:function(){
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+            },
+            error:function(){
+                alert("에러")
+            }
+        })
+    })
+})
+
+
+
 
 $(function(){
 
@@ -155,7 +214,7 @@ $(function(){
         
     })
 
-    $
+    
     $("#modal-close-button").click(function(){
 
         $("#modal").css("display","none")
@@ -163,20 +222,51 @@ $(function(){
     })
 
     
-    $("#modal-check-button").click(function(){
+    $("#modal-check").click(function(){
 
+        var formData = new FormData($("#fileForm")[0])
+
+        $.ajax({
+        	
+        	method:'POST',
+            url:'bannerInsert',
+            processData : false,
+            contentType : false,
+            data:formData,
+        	success:function(){
+        	},
+        	error:function(){
+        	}
+        	
+        })
+        
         $("#modal").css("display","none")
         
-        var title = $("#modal-title").val()
-        var endDate = $("#datepicker2").val()
-        var image = $("#modal-file").val()
-        var content = $("#modal-content").val()
-
-        alert(title)
-        alert(endDate)
-        alert(image)
-        alert(content)
-
     })
 
 })
+
+
+
+$("#modal4").css("display","block")
+
+        var index = $(".member-info").index(this)
+
+        $("#modal4-photo").val($(".member-photo").eq(index).text())
+        $("#modal4-simple").val($(".member-simple").eq(index).text())
+        $("#modal4-detail").val($(".member-detail").eq(index).text())
+        
+        var id = $(".member-id").eq(index).text()
+        var path = '/sellent/profile/'+id+'/'
+        var file = $(".member-photo").eq(index).text()
+        path += file
+
+        if(file==''){
+            $(".photo-alert").removeClass("hidden")
+            $("#modal4-photo").addClass("hidden")
+        }else{
+            $(".photo-alert").addClass("hidden")
+
+            $("#modal4-photo").attr("src", path) 
+            $("#modal4-photo").removeClass("hidden")
+        }
