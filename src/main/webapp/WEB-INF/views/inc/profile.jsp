@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
+<tiles:importAttribute name="skill"/>
 <script src="/resources/js/inc/profile.js"></script>    
 <link href="/resources/css/inc/profile.css" rel="stylesheet" />
 <div class="modal">
@@ -22,7 +24,7 @@
     <div class="protechnic">
         <div class="title"><a>○</a><a>보유기술</a></div>
         <div class="techContent" name="skill">
-        <c:forEach var="result" items="${sessionScope.skill}">
+        <c:forEach var="result" items="${skill}">
         <a class="techname">${result.name }</a>
         </c:forEach>
         </div>

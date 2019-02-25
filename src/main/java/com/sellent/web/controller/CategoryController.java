@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,6 +79,18 @@ public class CategoryController {
 			@RequestParam(value="sub",defaultValue="") String sub,
 			Principal principal, 
 			Model model) {
+		
+		Object principal2 = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(!principal2.equals("anonymousUser")) {
+			HomeController h = new HomeController();
+			h.id.clear();
+			System.out.println(principal.getName());
+			h.id.add(principal.getName());
+			System.out.println(h.id);
+			System.out.println("컨트롤 ");
+			
+		}
+		
 		System.out.println(category);
 		
 		List<ProductView> plist = productDao.getList(category, sub, 0, 7);
