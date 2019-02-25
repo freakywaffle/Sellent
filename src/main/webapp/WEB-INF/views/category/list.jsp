@@ -47,7 +47,7 @@
 		<input type="button" value=">" />
 	</div>
 	<div class="top-content">
-		<div class="custom-breadcrumb">프로젝트 > 평가</div>
+		<div class="custom-breadcrumb">프로젝트 > IT개발</div>
 		<div class="top-right-content">
 			<input type="button" value="글쓰기" class="reg-bt"/> 
 			<select class="hidden">
