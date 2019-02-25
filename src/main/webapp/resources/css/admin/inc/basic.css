@@ -3,6 +3,11 @@
 @import url(footer.css);
 @import url(topContent.css);
 
+.tr-hover:hover{
+	cursor: pointer;
+	background-color: rgb(249, 233, 171);
+}
+
 .loding-bar{
 	bottom: 400px;
 	margin-left: 50%;

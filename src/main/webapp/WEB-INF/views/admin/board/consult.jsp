@@ -104,7 +104,7 @@
 				</thead>
 	            <tbody class="tbody">
 	            <c:forEach items="${list }" var="consult">
-	                <tr class="consult-obj">
+	                <tr class="consult-obj tr-hover">
 	                    <td>
 	                        <input class="check-box" type="checkbox"/>
 	                    </td>

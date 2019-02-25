@@ -90,7 +90,7 @@
 				</thead>
 				<tbody class="tbody">
 				<c:forEach items="${list }" var="member">
-					<tr class="member-obj">
+					<tr class="member-obj tr-hover">
 						<td>
 							<input class="check-box" type="checkbox"/>
 						</td>

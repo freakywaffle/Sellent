@@ -95,7 +95,7 @@
                 
                 <tbody class="tbody">
                     <c:forEach items="${list }" var="comment">
-	                    <tr class="comment-obj">
+	                    <tr class="comment-obj tr-hover">
 	                        <td>
 	                            <input class="check-box" type="checkbox"/>
 	                        </td>
