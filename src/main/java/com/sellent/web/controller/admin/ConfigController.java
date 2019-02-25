@@ -123,9 +123,28 @@ public class ConfigController {
 	}
 	
 	@PostMapping("bannerUpdate")
-	public String bannerUpdate() {
+	@ResponseBody
+	public String bannerUpdate(
+			@RequestParam(name = "idArr") ArrayList<Integer> idArr, 
+			@RequestParam(name = "orderArr") ArrayList<Integer> orderArr) {
+
+		System.out.println();		
 		
-		return "ok";
+		Banner banner = new Banner();
+		for(int i =0; i < idArr.size(); i++) {
+		
+			int id = idArr.get(i);
+			int order = orderArr.get(i);
+			
+			banner.setId(id);
+			banner.setOrder(order);	
+			adminBannerDao.update(banner);
+			System.out.println(id);
+			System.out.println(order);
+		}
+		
+		
+		return "redirect:banner";
 	}
 	
 	

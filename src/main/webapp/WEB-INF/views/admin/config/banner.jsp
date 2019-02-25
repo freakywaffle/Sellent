@@ -9,6 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <section class="aside">
 	<div class="aside-title">
@@ -53,36 +54,40 @@
 	                </tr>
 	            </thead>
 	            <tbody class="tbody">
-	            <c:forEach items="${list }" var="banner">
-	                <tr class="banner-obj">
-	                    <td>
-	                        <input class="check-box" type="checkbox"/>
-	                    </td>
-	                    <td class="banner-id">${banner.id }</td>
-	                    <td class="banner-order">${banner.order}</td>
-	                    <td class="text-align">
-	                        <div class="img-box">
-								<img style="width:100%;height:100%" src="<spr:url value="/sellent/admin"/>/${banner.image}" />
-	                        </div>
-	                    </td>
-	                    <td>${banner.title }</td>
-	                    <td>
-	                        <label class="switch">
-	                            <input class="banner-toggle banner-use" type="checkbox">
-	                            <span class="slider round"></span>
-	                        </label>
-	                        <p>ON</p><p style="display:none;">OFF</p>
-	                    </td>
-	                    <td>
-	                    	<%-- <fmt:formatDate value="${banner.end_date}" pattern="yyyy-MM-dd"/> --%>
-	                    	${fn:substring(banner.end_date,0,10)}
-	                    </td>
-	                    <td>
-	                        <button type="button" class="btn btn-danger edit-button">수정
-	                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-	                        </button>
-	                    </td>
-	                </tr>
+	            <c:forEach var="i" begin="1" end="${fn:length(list) }" step="1">
+		            <c:forEach items="${list }" var="banner">
+		            	<c:if test="${banner.order eq i}">
+			                <tr class="banner-obj">
+			                    <td>
+			                        <input class="check-box" type="checkbox"/>
+			                    </td>
+			                    <td class="banner-id">${banner.id }</td>
+			                    <td class="banner-order">${banner.order}</td>
+			                    <td class="text-align">
+			                        <div class="img-box">
+										<img style="width:100%;height:100%" src="<spr:url value="/sellent/admin"/>/${banner.image}" />
+			                        </div>
+			                    </td>
+			                    <td>${banner.title }</td>
+			                    <td>
+			                        <label class="switch">
+			                            <input class="banner-toggle banner-use" type="checkbox">
+			                            <span class="slider round"></span>
+			                        </label>
+			                        <p>ON</p><p style="display:none;">OFF</p>
+			                    </td>
+			                    <td>
+			                    	<%-- <fmt:formatDate value="${banner.end_date}" pattern="yyyy-MM-dd"/> --%>
+			                    	${fn:substring(banner.end_date,0,10)}
+			                    </td>
+			                    <td>
+			                        <button type="button" class="btn btn-danger edit-button">수정
+			                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			                        </button>
+			                    </td>
+			                </tr>
+		                </c:if>
+					</c:forEach>
 				</c:forEach>
 	            </tbody>
 	        </table>

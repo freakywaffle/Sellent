@@ -270,3 +270,50 @@ $(function(){
 //            $("#modal4-photo").attr("src", path) 
 //            $("#modal4-photo").removeClass("hidden")
 //        }
+
+
+
+$(function(){
+	
+	$("#save-button").click(function(){
+
+		var idArr = new Array()
+		var orderArr = new Array()
+	
+		$(".edit-button").each(function(index,obj){
+			
+			var id = $(".banner-obj").eq(index).children(".banner-id").text()
+
+			var order = index+1
+			
+			idArr.push(id)
+			orderArr.push(order)
+		})
+		
+		jQuery.ajaxSettings.traditional = true;
+	
+		$.ajax({
+            method:'POST',
+            url:'bannerUpdate',
+            data:{"idArr":idArr, "orderArr":orderArr},
+            success:function(){
+                var mouse = new MouseEvent("click")
+                var request = $("<a class='tmp hidden' href=''></a>")
+                $("html").append(request)
+
+                var tmp = document.querySelector(".tmp")
+                tmp.dispatchEvent(mouse)
+            },
+            error:function(){
+                alert("에러")
+            }
+			
+			
+		})
+		
+	})
+	
+
+	
+})
+
