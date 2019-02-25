@@ -6,7 +6,6 @@ window.addEventListener("load",function(){
 		var option = document.getElementById("options").options[document.getElementById("options").selectedIndex];
 		var a = option.value
 		var optionValue = parseInt(a);
-		alert(option.text)
 		/*option.addEventListener("click",function(e){
 			alert(e.target.text);
 		});*/
@@ -45,21 +44,18 @@ window.addEventListener("load",function(){
 			if(state[i].innerText == '미확인'){
 				accep[i].style.display="inline-block";
 				deny[i].style.display="inline-block";
-				
+				alert(state[i].innerText);
 				accep[i].addEventListener("click",function(e){
 					change = e.target.value;
-					alert(change);
 					var xml = new XMLHttpRequest();
 					xml.open('POST','chgState');
 					xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 				    xml.onload = function(){
-						alert(xml.responseText);
 					 };
 					change = e.target.parentNode.previousElementSibling;
 					change.innerText = "작업중";
 					if(change.innerText = "작업중"){
 						e.target.style.display="none";
-						alert(e.target.nextSibling);
 						e.target.nextElementSibling.style.display="none";
 						e.target.nextElementSibling.nextElementSibling.style.display="inline-block";
 					}
@@ -70,12 +66,10 @@ window.addEventListener("load",function(){
 				});
 				deny[i].addEventListener("click",function(e){
 					change = e.target.value;
-					alert(change);
 					var xml = new XMLHttpRequest();
 					xml.open('POST','chgState');
 					xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 				    xml.onload = function(){
-						alert(xml.responseText);
 					 };
 					change = e.target.parentNode.previousElementSibling;
 					change.innerText = "거절됨";
@@ -91,6 +85,7 @@ window.addEventListener("load",function(){
 			}
 			
 			else if(state[i].innerText == '작업중'){
+				alert(state[i].innerText);
 				complete[i].style.display="inline-block";
 				complete[i].addEventListener("click",function(e){
 					change = e.target.value;
@@ -99,13 +94,13 @@ window.addEventListener("load",function(){
 					xml.open('POST','chgState');
 					xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 				    xml.onload = function(){
-						alert(xml.responseText);
+				    	alert(11);
 					 };
 					 change = e.target.parentNode.previousElementSibling;
 					 change.innerText = "작업완료";
 					 if(change.innerText="작업완료"){
 						 e.target.style.display="none";
-						 accep[i].style.display="none";
+						 //accep[i].style.display="none";
 					 }
 					 var num = e.target.parentNode.parentNode.querySelector("input[name='num']").value;
   					 xml.send("chgState="+change.innerText+"&num="+num);
