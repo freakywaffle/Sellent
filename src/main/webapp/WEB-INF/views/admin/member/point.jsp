@@ -67,7 +67,7 @@
 				</thead>
 	            <tbody class="tbody">
 		            <c:forEach items="${list }" var="point">
-		                <tr class="point-obj">
+		                <tr class="point-obj tr-hover">
 		                    <td>${point.no}</td>
 		                    <td class="point-id">${point.member_id}</td>
 		                    <td>${point.content}</td>

@@ -97,7 +97,7 @@
 				
 	            <tbody class="tbody">
 	            <c:forEach items="${list }" var="adminConf">
-	                <tr class="adminConf-obj">
+	                <tr class="adminConf-obj tr-hover">
 	                    <td class="adminConf-no">${adminConf.no }</td>
 						<td class="adminConf-id">${adminConf.id }</td>
 						<td>${adminConf.nickname }</td>

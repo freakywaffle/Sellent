@@ -78,7 +78,7 @@
 	
 				<tbody class="tbody">
 				<c:forEach items="${viewList }" var="category">
-					<tr class="category-obj">
+					<tr class="category-obj tr-hover">
 						<!-- <td>
 							<input type="checkbox"/>
 						</td> -->
