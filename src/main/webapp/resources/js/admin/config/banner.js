@@ -234,10 +234,8 @@ $(function(){
             contentType : false,
             data:formData,
         	success:function(){
-        		alert("성공")
         	},
         	error:function(){
-        		alert("실패")
         	}
         	
         })
