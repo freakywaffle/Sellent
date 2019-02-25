@@ -34,6 +34,42 @@ window.addEventListener("load",function(){
 	if(getJsonFromUrl().optionValue ==1)
 		sell.selected='selected';
 
+	//else if(getJsonFromUrl().optionValue ==0)		
+		//anl.selected='selected';
 
-	
+		bindLink();
+		
+		function link(path){
+			var url = location.pathname;
+			//alert("url: "+ url);
+			var aa = "category";
+			var bb = "project";
+			//alert(aa);
+			//alert(bb);
+			var origin = location.origin;
+			//alert("origin: "+origin);
+			location.href=origin+"/"+aa+"/"+bb+'/'+path;
+		};
+		
+		function bindLink(){
+			var content = document.querySelectorAll(".contents");
+			//alert(content.length);
+			for(var i =0; i<content.length; i++){
+				content[i].addEventListener("click",function(e){
+					//alert("hi");
+					var pno =e.target.querySelector("input[name='pno']").value;
+					//alert("pno:"+pno);
+					link(pno);
+					//alert("linkpno:"+ link(pno));
+				});
+				
+				content[i].removeEventListener("click",function(e){
+					var pno = document.querySelector("input[name='pno']").value();
+					link.pno();
+				});
+			}
+		
+		}
+
 });
+
