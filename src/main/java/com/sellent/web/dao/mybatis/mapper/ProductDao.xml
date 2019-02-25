@@ -308,4 +308,9 @@
  		and approval = 1
  		order by regdate desc
 	</select>
+	
+	<select id="getPhoto" resultType="com.sellent.web.entity.ProductView">
+		select no,writer_id,avg_starpoint,regdate, thumbnail from productView where writer_id=#{param1 } order by avg_starpoint desc, regdate desc  limit 0,5
+	</select>
+	
 </mapper>

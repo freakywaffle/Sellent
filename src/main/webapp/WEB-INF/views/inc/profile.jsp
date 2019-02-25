@@ -33,11 +33,9 @@
     <div class="bestBanner">
         <div class="bannerTitle"><a>BEST5</a></div>
         <div class="bestPic">
-            <img alt="best5" src="/resources/images/img2.jpg" class="bestSlides">
-            <img alt="best5" src="/resources/images/img5.jpg" class="bestSlides">
-            <img alt="best5" src="/resources/images/img3.jpg" class="bestSlides">
-            <img alt="best5" src="/resources/images/img4.jpg" class="bestSlides">
-            <img alt="best5" src="/resources/images/img5.jpg" class="bestSlides">
+        	<c:forEach var="n" items="${sessionScope.photo }">
+        	  <img alt="best5" src='<spring:url value="/sellent/upload/"/>${n.no}/${n.thumbnail}'  onerror="this.src='/resources/images/pro404err.gif'" class="bestSlides">      	
+        	</c:forEach>
         </div>
     </div>
    </div>

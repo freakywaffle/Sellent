@@ -18,6 +18,7 @@ import com.sellent.web.dao.ProductDao;
 import com.sellent.web.dao.SkillDao;
 import com.sellent.web.entity.Member;
 import com.sellent.web.entity.Product;
+import com.sellent.web.entity.ProductView;
 import com.sellent.web.entity.Skill;
 
 @Component
@@ -39,6 +40,7 @@ public class SellentLoginSuccessHandler implements AuthenticationSuccessHandler{
 		HttpSession session = request.getSession();
 		String id = authentication.getName();
 		Member member = memberDao.getMember(id);
+		List<ProductView> photo = productDao.getPhoto(id);
 		List<Skill> skill = skillDao.select(id);
 		for (int i = 0; i < skill.size(); i++) {
 			System.out.println(skill.get(i).getName());
@@ -46,6 +48,7 @@ public class SellentLoginSuccessHandler implements AuthenticationSuccessHandler{
 		session.setAttribute("member", member);
 		session.setAttribute("skill", skill );
 		
+		session.setAttribute("photo",photo);
 		String redirectUrl = (String) session.getAttribute("prevPage");
 
         if (redirectUrl != null) {

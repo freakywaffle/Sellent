@@ -38,7 +38,7 @@
 .profile img{
 	width:150px;
 	height: 150px; 
-	/* margin-left:325px; */
+	margin-left:325px; 
 	border-radius: 100%;
 	border:1px solid;
 }
@@ -53,7 +53,7 @@
 	background-color:black;
 	border:none;
 	position:absolute;
-	/* margin-left:325px; */
+	margin-left:325px; 
 	border:1px solid;
 	z-index: 30;
 	font-size:80px;

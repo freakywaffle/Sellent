@@ -164,7 +164,7 @@ public class HomeController {
 		 //System.out.println(id);
 		 //System.out.println(email);
 		 Member select = memberDao.findID(nickname,email);
-		 System.out.println(select.getId());
+		 System.out.println("찾는아이디: "+ select.getId());
 		 
 		 return select.getId();
 	 }

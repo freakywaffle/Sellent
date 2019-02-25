@@ -28,13 +28,14 @@ window.addEventListener("load",function(){
 	//alert(getJsonFromUrl().optionValue);
 	var anl= document.querySelector("option[name='anl']");
 	var sell= document.querySelector("option[name='sell']");
-	var buy= document.querySelector("option[name='buy']");
-	if(getJsonFromUrl().optionValue ==2)
-		buy.selected='selected';
+	if(getJsonFromUrl().optionValue ==0)
+		anls.selected='selected';
 	
-	else if(getJsonFromUrl().optionValue ==1)
+	if(getJsonFromUrl().optionValue ==1)
 		sell.selected='selected';
+
 	else if(getJsonFromUrl().optionValue ==0)		
 		anl.selected='selected';
+
 	
 });
