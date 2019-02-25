@@ -12,7 +12,7 @@ import com.sellent.web.entity.AdminPersonView;
 
 
 @Repository
-public class MaBatisAdminPersonDao implements AdminPersonDao{
+public class MyBatisAdminPersonDao implements AdminPersonDao{
 
 	@Autowired
 	SqlSessionTemplate sessison;

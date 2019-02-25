@@ -110,7 +110,7 @@ public class MemberController {
 
 	
 	@GetMapping("project")
-	public String project(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") int page, @RequestParam(value="optionValue", defaultValue="0")Integer selector, Product product) {
+	public String project(Principal principal, Model model, @RequestParam(value="p" ,defaultValue="1") int page, @RequestParam(value="optionValue", defaultValue="1")Integer selector, Product product) {
 		//System.out.println("selectornum: " + selector);
 		List<ProductView> showPage = productDao.getListById(principal.getName(),page, selector);		
 		int allCnt = productDao.getAllCntById(principal.getName(),selector);
@@ -370,7 +370,7 @@ public class MemberController {
 		//req.getSession().setAttribute("photo",photo);
 		int updateIntro = memberDao.updateIntro(member);
 		//smemberService.insertMember(member, skill);
-		return "redirect:login";
+		return "redirect:./introduce";
 	}
 	
 	@GetMapping("point")

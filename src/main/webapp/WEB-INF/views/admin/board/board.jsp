@@ -56,7 +56,7 @@
 						</select>
 
 						<select name="sale" class="mg-left-5">
-							<option value="">판매여부</option>
+							<option value="2">판매여부</option>
 							<option value="1">Yes</option>
 							<option value="0">No</option>
 						</select>
@@ -122,7 +122,7 @@
 	            </thead>
 	            <tbody class="tbody">
 				<c:forEach items="${list }" var="board">
-	                <tr class="board-obj">
+	                <tr class="board-obj tr-hover">
 	                    <td>
 	                        <input class="check-box" type="checkbox"/>
 	                    </td>

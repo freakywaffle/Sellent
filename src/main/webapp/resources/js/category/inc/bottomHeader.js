@@ -13,11 +13,21 @@ $('window').ready(function(){
 	var leftArrow = $('.arrow').eq(0);
 	var rightArrow = $('.arrow').eq(1);
 	
+	var menuList = $('.ct-name');
+	
+	
+	
 	leftArrow.on('click',function(){
-		alert('!!');
+		for(var i=0;i<4;i++){
+			menuList.eq(i).removeClass('mobile-hidden');
+			menuList.eq(i+4).addClass('mobile-hidden');
+		}
 	});
 	rightArrow.on('click',function(){
-		alert('!!');
+		for(var i=4;i<8;i++){
+			menuList.eq(i).removeClass('mobile-hidden');
+			menuList.eq(i-4).addClass('mobile-hidden');
+		}
 	});
 
 });

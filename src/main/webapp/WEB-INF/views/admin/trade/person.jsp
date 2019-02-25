@@ -108,7 +108,7 @@ href="/resources/css/admin/trade/person.css" />
 	            		<c:set var="pSum" value="${pSum+person.price }" />	
 	            	</c:when>
 	            </c:choose>
-	                <tr class="person-obj">
+	                <tr class="person-obj tr-hover">
 	                    <td class="check-no">${person.no }</td>
 	                    <td>${person.id }</td>
 	                    <td>${person.type }</td>

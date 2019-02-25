@@ -90,7 +90,7 @@
 				</thead>
 				<tbody class="tbody">
 				<c:forEach items="${list }" var="member">
-					<tr class="member-obj">
+					<tr class="member-obj tr-hover">
 						<td>
 							<input class="check-box" type="checkbox"/>
 						</td>
@@ -118,7 +118,9 @@
 				</c:forEach>
 				</tbody>
 			</table>
-	
+	      	<div class="whirly-loader loding-bar hidden">
+           		Loading...
+       		</div>
 			<div class="table-bottom">
 				<button id="select-remove" type="button">선택삭제</button>
 			</div>

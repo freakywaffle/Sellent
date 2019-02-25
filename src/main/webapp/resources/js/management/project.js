@@ -7,7 +7,6 @@ window.addEventListener("load",function(){
 		var option = document.getElementById("options").options[document.getElementById("options").selectedIndex];
 		var a = option.value
 		var optionValue = parseInt(a);
-		alert(option.text)
 		/*option.addEventListener("click",function(e){
 			alert(e.target.text);
 		});*/
@@ -34,6 +33,9 @@ window.addEventListener("load",function(){
 	
 	if(getJsonFromUrl().optionValue ==1)
 		sell.selected='selected';
+
+	else if(getJsonFromUrl().optionValue ==0)		
+		anl.selected='selected';
 
 	
 });

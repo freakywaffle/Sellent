@@ -17,8 +17,8 @@
 		</div>
 		<div class="select">
 			<select id="options">
-				<option name="anl" value=0 class="selec">평가</option>
 				<option name="sell" value=1 class="selec">판매</option>
+				<option name="anl" value=0 class="selec">평가</option>
 			</select>
 		</div>
 	</div>

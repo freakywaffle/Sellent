@@ -26,6 +26,7 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.cㅌ"></script>
 	<div>
 	
 
@@ -151,7 +152,7 @@
 			
 					<div class="question-box">
 						<h6>이메일</h6>
-				      	<input class="block e-mail-bar" type="text" name="e-mail" placeholder="이메일 땡겨오기"></input>
+				      	<input class="block e-mail-bar" type="text" name="e-mail" placeholder="이메일"></input>
 						<h6>제목</h6>
 				      	<input class="block title-bar" type="text" name="title" placeholder="제목을 작성해주세요."></input>
 						

@@ -28,6 +28,7 @@
  		<if test="param2 != ''">
  			and sub_category = #{param2}
  		</if>
+ 		and approval = 1
  		order by regdate desc
  		limit #{param3}, #{param4} 
  		
@@ -234,6 +235,7 @@
  		<if test="param3 != -1">
  			and sell_check = #{param3}
  		</if>
+ 		and approval = 1
  		order by regdate desc
  		limit #{param4}, #{param5} 
 	</select>
@@ -268,6 +270,7 @@
  		<if test="param3 != -1">
  			and sell_check = #{param3}
  		</if>
+ 		and approval = 1
  		order by regdate desc
  		limit #{param4}, #{param5}
 	</select>
@@ -302,6 +305,7 @@
  		<if test="param3 != -1">
  			and sell_check = #{param3}
  		</if>
+ 		and approval = 1
  		order by regdate desc
 	</select>
 	

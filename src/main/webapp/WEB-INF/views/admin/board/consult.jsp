@@ -26,7 +26,7 @@
 	<div class="top-content">
 		<label>게시판관리 > 1:1상담</label>
 		<div class="top-right-content">
-			
+
 		</div>
 	</div>
 	
@@ -104,7 +104,7 @@
 				</thead>
 	            <tbody class="tbody">
 	            <c:forEach items="${list }" var="consult">
-	                <tr class="consult-obj">
+	                <tr class="consult-obj tr-hover">
 	                    <td>
 	                        <input class="check-box" type="checkbox"/>
 	                    </td>
@@ -154,14 +154,17 @@
 					</div>
 				</div>
 	    </section>
-	
+	    
+      	<div class="whirly-loader loding-bar hidden">
+           		Loading...
+       	</div>
+       	
 	    <div id="modal">
-	
 	        <div class="modal-content">
 	            <div class="cancel-box">
 					<span id="modal-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 	            </div>
-	            
+
 	            <h1>1:1문의 답변하기</h1>
 	            
 	            <section class="customer-info">

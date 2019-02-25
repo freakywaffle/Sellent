@@ -109,7 +109,7 @@
 	            </thead>
 	            <tbody class="tbody">
 	            	<c:forEach items="${list }" var="product">
-						<tr class="sale-obj">
+						<tr class="sale-obj tr-hover">
 							<td>
 								<input class="check-box" type="checkbox"/>
 							</td>

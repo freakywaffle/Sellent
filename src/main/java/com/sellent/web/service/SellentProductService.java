@@ -1,5 +1,7 @@
 package com.sellent.web.service;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -52,9 +54,24 @@ public class SellentProductService implements ProductService{
 		}
 		
 		productDao.insert(product);
-		
+		int recentNo = productDao.getRecentlyNo();
+		if(recentNo != files.get(0).getProductNo()) {
+			String newPath = "F:\\sellent\\upload\\"+recentNo;
+			File dir = new File(newPath);
+			if(!dir.exists()) {
+				dir.mkdir();
+			}
+			for(ProductFile pf : files) {
+				File file = new File("F:\\sellent\\upload\\"+pf.getProductNo()+"\\"+pf.getSaveName());
+				file.renameTo(new File(newPath+"\\"+pf.getSaveName()));
+				pf.setProductNo(recentNo);
+				
+				
+				
+			}
+		}
 		for(ProductFile pf : files) {
-			
+			System.out.println("등록번호:"+pf.getProductNo());
 			productFileDao.insert(pf);				
 		}
 		

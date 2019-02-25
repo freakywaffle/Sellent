@@ -9,13 +9,15 @@ public class Banner {
 	private String image;
 	private String title;
 	private String content;
-	private Date end_date;
+	private String end_date;
 	private int use;
+	
 	
 	public Banner() {
 		super();
 	}
-	public Banner(int id, int order, String image, String title, String content, Date end_date, int use) {
+
+	public Banner(int id, int order, String image, String title, String content, String end_date, int use) {
 		super();
 		this.id = id;
 		this.order = order;
@@ -25,52 +27,61 @@ public class Banner {
 		this.end_date = end_date;
 		this.use = use;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getOrder() {
 		return order;
 	}
+
 	public void setOrder(int order) {
 		this.order = order;
 	}
+
 	public String getImage() {
 		return image;
 	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getEnd_date() {
+
+	public String getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Date end_date) {
+
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
+
 	public int getUse() {
 		return use;
 	}
+
 	public void setUse(int use) {
 		this.use = use;
 	}
 
-	
-	
-
-
-	
 }
