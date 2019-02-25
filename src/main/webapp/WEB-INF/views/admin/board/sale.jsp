@@ -114,7 +114,7 @@
 								<input class="check-box" type="checkbox"/>
 							</td>
 							<td class="sale-no">${product.no}</td>
-							<td>${product.parentCategory }</td>
+							<td class="sale-parent">${product.parentCategory }</td>
 							<td>${product.subCategory }</td>
 							<td>${product.title }</td>
 							<td>${product.writerId }</td>

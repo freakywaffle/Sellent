@@ -127,7 +127,7 @@
 	                        <input class="check-box" type="checkbox"/>
 	                    </td>
 	                    <td class="board-no">${board.no}</td>
-	                    <td>${board.parentCategory}</td>
+	                    <td class="board-parent">${board.parentCategory}</td>
 	                    <td>${board.subCategory}</td>
 	                    <td>
 						<c:choose>
