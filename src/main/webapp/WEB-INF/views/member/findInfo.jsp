@@ -21,8 +21,9 @@
      </div>
      <div id="pwdFind">
         <input type="button" name="pwdBtn" value="찾기"/>
+        
     </div>
-    <div class="modalFind">
+    <div class="modalFind findIdmodal">
        <div class="modal-content">
         <span class="close-button">&times;</span>
         <div class="pwdInput">

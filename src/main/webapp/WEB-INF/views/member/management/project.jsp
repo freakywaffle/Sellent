@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 
 <link href="/resources/css/member/project.css" rel="stylesheet" />
 <script src="/resources/js/management/project.js"></script>
@@ -16,8 +17,8 @@
 		</div>
 		<div class="select">
 			<select id="options">
-				<option name="anl" value=0 class="selec">평가</option>
 				<option name="sell" value=1 class="selec">판매</option>
+				<option name="anl" value=0 class="selec">평가</option>
 			</select>
 		</div>
 	</div>
@@ -83,7 +84,7 @@
 						src="/resources/images/prev.png"></a></li>
 			</c:if>
 			<c:forEach var="n" begin="${startpage+1}" end="${endpage }">
-				<li><a href="?p=${n }">${n }</a></li>
+				<li><a href="?/optivonValue=${selector }/p=${n }">${n }</a></li>
 			</c:forEach>
 			<c:if test="${next && endpage >0 }">
 				<li><a href="?p=${endpage+1} "><img alt="다음"

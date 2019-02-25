@@ -150,6 +150,6 @@
     .bestPic img:first-child{z-index: 5;}
     .bestPic img{ width: 80%; margin-bottom: 20px;}
     .techname{margin-bottom: 10px;}
-    .title{margin-top: 10px !important;}
+    .modal .title{margin-top: 10px !important;}
 
 }

@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
-<tiles:importAttribute name="point"/>
+<tiles:importAttribute name="sypoint"/>
 
 <link href="/resources/css/inc/topHeader.css" rel="stylesheet"/>
 
@@ -25,7 +25,7 @@
 					<img src='<spr:url value="/sellent/profile/"/>${member.id}/${member.photo}' onerror="this.src='/resources/images/profile.png'">
 					<div class="my-menu hidden">
 					<ul>
-						<li>${point }P</li>
+						<li>${sypoint }P</li>
 						<li><a href="/member/project">마이페이지</a></li>
 						<li class="prof">프로필</li>
 						<li><a href="/member/logout">로그아웃</a></li>

@@ -172,6 +172,12 @@ public class MyBatisProductDao implements ProductDao{
 
 	}
 
+	@Override
+	public List<ProductView> getPhoto(String id) {
+		ProductDao productDao = session.getMapper(ProductDao.class);
+		return productDao.getPhoto(id);
+	}
+
 
 	
 }

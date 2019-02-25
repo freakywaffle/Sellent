@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
+<%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
    <link href="/resources/css/profile/editinfo.css" rel="stylesheet" />
@@ -13,9 +13,10 @@
 		<input type="button" value=">" />
 	</div>
 	<div class="profile-box">
-		<img src='<spr:url value="/sellent/profile/"/>${member.id}/${member.photo}' onerror="this.src='/resources/images/profile.png'">
+		<img  id="blah" src='<spr:url value="/sellent/profile/"/>${member.id}/${member.photo}'
+		 onerror="this.src='/resources/images/profile.png'">
 		<div class=profilebtn>
-			<input type="button" class="profileBtn" name='picedit' value="수정" />
+			<input type="button" id="blah" class="profileBtn" name='picedit' value="수정" />
 			<input type="button" class="profileBtn" name='picdel' value="삭제" />
 		</div> 
 		<div class=profilebtn2>
