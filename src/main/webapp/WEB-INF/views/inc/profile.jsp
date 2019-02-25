@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
-<tiles:importAttribute name="skill"/>
+<tiles:importAttribute name="syskill"/>
 <tiles:importAttribute name="symember"/>
 <script src="/resources/js/inc/profile.js"></script>    
 <link href="/resources/css/inc/profile.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
     <div class="protechnic">
         <div class="title"><a>○</a><a>보유기술</a></div>
         <div class="techContent" name="skill">
-        <c:forEach var="result" items="${skill}">
+        <c:forEach var="result" items="${syskill}">
         <a class="techname">${result.name }</a>
         </c:forEach>
         </div>

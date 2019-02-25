@@ -86,7 +86,7 @@ public class HomePreparer implements ViewPreparer {
        }
        
        attributeContext.putAttribute("point",new Attribute(point), true);
-       attributeContext.putAttribute("skill",new Attribute(skill), true);
+       attributeContext.putAttribute("syskill",new Attribute(skill), true);
        attributeContext.putAttribute("symember",new Attribute(member), true);
      //  String id = h.id.get(0);
       // System.out.println("preparer");
