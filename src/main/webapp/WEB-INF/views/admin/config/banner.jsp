@@ -70,11 +70,23 @@
 			                    </td>
 			                    <td>${banner.title }</td>
 			                    <td>
-			                        <label class="switch">
-			                            <input class="banner-toggle banner-use" type="checkbox">
-			                            <span class="slider round"></span>
-			                        </label>
-			                        <p>ON</p><p style="display:none;">OFF</p>
+			                        <c:choose>
+				                        <c:when test="${banner.use eq 0 }">
+					                        <label class="switch">
+					                            <input class="banner-toggle banner-use" type="checkbox" checked="checked">
+					                            <span class="slider round"></span>
+					                        </label>
+				                        	<p style="display:none;">ON</p><p>OFF</p>
+				                        </c:when>
+				                        <c:when test="${banner.use eq 1 }">
+				                        	<label class="switch">
+					                            <input class="banner-toggle banner-use" type="checkbox">
+					                            <span class="slider round"></span>
+					                        </label>
+				                        	<p>ON</p><p style="display:none;">OFF</p>
+				                        </c:when>
+			                        
+			                        </c:choose>
 			                    </td>
 			                    <td>
 			                    	<%-- <fmt:formatDate value="${banner.end_date}" pattern="yyyy-MM-dd"/> --%>

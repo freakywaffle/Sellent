@@ -447,6 +447,9 @@
 									
 								}
 								
+								$('.review-reg-form').find('textarea').focus();
+								
+								
 								var thisNo = thisReview.find('input[type="hidden"]').val();
 								
 								editBt.click(function(){

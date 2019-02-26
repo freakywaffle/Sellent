@@ -47,6 +47,11 @@
 						<li><a href="/admin/config/admin">관리자설정</a></li>
 					</ul>
 				</li>
+				<li><a href="/admin/statistics/index">통계</a>
+					<ul class="bottom-sub-menu">
+						<li><a href="/admin/statistics/index">통계</a></li>
+					</ul>
+				</li>
 			</ul>
 		</section>
 	</header>

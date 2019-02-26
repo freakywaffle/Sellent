@@ -84,7 +84,7 @@
 						src="/resources/images/prev.png"></a></li>
 			</c:if>
 			<c:forEach var="n" begin="${startpage+1}" end="${endpage }">
-				<li><a href="?/optivonValue=${selector }/p=${n }">${n }</a></li>
+				<li><a href="?optivonValue=${selector }&p=${n }">${n }</a></li>
 			</c:forEach>
 			<c:if test="${next && endpage >0 }">
 				<li><a href="?p=${endpage+1} "><img alt="다음"

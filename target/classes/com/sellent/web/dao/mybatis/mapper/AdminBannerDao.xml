@@ -20,7 +20,7 @@
 	</insert>
 		
 	<update id="update">
-		update banner set `order`= #{order} where `id`= #{id} 
+		update banner set `order`= #{order}, `use`=#{use} where `id`= #{id} 
 	</update>
 								
 	<delete id="delete">
