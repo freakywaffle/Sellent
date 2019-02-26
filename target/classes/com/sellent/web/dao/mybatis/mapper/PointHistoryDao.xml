@@ -69,4 +69,8 @@
 		;
 	</select> 
 	
+	
+	<select id="guidePoint" resultType="int">
+		select point from point_config where content = "가이드 조회"
+	</select> 
 </mapper>
