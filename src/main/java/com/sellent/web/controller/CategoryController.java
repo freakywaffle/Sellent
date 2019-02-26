@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.sellent.web.dao.AdminPointDao;
 import com.sellent.web.dao.CategoryDao;
 import com.sellent.web.dao.HistoryDao;
 import com.sellent.web.dao.LikeDao;
@@ -40,6 +41,7 @@ import com.sellent.web.dao.ReviewDao;
 import com.sellent.web.entity.History;
 import com.sellent.web.entity.Like;
 import com.sellent.web.entity.ParentCategory;
+import com.sellent.web.entity.PointConfig;
 import com.sellent.web.entity.Product;
 import com.sellent.web.entity.ProductFile;
 import com.sellent.web.entity.ProductView;
@@ -72,6 +74,9 @@ public class CategoryController {
 	
 	@Autowired
 	private PointHistoryDao pointHistoryDao;
+	
+	@Autowired
+	private AdminPointDao adminPointDao;
 	
 	
 	@GetMapping("{category}")
@@ -312,7 +317,16 @@ public class CategoryController {
 		jsonArr += ", \"avgStarPoint\":"+product.getAvgStarPoint()+"}";
 		
 		
-		int update = pointHistoryDao.update_sy(product.getWriterId(),50);
+		int addPoint = 0; 
+		List<PointConfig> pcList = adminPointDao.getPointConfig();
+		for(PointConfig pc : pcList) {
+			if(pc.getContent().equals("리뷰등록")) {
+				addPoint = pc.getPoint();
+			}
+		}
+		
+		
+		int update = pointHistoryDao.update_sy(product.getWriterId(),addPoint);
 		
 		System.out.println(jsonArr);
 		return reJson;
@@ -334,17 +348,6 @@ public class CategoryController {
 		String reJson = gson.toJson(map);
 		
 		
-		String jsonArr = "{\"reviews\":["; 
-		
-		
-		for(int i = 0; i<reviews.size();i++) {
-			jsonArr+=reviews.get(i).toString();
-			if(i != reviews.size()-1)
-				jsonArr+=",";
-		}
-		jsonArr += "]";
-		
-		jsonArr += ", \"reviewCnt\":"+productDao.get(no).getReviewCnt()+"}";
 		return reJson;
 	}
 	
