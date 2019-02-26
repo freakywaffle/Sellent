@@ -60,6 +60,9 @@ select:focus {
 	height:100px;
 
 }
+.table .ptitle{
+	width: 380px;
+}
 
 .table td{
 	height:50px;
@@ -85,6 +88,11 @@ td:last-child{
 	text-align: center;
 	border-bottom: 1px solid #d3d3d3;
 	border-top:2px solid #8f939d;	
+}
+
+.table .buy{
+	background-color: #ffd632;
+	border: none;
 }
 #page{
 	/* background-color:pink; */

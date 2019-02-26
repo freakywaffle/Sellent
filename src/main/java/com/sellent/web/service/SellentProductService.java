@@ -47,32 +47,38 @@ public class SellentProductService implements ProductService{
 		
 		String thumbnail = product.getThumbnail();
 		System.out.println(thumbnail);
-		
-		for(ProductFile pf : files) {
-			if(pf.getName().equals(thumbnail)) 
-				product.setThumbnail(pf.getSaveName());			
+		if(files != null) {
+			for(ProductFile pf : files) {
+				if(pf.getName().equals(thumbnail)) 
+					product.setThumbnail(pf.getSaveName());			
+			}
+			
 		}
 		
 		productDao.insert(product);
-		int recentNo = productDao.getRecentlyNo();
-		if(recentNo != files.get(0).getProductNo()) {
-			String newPath = "F:\\sellent\\upload\\"+recentNo;
-			File dir = new File(newPath);
-			if(!dir.exists()) {
-				dir.mkdir();
+		
+		if(files != null) {
+			int recentNo = productDao.getRecentlyNo();
+			if(recentNo != files.get(0).getProductNo()) {
+				String newPath = "F:\\sellent\\upload\\"+recentNo;
+				File dir = new File(newPath);
+				if(!dir.exists()) {
+					dir.mkdir();
+				}
+				for(ProductFile pf : files) {
+					File file = new File("F:\\sellent\\upload\\"+pf.getProductNo()+"\\"+pf.getSaveName());
+					file.renameTo(new File(newPath+"\\"+pf.getSaveName()));
+					pf.setProductNo(recentNo);
+					
+					
+					
+				}
 			}
 			for(ProductFile pf : files) {
-				File file = new File("F:\\sellent\\upload\\"+pf.getProductNo()+"\\"+pf.getSaveName());
-				file.renameTo(new File(newPath+"\\"+pf.getSaveName()));
-				pf.setProductNo(recentNo);
-				
-				
-				
+				System.out.println("등록번호:"+pf.getProductNo());
+				productFileDao.insert(pf);				
 			}
-		}
-		for(ProductFile pf : files) {
-			System.out.println("등록번호:"+pf.getProductNo());
-			productFileDao.insert(pf);				
+			
 		}
 		
 		int update = pointHistoryDao.update_sy(product.getWriterId(),-100);
