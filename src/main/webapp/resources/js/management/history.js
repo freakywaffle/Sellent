@@ -33,7 +33,7 @@ window.addEventListener("load",function(){
 	var complete = document.querySelectorAll(".complete");
 	
 	var state = document.querySelectorAll(".state");
-	
+	var buyBt = document.querySelectorAll("input[name='buy']");
 	
 	if(getJsonFromUrl().optionValue ==0 || getJsonFromUrl().optionValue == null){
 		
@@ -44,7 +44,6 @@ window.addEventListener("load",function(){
 			if(state[i].innerText == '미확인'){
 				accep[i].style.display="inline-block";
 				deny[i].style.display="inline-block";
-				alert(state[i].innerText);
 				accep[i].addEventListener("click",function(e){
 					change = e.target.value;
 					var xml = new XMLHttpRequest();
@@ -85,16 +84,13 @@ window.addEventListener("load",function(){
 			}
 			
 			else if(state[i].innerText == '작업중'){
-				alert(state[i].innerText);
 				complete[i].style.display="inline-block";
 				complete[i].addEventListener("click",function(e){
 					change = e.target.value;
-					alert(change);
 					var xml = new XMLHttpRequest();
 					xml.open('POST','chgState');
 					xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 				    xml.onload = function(){
-				    	alert(11);
 					 };
 					 change = e.target.parentNode.previousElementSibling;
 					 change.innerText = "작업완료";
@@ -112,8 +108,16 @@ window.addEventListener("load",function(){
 		
 	}
 	
-	else if(getJsonFromUrl().optionValue ==1)
+	
+	else if(getJsonFromUrl().optionValue ==1){
+		for (var i = 0; i < state.length; i++) {
+			if(state[i].innerText == '작업중'){
+				buyBt[i].classList.remove('hidden');
+			}
+			
+		}
 		buy.selected='selected';
+	}
 
 	
 });

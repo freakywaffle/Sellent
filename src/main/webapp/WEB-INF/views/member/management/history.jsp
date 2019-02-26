@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <link href="/resources/css/member/history.css" rel="stylesheet" />
 <script src="/resources/js/management/history.js"></script>
 <script src="/resources/js/member/inc/aside.js"></script>
@@ -36,7 +36,7 @@
 					<input name='num' type="hidden" value="${n.no }"/>
 					<td>${n.date }</td>
 					<td>${n.title }</td>
-					<td>${n.price} W</td>				
+					<td><fmt:formatNumber value="${n.price}" type="currency" currencySymbol="￦"/></td>				
 					<td class="table-id">
 						<c:if test="${showPart == '판매' }">
 							${n.buyer_id }
@@ -56,6 +56,7 @@
 						<input name="accep" class="accep btn1" type="button" value="수락"/>
 						<input name="deny" class="deny btn1" type="button" value="거절 "/>
 						<input name="complete" class="complete" type="button" value="작업완료"/>
+						<input name="buy" class="buy hidden" type="button" value="결제"/>
 					</td>
 				</tr>
 			</c:forEach>	
