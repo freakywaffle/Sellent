@@ -126,7 +126,9 @@ public class ConfigController {
 	@ResponseBody
 	public String bannerUpdate(
 			@RequestParam(name = "idArr") ArrayList<Integer> idArr, 
-			@RequestParam(name = "orderArr") ArrayList<Integer> orderArr) {
+			@RequestParam(name = "orderArr") ArrayList<Integer> orderArr,
+			@RequestParam(name = "useArr") ArrayList<Integer> useArr
+			) {
 
 		System.out.println();		
 		
@@ -135,12 +137,13 @@ public class ConfigController {
 		
 			int id = idArr.get(i);
 			int order = orderArr.get(i);
+			int use = useArr.get(i);
 			
 			banner.setId(id);
 			banner.setOrder(order);	
+			banner.setUse(use);
 			adminBannerDao.update(banner);
-			System.out.println(id);
-			System.out.println(order);
+			
 		}
 		
 		

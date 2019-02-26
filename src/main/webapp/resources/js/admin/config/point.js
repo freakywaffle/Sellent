@@ -33,10 +33,14 @@ $(function(){
 
 
     })
+})
 
+$(function(){
+	
+	$(".check-box").click(function(e){
+		
+		e.stopPropagation();
+	})
 
-
-
-
-
+	
 })
