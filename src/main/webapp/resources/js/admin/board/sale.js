@@ -69,6 +69,11 @@ $(function(){
 
 // 선택삭제
 $(function(){
+	$(".check-box").click(function(e){
+		
+		e.stopPropagation();
+	})
+
     $("#total-check").click(function(){
         if($(this).is(":checked") == true){
             $(".check-box").prop("checked",true)

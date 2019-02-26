@@ -33,3 +33,12 @@ $(function() {
     $("#datepicker2").val("");
 });
 
+$(function(){
+	
+	$(".check-box").click(function(e){
+		
+		e.stopPropagation();
+	})
+
+	
+})

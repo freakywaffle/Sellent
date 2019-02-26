@@ -77,5 +77,11 @@ public class MyBatisPointHistoryDao implements PointHistoryDao{
 		PointHistoryDao pointHistoryDao = session.getMapper(PointHistoryDao.class);
 		return pointHistoryDao.getAllSumById(id, selector);
 	}
+
+	@Override
+	public int guidePoint() {
+		PointHistoryDao pointHistoryDao = session.getMapper(PointHistoryDao.class);
+		return pointHistoryDao.guidePoint();
+	}
 	
 }

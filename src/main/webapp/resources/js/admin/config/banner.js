@@ -148,6 +148,11 @@ $( function() {
 
 // 선택삭제
 $(function(){
+	$(".check-box").click(function(e){
+		
+		e.stopPropagation();
+	})
+
     $("#total-check").click(function(){
         if($(this).is(":checked") == true){
             $(".check-box").prop("checked",true)
@@ -279,7 +284,8 @@ $(function(){
 
 		var idArr = new Array()
 		var orderArr = new Array()
-	
+		var useArr = new Array()
+		
 		$(".edit-button").each(function(index,obj){
 			
 			var id = $(".banner-obj").eq(index).children(".banner-id").text()
@@ -288,14 +294,24 @@ $(function(){
 			
 			idArr.push(id)
 			orderArr.push(order)
+			
+			if($(".banner-toggle").eq(index).is(":checked") == true){
+				
+				useArr.push(0)
+				
+			}else{
+
+				useArr.push(1)
+			}
+			
 		})
 		
 		jQuery.ajaxSettings.traditional = true;
-	
+		
 		$.ajax({
             method:'POST',
             url:'bannerUpdate',
-            data:{"idArr":idArr, "orderArr":orderArr},
+            data:{"idArr":idArr, "orderArr":orderArr, "useArr":useArr},
             success:function(){
                 var mouse = new MouseEvent("click")
                 var request = $("<a class='tmp hidden' href=''></a>")
@@ -307,7 +323,6 @@ $(function(){
             error:function(){
                 alert("에러")
             }
-			
 			
 		})
 		
