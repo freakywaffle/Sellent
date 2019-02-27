@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</spring:authorize>
-		<div class="logo">SELLENT</div>
+		<div class="logo"><a href="/index">SELLENT</a></div>
 		<div class="search">
 			<input type="text" placeholder="검색" />
 		</div>

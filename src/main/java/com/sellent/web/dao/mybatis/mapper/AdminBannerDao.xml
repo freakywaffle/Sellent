@@ -9,7 +9,11 @@
 	<select id="getBannerList" resultType="com.sellent.web.entity.Banner">
 		select * from banner limit #{startCount}, 10
 	</select>
-		
+	
+	<select id="getBannerMain" resultType="com.sellent.web.entity.Banner">
+		select * from banner where `use`=1 order by `order`
+	</select>
+	
 	<select id="getBannerOrderMax" resultType="int">
 		select max(`order`) from banner;
 	</select>

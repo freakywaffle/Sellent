@@ -9,6 +9,8 @@ public interface AdminBannerDao {
 	
 	List<Banner> getBannerList(AdminPaging paging);
 	
+	List<Banner> getBannerMain();
+	
 	int getBannerOrderMax();
 	
 	int getBannerCnt();

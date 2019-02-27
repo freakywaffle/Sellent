@@ -114,7 +114,10 @@ public class HomeController {
 		member.setPassword(pwd);
 		memberService.insertMember(member, skill, filedata);
 
-		return "redirect:login";
+		
+		
+		return "redirect:index";
+
 	}
 
 	@PostMapping("idchk")

@@ -513,6 +513,7 @@ public class MemberController {
 		return "member.bookmarks";
 	}
 	
+
 	
 	@RequestMapping("my_bookmarks_ajax")
 	@ResponseBody

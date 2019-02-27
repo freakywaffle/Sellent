@@ -22,6 +22,14 @@ public class MyBatisAdminBannerDao implements AdminBannerDao{
 		return adminBannerDao.getBannerList(paging);
 	}
 
+
+	@Override
+	public List<Banner> getBannerMain() {
+		AdminBannerDao adminBannerDao = session.getMapper(AdminBannerDao.class);
+		return adminBannerDao.getBannerMain();
+	}
+
+
 	@Override
 	public int getBannerOrderMax() {
 		AdminBannerDao adminBannerDao = session.getMapper(AdminBannerDao.class);

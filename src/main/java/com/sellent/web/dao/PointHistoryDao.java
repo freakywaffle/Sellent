@@ -17,4 +17,6 @@ public interface PointHistoryDao {
 	int getAllCntById(String id, int selector);
 
 	int getAllSumById(String id, int selector);
+	
+	int guidePoint();
 }

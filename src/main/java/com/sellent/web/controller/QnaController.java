@@ -160,7 +160,6 @@ public class QnaController {
 	@ResponseBody
 	public String point( HttpServletRequest request, int point, Principal principal) {
 		
-		System.out.println(point);
 
 		Object principal2 = SecurityContextHolder.getContext()
 
@@ -170,10 +169,11 @@ public class QnaController {
 			System.out.println(principal2);
 		
 		else {
-			System.out.println(principal.getName());
 			List<PointHistory> list = pointHistoryDao.select_sy(principal.getName());
+			System.out.println("1111111111"+point);
+			point = pointHistoryDao.guidePoint();
+			System.out.println("1111111111"+point);
 			
-			System.out.println(list);
 			if(list.isEmpty()) {
 				System.out.println("비었!!");
 				int a = pointHistoryDao.insert_sy(principal.getName(),point);
@@ -181,6 +181,8 @@ public class QnaController {
 			}
 			else if(!list.isEmpty())
 				System.out.println("안비었!!");
+
+			
 		};
 				
 		
