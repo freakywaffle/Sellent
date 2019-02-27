@@ -35,7 +35,7 @@
 				<tr>
 					<input name='num' type="hidden" value="${n.no }"/>
 					<td>${n.date }</td>
-					<td>${n.title }</td>
+					<td><a href="/category/${n.parent_category }/${n.product_no}">${n.title }</a></td>
 					<td><fmt:formatNumber value="${n.price}" type="currency" currencySymbol="￦"/></td>				
 					<td class="table-id">
 						<c:if test="${showPart == '판매' }">
