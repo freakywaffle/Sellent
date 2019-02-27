@@ -117,7 +117,7 @@
 	                <select id="modal-content" name="content">
 	                    <c:forEach items="${pointList}" var="pointConf">
 	                    	<c:if test="${pointConf.use eq 1}">
-                    		<option value="${pointConf.content}">${pointConf.content}</option>
+                    		<option class="point-content" value="${pointConf.content}">${pointConf.content}</option>
 	                    	</c:if>
 	                    </c:forEach>
 	                </select>
@@ -125,10 +125,11 @@
 	
 	            <div class="input-box">
 	                <label>포인트</label>
+	                
 	                <select id="modal-point" name="point">
 	                    <c:forEach items="${pointList }" var="pointConf">
                     		<c:if test="${pointConf.use eq 1}">
-                    			<option value="${pointConf.point }">${pointConf.point }</option>
+                    			<option name="${pointConf.content}" class="point-point hidden" value="${pointConf.point }">${pointConf.point }</option>
 	                    	</c:if>
 	                    </c:forEach>
 	                </select>

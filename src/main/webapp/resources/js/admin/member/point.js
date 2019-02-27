@@ -61,3 +61,23 @@ $(function(){
 })
 
 
+
+// 지급사유 선택시 포인트 보이기
+$(function(){
+    
+    $(".modal-content").change(function(){
+    	
+    	$(".point-point").each(function(index, obj){
+    		
+    		if($("#modal-content").val() == $(this).attr('name')){
+    			$(this).removeClass('hidden');
+    			$(this).prop("selected",true);
+    		}else{
+    			$(this).addClass('hidden');
+    			$(this).prop("selected",false);
+    		}
+    		
+    	})
+    	
+    })
+})

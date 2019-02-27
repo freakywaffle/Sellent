@@ -202,7 +202,7 @@ $(function(){
                 tmp.dispatchEvent(mouse)
             },
             error:function(){
-                alert("에러")
+                alert("배너삭제에러")
             }
         })
     })
@@ -321,14 +321,91 @@ $(function(){
                 tmp.dispatchEvent(mouse)
             },
             error:function(){
-                alert("에러")
+                alert("배너순서변경에러")
             }
 			
 		})
 		
 	})
-	
+})
 
+
+
+// 배너 수정
+$(function(){
+
+	$(".edit-button").click(function(){
+		
+		
+		var index = $(".edit-button").index(this)
+		
+		var id = $(".banner-id").eq(index).text()
+		var titleAA = $(".banner-title").eq(index).text()
+		var imageAA = $(".banner-image").eq(index).text()
+		var contentAA = $(".banner-content").eq(index).text()
+		var tmpAA = $(".banner-endDate").eq(index).text()
+		var endDateAA = tmpAA.substring(0,10)
+		
+		$("#modal3-title").val(titleAA)
+		$("#modal3-img").attr('src', "/sellent/admin/"+imageAA)
+		$("#modal3-content").text(contentAA)
+		$("#datepicker3").val(endDateAA)
+		
+		
+		$("#modal3").css("display","block")
+		
+		$("#modal3-check").click(function(){
+			
+			var title = $("#modal3-title").val()
+			var image = $("#modal3-file").val().replace(/.*(\/|\\)/, '')
+			var content = $("#modal3-content").val()
+			var endDate = $("#datepicker3").val()
+			
+			$.ajax({
+				method:'POST',
+				url:'bannerChange',
+				data:{"id":id, "title":title, "image":image, "content":content, "endDate":endDate},
+				success:function(){
+					$("#modal3").css("display","none")
+					
+	                var mouse = new MouseEvent("click")
+	                var request = $("<a class='tmp hidden' href=''></a>")
+	                $("html").append(request)
+
+	                var tmp = document.querySelector(".tmp")
+	                tmp.dispatchEvent(mouse)
+	                
+					$("#modal3-title").val("")
+					$("#modal3-img").removeAttr('src')
+					$("#modal3-content").text("")
+					$("#datepicker3").val("")
+	            },
+	            error:function(){
+	                alert("배너수정에러")
+	            }
+				
+			})
+			
+		})
+		
+		
+		$("#modal3-close-button").click(function(){
+			$("#modal3").css("display","none")
+		})
+	})
+	
+	
+	
 	
 })
+
+
+
+
+
+
+
+
+
+
 

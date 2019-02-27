@@ -1,14 +1,35 @@
 @charset "UTF-8";
 @import url("../inc/basic.css");
 
+.modal-photo-box{
+	width:100%;
+	height: 200px;
+	background-color: white;
+}
+
+.img-upload{
+    color: #fff;
+    background-color: rgb(255, 192, 203);
+    border: 1px solid rgb(235,172,183);
+    border-radius: 5px;
+    height: 30px;
+}
+
+#modal-photo{
+	width:100%;
+	height:100%;
+}
+
+
 .photo-alert{
     text-align: center;
     height: 100%;
-    line-height: 200px;
+    line-height: 300px;
 }
 
 #modal4-photo{
 	width: 100%;
+	height: 100%;
 }
 
 .pwd-message{
@@ -24,7 +45,7 @@
     resize: vertical;
     width: 100%;
     text-align: center;
-    min-height: 200px;
+    height: 300px;
 }
 
 .category-sub button{
@@ -62,6 +83,8 @@
         padding: 20px;
         margin:1% auto;
         width:600px;
+        height: 800px;
+        overflow: scroll;
     }
 
     #modal input[type=text],

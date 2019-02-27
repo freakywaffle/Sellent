@@ -57,12 +57,14 @@ public class ConfigController {
 		paging.setPage(page);
 
 		List<Banner> list = adminBannerDao.getBannerList(paging);
+		int orderMax = adminBannerDao.getBannerOrderMax();
 		
 		String query="";
 
 		model.addAttribute("list", list);
 		model.addAttribute("paging", paging);
 		model.addAttribute("query", query);
+		model.addAttribute("orderMax", orderMax);
 		
 		return "admin.config.banner";
 	}
@@ -123,15 +125,12 @@ public class ConfigController {
 	}
 	
 	@PostMapping("bannerUpdate")
-	@ResponseBody
 	public String bannerUpdate(
 			@RequestParam(name = "idArr") ArrayList<Integer> idArr, 
 			@RequestParam(name = "orderArr") ArrayList<Integer> orderArr,
 			@RequestParam(name = "useArr") ArrayList<Integer> useArr
 			) {
 
-		System.out.println();		
-		
 		Banner banner = new Banner();
 		for(int i =0; i < idArr.size(); i++) {
 		
@@ -146,8 +145,27 @@ public class ConfigController {
 			
 		}
 		
+		return "ok";
+	}
+	
+	@PostMapping("bannerChange")
+	public String bannerChange(
+			@RequestParam(name = "id") int id, 
+			@RequestParam(name = "title") String title,
+			@RequestParam(name = "image") String image,
+			@RequestParam(name = "content") String content,
+			@RequestParam(name = "endDate") String endDate
+			) {
 		
-		return "redirect:banner";
+		Banner banner = new Banner();
+		banner.setId(id);
+		banner.setTitle(title);
+		banner.setContent(content);
+		banner.setEnd_date(endDate);
+		banner.setImage(image);
+		adminBannerDao.change(banner);
+		
+		return "ok";
 	}
 	
 	

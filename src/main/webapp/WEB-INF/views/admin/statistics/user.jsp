@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" type="text/css"
-	href="/resources/css/admin/statistics/index.css" />
-<script src="/resources/js/admin/statistics/index.js"></script>
+	href="/resources/css/admin/statistics/user.css" />
+<script src="/resources/js/admin/statistics/user.js"></script>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -15,14 +15,15 @@
 		통계
 	</div>
 	<ul class="aside-category-list">
-		<li><a href="/admin/statistics/index">통계</a></li>
+		<li><a href="/admin/statistics/user">이용자</a></li>
+		<li><a href="/admin/statistics/product">상품</a></li>
 	</ul>
 </section>
 
 <section class="content">	
 
 	<div class="top-content">
-		<label>통계 > 통계</label>
+		<label>통계 > 이용자</label>
 		<div class="top-right-content">
 			
 		</div>

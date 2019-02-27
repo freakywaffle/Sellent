@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/statistics/")
 public class StatisticsController {
 
-	@GetMapping("index")
-	public String index() {
+	@GetMapping("user")
+	public String user() {
 		
-		return "admin.statistics.index";
+		return "admin.statistics.user";
+	}
+	
+	@GetMapping("product")
+	public String product() {
+		
+		return "admin.statistics.product";
 	}
 	
 }

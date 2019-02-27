@@ -56,8 +56,8 @@
 	</insert>
 	
 	<insert id="insert" parameterType="com.sellent.web.entity.Member">
-		insert into member(id, nickname, password, email, simple_introduction, detail_introduction)
-		values(#{id}, #{nickname}, #{password}, #{email}, #{simple_introduction}, #{detail_introduction})
+		insert into member(id, nickname, password, email, simple_introduction, detail_introduction, photo)
+		values(#{id}, #{nickname}, #{password}, #{email}, #{simple_introduction}, #{detail_introduction}, #{photo})
 	</insert>
 	
 	<delete id="delete">

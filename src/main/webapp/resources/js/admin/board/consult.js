@@ -35,6 +35,7 @@ $(function() {
 $(function(){
     $("#modal-close-button").click(function(){
         $("#modal").css("display","none")
+        $("#modal-answer").val("")
     })
 
     // 대기버튼 클릭

@@ -153,7 +153,20 @@
 				</div>
 	
 				<h1>회원등록</h1>
-	
+		
+				<div>
+					<div class="col-25">
+						<label>프로필 사진</label>
+					</div>
+					<div class="modal-photo-box">
+						<img id="modal-photo" src="/sellent/admin/업로드아이콘.png"/>
+					</div>
+					<div>
+						<input class="hidden" name="image" id="modal-file" type="file" multiple value="이미지첨부"/>
+						<button id="modal-img-button" class="img-upload" type="button">이미지첨부</button>
+					</div>
+				</div>
+				
 				<div>
 					<div class="col-25">
 						<label>아이디</label>
@@ -268,7 +281,7 @@
 						<label for="lname">제목</label>
 					</div>
 					<div>
-						<input id="modal3-title" class="height-30" type="text">
+						<input id="modal3-title" class="height-30" type="text" placeholder="제목을 입력하세요..">
 					</div>
 				</div>
 				<div>
@@ -299,8 +312,9 @@
 							<label for="fname">프로필 사진</label>
 						</div>
 						<div class="profile-photo">
-							<div class="photo-alert">등록된 사진이 없습니다.</div>
-							<img id="modal4-photo" class="hidden" src="<spring:url value=''/>"/>
+							<!-- <div class="photo-alert">등록된 사진이 없습니다.</div> -->
+							<img id="modal4-photo" 
+							onerror="this.src = '/sellent/admin/대체이미지.png'"/>
 						</div>
 					</div>
 	

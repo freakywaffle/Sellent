@@ -164,13 +164,14 @@ $(function(){
         $(".pwd-message").css("display","none")
         
         $("#modal-id").val("")
-        $("#Modal-nickname").val("")
+        $("#modal-nickname").val("")
         $("#modal-pwd").val("")
         $("#modal-pwd2").val("")
         $("#modal-mail").val("")
         $("#modal-simple").val("")
         $("#modal-simple").val("")
         $("#modal-skill").val("")
+        $("#modal-photo").attr("src","/sellent/admin/업로드아이콘.png")
     })
     
     $("#modal-check").click(function(){
@@ -183,10 +184,13 @@ $(function(){
         var simple = $("#modal-simple").val()
         var detail = $("#modal-simple").val()
         var skill = $("#modal-skill").val()
-
+        var image = $("#modal-file").val().replace(/.*(\/|\\)/, '')
+        
+        alert(image)
+        
         var memberInfo = {
             "id":id, "nickname":nickname, "pwd":pwd, "mail":mail,
-            "simple":simple, "detail":detail, "skill":skill
+            "simple":simple, "detail":detail, "skill":skill, "image":image
         }
 
         var memberJson = JSON.stringify(memberInfo)
@@ -234,20 +238,23 @@ $(function(){
         $("#modal4-simple").val($(".member-simple").eq(index).text())
         $("#modal4-detail").val($(".member-detail").eq(index).text())
         
-        var id = $(".member-id").eq(index).text()
-        var path = '/sellent/profile/'+id+'/'
+        var id = $(".member-id").eq(index).text() + '/'
+        var path = '/sellent/profile/'+id
         var file = $(".member-photo").eq(index).text()
         path += file
 
-        if(file==''){
-            $(".photo-alert").removeClass("hidden")
+        
+        $("#modal4-photo").attr("src", path) 
+        
+/*        if(file =='' || file == null){
+            //$(".photo-alert").removeClass("hidden")
             $("#modal4-photo").addClass("hidden")
         }else{
-            $(".photo-alert").addClass("hidden")
+            //$(".photo-alert").addClass("hidden")
 
             $("#modal4-photo").attr("src", path) 
             $("#modal4-photo").removeClass("hidden")
-        }
+        }*/
 
         var memberId = $(".member-id").eq(index).text()
 
@@ -274,3 +281,40 @@ $(function(){
     
 })
 
+
+/*파일업로드 */
+window.addEventListener("load", function(){
+
+    //modal
+    var fileBtn = document.querySelector("#modal-file");
+
+    fileBtn.onchange = function(){
+        readURL(fileBtn);
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = function (e) {
+                $('#modal-photo').attr('src', e.target.result);
+            }
+    
+          reader.readAsDataURL(input.files[0]);
+        }
+    }
+})
+
+/*modal- 이벤트전달- 버튼클릭시 input[type='file']실행 */
+window.addEventListener("load",function(){
+
+    var imgBtn = document.querySelector("#modal-img-button");
+    var fileBtn = document.querySelector("#modal-file");
+
+    imgBtn.addEventListener("click", function(){
+        var evt = new MouseEvent("click");
+
+        fileBtn.dispatchEvent(evt);
+    })
+
+})

@@ -54,7 +54,7 @@
 	                </tr>
 	            </thead>
 	            <tbody class="tbody">
-	            <c:forEach var="i" begin="1" end="${fn:length(list) }" step="1">
+	            <c:forEach var="i" begin="1" end="${orderMax}" step="1">
 		            <c:forEach items="${list }" var="banner">
 		            	<c:if test="${banner.order eq i}">
 			                <tr class="banner-obj">
@@ -65,10 +65,11 @@
 			                    <td class="banner-order">${banner.order}</td>
 			                    <td class="text-align">
 			                        <div class="img-box">
-										<img style="width:100%;height:100%" src="<spr:url value="/sellent/admin"/>/${banner.image}" />
+										<img src="<spr:url value="/sellent/admin"/>/${banner.image}" />
+										<div class="banner-image hidden">${banner.image }</div>
 			                        </div>
 			                    </td>
-			                    <td>${banner.title }</td>
+			                    <td class="banner-title">${banner.title }</td>
 			                    <td>
 			                        <c:choose>
 				                        <c:when test="${banner.use eq 0 }">
@@ -89,14 +90,15 @@
 			                        </c:choose>
 			                    </td>
 			                    <td>
-			                    	<%-- <fmt:formatDate value="${banner.end_date}" pattern="yyyy-MM-dd"/> --%>
 			                    	${fn:substring(banner.end_date,0,10)}
+			                    	<div class="banner-endDate hidden">${banner.end_date }</div>
 			                    </td>
 			                    <td>
 			                        <button type="button" class="btn btn-danger edit-button">수정
 			                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			                        </button>
 			                    </td>
+			                    <td class="banner-content hidden">${banner.content}</td>
 			                </tr>
 		                </c:if>
 					</c:forEach>
@@ -211,7 +213,7 @@
 	                    <label>제목</label>
 	                </div>
 	                <div>
-	                    <input class="height-30" type="text">
+	                    <input id="modal3-title" class="height-30" type="text">
 	                </div>
 	            </div>
 	            <div>
@@ -241,7 +243,7 @@
 	                    <label>내용</label>
 	                </div>
 	                <div>
-	                    <textarea placeholder="내용을 입력하세요."></textarea>
+	                    <textarea id="modal3-content" placeholder="내용을 입력하세요."></textarea>
 	                </div>
 	            </div>
 	
