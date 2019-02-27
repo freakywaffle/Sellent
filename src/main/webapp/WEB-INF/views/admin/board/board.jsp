@@ -139,7 +139,7 @@
 							</c:when>				
 						</c:choose>
 						</td>
-	                    <td>${board.simpleContent}</td>
+	                    <td>${board.title}</td>
 	                    <td>${board.writerId}</td>
 	                    <td>
 							<fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/>
