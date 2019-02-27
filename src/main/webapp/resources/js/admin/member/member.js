@@ -174,6 +174,7 @@ $(function(){
         $("#modal-photo").attr("src","/sellent/admin/업로드아이콘.png")
     })
     
+    
     $("#modal-check").click(function(){
 
         var id = $("#modal-id").val()
@@ -185,8 +186,7 @@ $(function(){
         var detail = $("#modal-simple").val()
         var skill = $("#modal-skill").val()
         var image = $("#modal-file").val().replace(/.*(\/|\\)/, '')
-        
-        alert(image)
+        var imageFile = $("#modal-file")
         
         var memberInfo = {
             "id":id, "nickname":nickname, "pwd":pwd, "mail":mail,
@@ -195,31 +195,40 @@ $(function(){
 
         var memberJson = JSON.stringify(memberInfo)
         
+        var formData = new FormData($("#fileForm")[0])
+            
+        formData.append('imageFile', imageFile)
+        
+        
+        
         if(pwd!=pwd2){
             $(".pwd-message").css("display","block")
         }else if(id == "" || pwd =="" || mail=="" || simple=="" || detail==""|| skill==""){
             alert("입력하지 않은 값이 있습니다")
         }else{
             $(".pwd-message").css("display","none")
-            
-            $.ajax({
-                method:'POST',
-                url:'memberInsert',
-                data: {"memberJson" : memberJson},
-                success:function(){
-                    alert("성공")
-                    $("#modal").css("display","none")
-                    var mouse = new MouseEvent("click")
-                    var request = $("<a class='tmp hidden' href=''></a>")
-                    $("html").append(request)
-    
-                    var tmp = document.querySelector(".tmp")
-                    tmp.dispatchEvent(mouse)
-                },
-                error:function(){
-                    alert("에러")
-                }
-            })
+            $("#modal").css("display","none")
+           
+//            $.ajax({
+//                method:'POST',
+//                url:'memberInsert',
+//                //data: {"memberJson" : memberJson},
+//                processData : false,
+//                contentType : false,
+//                data:{"formData":formData, "memberJson": memberJson},
+//                success:function(){
+//                    $("#modal").css("display","none")
+//                    var mouse = new MouseEvent("click")
+//                    var request = $("<a class='tmp hidden' href=''></a>")
+//                    $("html").append(request)
+//    
+//                    var tmp = document.querySelector(".tmp")
+//                    tmp.dispatchEvent(mouse)
+//                },
+//                error:function(){
+//                    alert("에러")
+//                }
+//            })
         }
     })    
 })
@@ -229,8 +238,6 @@ $(function(){
 $(function(){
 
     $(".member-info").click(function(){
-
-        $("#modal4").css("display","block")
 
         var index = $(".member-info").index(this)
 
@@ -243,19 +250,10 @@ $(function(){
         var file = $(".member-photo").eq(index).text()
         path += file
 
-        
         $("#modal4-photo").attr("src", path) 
+
+        $("#modal4").css("display","block")
         
-/*        if(file =='' || file == null){
-            //$(".photo-alert").removeClass("hidden")
-            $("#modal4-photo").addClass("hidden")
-        }else{
-            //$(".photo-alert").addClass("hidden")
-
-            $("#modal4-photo").attr("src", path) 
-            $("#modal4-photo").removeClass("hidden")
-        }*/
-
         var memberId = $(".member-id").eq(index).text()
 
         $.ajax({

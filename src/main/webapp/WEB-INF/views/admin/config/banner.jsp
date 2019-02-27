@@ -169,7 +169,7 @@
 		
 						<div>
 							<!-- <input id="modal-file" class="form-control" type="file" name="files" multiple> -->
-							<input name="image" id="modal-file" type="file" multiple value="이미지첨부"/>
+							<input name="imageFile" id="modal-file" type="file" multiple value="이미지첨부"/>
 							<button id="modal-img-button" class="img-upload" type="button">이미지첨부</button>
 						</div>
 					</div>

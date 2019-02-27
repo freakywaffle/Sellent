@@ -230,7 +230,7 @@ $(function(){
     $("#modal-check").click(function(){
 
         var formData = new FormData($("#fileForm")[0])
-
+        
         $.ajax({
         	
         	method:'POST',

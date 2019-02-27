@@ -89,7 +89,7 @@ public class ConfigController {
 		String filePath = "F:\\sellent\\admin\\";
 		
 		// 파라미터명이 files인 파일을 가져온다 -> List형태로 담는다
-		List<MultipartFile> files = multipartHttpServletRequest.getFiles("image");
+		List<MultipartFile> files = multipartHttpServletRequest.getFiles("imageFile");
 		
 		//System.out.println(files.get(0).getOriginalFilename());
 		banner.setImage(files.get(0).getOriginalFilename());

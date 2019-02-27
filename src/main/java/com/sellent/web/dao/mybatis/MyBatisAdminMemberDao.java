@@ -46,6 +46,8 @@ public class MyBatisAdminMemberDao implements AdminMemberDao{
 	@Override
 	public int insert(Member member) {
 		AdminMemberDao adminMemberDao = session.getMapper(AdminMemberDao.class);
+		
+		System.out.println("이미지 : "+member.getPhoto());
 		return adminMemberDao.insert(member);
 	}
 
