@@ -318,3 +318,77 @@ window.addEventListener("load",function(){
     })
 
 })
+
+
+
+$(function(){
+	
+    $(".point-button").click(function(){
+        
+        $("#modal5").css("display","block")
+
+        var index = $(".point-button").index(this)
+        
+        var id = $(".member-obj").eq(index).children(".member-id").text()
+        
+        $("#modal5-check").click(function(){
+            var content = $("#modal5-content").val()
+            var point = $("#modal5-point").val()
+
+            $.ajax({
+
+                method:'POST',
+                url:'./pointInsert',
+                data:{ "id":id, "content":content, "point":point},
+                success:function(){
+                    alert("성공")
+
+                    $("#modal5").css("display","none")
+
+                    var mouse = new MouseEvent("click")
+                    var request = $("<a class='tmp hidden' href=''></a>")
+                    $("html").append(request)
+    
+                    var tmp = document.querySelector(".tmp")
+                    tmp.dispatchEvent(mouse)
+                },
+                error:function(){
+                    alert("에러")
+                }
+            })
+    
+        })
+    })
+    
+
+
+    $("#modal5-close-button").click(function(){
+        
+        $("#modal5").css("display","none")
+
+    })
+	
+})
+
+
+
+
+// 지급사유 선택시 포인트 보이기
+$(function(){
+    
+    $(".modal5-content").change(function(){
+    	
+    	$(".point-point").each(function(index, obj){
+    		
+    		if($("#modal5-content").val() == $(this).attr('name')){
+    			$(this).removeClass('hidden');
+    			$(this).prop("selected",true);
+    		}else{
+    			$(this).addClass('hidden');
+    			$(this).prop("selected",false);
+    		}
+    		
+    	})
+    	
+    })
+})

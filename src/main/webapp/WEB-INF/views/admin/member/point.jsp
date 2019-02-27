@@ -62,7 +62,6 @@
 						<td>지급내용</td>
 						<td>지급</td>
 	                    <td>등록일</td>
-	                    <td>기능</td>
 	                </tr>
 				</thead>
 	            <tbody class="tbody">
@@ -74,11 +73,6 @@
 		                    <td>${point.point}</td>
 		                    <td>
 		                    	<fmt:formatDate value="${point.regdate}" pattern="yyyy-MM-dd"/>	
-		                    </td>
-		                    <td>
-		                        <button type="button" class="btn btn-primary point-button">포인트
-		                            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
-		                        </button>
 		                    </td>
 		                </tr>
 	                </c:forEach>
@@ -105,7 +99,7 @@
             </div>
 	    </section>
 	
-	    <div id="modal">
+<%-- 	    <div id="modal">
 	        <div class="modal-content">
 	            <div class="cancel-box">
 	                <span id="modal-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -144,6 +138,6 @@
 	                <button id="modal-check" type="button" class="btn btn-primary">확인</button>
 				</div>
 	        </div>
-	    </div>
+	    </div> --%>
 	</main>
 </section>
