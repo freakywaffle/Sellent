@@ -2,9 +2,16 @@
 
 $(function(){
 	Highcharts.chart('container', {
-
+	    colors: [
+	        '#ff0066', '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+	    chart: {
+	        backgroundColor: null,
+	        style: {
+	            fontFamily: 'Signika, serif'
+	        }
+	    },
 	    title: {
-	        text: '이용자 현황'
+	        text: '회원 현황'
 	    },
 
 	    xAxis: {
@@ -15,7 +22,7 @@ $(function(){
 	    
 	    yAxis: {
 	        title: {
-	            text: '이용자'
+	            text: '회원'
 	        }
 	    },
 	    legend: {
@@ -29,25 +36,25 @@ $(function(){
 	            label: {
 	                connectorAllowed: false
 	            },
-	            pointStart: 1
+	            pointStart: 18
 	        }
 	    },
 
 	    series: [{
 	        name: '회원수',
-	        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133]
+	        data: [0, 3, 5, 5, 8, 13, 17]
 	    }, {
 	        name: '가입',
-	        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121]
+	        data: [0, 3, 3, 0, 5, 7, 5]
 	    }, {
 	        name: '탈퇴',
-	        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147]
+	        data: [0, 0, 1, 0, 2, 3, 1]
 	    }],
 
 	    responsive: {
 	        rules: [{
 	            condition: {
-	                maxWidth: 500
+	                maxWidth: 700
 	            },
 	            chartOptions: {
 	                legend: {
@@ -64,4 +71,13 @@ $(function(){
 	
 })
 
+
+
+$(function(){
+
+	$("tspan").css("font-weight","bold")
+	$(".highcharts-root").css("background","url('https://www.highcharts.com/samples/graphics/sand.png')")
+	$(".highcharts-credits").css("display","none")
+	$(".highcharts-button-box").css("display","none")
+})
 

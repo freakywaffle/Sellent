@@ -9,30 +9,35 @@ $(function(){
 	        }
 	    },
 	    title: {
-	        text: '상품 관련 현황'
+	        text: '게시물 현황'
 	    },
 
 	    plotOptions: {
 	        pie: {
-	            innerSize: 100,
+	            innerSize: 0,
 	            depth: 45
 	        }
 	    },
 	    series: [{
 	        name: 'Delivered amount',
 	        data: [
-	            ['', 8],
-	            ['Kiwi', 3],
-	            ['Mixed nuts', 1],
-	            ['Oranges', 6],
-	            ['Apples', 8],
-	            ['Pears', 4],
-	            ['Clementines', 4],
-	            ['Reddish (bag)', 1],
-	            ['Grapes (bunch)', 1]
+	            ['IT개발', 7],
+	            ['디자인', 3],
+	            ['레슨', 0],
+	            ['번역', 1],
+	            ['비즈니스', 8],
+	            ['영상/애니', 4],
+	            ['음악', 1],
+	            ['이벤트', 0],
 	        ]
 	    }]
 	});
+	
+})
+
+$(function(){
+	$("tspan").css("font-weight","bold")
+	$(".highcharts-credits").css("display","none")
 	
 })
 

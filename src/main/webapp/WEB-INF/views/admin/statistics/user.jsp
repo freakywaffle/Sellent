@@ -15,8 +15,8 @@
 		통계
 	</div>
 	<ul class="aside-category-list">
-		<li><a href="/admin/statistics/user">이용자</a></li>
-		<li><a href="/admin/statistics/product">상품</a></li>
+		<li><a href="/admin/statistics/user">회원</a></li>
+		<li><a href="/admin/statistics/product">게시물</a></li>
 	</ul>
 </section>
 
