@@ -17,7 +17,7 @@
 					<div class="title-title" dir="rtl">제목</div>
 					<div class="title-content">
 						<input type="text" name="simple_introduction"
-							placeholder="${member.simple_introduction }" />
+							value="${member.simple_introduction }" />
 					</div>
 				</div>
 
