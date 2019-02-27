@@ -151,6 +151,8 @@
 		</section>
 	
 		<div id="modal">
+		
+		<form action="memberInsert" method="POST" enctype="multipart/form-data">
 			<div class="modal-content">
 				<div style="width:100%; text-align:end">
 					<span id="modal-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -166,7 +168,7 @@
 						<img id="modal-photo" src="/sellent/admin/업로드아이콘.png"/>
 					</div>
 					<div>
-						<input class="hidden" name="image" id="modal-file" type="file" multiple value="이미지첨부"/>
+						<input name="imageFile" class="hidden" id="modal-file" type="file" multiple value="이미지첨부"/>
 						<button id="modal-img-button" class="img-upload" type="button">이미지첨부</button>
 					</div>
 				</div>
@@ -176,7 +178,7 @@
 						<label>아이디</label>
 					</div>
 					<div>
-						<input id="modal-id" class="height-30" type="text" placeholder="아이디 입력">
+						<input name="id" id="modal-id" class="height-30" type="text" placeholder="아이디 입력">
 					</div>
 				</div>
 				<div>
@@ -184,7 +186,7 @@
 						<label>닉네임</label>
 					</div>
 					<div>
-						<input id="modal-nickname" class="height-30" type="text" placeholder="닉네임 입력">
+						<input name="nickname" id="modal-nickname" class="height-30" type="text" placeholder="닉네임 입력">
 					</div>
 				</div>
 				<div>
@@ -192,7 +194,7 @@
 						<label>비밀번호</label>
 					</div>
 					<div>
-						<input id="modal-pwd" class="height-30" type="text" placeholder="비밀번호를 입력">
+						<input name="pwd" id="modal-pwd" class="height-30" type="text" placeholder="비밀번호를 입력">
 					</div>
 				</div>
 				<div>
@@ -209,7 +211,7 @@
 						<label>이메일</label>
 					</div>
 					<div>
-						<input id="modal-mail" class="height-30" type="text" placeholder="이메일 입력">
+						<input name="email" id="modal-mail" class="height-30" type="text" placeholder="이메일 입력">
 					</div>
 				</div>
 				<h1 style="margin-top:30px">자기소개</h1>
@@ -218,7 +220,7 @@
 						<label>간단소개</label>
 					</div>
 					<div>
-						<input id="modal-simple" class="height-30" type="text" placeholder="제목 입력">
+						<input name="simple" id="modal-simple" class="height-30" type="text" placeholder="제목 입력">
 					</div>
 				</div>
 				<div>
@@ -226,7 +228,7 @@
 						<label>상세소개</label>
 					</div>
 					<div>
-						<textarea id="modal-detail" placeholder="내용을 입력하세요.."></textarea>
+						<textarea name="detail" id="modal-detail" placeholder="내용을 입력하세요.."></textarea>
 					</div>
 				</div>
 				<div>
@@ -234,13 +236,15 @@
 						<label>보유기술</label>
 					</div>
 					<div>
-						<input id="modal-skill" class="height-30" type="text" placeholder="보유기술 입력">
+						<input name="skill" id="modal-skill" class="height-30" type="text" placeholder="보유기술 입력">
 					</div>
 				</div>
 				<div class="reg-box">
-					<button id="modal-check" type="button" class="btn btn-success">확인</button>
+					<button id="modal-check" type="submit" class="btn btn-success">확인</button>
 				</div>
+				
 			</div>
+		</form>
 		</div>
 	
 		<div id="modal2">
@@ -316,7 +320,6 @@
 							<label for="fname">프로필 사진</label>
 						</div>
 						<div class="profile-photo">
-							<!-- <div class="photo-alert">등록된 사진이 없습니다.</div> -->
 							<img id="modal4-photo" 
 							onerror="this.src = '/sellent/admin/대체이미지.png'"/>
 						</div>

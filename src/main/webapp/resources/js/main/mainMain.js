@@ -12,6 +12,6 @@ window.addEventListener("load",function(){
 	    if (slideIndex > x.length) {slideIndex = 1} 
 	    x[slideIndex-1].style.display = "block"; 
 	    x[slideIndex-1].style.transition = '0ms';
-	    setTimeout(carousel, 5000); 
+	    setTimeout(carousel, 2500); 
 	}
 });

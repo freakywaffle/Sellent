@@ -1,5 +1,7 @@
 package com.sellent.web.controller.admin;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
 import com.sellent.web.dao.AdminMemberDao;
@@ -88,30 +92,47 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberInsert")
-	@ResponseBody
-	public String memberInsert(String memberJson) {
-		
-		Gson gson = new Gson();
-		Map<String, String> tmp = gson.fromJson(memberJson, Map.class);
+	public String memberInsert(
+			
+			MultipartHttpServletRequest multipartHttpServletRequest
+			) throws IllegalStateException, IOException {
+
 		Member member = new Member();
-		member.setId(tmp.get("id"));
-		member.setNickname(tmp.get("nickname"));
-		member.setPassword(tmp.get("pwd"));
-		member.setEmail(tmp.get("mail"));
-		member.setSimple_introduction(tmp.get("simple"));
-		member.setDetail_introduction(tmp.get("detail"));
+		member.setId(multipartHttpServletRequest.getParameter("id"));
+		member.setNickname(multipartHttpServletRequest.getParameter("nickname"));
+		member.setPassword(multipartHttpServletRequest.getParameter("pwd"));
+		member.setEmail(multipartHttpServletRequest.getParameter("email"));
+		member.setSimple_introduction(multipartHttpServletRequest.getParameter("simple"));
+		member.setDetail_introduction(multipartHttpServletRequest.getParameter("detail"));
 		
-		int resultInsert = adminMemberService.insert(member);
+//		String aa = multipartHttpServletRequest.getParameter("skill").replaceAll(" ", "");
+//		
+//		String[] skills = aa.split(",");
+//		
+//		for(int i=0; i<skills.length;i++) {
+//			int resultSkill = adminMemberService.insertSkill(skills[i], member.getId());
+//		}
 		
-		String aa = tmp.get("skill").replaceAll(" ", "");
+		String filePath = "F:\\sellent\\profile\\"+member.getId()+"\\";
 		
-		String[] skills = aa.split(",");
+		List<MultipartFile> files = multipartHttpServletRequest.getFiles("imageFile");
 		
-		for(int i=0; i<skills.length;i++) {
-			int resultSkill = adminMemberService.insertSkill(skills[i], tmp.get("id"));
+		File file = new File(filePath);
+		
+		if(file.exists() == false) {
+			file.mkdir();
 		}
 		
-		return "ok";
+		for(int i =0; i<files.size(); i++) {
+			member.setPhoto(files.get(i).getOriginalFilename());
+			file = new File(filePath+files.get(i).getOriginalFilename());
+			files.get(i).transferTo(file);	// 객체에 저장된 경로로  파일을 전송한다
+		}
+		
+
+		int result = adminMemberService.insert(member);
+
+		return "redirect:member";
 	}
 
 	@GetMapping("point")

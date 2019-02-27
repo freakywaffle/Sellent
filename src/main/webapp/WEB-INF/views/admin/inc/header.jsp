@@ -49,8 +49,8 @@
 				</li>
 				<li><a href="/admin/statistics/user">통계</a>
 					<ul class="bottom-sub-menu">
-						<li><a href="/admin/statistics/user">이용자</a></li>
-						<li><a href="/admin/statistics/product">상품</a></li>
+						<li><a href="/admin/statistics/user">회원</a></li>
+						<li><a href="/admin/statistics/product">게시물</a></li>
 					</ul>
 				</li>
 			</ul>
