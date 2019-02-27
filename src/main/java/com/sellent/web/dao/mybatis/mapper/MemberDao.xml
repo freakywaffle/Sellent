@@ -69,5 +69,9 @@
 	<select id="getTopSellent2" resultType="com.sellent.web.entity.Member">
 		select id,photo,star_point,regdate from member order by star_point desc , regdate desc limit 2,2;
 	</select>
+	<select id="role"  resultType="String">
+		select role from member_role where `id`=#{param1};
+	</select>
+	
 
 </mapper>

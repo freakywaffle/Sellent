@@ -23,6 +23,12 @@ public class MyBatisAdminBannerDao implements AdminBannerDao{
 	}
 
 	@Override
+	public int getBannerOrderMax() {
+		AdminBannerDao adminBannerDao = session.getMapper(AdminBannerDao.class);
+		return adminBannerDao.getBannerOrderMax();
+	}
+
+	@Override
 	public int getBannerCnt() {
 		AdminBannerDao adminBannerDao = session.getMapper(AdminBannerDao.class);
 		return adminBannerDao.getBannerCnt();
@@ -32,6 +38,12 @@ public class MyBatisAdminBannerDao implements AdminBannerDao{
 	public int insert(Banner banner) {
 		AdminBannerDao adminBannerDao = session.getMapper(AdminBannerDao.class);
 		return adminBannerDao.insert(banner);
+	}
+
+	@Override
+	public int change(Banner banner) {
+		AdminBannerDao adminBannerDao = session.getMapper(AdminBannerDao.class);
+		return adminBannerDao.change(banner);
 	}
 
 	@Override

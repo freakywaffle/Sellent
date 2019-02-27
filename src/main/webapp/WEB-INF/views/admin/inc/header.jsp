@@ -47,7 +47,7 @@
 						<li><a href="/admin/config/admin">관리자설정</a></li>
 					</ul>
 				</li>
-				<li><a href="/admin/statistics/index">통계</a>
+				<li><a href="/admin/statistics/user">통계</a>
 					<ul class="bottom-sub-menu">
 						<li><a href="/admin/statistics/user">이용자</a></li>
 						<li><a href="/admin/statistics/product">상품</a></li>

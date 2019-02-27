@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>     
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+  
   
 <link href="/resources/css/main/mainMain.css" rel="stylesheet"/>
 <link href="/resources/css/common.css" rel="stylesheet"/>
@@ -9,9 +11,13 @@
 <main id="main">
       <div class="banner">
 		<a href="../join"><img class="mySlides" alt="" src="/resources/images/image11.jpg" class="myslides"/></a>
-		<img class="mySlides" alt="" src="/resources/images/image2.jpg" class="myslides"/>
-		<img class="mySlides" alt="" src="/resources/images/image3_1.jpg" class="myslides"/>
-   
+
+		<c:forEach items="${bannerList }" var="banner">
+			
+			<img class="mySlides myslides" src='<spring:url value="/sellent/admin/"/>${banner.image}' />
+			
+		</c:forEach>
+
       </div>
       <div class="main-icones">
         <div class="top-icon">

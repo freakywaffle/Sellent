@@ -23,4 +23,6 @@ public interface MemberDao {
 	int addPoint(String id, int point);
 	List<Member> getTopSellent();
 	List<Member> getTopSellent2();
+	
+	String role(String name);
 }

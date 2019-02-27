@@ -9,6 +9,10 @@
 	<select id="getBannerList" resultType="com.sellent.web.entity.Banner">
 		select * from banner limit #{startCount}, 10
 	</select>
+		
+	<select id="getBannerOrderMax" resultType="int">
+		select max(`order`) from banner;
+	</select>
 				
 	<select id="getBannerCnt" resultType="int">
 		select count(*) from banner
@@ -19,6 +23,11 @@
 		values (#{order}, #{image}, #{title}, #{content}, #{end_date})
 	</insert>
 		
+	<update id="change">
+		update banner set `title`=#{title}, `content`=#{content}, `end_date`=#{end_date}, `image`=#{image}
+		where `id`=#{id}
+	</update>
+	
 	<update id="update">
 		update banner set `order`= #{order}, `use`=#{use} where `id`= #{id} 
 	</update>

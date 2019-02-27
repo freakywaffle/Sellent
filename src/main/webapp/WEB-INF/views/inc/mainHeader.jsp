@@ -5,6 +5,7 @@
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
 <tiles:importAttribute name="sypoint"/>
+<tiles:importAttribute name="role"/>
 
 
 <link href="/resources/css/inc/mainHeader.css" rel="stylesheet" />
@@ -37,7 +38,12 @@
 				<div class="my-menu hidden">
 						<ul>
 							<li>${sypoint}P</li>
-							<li><a href="/member/project">마이페이지</a></li>
+							<c:if test="${role eq 'ROLE_ADMIN'}">
+								<li><a href="/admin/board/category">관리자페이지</a></li> 
+							</c:if>
+							<c:if test="${role eq 'ROLE_MEMBER'}">
+								<li><a href="/member/project">마이페이지</a></li> 
+							</c:if>
 							<li class="prof">프로필</li>
 							<li><a href="/member/logout">로그아웃</a></li>
 						</ul>

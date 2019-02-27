@@ -112,4 +112,10 @@ public class MybatisMemberDao implements MemberDao{
 		return memberDao.getTopSellent2();
 	}
 
+	@Override
+	public String role(String name) {
+		MemberDao memberDao = session.getMapper(MemberDao.class);
+		return memberDao.role(name);
+	}
+
 }

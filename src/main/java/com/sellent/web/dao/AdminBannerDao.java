@@ -8,9 +8,14 @@ import com.sellent.web.entity.Banner;
 public interface AdminBannerDao {
 	
 	List<Banner> getBannerList(AdminPaging paging);
+	
+	int getBannerOrderMax();
+	
 	int getBannerCnt();
 	
 	int insert(Banner banner);
+	
+	int change(Banner banner);
 	
 	int update(Banner banner);
 	

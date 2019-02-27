@@ -69,25 +69,27 @@ public class HomePreparer implements ViewPreparer {
        List<Skill> skill = new ArrayList<>();
        System.out.println(h.id);
        int point = 0;
+       String role = "ROLE_MEMBER";
        Member member = memberDao.getMember("khh111");
        if(h.id.isEmpty()) {
     	   System.out.println("preparer:아이디 없음");
        }
        else if(!h.id.isEmpty()) {
-    	   System.out.println(h.id.get(0));
-    	   System.out.println("size"+h.id.size());
     	   //String id = h.id.get(0);
     	   String id = h.id.get(h.id.size()-1);
     	   member = memberDao.getMember(id);
     	   skill = Skilldao.select(id);
-    	   System.out.println(skill);
     	   point = member.getPoint();
-    	   System.out.println(point);
+    	   
+    	   role = memberDao.role(id);
+    	   
+    	   
        }
        
        attributeContext.putAttribute("sypoint",new Attribute(point), true);
        attributeContext.putAttribute("syskill",new Attribute(skill), true);
        attributeContext.putAttribute("symember",new Attribute(member), true);
+       attributeContext.putAttribute("role",new Attribute(role), true);
      //  String id = h.id.get(0);
       // System.out.println("preparer");
       // System.out.println(id);
