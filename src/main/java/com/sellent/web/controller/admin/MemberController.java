@@ -52,13 +52,15 @@ public class MemberController {
 		paging.setPage(page);
 
 		List<Member> list = adminMemberService.getMemberList(startDate, endDate, condition, text, paging);
+		List<PointConfig> pointList = adminPointService.getPointConfig();
 		
 		String query = "?startDate=" + startDate + "&endDate=" + endDate + "&condition=" + condition + "&text=" + text;
 		
 		model.addAttribute("list", list); 
 		model.addAttribute("paging", paging);
 		model.addAttribute("query", query);
-		 
+		model.addAttribute("pointList",pointList);
+		
 		return "admin.member.member";
 	}
 

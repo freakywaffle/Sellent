@@ -73,7 +73,7 @@
 					<col width="250px">
 					<col width="100px">
 					<col width="150px">
-					<col width="150px">
+					<col width="200px">
 				</colgroup>
 				<thead class="thead">
 					<tr>
@@ -109,8 +109,12 @@
 							<button type="button" class="btn btn-info member-mail">메일
 								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 							</button>
+							
+							<button type="button" class="btn btn-primary point-button">포인트
+	                            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+	                        </button>
 						</td>
-
+	                    
 						<td class="member-simple hidden">${member.simple_introduction}</td>
 						<td class="member-detail hidden">${member.detail_introduction}</td>
 						<td class="member-photo hidden">${member.photo}</td>
@@ -349,6 +353,46 @@
 				</form>
 			</div>
 		</div>
+		
+	    <div id="modal5">
+	        <div class="modal5-content">
+	            <div class="cancel-box">
+	                <span id="modal5-close-button" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	            </div>
+	            <h1>포인트 지급</h1>
+	            
+	            <div class="input-box">
+	                <label>지급사유</label>
+	                <select id="modal5-content" name="content">
+	                    <c:forEach items="${pointList}" var="pointConf">
+	                    	<c:if test="${pointConf.use eq 1}">
+                    		<option class="point-content" value="${pointConf.content}">${pointConf.content}</option>
+	                    	</c:if>
+	                    </c:forEach>
+	                </select>
+	            </div>
 	
+	            <div class="input-box">
+	                <label>포인트</label>
+	                
+	                <select id="modal5-point" name="point">
+	                    <c:forEach items="${pointList }" var="pointConf">
+                    		<c:if test="${pointConf.use eq 1}">
+                    			<option name="${pointConf.content}" class="point-point hidden" value="${pointConf.point }">${pointConf.point }</option>
+	                    	</c:if>
+	                    </c:forEach>
+	                </select>
+	            </div>
+	
+	            <div class="input-box">
+	                <label>기타</label>
+	                <textarea></textarea>
+	            </div>
+	
+				<div class="reg-box">
+	                <button id="modal5-check" type="button" class="btn btn-primary">확인</button>
+				</div>
+	        </div>
+	    </div>
 	</main>
 </section>
