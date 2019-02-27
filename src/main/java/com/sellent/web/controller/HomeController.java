@@ -101,7 +101,7 @@ public class HomeController {
 		memberService.insertMember(member, skill, filedata);
 		
 		
-		return "redirect:login";
+		return "redirect:index";
 	}
 
 	
